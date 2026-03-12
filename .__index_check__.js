@@ -1,285 +1,4 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Heart 2 Heart 111 private online tarot readings. Choose your spread, reveal your cards, and unlock your full PayPal reading for $5 when you are ready.">
-<title>Heart 2 Heart 111 | Online Tarot Reading</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Parisienne&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="tarot-boutique.css">
-</head>
-<body>
-<canvas id="bg-canvas" aria-hidden="true"></canvas>
-<div class="bg-blobs" aria-hidden="true">
-  <div class="blob blob-1"></div>
-  <div class="blob blob-2"></div>
-  <div class="blob blob-3"></div>
-</div>
-<div id="petals" aria-hidden="true"></div>
-<div id="ritual-portal">
-  <div class="portal-hearts">Preparing your reading</div>
-  <div class="portal-spinner"><div class="portal-center-icon">&#10022;</div></div>
-  <div class="portal-text" id="portal-message">Centering your spread...</div>
-  <div class="fine">Heart 2 Heart 111 &middot; Secure reading session</div>
-</div>
-<div id="toast" class="toast" role="status" aria-live="polite"></div>
-<div class="container" id="top">
-  <header class="site-header">
-    <div class="logo-heart-wrap">
-      <svg viewBox="0 0 80 72" class="logo-heart-svg" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <defs>
-          <radialGradient id="header-heart-gradient" cx="50%" cy="45%" r="55%">
-            <stop offset="0%" stop-color="#f5b2c4"/>
-            <stop offset="58%" stop-color="#cf7f97"/>
-            <stop offset="100%" stop-color="#8f566f"/>
-          </radialGradient>
-        </defs>
-        <ellipse cx="40" cy="38" rx="34" ry="30" fill="rgba(207,127,151,0.10)"/>
-        <path d="M40 60 Q18 46 18 30 A14 14 0 0 1 40 24 A14 14 0 0 1 62 30 Q62 46 40 60Z" fill="url(#header-heart-gradient)"/>
-        <path d="M30 28 Q28 26 28 30 Q28 35 36 42" stroke="rgba(255,255,255,0.38)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-        <text x="40" y="42" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="12" fill="rgba(255,255,255,0.92)" letter-spacing="2">111</text>
-      </svg>
-    </div>
-    <h1 class="brand-name">Heart 2 Heart 111</h1>
-    <p class="brand-tagline">Private online tarot readings</p>
-    <p class="brand-location">Coopersburg, Pennsylvania &middot; Support by text or call <a href="tel:2676642928">(267) 664-2928</a></p>
-    <div class="services-badges hero-badges" aria-label="Service details">
-      <span class="service-badge">Private online ritual</span>
-      <span class="service-badge" id="badge-price">$5 online tarot reading</span>
-      <span class="service-badge">Reading code restore</span>
-    </div>
-    <p class="hero-title">A gentle tarot ritual for whatever is resting on your heart.</p>
-    <p class="hero-intro">Reveal the cards first, then unlock the full interpretation for <strong id="hero-price">$5</strong> only if it feels aligned.</p>
-    <div class="actions hero-actions">
-      <a href="#tarot" class="btn primary">Start Your Reading</a>
-      <a href="#how-it-works" class="btn secondary">See the Flow</a>
-    </div>
-  </header>
-</div>
-<section class="how-strip" id="how-it-works">
-  <div class="wrap">
-    <div class="how-card">
-      <span class="eyebrow">A Gentle Path</span>
-      <h2>Soft, simple, and centered</h2>
-      <p>Choose the details that feel right, reveal the spread, and only unlock the deeper interpretation if the preview truly resonates.</p>
-      <div class="how-grid">
-        <article class="step-card">
-          <span class="step-index">1</span>
-          <h3>Set the ritual</h3>
-          <p>Choose your keepsake, moon phase, zodiac energy, spread, and question in one graceful flow.</p>
-        </article>
-        <article class="step-card">
-          <span class="step-index">2</span>
-          <h3>Reveal the cards</h3>
-          <p>See the first message from your spread before deciding whether you want the fuller reading.</p>
-        </article>
-        <article class="step-card">
-          <span class="step-index">3</span>
-          <h3>Unlock only if it feels right</h3>
-          <p>When it resonates, unlock the deeper interpretation with PayPal for <strong id="how-price">$5</strong>.</p>
-        </article>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="tarot" id="tarot">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Private Session</span>
-      <h2>Draw your cards</h2>
-      <p>A calm ritual flow for choosing your spread, revealing your cards, and returning to your reading if you need to restore it later.</p>
-    </div>
-    <div class="tarot-layout">
-      <div class="builder-wrap">
-        <span class="mini">Reading Ritual</span>
-        <h3>Create your spread</h3>
-        <p>Choose the details that fit this moment, then reveal the message whenever you feel ready.</p>
-        <div id="banner" class="banner">Choose the details of this ritual, then reveal your cards when it feels right.</div>
-        <div class="oracle-quote" id="oracle-quote">"The heart always knows what the mind is still learning."</div>
-        <div class="chest-zone">
-          <button class="chest-btn" id="chest-btn" type="button">
-            <span class="chest-icon" id="chest-icon">&#128142;</span>
-            <span class="chest-label" id="chest-label">Choose a keepsake for this reading</span>
-          </button>
-        </div>
-        <div class="trinkets-panel" id="trinkets-panel">
-          <p class="chest-header">Choose the keepsake that feels most aligned with this moment, or leave it open for a more intuitive pull.</p>
-          <div id="keepsakes" class="trinkets-grid"></div>
-          <div class="selected-trinket-display" id="selected-trinket-display">Leave the keepsake open if you want the reading to stay intuitive.</div>
-        </div>
-        <p class="section-label">Moon phase</p>
-        <div id="moons" class="moon-phases"></div>
-        <p class="section-label">Your zodiac</p>
-        <div id="zodiacs" class="zodiac-row"></div>
-        <p class="section-label">Spread</p>
-        <div id="spreads" class="spread-options"></div>
-        <div class="question-zone">
-          <textarea id="question" maxlength="260" placeholder="What is on your heart right now? You can share a question or leave this open for a more intuitive reading."></textarea>
-        </div>
-        <div class="meta">
-          <span id="draft-meta">Your reading details and code stay saved on this device while your session is active.</span>
-          <span id="credit-meta">Waiting for your cards</span>
-        </div>
-        <div class="energy-display">
-          <span class="energy-label">Reading energy</span>
-          <div class="energy-bar"><div class="energy-fill" id="energy-fill"></div></div>
-          <span class="energy-value" id="energy-value">0%</span>
-        </div>
-        <div class="ritual-zone">
-          <button class="ritual-btn" id="reveal-btn" type="button">Reveal My Cards</button>
-          <p id="reveal-copy" class="fine" style="margin-top:10px">Reveal your cards first. Unlock the fuller interpretation only if it resonates.</p>
-        </div>
-      </div>
-      <div id="settling" class="settling">
-        <div class="line"></div>
-        <p class="fine">Settling the deck...</p>
-      </div>
-      <div id="result" class="result">
-        <div class="result-head">
-          <div>
-            <span class="mini">Reading Results</span>
-            <h3 id="result-title">Your cards are ready</h3>
-          </div>
-          <button id="new-reading-btn" type="button" class="btn ghost">Start Another Reading</button>
-        </div>
-        <p id="result-intro" class="result-intro"></p>
-        <div id="cards-spread" class="cards-spread"></div>
-        <div id="summary" class="summary"></div>
-        <div id="interpretation">
-          <div id="paywall-panel" class="paywall-panel">
-            <span class="mini">Your Full Reading Is Ready</span>
-            <h4 id="paywall-title" class="paywall-title">There is more in this spread than it first appears.</h4>
-            <p id="paywall-copy" class="paywall-copy">Unlock the deeper message, hidden influences, and the next gentle step in this reading.</p>
-            <div class="locked-list">
-              <span>Full card-by-card interpretation</span>
-              <span>Current energy around you</span>
-              <span>Hidden influence in the situation</span>
-              <span>Guidance on what to do next</span>
-            </div>
-            <div class="paywall-actions">
-              <button id="paywall-btn" type="button" class="btn primary">Unlock Full Reading - $5 with PayPal</button>
-              <button id="paywall-check-btn" type="button" class="btn secondary">Check Payment</button>
-            </div>
-            <p class="paywall-note">Secure PayPal checkout will open. Return here after payment to continue.</p>
-          </div>
-          <div id="full-reading" class="full-reading">
-            <div id="draw-grid" class="draw-grid" aria-hidden="true"></div>
-            <div class="interp-header">Your reading from the cards</div>
-            <div class="interp-intro" id="interp-intro"></div>
-            <div class="card-readings" id="card-readings"></div>
-            <div class="interp-closing" id="interp-closing"></div>
-          </div>
-        </div>
-        <div class="new-reading-zone">
-          <button class="new-reading-btn" id="new-reading-btn-2" type="button">Start a New Reading</button>
-        </div>
-      </div>
-      <aside class="panel session-panel">
-        <div class="session-top">
-          <span class="price" id="price-chip">$5 per reading</span>
-          <div id="status" class="status">Not started</div>
-        </div>
-        <div>
-          <span class="code-label">Reading code</span>
-          <div id="session-code" class="code empty">A code appears here when a new reading starts.</div>
-        </div>
-        <div>
-          <h3>Your session</h3>
-          <p id="session-copy" class="session-copy">Start your reading to create your reading code on this device.</p>
-        </div>
-        <div class="actions-col">
-          <button id="start-btn" type="button" class="btn primary">Start Your Reading</button>
-          <button id="pay-btn" type="button" class="btn secondary" disabled>Unlock with PayPal - $5</button>
-          <button id="check-btn" type="button" class="btn ghost" disabled>Check PayPal purchase</button>
-        </div>
-        <div class="restore-stack">
-          <span class="code-label">Restore a saved reading</span>
-          <input id="restore-input" type="text" placeholder="Paste your reading code" autocomplete="off">
-          <button id="restore-btn" type="button" class="btn secondary">Restore</button>
-        </div>
-        <div class="helper">
-          <strong>Saved softly on this device</strong>
-          <p class="fine">Your reading details and code stay in this browser while the session is active. If payment clears but the page stays locked, keep the reading code and contact support before purchasing again.</p>
-        </div>
-      </aside>
-    </div>
-  </div>
-</section>
-<section class="support-strip" id="support">
-  <div class="wrap">
-    <div class="support-compact">
-      <div class="support-copy">
-        <h2>Need help restoring or verifying a reading?</h2>
-        <p>If your PayPal payment goes through but the reading stays locked, please do not purchase again. Keep your reading code and text or call support with your PayPal receipt so access can be verified and restored.</p>
-        <p class="support-line">Text or call: <a href="tel:2676642928">(267) 664-2928</a></p>
-      </div>
-      <div class="support-bullets">
-        <span>Your reading code is saved in this browser during your session</span>
-        <span>PayPal handles payment details securely</span>
-        <span>One payment unlocks one reading code</span>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="policy-strip" id="policies">
-  <div class="wrap">
-    <div class="policy-wrap">
-      <span class="eyebrow">Policies</span>
-      <h2>Terms, privacy, and disclaimer</h2>
-      <p class="fine">Available here whenever you want to review the details before purchase.</p>
-      <div class="policy-details">
-        <details class="policy-detail" id="terms">
-          <summary>Terms of use</summary>
-          <div class="policy-detail-body">
-            <p>By using this website, you confirm you are age 18 or older. Each paid unlock is <strong id="policy-price">$5 per reading</strong> and applies to one reading code.</p>
-            <ul class="policy-list">
-              <li>One payment unlocks one reading session.</li>
-              <li>Reading codes are for personal use only.</li>
-              <li>Refunds are handled at our discretion for verified technical issues.</li>
-            </ul>
-          </div>
-        </details>
-        <details class="policy-detail" id="privacy">
-          <summary>Privacy notice</summary>
-          <div class="policy-detail-body">
-            <p>This site stores reading details and reading codes in your browser so your session can be restored on this device.</p>
-            <ul class="policy-list">
-              <li>Payment details are handled by PayPal, not this website.</li>
-              <li>Support may require your reading code and receipt details.</li>
-              <li>For data questions, contact support at <a href="tel:2676642928">(267) 664-2928</a>.</li>
-            </ul>
-          </div>
-        </details>
-        <details class="policy-detail" id="disclaimer">
-          <summary>Disclaimer</summary>
-          <div class="policy-detail-body">
-            <p>Tarot readings are for entertainment and personal reflection only.</p>
-            <ul class="policy-list">
-              <li>Not medical, legal, financial, or mental-health advice.</li>
-              <li>For urgent needs, contact a licensed professional provider.</li>
-              <li>Online readings are intended for adults age 18 and older.</li>
-            </ul>
-          </div>
-        </details>
-      </div>
-    </div>
-  </div>
-</section>
-<div class="site-footer">
-  <div class="footer-logo">Heart 2 Heart 111</div>
-  <div class="footer-services">Private online tarot readings, spiritual reflection, and gentle support from first reveal to full interpretation.</div>
-  <div class="footer-links">
-    <a href="#tarot">Start Your Reading</a>
-    <a href="#how-it-works">How It Works</a>
-    <a href="#terms">Terms</a>
-    <a href="#privacy">Privacy</a>
-    <a href="#disclaimer">Disclaimer</a>
-    <a href="https://www.facebook.com/heart.to.heart111" target="_blank" rel="noreferrer">Facebook Updates</a>
-  </div>
-  <div class="footer-identity">Heart 2 Heart 111 &middot; Coopersburg, Pennsylvania &middot; Support: <a href="tel:2676642928">(267) 664-2928</a> &middot; New notices and updates are also shared on Facebook.</div>
-</div><script>
+
 (function initBackground(){
   const canvas=document.getElementById('bg-canvas');
   if(!canvas||!canvas.getContext)return;
@@ -429,14 +148,14 @@ function previewTeaser(cards){
   return'Your cards are pointing to something important, and the deeper pattern has not fully opened yet.';
 }
 function previewPaywallTitle(){return'There is more in this spread than it first appears.'}
-function previewPaywallCopy(){return'Unlock the deeper message, hidden influences, and the next gentle step in this reading.'}
+function previewPaywallCopy(){return'Unlock the deeper message, hidden influences, and next steps within this reading.'}
 function renderSession(){
   const s=document.getElementById('status'),code=document.getElementById('session-code'),copy=document.getElementById('session-copy'),pay=document.getElementById('pay-btn'),check=document.getElementById('check-btn'),reveal=document.getElementById('reveal-btn'),banner=document.getElementById('banner'),revealCopy=document.getElementById('reveal-copy'),draftMeta=document.getElementById('draft-meta'),creditMeta=document.getElementById('credit-meta'),q=document.getElementById('question'),keep=item(KEEPSAKES,state.draft.keepsake),selDisplay=document.getElementById('selected-trinket-display'),paywallBtn=document.getElementById('paywall-btn'),paywallCheck=document.getElementById('paywall-check-btn'),builderWrap=document.querySelector('.builder-wrap');
   const locked=isDraftLocked();
   if(builderWrap)builderWrap.classList.toggle('locked',locked);
   if(q)q.value=state.draft.question;
   if(q)q.disabled=locked;
-  if(selDisplay)selDisplay.textContent=keep?keep.icon+' '+keep.label+' carries '+keep.cue:'Leave the keepsake open if you want the reading to stay intuitive.';
+  if(selDisplay)selDisplay.textContent=keep?keep.icon+' '+keep.label+' carries '+keep.cue:'No keepsake chosen yet';
   code.textContent=state.sessionId||'A code appears here when a new reading starts.';
   code.className='code'+(state.sessionId?'':' empty');
   pay.disabled=!state.sessionId||!state.preview||!canPay()||state.status==='awaiting-payment'||state.status==='paid'||state.status==='revealed';
@@ -446,12 +165,12 @@ function renderSession(){
   if(paywallCheck)paywallCheck.disabled=!state.sessionId||!canCheck()||!['awaiting-payment','paid','preview-ready'].includes(state.status);
   if(draftMeta)draftMeta.textContent=state.lastSaved?'Saved at '+new Date(state.lastSaved).toLocaleTimeString([],{hour:'numeric',minute:'2-digit'})+' on this device.':'Your reading details and code stay saved on this device while your session is active.';
   if(creditMeta)creditMeta.textContent=state.status==='preview-ready'?'Preview ready':state.status==='awaiting-payment'?'PayPal checkout open':state.status==='revealed'?'Full reading unlocked':state.status==='session-prepared'?'Ready to reveal':'Waiting for your cards';
-  if(state.status==='idle'){s.className='status';s.textContent='Not started';if(copy)copy.textContent='Start your reading to create your reading code on this device.';banner.className='banner';banner.textContent='Choose the details of this ritual, then reveal your cards when it feels right.';if(revealCopy)revealCopy.textContent='Reveal your cards first. Unlock the fuller interpretation only if it resonates.'}
-  else if(state.status==='session-prepared'){s.className='status await';s.textContent='Ready';if(copy)copy.textContent='Your reading code is safely saved on this device. Reveal your cards whenever you feel ready.';banner.className='banner await';banner.textContent='Your session is ready. The reveal can happen whenever you are.';if(revealCopy)revealCopy.textContent='Reveal your cards to receive the first message before deciding whether to unlock more.'}
-  else if(state.status==='preview-ready'){s.className='status await';s.textContent='Cards drawn';if(copy)copy.textContent='Your preview is ready below. Unlock the deeper interpretation with PayPal if it feels aligned.';banner.className='banner await';banner.textContent='Your preview is open. The fuller interpretation waits just below.';if(revealCopy)revealCopy.textContent='Your cards are already revealed below.'}
-  else if(state.status==='awaiting-payment'){s.className='status await';s.textContent='PayPal open';if(copy)copy.textContent=canCheck()?'PayPal checkout has been opened. Use Check Payment here if the page does not update on its own.':'PayPal checkout has been opened. Keep your reading code nearby until confirmation is complete.';banner.className='banner await';banner.textContent='Waiting for PayPal confirmation so the full reading can open.';if(revealCopy)revealCopy.textContent='Your full reading opens after payment confirmation.'}
-  else if(state.status==='paid'){s.className='status paid';s.textContent='Paid';if(copy)copy.textContent='Your PayPal purchase is confirmed. Opening the full reading now.';banner.className='banner paid';banner.textContent='Your payment is confirmed.';if(revealCopy)revealCopy.textContent='Opening your full reading.'}
-  else{s.className='status used';s.textContent='Unlocked';if(copy)copy.textContent='Your full reading is open and resting below.';banner.className='banner used';banner.textContent='Your reading is fully unlocked below.';if(revealCopy)revealCopy.textContent='Start another reading whenever you feel called.'}
+  if(state.status==='idle'){s.className='status';s.textContent='Not started';if(copy)copy.textContent='Start your reading to create your reading code.';banner.className='banner';banner.textContent='Set your intention, choose your details, and reveal your cards when you feel ready.';if(revealCopy)revealCopy.textContent='Reveal your cards first. Unlock the full interpretation only if it resonates.'}
+  else if(state.status==='session-prepared'){s.className='status await';s.textContent='Ready';if(copy)copy.textContent='Your reading code is active. Reveal your cards whenever you feel ready.';banner.className='banner await';banner.textContent='Your session is saved. Reveal your cards when it feels right.';if(revealCopy)revealCopy.textContent='Reveal your cards to see the first message before deciding whether to unlock more.'}
+  else if(state.status==='preview-ready'){s.className='status await';s.textContent='Cards drawn';if(copy)copy.textContent='Your preview is ready below. Unlock the deeper reading with PayPal if it resonates.';banner.className='banner await';banner.textContent='Your preview is ready. The fuller interpretation opens after payment confirmation.';if(revealCopy)revealCopy.textContent='Your cards are already revealed below.'}
+  else if(state.status==='awaiting-payment'){s.className='status await';s.textContent='PayPal open';if(copy)copy.textContent=canCheck()?'PayPal checkout started. Use Check Payment in the reading area if this page does not update on its own.':'PayPal checkout started. Keep your reading code until confirmation is complete.';banner.className='banner await';banner.textContent='Waiting for your PayPal purchase to clear.';if(revealCopy)revealCopy.textContent='Your full reading opens after payment confirmation.'}
+  else if(state.status==='paid'){s.className='status paid';s.textContent='Paid';if(copy)copy.textContent='Your PayPal purchase is confirmed. Opening your full reading now.';banner.className='banner paid';banner.textContent='Your payment is confirmed.';if(revealCopy)revealCopy.textContent='Opening your full reading.'}
+  else{s.className='status used';s.textContent='Unlocked';if(copy)copy.textContent='Your full reading is open and saved below.';banner.className='banner used';banner.textContent='Your reading is unlocked below.';if(revealCopy)revealCopy.textContent='Start another reading whenever you are ready.'}
   updateEnergy();
   syncPoll();
 }
@@ -639,7 +358,7 @@ function reveal(){
   var portalMsg=document.getElementById('portal-message');
   revealBtn.classList.add('casting');
   portal.classList.add('active');
-  var msgs=['Centering your spread...','Shuffling the deck...','Gathering the message...','Almost ready...'];
+  var msgs=['Preparing your spread...','Shuffling the deck...','Building your preview...','Almost ready...'];
   var mi=0;
   var iv=setInterval(function(){mi=(mi+1)%msgs.length;if(portalMsg)portalMsg.textContent=msgs[mi];},650);
   setTimeout(function(){
@@ -656,7 +375,7 @@ function reveal(){
       document.getElementById('settling').classList.remove('show');
       render();
       document.getElementById('result').scrollIntoView({behavior:'smooth',block:'start'});
-      showToast('Preview ready. Your cards are waiting below.');
+      showToast('Preview ready. Your full reading is waiting below.');
     },1250);
   },2800);
 }
@@ -677,8 +396,3 @@ document.getElementById('chest-btn').addEventListener('click',toggleChest);
 document.getElementById('new-reading-btn-2').addEventListener('click',startSession);
 render();
 handleReturn();
-</script>
-</body>
-</html>
-
-

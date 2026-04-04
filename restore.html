@@ -6,6 +6,7 @@
 <title>Restore Your Reading — Heart to Heart 111</title>
 <meta name="description" content="Enter your PayPal Transaction ID to restore your tarot reading.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💗</text></svg>">
+<script src="analytics.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -43,6 +44,19 @@ h1{font-family:var(--fd);font-size:2rem;line-height:1.08;text-align:center;margi
   box-shadow:0 12px 34px var(--ss);margin-bottom:1.7rem;text-align:center;border:1px solid var(--line)
 }
 .input-box label{display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:.11em;color:var(--soft);margin-bottom:.5rem;font-weight:700}
+.txid-inline-err{
+  max-width:380px;
+  margin:.55rem auto 0;
+  padding:.55rem .85rem;
+  font-size:.78rem;
+  line-height:1.55;
+  color:#6b4a52;
+  font-style:italic;
+  text-align:center;
+  border-radius:12px;
+  background:rgba(217,109,152,.1);
+  border:1px solid rgba(217,109,152,.28);
+}
 .txf{width:100%;max-width:380px;padding:.76rem 1rem;border:1.5px solid var(--line);border-radius:12px;font-family:var(--f);font-size:.95rem;text-align:center;color:var(--ink);transition:border-color .25s,box-shadow .25s;letter-spacing:.05em;background:#fff}
 .txf:focus{outline:none;border-color:rgba(217,109,152,.48);box-shadow:0 0 0 3px rgba(217,109,152,.14)}
 .txf::placeholder{color:var(--soft);letter-spacing:0}
@@ -77,7 +91,7 @@ h1{font-family:var(--fd);font-size:2rem;line-height:1.08;text-align:center;margi
 .loading.on{display:block}
 footer{border-top:1px solid var(--line);padding:1.5rem 1.25rem 1rem;text-align:center;max-width:760px;margin:0 auto;width:100%}
 .ftb{font-family:var(--fb);font-size:1.45rem;color:var(--wine)}
-.ftl{margin-top:.5rem}.ftl a{color:var(--muted);text-decoration:none;font-size:.74rem;margin:0 .5rem}.ftl a:hover{color:var(--wine)}
+.ftl{margin-top:.5rem;display:flex;flex-wrap:wrap;justify-content:center;gap:.4rem .65rem}.ftl a{color:var(--muted);text-decoration:none;font-size:.74rem;margin:0}.ftl a:hover{color:var(--wine)}
 .fdi{color:var(--soft);font-size:.6rem;margin-top:.5rem;max-width:400px;margin-left:auto;margin-right:auto}
 @media(max-width:700px){
   .tnav-in{flex-direction:column;align-items:stretch}
@@ -211,10 +225,67 @@ footer{
   .main{padding:1.05rem .85rem 1.55rem}
   .input-box{padding:1.1rem 1rem}
 }
+/* a11y foundation (mirrors index.html) */
+:root{
+  --focus-strong:#6b3446;
+  --focus-glow:0 0 0 2px #fbf7f2,0 0 0 5px rgba(107,52,70,.45);
+}
+html{scroll-padding-top:calc(5.85rem + env(safe-area-inset-top, 0px));}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto !important}
+  .rbtn,.ab{transition:none !important}
+}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip-link{
+  position:absolute;left:-9999px;top:0;z-index:100001;
+  padding:.65rem 1.2rem;background:var(--final-ink,#261c1b);color:#fff;font-weight:600;font-size:.875rem;
+  border-radius:12px;text-decoration:none;box-shadow:0 8px 28px rgba(0,0,0,.25);
+}
+.skip-link:focus,.skip-link:focus-visible{
+  left:max(.75rem,env(safe-area-inset-left));
+  top:max(.75rem,env(safe-area-inset-top));
+  outline:2px solid var(--final-gold,#b89452);outline-offset:3px;
+}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[role="button"]:focus-visible{
+  outline:2px solid var(--focus-strong);outline-offset:3px;
+}
+.rbtn:focus-visible,.ab:focus-visible,.ab.p:focus-visible{
+  outline:2px solid #fff;outline-offset:2px;box-shadow:var(--focus-glow);
+}
+.txf:focus-visible{
+  outline:2px solid var(--focus-strong);outline-offset:2px;
+  border-color:rgba(185,138,59,.72);box-shadow:0 0 0 3px rgba(107,52,70,.12);
+}
+.tnav-links a:focus-visible,.ftl a:focus-visible{outline-offset:2px}
+.restore-form-h2{
+  font-family:var(--fd);font-size:clamp(1rem,2.2vw,1.2rem);font-weight:600;text-align:center;
+  color:var(--final-ink,#261c1b);margin:-.35rem auto 1rem;max-width:28rem;line-height:1.35;
+}
+main.main{flex:1}
+.main .intro{
+  max-width:34rem;
+  margin-left:auto;
+  margin-right:auto;
+  padding:0 .35rem;
+}
+@media (max-width:700px){
+  .tnav-links a{
+    min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center;
+    padding:.35rem .85rem;box-sizing:border-box;
+  }
+  .rbtn,.ab{
+    min-height:44px;display:inline-flex;align-items:center;justify-content:center;
+  }
+  .ftl a{
+    min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center;
+    padding:.25rem .5rem;box-sizing:border-box;
+  }
+}
 </style>
 </head>
 <body>
-<nav class="tnav">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<nav class="tnav" aria-label="Site">
   <div class="tnav-in">
     <a href="index.html" class="tnav-brand">Heart to Heart 111</a>
     <div class="tnav-links">
@@ -225,70 +296,124 @@ footer{
     </div>
   </div>
 </nav>
-<div class="main">
+<main id="main-content" class="main" tabindex="-1">
   <a href="index.html" class="brand">Heart to Heart 111</a>
   <p class="sub">Restore a Previous Reading</p>
-  <h1>Restore Your Reading</h1>
+  <h1 id="restore-page-title">Restore Your Reading</h1>
   <p class="intro">Enter the PayPal Transaction ID from your receipt to open a past reading again.</p>
-  <div class="input-box">
-    <label for="txid">PayPal Transaction ID</label>
-    <input type="text" id="txid" class="txf" placeholder="For example: 5TY12345AB678901C" autocomplete="off">
+  <h2 class="restore-form-h2">Use your PayPal receipt</h2>
+  <div class="input-box" role="group" aria-labelledby="txid-label">
+    <label for="txid" id="txid-label">PayPal Transaction ID</label>
+    <input type="text" id="txid" class="txf" placeholder="For example: 5TY12345AB678901C" autocomplete="off" aria-labelledby="txid-label" aria-describedby="txid-help txid-inline-err" aria-invalid="false">
+    <p id="txid-inline-err" class="txid-inline-err" role="status" aria-live="polite" hidden></p>
     <br>
-    <button class="rbtn" id="rbtn" onclick="restore()">Restore My Reading</button>
-    <p class="help">
+    <button type="button" class="rbtn" id="rbtn" onclick="restore()">Restore My Reading</button>
+    <p class="help" id="txid-help">
       <strong>Where to find it:</strong> Check your PayPal receipt email, or log in to PayPal → Activity → click the payment → Transaction ID.
     </p>
   </div>
-  <div class="loading" id="loading">Looking up your reading...</div>
-  <div class="err" id="errBox">
+  <div class="loading" id="loading" role="status" aria-live="polite" aria-busy="false">Looking up your reading...</div>
+  <div class="err" id="errBox" role="alert" aria-live="assertive">
     <p id="errMain">We couldn't find a reading with that Transaction ID.</p>
     <p class="hint" id="errHint">Double-check the ID from your PayPal receipt. If you need help, call us at <a href="tel:6107628341" style="color:var(--wine)">(610) 762-8341</a>.</p>
   </div>
-  <div class="result" id="result">
+  <div class="result" id="result" role="region">
     <div class="rw" id="rc"></div>
     <div class="racts">
-      <button class="ab p" onclick="cpR(this)">Copy Reading</button>
+      <button type="button" class="ab p" onclick="cpR(this)">Copy Reading</button>
       <a href="index.html" class="ab g">New Reading</a>
     </div>
   </div>
-</div>
+</main>
 <footer>
   <div class="ftb">Heart to Heart 111</div>
   <div class="ftl"><a href="index.html">Home</a><a href="about.html">About</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a><a href="terms.html#terms">Terms</a><a href="terms.html#privacy">Privacy</a><a href="terms.html#disclaimer">Disclaimer</a></div>
   <p class="fdi">Readings and spiritual services are for entertainment, personal reflection, and spiritual exploration only. Not a substitute for medical, legal, financial, or mental health advice. Must be 18+. © 2026 Heart to Heart 111.</p>
 </footer>
+<div class="sr-only" id="sr-live-polite" aria-live="polite" aria-atomic="true"></div>
+<div class="sr-only" id="sr-live-assertive" aria-live="assertive" aria-atomic="true"></div>
 
 <script>
+let _h2hAnnSig='',_h2hAnnAt=0;
+function announce(message,priority){
+  const mode=priority==='assertive'?'assertive':'polite';
+  if(!message)return;
+  const t=Date.now();
+  const sig=mode+'|'+message;
+  if(sig===_h2hAnnSig&&t-_h2hAnnAt<900)return;
+  _h2hAnnSig=sig;
+  _h2hAnnAt=t;
+  const polite=document.getElementById('sr-live-polite');
+  const asrt=document.getElementById('sr-live-assertive');
+  if(!polite||!asrt)return;
+  const el=mode==='assertive'?asrt:polite;
+  const other=mode==='assertive'?polite:asrt;
+  other.textContent='';
+  el.textContent='';
+  requestAnimationFrame(()=>{el.textContent=message});
+}
 const INTERP={'The Fool':'A new beginning calls — step into the unknown with an open heart. Release control and trust the adventure ahead.','The Magician':'You hold more power than you realize. Every tool you need is in your hands. Focus your intention and create.','The High Priestess':'Listen to the whisper within. Trust intuition over logic now. Be still and let answers rise to meet you.','The Empress':'Abundance flows your way. Nurture what you love and watch it bloom beyond what you imagined.','The Emperor':'Structure is your ally. Take charge, set boundaries, and build something that lasts.','The Hierophant':'Seek wisdom from those who came before. Guidance awaits through tradition, mentorship, or practice.','The Lovers':'A choice before you speaks to your deepest values. Choose what feels true, even if harder.','The Chariot':'Victory through focus and will. Hold the reins steady — you are unstoppable when aligned.','Strength':'True strength is gentle. Meet challenges with patience and quiet resolve. Grace is your power.','The Hermit':'Reflection calls you inward. Step away from noise and seek your own light. Clarity lives in stillness.','Wheel of Fortune':'Change is constant. Embrace the turning — this moment is part of a much larger pattern.','Justice':'Truth takes center stage. Act with integrity and trust that balance will be restored.','The Hanged Man':'Surrender to a new perspective. Stillness reveals what movement cannot. Let go of control.','Death':'An ending births a beginning. Something is ready to be released so something truer can arrive.','Temperance':'Balance is your medicine. Find the middle path. Healing comes through harmony.','The Devil':'Look at what keeps you stuck. The chains are looser than they seem. Name them, reclaim your power.','The Tower':'Clarity through disruption. What was shaky comes down so you can rebuild with truth. Trust it.','The Star':'Hope after darkness. You are guided and loved. Let your light return — it never truly left.','The Moon':'Not everything is as it seems. Navigate with courage. Trust intuition through the fog.','The Sun':'Joy radiates around you. Step into your light, celebrate what\'s good, and shine fully.','Judgement':'A higher calling asks for attention. Reflect honestly and choose who you want to become.','The World':'Completion. A cycle fulfilled. Honor your journey before the next beautiful chapter begins.'};
 const CAT_CLOSE={love:'In matters of the heart, trust what feels warm and true. Love is both the question and the answer.',career:'Your path is taking shape. Trust your gifts — the work that lights you up is the work that matters.',growth:'Growth isn\'t always comfortable, but it\'s always worth it. You are becoming exactly who you need to be.',family:'The bonds that matter most are the ones tended with patience and presence. Hold your people close.',health:'Your body and spirit are speaking. Listen gently, and give yourself the care you so freely give others.',money:'Abundance follows alignment. Trust that what you need will come when you honor your own worth.',spirit:'The universe is conspiring on your behalf. Stay open, stay curious, and trust the signs you\'re receiving.',open:'The cards have shared their wisdom freely. Take what resonates and release the rest with love.'};
 
+function clearTxidInline(){
+  const e=document.getElementById('txid-inline-err');
+  const tx=document.getElementById('txid');
+  if(e){
+    e.textContent='';
+    e.hidden=true;
+  }
+  if(tx){
+    tx.setAttribute('aria-invalid','false');
+    tx.removeAttribute('aria-errormessage');
+  }
+}
+function showTxidInline(msg){
+  clearTxidInline();
+  const e=document.getElementById('txid-inline-err');
+  const tx=document.getElementById('txid');
+  if(e){
+    e.textContent=msg;
+    e.hidden=false;
+  }
+  if(tx){
+    tx.setAttribute('aria-invalid','true');
+    tx.setAttribute('aria-errormessage','txid-inline-err');
+    requestAnimationFrame(()=>tx.focus());
+  }
+}
 function showError(main,hint){
+  clearTxidInline();
   document.getElementById('errMain').textContent=main;
   document.getElementById('errHint').innerHTML=hint;
   document.getElementById('errBox').classList.add('on');
+  requestAnimationFrame(()=>document.getElementById('txid').focus());
 }
+
+document.getElementById('txid').addEventListener('input',clearTxidInline);
 
 async function restore(){
   const txid=document.getElementById('txid').value.trim().toUpperCase();
+  document.getElementById('errBox').classList.remove('on');
   if(!txid){
-    showError(
-      'Please enter a Transaction ID.',
-      'You can find it in your PayPal receipt email, or in PayPal Activity.'
-    );
+    if(typeof h2hTrack==='function')h2hTrack('restore_failure',{reason:'empty_id'});
+    showTxidInline('The transaction ID is the gentle key—paste or type the one from your PayPal receipt when you are ready.');
     return;
   }
   if(!/^[A-Z0-9-]{8,40}$/.test(txid)){
-    showError(
-      'That Transaction ID format does not look right yet.',
-      'Use letters, numbers, and dashes only, then try again.'
-    );
+    if(typeof h2hTrack==='function')h2hTrack('restore_failure',{reason:'invalid_format'});
+    showTxidInline('That shape does not match a PayPal ID yet—letters, numbers, and dashes only. Softly try again.');
     return;
   }
+  if(typeof h2hTrack==='function')h2hTrack('restore_submit');
 
   // Reset UI
-  document.getElementById('errBox').classList.remove('on');
-  document.getElementById('result').classList.remove('on');
-  document.getElementById('loading').classList.add('on');
+  clearTxidInline();
+  const resEl=document.getElementById('result');
+  resEl.classList.remove('on');
+  resEl.removeAttribute('aria-labelledby');
+  const loadEl=document.getElementById('loading');
+  loadEl.classList.add('on');
+  loadEl.setAttribute('aria-busy','true');
   document.getElementById('rbtn').disabled=true;
   document.getElementById('rbtn').textContent='Looking up...';
 
@@ -308,11 +433,13 @@ async function restore(){
     }catch(e){}
   }
 
-  document.getElementById('loading').classList.remove('on');
+  loadEl.classList.remove('on');
+  loadEl.setAttribute('aria-busy','false');
   document.getElementById('rbtn').disabled=false;
   document.getElementById('rbtn').textContent='Restore My Reading';
 
   if(!data){
+    if(typeof h2hTrack==='function')h2hTrack('restore_failure',{reason:'not_found'});
     showError(
       "We couldn't find a reading with that Transaction ID.",
       "Double-check the ID from your PayPal receipt. If you need help, call us at <a href='tel:6107628341' style='color:var(--wine)'>(610) 762-8341</a>."
@@ -320,9 +447,12 @@ async function restore(){
     return;
   }
 
+  if(typeof h2hTrack==='function')h2hTrack('restore_success');
+  announce('Reading restored successfully. Full reading below.');
+
   // Render
   const c=document.getElementById('rc');
-  let h='<h3>💗 Your Reading</h3>';
+  let h='<h3 id="restore-reading-title" tabindex="-1">💗 Your Reading</h3>';
   if(data.created_at){
     const d=new Date(data.created_at);
     h+='<p class="rmeta">'+d.toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'})+(data.trinket?' · Charm: '+data.trinket:'')+'</p>';
@@ -339,8 +469,14 @@ async function restore(){
   h+='<div class="clos"><h4>Closing Guidance</h4><p>'+cc+tc+' The power has always been within you. You are held. 💗</p></div>';
 
   c.innerHTML=h;
-  document.getElementById('result').classList.add('on');
-  document.getElementById('result').scrollIntoView({behavior:'smooth',block:'start'});
+  resEl.setAttribute('aria-labelledby','restore-reading-title');
+  resEl.classList.add('on');
+  const reduceRestore=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  resEl.scrollIntoView({behavior:reduceRestore?'auto':'smooth',block:'start'});
+  requestAnimationFrame(()=>{
+    const t=document.getElementById('restore-reading-title');
+    if(t)t.focus({preventScroll:true});
+  });
 }
 
 function cpR(btn){

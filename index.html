@@ -3,9 +3,68 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Heart to Heart 111 — Private Online Tarot Readings</title>
-<meta name="description" content="Heart to Heart 111 offers online tarot readings, in-studio spiritual services, and a gift shop from Main Street in Coopersburg, PA.">
+<title>Heart to Heart 111 | Private Online Tarot — Preview, Then Your Full Reading</title>
+<meta name="description" content="A calm, private online tarot experience: lay your spread, read a real preview, then unlock the full written interpretation when you are ready ($5). From Heart to Heart 111 in Coopersburg, PA—also a Main Street studio for readings, energy work, and gifts.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#fbf7f2">
+<meta name="author" content="Heart to Heart 111">
+<!-- Canonical + absolute og:image: set when you know your live site URL (avoid duplicate-content and broken social previews). -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Heart to Heart 111">
+<meta property="og:title" content="Heart to Heart 111 | Private online tarot with a preview first">
+<meta property="og:description" content="Lay your cards, linger with a genuine preview, then open the full written reading when it feels right. PayPal checkout · Coopersburg, PA.">
+<meta property="og:image" content="images/studio-wall.jpg">
+<meta property="og:image:alt" content="Heart to Heart 111 studio in Coopersburg, Pennsylvania">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Heart to Heart 111 | Private online tarot">
+<meta name="twitter:description" content="Preview your spread, then unlock the full interpretation—unhurried, invitation-only online room plus a real Main Street studio.">
+<meta name="twitter:image" content="images/studio-wall.jpg">
+<meta name="twitter:image:alt" content="Heart to Heart 111 studio in Coopersburg, Pennsylvania">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["Organization", "LocalBusiness"],
+      "@id": "#h2h",
+      "name": "Heart to Heart 111",
+      "description": "Private online tarot readings with an honest preview before purchase, plus in-person spiritual services and a gift shop on Main Street in Coopersburg, Pennsylvania.",
+      "telephone": "+1-610-762-8341",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "111 S Main St",
+        "addressLocality": "Coopersburg",
+        "addressRegion": "PA",
+        "addressCountry": "US"
+      },
+      "sameAs": ["https://www.facebook.com/heart.to.heart111"]
+    },
+    {
+      "@type": "WebSite",
+      "name": "Heart to Heart 111",
+      "description": "Private online tarot reading: preview your spread, then choose to unlock the paid, full written interpretation.",
+      "publisher": { "@id": "#h2h" }
+    },
+    {
+      "@type": "Service",
+      "name": "Private online tarot reading",
+      "serviceType": "Tarot reading (online)",
+      "description": "Guided online tarot spread with a written preview; optional one-time purchase for the complete interpretation. For reflection and spiritual exploration—not a substitute for professional advice.",
+      "provider": { "@id": "#h2h" },
+      "offers": {
+        "@type": "Offer",
+        "price": "5.00",
+        "priceCurrency": "USD",
+        "description": "Full written tarot interpretation for your current spread (one-time)",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+  ]
+}
+</script>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💗</text></svg>">
+<script src="analytics.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -13,15 +72,116 @@
   --pink:#b4637a;--pk-lt:#d5a4b3;--pk-pale:#f5ece8;--pk-hot:#8c475c;
   --coral:#c7866a;--peach:#dfc4a8;--sky:#b8c7d9;--lav:#b8a8c6;--mint:#bfd6cc;
   --cream:#fbf7f2;--white:#fff;
-  --td:#2f2732;--tm:#5d5362;--ts:#877b87;--tmu:#b0a7b2;
+  --td:#2f2732;--tm:#5d5362;--ts:#877b87;--tmu:#948a96;
+  --focus-strong:#6b3446;
+  --focus-glow:0 0 0 2px #fbf7f2,0 0 0 5px rgba(107,52,70,.45);
   --gold:#bfa57a;
   --sp:rgba(180,99,122,.10);--ss:rgba(47,39,50,.07);
   --fb:'Cormorant Garamond',Georgia,serif;--fd:'Cormorant Garamond',Georgia,serif;--f:'Manrope',sans-serif;
   --chest-wood:#8B5E3C;--chest-dark:#6B3F22;--chest-gold:#D4A843;--chest-band:#5C3A1E;
   --page-max:1080px;--reading-max:1220px;--spread-max:1600px;
+  --anchor-pad:calc(6.2rem + env(safe-area-inset-top, 0px));
+  --flow-sticky-top:calc(6.35rem + env(safe-area-inset-top, 0px));
 }
-html{scroll-behavior:smooth;overflow-x:hidden}
+@media(min-width:721px){
+  :root{
+    --anchor-pad:calc(5.75rem + env(safe-area-inset-top, 0px));
+    --flow-sticky-top:calc(6.15rem + env(safe-area-inset-top, 0px));
+  }
+}
+html{scroll-behavior:smooth;overflow-x:hidden;scroll-padding-top:var(--anchor-pad)}
 body{font-family:var(--f);background:var(--cream);color:var(--td);overflow-x:hidden;font-weight:400;line-height:1.72;font-size:17px;letter-spacing:.002em}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto !important}
+  .hbg .fh{animation:none !important;opacity:.07}
+  .rbtn::after{animation:none !important}
+  .sc{animation:none !important}
+  .shuf-orbit{animation:none !important}
+  .shuf-mist{animation:none !important}
+  .tc:not(.fl):hover{animation:none !important}
+  .tc-deal{animation:none !important;opacity:1 !important}
+  .sr{transition:none !important}
+  .chest-lid-group{transition-duration:.01ms !important}
+  .trk,.tcloud.show .trk{transition:none !important}
+  .carea-spread-complete .ritual-cardmat-inner{animation:none !important}
+  .prev.prev-arrive{animation:none !important}
+  .hero-card-preview{animation:none !important}
+  .hero-btn:hover,.ppb:hover,.prev .ppb-unlock:hover,.path-card:hover{transform:none !important}
+}
+.skip-link{
+  position:absolute;
+  left:-9999px;
+  top:0;
+  z-index:100001;
+  padding:.65rem 1.2rem;
+  background:var(--td);
+  color:#fff;
+  font-weight:600;
+  font-size:.875rem;
+  border-radius:12px;
+  text-decoration:none;
+  box-shadow:0 8px 28px rgba(47,39,50,.25);
+}
+.skip-link:focus,
+.skip-link:focus-visible{
+  left:max(.75rem,env(safe-area-inset-left));
+  top:max(.75rem,env(safe-area-inset-top));
+  outline:2px solid var(--gold);
+  outline-offset:3px;
+}
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible,
+[role="button"]:focus-visible{
+  outline:2px solid var(--focus-strong);
+  outline-offset:3px;
+}
+.hero-btn.primary:focus-visible,
+.rbtn:focus-visible,
+.ppb:focus-visible,
+.ppb.alt:focus-visible,
+.pw-gate__submit:focus-visible,
+.mobile-soft-cta:focus-visible{
+  outline:2px solid #fff;
+  outline-offset:2px;
+  box-shadow:var(--focus-glow);
+}
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+.pw-gate__input:focus-visible{
+  outline:2px solid var(--focus-strong);
+  outline-offset:2px;
+}
+.qinput:focus,
+.fi select:focus{
+  outline:none;
+}
+.qinput:focus-visible,
+.fi select:focus-visible{
+  border-color:var(--pink);
+  box-shadow:0 0 0 3px rgba(180,99,122,.2);
+}
+.tnav-links a:focus-visible{
+  outline-offset:2px;
+}
+.path-card:focus-visible,
+.qcat:focus-visible,
+.trk:focus-visible,
+.sp:focus-visible{
+  box-shadow:0 0 0 3px rgba(180,99,122,.22);
+}
+.tc:focus-visible:not(.fl){
+  outline:3px solid rgba(255,246,235,.95);
+  outline-offset:4px;
+  z-index:3;
+}
+.tc.fl:focus-visible{
+  outline:none;
+}
 
 /* floating hearts */
 .hbg{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
@@ -86,7 +246,11 @@ h2{font-size:clamp(1.7rem,4vw,2.5rem)}h3{font-size:clamp(1.1rem,2.5vw,1.5rem)}
 .chsec h2{margin-bottom:.15rem}
 .chsub{color:var(--ts);font-size:.82rem;margin-bottom:1.5rem}
 
-.chest-container{position:relative;width:180px;height:170px;margin:0 auto 1rem;cursor:pointer;user-select:none}
+.chest-container{position:relative;width:180px;height:170px;margin:0 auto 1rem;cursor:pointer;user-select:none;border-radius:12px}
+.chest-container:focus-visible{
+  outline:2px solid var(--focus-strong);
+  outline-offset:6px;
+}
 .chest-svg{width:100%;height:100%}
 .chest-lid-group{transform-origin:50% 72%;transition:transform .5s cubic-bezier(.34,1.56,.64,1)}
 .chest-container.open .chest-lid-group{transform:rotate(-65deg) translateY(-8px)}
@@ -294,6 +458,16 @@ footer{border-top:2px solid var(--pk-pale);padding:2rem 1.4rem 1.2rem;text-align
 .fco a{color:var(--tmu);text-decoration:none}.fco a:hover{color:var(--pink)}
 .fln{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;margin-bottom:.8rem}
 .fln a{color:var(--ts);text-decoration:none;font-size:.68rem}.fln a:hover{color:var(--pink)}
+.footer-legal-hint{
+  font-size:.62rem;
+  line-height:1.55;
+  color:var(--tmu);
+  max-width:32rem;
+  margin:0 auto .65rem;
+  opacity:.95;
+}
+.footer-legal-hint a{color:var(--ts);text-decoration:underline;text-underline-offset:2px}
+.footer-legal-hint a:hover{color:var(--pink)}
 .fdi{color:var(--tmu);font-size:.58rem;max-width:440px;margin:0 auto;line-height:1.6}
 
 /* ═══ TAROTOO-STYLE UPGRADE ═══ */
@@ -466,8 +640,8 @@ body::before{
   inset:12% 14% auto;
   height:56%;
   border-radius:50%;
-  background:radial-gradient(circle,rgba(255,255,255,.2) 0%,transparent 70%);
-  filter:blur(6px);
+  background:radial-gradient(circle,rgba(255,255,255,.16) 0%,transparent 70%);
+  filter:blur(5px);
 }
 .hero-orb{
   position:absolute;
@@ -3400,10 +3574,11 @@ footer{
   border-top:1px solid rgba(214,180,106,.34) !important;
 }
 .ftb{color:#f5e5c3 !important}
-.ftt,.fco,.fdi{color:rgba(247,235,215,.76) !important}
-.fco a,.fln a,.fso a{
+.ftt,.fco,.fdi,.footer-legal-hint{color:rgba(247,235,215,.76) !important}
+.fco a,.fln a,.fso a,.footer-legal-hint a{
   color:#f7efe1 !important;
 }
+.footer-legal-hint a:hover{color:#fff8ef !important}
 .fso a{
   background:rgba(255,247,234,.08) !important;
   border-color:rgba(214,180,106,.4) !important;
@@ -3917,11 +4092,10 @@ footer{
     text-align:center !important;
     margin-inline:auto !important;
   }
-  .hero-actions,
-  .hero-proof{
+  .hero-actions{
     justify-content:center !important;
   }
-  .hero-trust{
+  .hero-trust.hero-trust--row{
     max-width:none !important;
   }
 }
@@ -3936,7 +4110,7 @@ footer{
     grid-template-columns:1fr !important;
     gap:.9rem !important;
   }
-  .hero-trust{
+  .hero-trust:not(.hero-trust--row){
     grid-template-columns:1fr !important;
   }
   .guide-head{
@@ -3944,7 +4118,7 @@ footer{
     align-items:flex-start !important;
   }
   .hero-lede{
-    max-width:12ch !important;
+    max-width:min(36rem,94vw) !important;
   }
 }
 @media(max-width:640px){
@@ -3962,54 +4136,1971 @@ footer{
   .hero-stage{
     min-height:340px !important;
   }
-  .hero-proof{
-    justify-content:flex-start !important;
-  }
   .guide-shell,
   .qsection,.chsec,.spsec,.isec{
     padding:1.35rem 1rem !important;
     border-radius:22px !important;
   }
 }
+
+/* ═══ Hero conversion: primary CTA, trust row, next strip (wins last) ═══ */
+.hero h2.hero-lede{
+  margin:0;
+  font-weight:500;
+}
+.hero-copy .hero-lede{
+  max-width:min(38rem,100%) !important;
+}
+.hero-copy .hero-price{
+  font-weight:600;
+  color:#a67c3a;
+  white-space:nowrap;
+}
+.hero-actions{
+  flex-direction:column !important;
+  align-items:stretch !important;
+  align-self:center !important;
+  width:100% !important;
+  max-width:min(24rem,100%) !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+  gap:.65rem !important;
+}
+.hero-btn.primary{
+  width:100% !important;
+  min-height:58px !important;
+  font-size:.94rem !important;
+  letter-spacing:.12em !important;
+  box-shadow:0 22px 48px rgba(10,8,12,.24),0 0 0 1px rgba(255,255,255,.12) inset !important;
+  border:1px solid rgba(245,220,190,.42) !important;
+}
+.hero-restore-link{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  width:100%;
+  min-height:46px;
+  padding:.58rem 1.15rem;
+  margin:0;
+  font-size:.66rem !important;
+  letter-spacing:.16em !important;
+  text-transform:uppercase;
+  font-family:Cinzel,Georgia,serif;
+  color:#4a3c44 !important;
+  text-decoration:none !important;
+  border:1px solid rgba(184,148,82,.34) !important;
+  border-radius:999px !important;
+  background:linear-gradient(180deg,rgba(255,252,248,.92),rgba(248,238,228,.88)) !important;
+  box-shadow:0 6px 20px rgba(47,39,50,.06) !important;
+  transition:color .2s ease,border-color .2s ease,background .2s ease,box-shadow .2s ease;
+}
+.hero-restore-link:hover{
+  color:#5c3040 !important;
+  border-color:rgba(140,71,92,.38) !important;
+  background:linear-gradient(180deg,#fff,rgba(252,244,236,.95)) !important;
+  box-shadow:0 8px 22px rgba(108,52,64,.1) !important;
+}
+ul.hero-trust.hero-trust--row,
+.hero-trust.hero-trust--row{
+  list-style:none !important;
+  display:flex !important;
+  flex-wrap:wrap !important;
+  justify-content:center !important;
+  align-items:flex-start !important;
+  gap:.45rem .95rem !important;
+  margin:1.05rem auto 0 !important;
+  padding:0 !important;
+  max-width:36rem !important;
+  grid-template-columns:unset !important;
+  background:transparent !important;
+  border:none !important;
+  box-shadow:none !important;
+}
+.hero-trust--row li{
+  position:relative;
+  margin:0 !important;
+  padding:0 0 0 .72rem !important;
+  font-size:.7rem !important;
+  letter-spacing:.05em !important;
+  line-height:1.45 !important;
+  color:#5d4f52 !important;
+  text-align:left !important;
+  background:transparent !important;
+  border:none !important;
+  box-shadow:none !important;
+  min-height:0 !important;
+}
+.hero-trust--row li::before{
+  content:'' !important;
+  position:absolute;
+  left:0;
+  top:.55em;
+  width:4px;
+  height:4px;
+  border-radius:50%;
+  background:#b4637a;
+  opacity:.72;
+}
+.hero-next{
+  width:100%;
+  max-width:min(1040px,calc(100% - 2rem));
+  margin:1.55rem auto 0;
+  padding:.95rem 1.05rem 1.08rem;
+  border-radius:22px;
+  background:linear-gradient(180deg,rgba(255,250,245,.94),rgba(244,232,215,.9));
+  border:1px solid rgba(184,148,82,.32);
+  box-shadow:0 10px 28px rgba(5,5,10,.06);
+}
+.hero-next-title{
+  font-family:Cinzel,Georgia,serif;
+  font-size:.65rem;
+  font-weight:600;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  text-align:center;
+  color:#7d622e;
+  margin:0 0 .7rem;
+  line-height:1.35;
+}
+.hero-next h3.hero-next-title{
+  font-family:Cinzel,Georgia,serif;
+  font-size:.65rem;
+  font-weight:600;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  text-align:center;
+  line-height:1.35;
+  color:#7d622e;
+  margin:0 0 .7rem;
+}
+.hero-next-track{
+  list-style:none;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  align-items:center;
+  gap:.45rem;
+  margin:0;
+  padding:0;
+}
+.hero-next-track li{
+  display:inline-flex;
+  align-items:center;
+  gap:.4rem;
+  padding:.4rem .72rem;
+  border-radius:999px;
+  background:rgba(255,255,255,.72);
+  border:1px solid rgba(184,148,82,.22);
+  font-size:.74rem;
+  color:#4a3f42;
+  white-space:nowrap;
+}
+.hero-next-track .hero-next-n{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:1.35rem;
+  height:1.35rem;
+  border-radius:50%;
+  font-size:.62rem;
+  font-weight:700;
+  letter-spacing:0;
+  background:rgba(180,99,122,.12);
+  color:#8c475c;
+}
+@media(max-width:520px){
+  .hero-next-track li{
+    font-size:.7rem;
+    padding:.38rem .6rem;
+  }
+}
+
+/* ═══ Preview → purchase (premium paywall) ═══ */
+.prev{
+  display:none;
+  position:relative;
+  max-width:min(640px,100%) !important;
+  margin:1.5rem auto 0 !important;
+  padding:0 !important;
+  background:transparent !important;
+  border:none !important;
+  box-shadow:none !important;
+  text-align:left !important;
+  overflow:visible !important;
+}
+.prev.on{display:block !important;animation:popI .4s ease}
+.prev::before{display:none !important}
+.prev-glow{
+  pointer-events:none;
+  position:absolute;
+  inset:-20% -15% auto;
+  height:55%;
+  background:radial-gradient(ellipse 80% 70% at 50% 0%,rgba(180,99,122,.12),transparent 55%);
+  opacity:.58;
+}
+.prev-card{
+  position:relative;
+  z-index:1;
+  padding:clamp(1.35rem,4vw,2rem) clamp(1.15rem,4vw,1.85rem) clamp(1.5rem,4vw,2.1rem);
+  border-radius:26px;
+  background:
+    linear-gradient(165deg,rgba(255,252,248,.97) 0%,rgba(250,242,234,.98) 45%,rgba(255,248,252,.96) 100%);
+  border:1px solid rgba(184,148,82,.38);
+  box-shadow:
+    0 4px 0 rgba(255,255,255,.65) inset,
+    0 28px 56px rgba(47,39,50,.09),
+    0 1px 0 rgba(180,99,122,.08);
+}
+.prev-head{
+  text-align:center;
+  margin-bottom:1.55rem;
+}
+.prev-eyebrow{
+  font-family:Cinzel,Georgia,serif;
+  font-size:.62rem;
+  letter-spacing:.26em;
+  text-transform:uppercase;
+  color:#9a7b4a;
+  margin:0 0 .55rem;
+}
+.prev-title{
+  font-family:var(--fd,'Cormorant Garamond',Georgia,serif);
+  font-size:clamp(1.45rem,4.2vw,1.85rem);
+  font-weight:500;
+  color:#2a2228;
+  margin:0 0 .65rem;
+  letter-spacing:-.02em;
+  line-height:1.12;
+}
+.prev-lead{
+  font-size:.84rem;
+  line-height:1.65;
+  color:#6b5a62;
+  margin:0 auto .95rem;
+  max-width:34rem;
+}
+.prev-glimpse{
+  margin-top:1rem;
+  padding:1rem 1.1rem 1.05rem;
+  border-radius:18px;
+  background:linear-gradient(180deg,rgba(255,255,255,.88),rgba(250,244,238,.92));
+  border:1px solid rgba(180,99,122,.14);
+  box-shadow:0 8px 24px rgba(180,99,122,.06);
+  text-align:left;
+}
+.prev-glimpse-label{
+  display:block;
+  font-family:Cinzel,Georgia,serif;
+  font-size:.58rem;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:#8c475c;
+  margin-bottom:.45rem;
+}
+.prev .psu{
+  margin:0 !important;
+  font-size:.92rem !important;
+  line-height:1.65 !important;
+  font-style:italic !important;
+  color:#4f4248 !important;
+}
+.prev-split{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:clamp(.85rem,2.5vw,1.2rem);
+  margin-bottom:1.55rem;
+}
+@media(max-width:640px){
+  .prev-split{grid-template-columns:1fr}
+}
+.prev-panel{
+  padding:1rem 1.05rem 1.1rem;
+  border-radius:18px;
+  border:1px solid rgba(191,165,122,.22);
+  background:linear-gradient(180deg,rgba(255,255,255,.72),rgba(252,247,241,.9));
+  min-height:100%;
+}
+.prev-panel--now{border-color:rgba(112,134,124,.28)}
+.prev-panel--unlock{
+  border-color:rgba(180,99,122,.2);
+  background:linear-gradient(180deg,rgba(255,250,252,.9),rgba(252,240,244,.88));
+}
+.prev-panel-head{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+  gap:.4rem .6rem;
+  margin:0 0 .65rem;
+}
+.prev-panel-title{
+  font-family:var(--fd,'Cormorant Garamond',Georgia,serif);
+  font-size:.98rem;
+  font-weight:600;
+  color:#342832;
+  letter-spacing:-.01em;
+}
+.prev-tag{
+  font-family:Cinzel,Georgia,serif;
+  font-size:.55rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  padding:.28rem .55rem;
+  border-radius:999px;
+  white-space:nowrap;
+}
+.prev-tag--mist{
+  background:rgba(112,134,124,.12);
+  color:#4d6560;
+  border:1px solid rgba(112,134,124,.2);
+}
+.prev-tag--gold{
+  background:rgba(184,148,82,.14);
+  color:#6b5428;
+  border:1px solid rgba(184,148,82,.35);
+}
+.prev-panel-list{
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+.prev-panel-list li{
+  position:relative;
+  padding:.4rem 0 .4rem 1rem;
+  font-size:.78rem;
+  line-height:1.55;
+  color:#5d5362;
+  border-bottom:1px solid rgba(191,165,122,.12);
+}
+.prev-panel-list li:last-child{border-bottom:none}
+.prev-panel-list li::before{
+  content:'';
+  position:absolute;
+  left:0;
+  top:.7em;
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:#b4637a;
+  opacity:.55;
+}
+.prev-offering{margin-top:.35rem;margin-bottom:.25rem}
+.prev-offering-card{
+  text-align:center;
+  padding:1.25rem 1.15rem 1.35rem;
+  border-radius:22px;
+  background:
+    linear-gradient(165deg,#2f2329 0%,#3d2a32 38%,#2a1f24 100%);
+  border:1px solid rgba(214,180,106,.35);
+  box-shadow:
+    0 20px 40px rgba(20,12,16,.25),
+    inset 0 1px 0 rgba(255,255,255,.06);
+  position:relative;
+  overflow:hidden;
+}
+.prev-offering-card::after{
+  content:'';
+  position:absolute;
+  inset:-40%;
+  background:radial-gradient(circle at 30% 20%,rgba(180,99,122,.18),transparent 42%);
+  pointer-events:none;
+}
+.prev-offering-verse{
+  position:relative;
+  z-index:1;
+  font-size:.8rem;
+  line-height:1.68;
+  color:rgba(252,246,240,.88);
+  margin:0 auto 1.1rem;
+  max-width:26rem;
+  font-weight:400;
+}
+.prev-offering-verse strong{
+  color:#f0d79d;
+  font-weight:600;
+}
+.prev-price-display{
+  position:relative;
+  z-index:1;
+  display:flex;
+  align-items:baseline;
+  justify-content:center;
+  gap:.55rem;
+  margin-bottom:1.15rem;
+}
+.prev-price-num{
+  font-family:var(--fd,'Cormorant Garamond',Georgia,serif);
+  font-size:clamp(2.6rem,9vw,3.4rem);
+  font-weight:500;
+  line-height:1;
+  color:#fdf6ec;
+  letter-spacing:-.03em;
+}
+.prev-price-num::before{content:'$'}
+.prev-price-copy{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  text-align:left;
+  gap:.12rem;
+}
+.prev-price-currency{
+  font-family:Cinzel,Georgia,serif;
+  font-size:.58rem;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:rgba(240,215,157,.75);
+}
+.prev-price-once{
+  font-size:.68rem;
+  color:rgba(252,246,240,.65);
+  letter-spacing:.04em;
+}
+.prev .pv-actions{
+  position:relative;
+  z-index:1;
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  gap:.65rem;
+  max-width:20rem;
+  margin:0 auto;
+}
+.prev .ppb-unlock{
+  display:flex !important;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:.2rem;
+  width:100% !important;
+  min-height:56px;
+  padding:.85rem 1.25rem !important;
+  border-radius:14px !important;
+  border:1px solid rgba(240,215,157,.45) !important;
+  background:linear-gradient(180deg,#c4788f,#8c475c 55%,#6c3440) !important;
+  color:#fffefb !important;
+  font-family:var(--fd,'Cormorant Garamond',Georgia,serif) !important;
+  box-shadow:0 14px 32px rgba(108,52,64,.35),inset 0 1px 0 rgba(255,255,255,.12) !important;
+  letter-spacing:.04em !important;
+  text-transform:none !important;
+  cursor:pointer;
+  transition:transform .2s ease,box-shadow .2s ease,filter .2s ease;
+}
+.prev .ppb-unlock:hover{
+  transform:translateY(-2px);
+  filter:brightness(1.04);
+  box-shadow:0 18px 38px rgba(108,52,64,.4),inset 0 1px 0 rgba(255,255,255,.14) !important;
+}
+.prev .ppb-unlock:disabled{
+  opacity:.72;
+  transform:none;
+  cursor:wait;
+}
+.prev .ppb-line1{
+  font-size:1.12rem;
+  font-weight:600;
+  letter-spacing:.015em;
+}
+.prev .ppb-line2{
+  font-family:Manrope,sans-serif !important;
+  font-size:.72rem !important;
+  font-weight:500 !important;
+  letter-spacing:.06em !important;
+  opacity:.92;
+}
+.prev .ppb-keep,
+.prev .ppb.alt.ppb-keep{
+  width:100% !important;
+  min-height:48px;
+  padding:.72rem 1rem !important;
+  border-radius:12px !important;
+  background:rgba(255,252,248,.08) !important;
+  border:1px solid rgba(255,252,248,.22) !important;
+  color:rgba(252,246,240,.88) !important;
+  font-family:Manrope,sans-serif !important;
+  font-size:.78rem !important;
+  font-weight:500 !important;
+  letter-spacing:.04em !important;
+  text-transform:none !important;
+  box-shadow:none !important;
+  cursor:pointer;
+  transition:background .2s ease,border-color .2s ease;
+}
+.prev .ppb-keep:hover,
+.prev .ppb.alt.ppb-keep:hover{
+  background:rgba(255,252,248,.14) !important;
+  border-color:rgba(240,215,157,.35) !important;
+  color:#fff !important;
+}
+.prev .pnt{
+  text-align:center;
+  margin:1rem auto 0 !important;
+  max-width:22rem;
+  font-size:.68rem !important;
+  line-height:1.5 !important;
+  letter-spacing:.04em !important;
+  color:#8a7a82 !important;
+}
+.prev .vlk.vlk-btn{
+  display:block;
+  width:100%;
+  margin:.75rem auto 0;
+  padding:.35rem;
+  background:none !important;
+  border:none !important;
+  font:inherit;
+  font-size:.72rem !important;
+  color:#b4637a !important;
+  text-decoration:underline;
+  text-underline-offset:3px;
+  cursor:pointer;
+  text-align:center;
+}
+.prev .vlk.vlk-btn:hover{color:#8c475c !important}
+.prev-trust-panel{
+  margin:1.1rem 0 0;
+  padding:1rem 1.05rem 1.05rem;
+  border-radius:18px;
+  background:linear-gradient(180deg,rgba(255,252,248,.92),rgba(248,240,232,.88));
+  border:1px solid rgba(191,165,122,.22);
+  box-shadow:0 8px 28px rgba(47,39,50,.06);
+}
+.prev-trust-heading{
+  font-family:var(--fd,'Cormorant Garamond',Georgia,serif);
+  font-size:.95rem;
+  font-weight:600;
+  color:#5c4a52;
+  margin:0 0 .65rem;
+  letter-spacing:.02em;
+}
+.prev-trust-steps{
+  margin:0;
+  padding:0 0 0 1.15rem;
+  font-size:.74rem;
+  line-height:1.62;
+  color:#6b5e66;
+}
+.prev-trust-steps li{margin-bottom:.45rem}
+.prev-trust-steps li:last-child{margin-bottom:0}
+.prev-trust-steps a{color:#a05068;text-decoration:underline;text-underline-offset:2px}
+.prev-trust-steps a:hover{color:#8c475c}
+.prev-trust-chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.4rem .55rem;
+  margin:.75rem 0 0;
+  padding:0;
+  list-style:none;
+  justify-content:center;
+}
+.prev-trust-chips li{
+  font-size:.62rem;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:#8a7a82;
+  padding:.2rem .55rem;
+  border-radius:999px;
+  background:rgba(255,255,255,.55);
+  border:1px solid rgba(191,165,122,.2);
+}
+.prev-pay-foot{
+  margin-top:1rem;
+  max-width:26rem;
+  margin-left:auto;
+  margin-right:auto;
+}
+.prev-pay-foot .pnt{
+  margin-top:0 !important;
+  margin-bottom:.35rem !important;
+}
+.pnt-static{
+  text-align:center;
+  margin:0 auto;
+  max-width:24rem;
+  font-size:.68rem !important;
+  line-height:1.58 !important;
+  letter-spacing:.02em !important;
+  color:#6e5f66 !important;
+  font-style:normal;
+  font-weight:500;
+}
+.prev-soft-faq{
+  margin:1rem auto 0;
+  max-width:26rem;
+  border-radius:14px;
+  border:1px solid rgba(191,165,122,.2);
+  background:rgba(255,252,248,.65);
+  overflow:hidden;
+}
+.prev-soft-faq summary{
+  cursor:pointer;
+  list-style:none;
+  padding:.55rem .85rem;
+  font-size:.72rem;
+  font-weight:600;
+  letter-spacing:.04em;
+  color:#7a6a72;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:.5rem;
+}
+.prev-soft-faq summary::-webkit-details-marker{display:none}
+.prev-soft-faq summary::after{
+  content:'+';
+  font-weight:500;
+  color:#b4637a;
+  opacity:.85;
+}
+.prev-soft-faq[open] summary::after{content:'−'}
+.prev-soft-faq-body{
+  padding:0 .9rem .85rem;
+  border-top:1px solid rgba(191,165,122,.15);
+}
+.prev-soft-faq-body p{
+  margin:.65rem 0 0;
+  font-size:.72rem;
+  line-height:1.58;
+  color:#6b5e66;
+  text-align:left;
+}
+.prev-soft-faq-body strong{color:#5c4a52;font-weight:600}
+.prev-soft-faq-body a{color:#a05068;text-decoration:underline;text-underline-offset:2px}
+.prev-soft-faq-body a:hover{color:#8c475c}
+.prev-soft-faq-more{
+  margin-top:.75rem !important;
+  font-size:.68rem !important;
+  letter-spacing:.04em;
+}
+.prev-restore-note{
+  text-align:center;
+  max-width:24rem;
+  margin:1rem auto 0;
+  font-size:.7rem;
+  line-height:1.55;
+  color:#8a7a82;
+}
+.prev .demo{
+  margin-top:1.15rem;
+  border-radius:20px;
+  overflow:hidden;
+}
+.prev .demo.on{
+  border:1px solid rgba(191,165,122,.28);
+  box-shadow:0 14px 36px rgba(47,39,50,.08);
+}
+
+/* ═══ Homepage IA: studio below funnel (supplementary) ═══ */
+.studio-below{
+  margin-top:2.5rem;
+  padding:0 1rem 1rem;
+  max-width:1180px;
+  margin-left:auto;
+  margin-right:auto;
+}
+.studio-divider{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:.85rem;
+  max-width:min(520px,88vw);
+  margin:0 auto 1rem;
+}
+.studio-divider-line{
+  flex:1;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(184,148,82,.55),transparent);
+}
+.studio-divider-mark{
+  font-size:.85rem;
+  color:rgba(140,71,92,.55);
+  line-height:1;
+}
+.studio-divider-caption{
+  text-align:center;
+  font-family:Cinzel,Georgia,serif;
+  font-size:.62rem;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:#8a7a82;
+  margin:0 0 1.75rem;
+}
+.studio-inperson{
+  margin-top:0 !important;
+  padding:1.6rem 1.35rem 1.5rem !important;
+  background:linear-gradient(180deg,rgba(252,248,242,.97),rgba(245,236,226,.94)) !important;
+  border:1px solid rgba(184,148,82,.28) !important;
+  box-shadow:0 12px 40px rgba(47,39,50,.05) !important;
+}
+.studio-inperson-head{
+  text-align:center;
+  max-width:36rem;
+  margin:0 auto 1.35rem;
+}
+.studio-inperson-tag{
+  color:#9a7b4a !important;
+}
+.studio-inperson-title{
+  font-family:var(--fd,'Cormorant Garamond',Georgia,serif);
+  font-size:clamp(1.5rem,3.8vw,2rem);
+  font-weight:500;
+  color:#2a2228;
+  margin:.35rem 0 .65rem;
+  letter-spacing:-.02em;
+}
+.studio-inperson-lede{
+  margin:0;
+  font-size:.86rem;
+  line-height:1.65;
+  color:#5d5362;
+}
+.studio-spotlight{
+  display:grid;
+  grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);
+  gap:1rem 1.25rem;
+  align-items:center;
+  margin-bottom:1.35rem;
+  padding:0 0 1.2rem;
+  border-bottom:1px solid rgba(184,148,82,.18);
+}
+@media(max-width:720px){
+  .studio-spotlight{grid-template-columns:1fr;text-align:center}
+  .studio-spotlight-note{max-width:none !important;margin-left:auto;margin-right:auto}
+}
+.studio-spotlight-visual{
+  position:relative;
+  border-radius:20px;
+  overflow:hidden;
+  border:1px solid rgba(184,148,82,.25);
+  box-shadow:0 16px 36px rgba(47,39,50,.08);
+  min-height:180px;
+  background:#2a2228;
+}
+.studio-spotlight-visual img{
+  width:100%;
+  height:100%;
+  min-height:200px;
+  object-fit:cover;
+  display:block;
+  vertical-align:middle;
+}
+.studio-spotlight-cap{
+  position:absolute;
+  left:0;right:0;bottom:0;
+  padding:.55rem .85rem;
+  font-family:Cinzel,Georgia,serif;
+  font-size:.58rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:rgba(255,250,245,.92);
+  background:linear-gradient(0deg,rgba(20,14,18,.78),transparent);
+}
+.studio-spotlight-note{
+  margin:0;
+  font-size:.84rem;
+  line-height:1.6;
+  color:#6b5a62;
+  font-style:italic;
+  max-width:22rem;
+}
+.studio-cards{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:1rem;
+  margin-bottom:1.25rem;
+}
+@media(max-width:900px){
+  .studio-cards{grid-template-columns:1fr;max-width:26rem;margin-left:auto;margin-right:auto}
+}
+.studio-card{
+  display:flex;
+  flex-direction:column;
+  border-radius:18px;
+  overflow:hidden;
+  border:1px solid rgba(184,148,82,.22);
+  background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(252,247,241,.94));
+  box-shadow:0 10px 28px rgba(47,39,50,.05);
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+.studio-card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 14px 34px rgba(47,39,50,.08);
+}
+.studio-card-media{
+  aspect-ratio:4/3;
+  background:#f5ebe3;
+  overflow:hidden;
+}
+.studio-card-media img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.studio-card-body{padding:1rem .95rem 1.1rem;flex:1;display:flex;flex-direction:column}
+.studio-card-title{
+  font-family:var(--fd,'Cormorant Garamond',Georgia,serif);
+  font-size:1.05rem;
+  font-weight:600;
+  color:#342832;
+  margin:0 0 .45rem;
+  line-height:1.2;
+}
+.studio-card-text{
+  margin:0;
+  font-size:.78rem;
+  line-height:1.58;
+  color:#5d5362;
+  flex:1;
+}
+.studio-card-meta{
+  margin:.65rem 0 0;
+  font-size:.68rem;
+  letter-spacing:.04em;
+  color:#8c475c;
+  font-weight:600;
+}
+.studio-card-meta a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+.studio-card-meta a:hover{color:#6c3440}
+.studio-strip{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:center;
+  gap:.35rem .65rem;
+  padding:.85rem 1rem;
+  border-radius:16px;
+  background:rgba(255,255,255,.55);
+  border:1px dashed rgba(184,148,82,.35);
+}
+.studio-strip-a{
+  font-size:.72rem;
+  color:#6c3440;
+  text-decoration:none;
+  font-weight:600;
+  letter-spacing:.03em;
+}
+.studio-strip-a:hover{text-decoration:underline;text-underline-offset:3px;color:#8c475c}
+.studio-strip-sep{color:rgba(90,80,88,.35);font-size:.75rem}
+.studio-reviews-below{
+  margin-top:1.15rem !important;
+  padding:1.35rem 1.25rem 1.5rem !important;
+}
+.testimonial-shell--studio .testimonial-lead blockquote{
+  margin-bottom:.5rem;
+}
+.testimonial-shell--studio .testimonial-note{
+  margin-top:.35rem;
+  max-width:36rem;
+  margin-left:auto;
+  margin-right:auto;
+}
+.testimonial-shell--studio .testimonial-note a{
+  white-space:nowrap;
+}
+@media(max-width:520px){
+  .testimonial-shell--studio .testimonial-note a{white-space:normal}
+}
+
+/* ═══ Reading setup flow: ritual panels, sticky progress, mobile polish ═══ */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.flow-wrap{
+  max-width:min(var(--spread-max),100%);
+  margin:0 auto;
+  padding:0 .35rem 2.35rem;
+}
+.flow-progress{
+  position:sticky;
+  top:var(--flow-sticky-top);
+  z-index:12;
+  margin:0 -.35rem 1.1rem;
+  padding:.62rem .5rem .72rem;
+  background:linear-gradient(180deg,rgba(251,247,242,.97),rgba(251,247,242,.88));
+  backdrop-filter:saturate(140%) blur(12px);
+  border-bottom:1px solid rgba(184,148,82,.28);
+  box-shadow:0 14px 38px rgba(47,39,50,.08);
+}
+.flow-progress .pbar{
+  margin:0 auto !important;
+  max-width:100%;
+  flex-wrap:nowrap;
+  gap:.28rem;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  padding:.15rem .1rem .25rem;
+  justify-content:flex-start;
+  scrollbar-width:thin;
+}
+@media(min-width:640px){
+  .flow-progress .pbar{justify-content:center;flex-wrap:wrap;overflow:visible}
+}
+.flow-progress .ps{
+  flex:0 0 auto;
+  padding:.38rem .45rem;
+  min-width:4.6rem;
+  flex-direction:column;
+  align-items:center;
+  gap:.12rem;
+}
+.flow-progress .ps-label{
+  display:block;
+  font-size:.56rem;
+  letter-spacing:.05em;
+  font-weight:700;
+  max-width:5.4rem;
+  text-align:center;
+  line-height:1.15;
+}
+.flow-progress .ps .d{
+  width:24px !important;
+  height:24px !important;
+  font-size:.58rem !important;
+}
+.flow-progress .ps-label{
+  font-size:.58rem !important;
+  letter-spacing:.07em !important;
+  font-weight:700 !important;
+}
+.ritual-step{scroll-margin-top:var(--anchor-pad)}
+#reading-flow{scroll-margin-top:var(--anchor-pad)}
+#home-guide{scroll-margin-top:var(--anchor-pad)}
+#visit-studio{scroll-margin-top:var(--anchor-pad)}
+.qsection.ritual-step,.chsec.ritual-step,.spsec.ritual-step{margin-top:1.2rem !important}
+.ritual-panel{
+  text-align:center;
+  padding:1.35rem 1rem 1.5rem !important;
+  border-radius:26px !important;
+  background:linear-gradient(165deg,rgba(255,252,248,.98),rgba(250,243,236,.94)) !important;
+  border:1px solid rgba(184,148,82,.26) !important;
+  box-shadow:0 18px 48px rgba(47,39,50,.06) !important;
+  max-width:640px;
+  margin-left:auto;
+  margin-right:auto;
+}
+.ritual-panel--spread{max-width:min(720px,100%)}
+.ritual-panel-head .tag{margin-bottom:.35rem !important}
+.ritual-field{margin:1rem 0}
+.ritual-field-label{
+  display:block;
+  font-family:Cinzel,Georgia,serif;
+  font-size:.62rem;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:#8c475c;
+  margin-bottom:.75rem;
+}
+.qcats{
+  display:grid !important;
+  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  gap:.55rem !important;
+  max-width:100% !important;
+}
+@media(min-width:520px){
+  .qcats{grid-template-columns:repeat(4,minmax(0,1fr)) !important}
+}
+.qcat{
+  min-height:48px !important;
+  padding:.65rem .75rem !important;
+  border-radius:14px !important;
+  border-width:2px !important;
+  font-size:.8rem !important;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  line-height:1.2;
+  font-family:Manrope,sans-serif !important;
+  width:100%;
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+  cursor:pointer;
+  background:#fff;
+  border-style:solid;
+  border-color:#eee;
+  color:var(--tm,#5d5362);
+}
+.qcat.on{
+  border-color:#b4637a !important;
+  background:linear-gradient(180deg,#fff6f4,#f5ece8) !important;
+  color:#6c3440 !important;
+  box-shadow:0 0 0 3px rgba(180,99,122,.2),0 10px 28px rgba(180,99,122,.14) !important;
+}
+.qcat:focus-visible{
+  outline:2px solid #8c475c;
+  outline-offset:3px;
+}
+.ritual-input-label{
+  display:block;
+  font-size:.68rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:#6b5a62;
+  margin:1rem 0 .45rem;
+  font-weight:700;
+}
+.ritual-optional-mark{font-weight:500;opacity:.75;letter-spacing:.06em;text-transform:none;font-size:.62rem}
+.qinput{
+  min-height:100px !important;
+  border-radius:18px !important;
+  border-width:2px !important;
+  padding:1rem 1.1rem !important;
+  font-size:.94rem !important;
+  line-height:1.55 !important;
+}
+.qinput:focus{
+  box-shadow:0 0 0 4px rgba(180,99,122,.12);
+  outline:none;
+}
+.qhint{
+  font-size:.75rem;
+  color:#8a7a82;
+  margin:.5rem auto 0;
+  max-width:32rem;
+  line-height:1.5;
+  font-style:italic;
+}
+.qnote{margin-top:.65rem !important}
+.ritual-chest-block{margin-top:.25rem}
+.charm-arena{
+  margin-top:1rem;
+  padding:1.1rem .75rem 1.2rem;
+  border-radius:22px;
+  background:
+    radial-gradient(ellipse 85% 65% at 50% 18%,rgba(180,99,122,.1),transparent 52%),
+    linear-gradient(180deg,rgba(255,252,250,.96),rgba(248,240,244,.92));
+  border:1px solid rgba(180,99,122,.18);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.55);
+}
+.charm-arena-eyebrow{
+  font-family:Cinzel,Georgia,serif;
+  font-size:.58rem;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:#8c475c;
+  margin:0 0 .85rem;
+}
+.tcloud{
+  display:grid !important;
+  grid-template-columns:repeat(auto-fill,minmax(72px,1fr)) !important;
+  gap:.65rem .5rem !important;
+  max-width:100% !important;
+  justify-items:center;
+}
+.trk{
+  width:100% !important;
+  max-width:78px;
+  height:78px !important;
+  border-radius:50% !important;
+  border-width:2px !important;
+  -webkit-tap-highlight-color:transparent;
+  font:inherit;
+  padding:0 !important;
+  margin:0 !important;
+  background:#fff;
+  border-style:solid;
+  border-color:#ede6ed;
+  cursor:pointer;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+.trk .ti{width:30px !important;height:30px !important}
+.trk .tn{font-size:.48rem !important;margin-top:.12rem !important}
+.trk:focus-visible{
+  outline:2px solid #8c475c;
+  outline-offset:3px;
+}
+.trk.pk{
+  box-shadow:0 0 0 4px rgba(180,99,122,.22),0 10px 24px rgba(180,99,122,.18) !important;
+}
+.chest-tap{
+  font-size:.78rem !important;
+  margin:.35rem auto 1rem !important;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:.35rem;
+}
+.chest-tap-icon{opacity:.55}
+.chest-container:focus-visible{
+  outline:2px solid #8c475c;
+  outline-offset:4px;
+  border-radius:12px;
+}
+.sps{
+  display:grid !important;
+  grid-template-columns:1fr !important;
+  gap:.75rem !important;
+  max-width:100% !important;
+  margin:1rem 0 !important;
+}
+@media(min-width:600px){
+  .sps{grid-template-columns:repeat(3,minmax(0,1fr)) !important}
+}
+.sp{
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  text-align:center !important;
+  min-height:138px !important;
+  padding:1.1rem .85rem 1rem !important;
+  border-radius:18px !important;
+  border-width:2px !important;
+  width:100% !important;
+  max-width:none !important;
+  min-width:0 !important;
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+  font:inherit;
+  background:linear-gradient(180deg,#fff,rgba(252,248,244,.96)) !important;
+  box-sizing:border-box;
+  border-style:solid;
+  border-color:#eee;
+  transition:transform .2s,border-color .2s,box-shadow .2s;
+}
+.sp-glyph{
+  font-size:1.38rem;
+  line-height:1.15;
+  margin-bottom:.32rem;
+  opacity:.72;
+}
+.sp.on .sp-glyph{opacity:1}
+.sp .sn{font-size:1.05rem !important;margin-top:.1rem}
+.sp .sd{font-size:.68rem !important;margin-top:.38rem !important;line-height:1.45 !important;max-width:17rem}
+.sp.on{
+  border-color:rgba(180,99,122,.52) !important;
+  background:linear-gradient(180deg,rgba(255,250,252,1),rgba(252,236,242,.95)) !important;
+  box-shadow:0 14px 36px rgba(180,99,122,.13) !important;
+  transform:translateY(-2px);
+}
+.sp:focus-visible{
+  outline:2px solid #8c475c;
+  outline-offset:3px;
+}
+.ritual-skymap{
+  margin:1rem auto 0 !important;
+  max-width:100% !important;
+  border-radius:16px !important;
+  border:1px solid rgba(184,148,82,.28) !important;
+  background:rgba(255,255,255,.72) !important;
+  overflow:hidden;
+  text-align:left;
+}
+.ritual-skymap-summary{
+  padding:.85rem 2.4rem .85rem 1rem !important;
+  align-items:flex-start !important;
+  position:relative;
+  list-style:none;
+}
+.ritual-skymap-summary::-webkit-details-marker{display:none}
+.ritual-skymap-title{
+  font-family:var(--fd,'Cormorant Garamond',Georgia,serif);
+  font-size:1.02rem;
+  font-weight:600;
+  color:#3a2f35;
+  display:block;
+  padding-right:.5rem;
+}
+.ritual-skymap-optional{font-style:normal;font-weight:500;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:#9a7b4a;margin-left:.35rem}
+.ritual-skymap-hint{
+  display:block;
+  font-size:.72rem;
+  color:#7a6d72;
+  margin:.25rem 0 0;
+  font-weight:400;
+}
+.ritual-skymap-summary .ar{
+  position:absolute;
+  right:.85rem;
+  top:50%;
+  transform:translateY(-50%);
+  transition:transform .3s;
+}
+.ritual-skymap[open] .ritual-skymap-summary .ar{transform:translateY(-50%) rotate(180deg)}
+.ritual-skymap .ext-in{padding:0 1rem 1.1rem !important}
+.ritual-skymap .fi select{
+  min-height:48px;
+  padding:.55rem .75rem !important;
+  border-radius:12px !important;
+}
+.ritual-skymap .fi select:focus{
+  outline:2px solid rgba(180,99,122,.35);
+  outline-offset:2px;
+}
+.ritual-reveal-cta{
+  margin-top:1.35rem;
+  padding:1.15rem 1rem 1.25rem;
+  border-radius:20px;
+  background:linear-gradient(180deg,rgba(252,244,238,.96),rgba(248,232,240,.5));
+  border:1px solid rgba(180,99,122,.2);
+}
+.ritual-reveal-prep{
+  margin:0 auto .85rem;
+  max-width:26rem;
+  font-size:.82rem;
+  line-height:1.55;
+  color:#5d4f52;
+  font-style:italic;
+}
+.ritual-flow-error{
+  max-width:min(36rem,100%);
+  margin:.65rem auto 0;
+  padding:.7rem 1.05rem;
+  font-size:.78rem;
+  line-height:1.58;
+  color:#5c3540;
+  text-align:center;
+  font-style:italic;
+  border-radius:14px;
+  background:rgba(180,99,122,.09);
+  border:1px solid rgba(180,99,122,.3);
+  box-shadow:inset 0 1px 0 rgba(255,252,250,.75);
+}
+#ritual-cat-group.flow-step-invalid{
+  outline:2px solid rgba(180,99,122,.32);
+  outline-offset:6px;
+  border-radius:18px;
+  padding-bottom:.2rem;
+}
+#ritual-chest-block.charm-step-invalid{
+  outline:2px solid rgba(180,99,122,.3);
+  outline-offset:4px;
+  border-radius:20px;
+  padding:.25rem;
+}
+#spread-pick.flow-step-invalid{
+  outline:2px solid rgba(180,99,122,.3);
+  outline-offset:6px;
+  border-radius:18px;
+  padding:.35rem;
+}
+.flow-wrap .rbtn{
+  max-width:100% !important;
+  width:100%;
+  min-height:54px;
+  font-size:1.12rem !important;
+  padding:1rem 1.5rem !important;
+  border-radius:999px !important;
+  box-shadow:0 14px 40px rgba(180,99,122,.32) !important;
+}
+.flow-wrap .rbtn:focus-visible{
+  outline:3px solid #e8c87a;
+  outline-offset:3px;
+}
+.ritual-cardmat.on{
+  margin-top:1.25rem !important;
+  padding:1.25rem .65rem 1.5rem !important;
+  border-radius:22px !important;
+  background:linear-gradient(180deg,rgba(255,255,255,.93),rgba(250,245,238,.9)) !important;
+  border:1px solid rgba(184,148,82,.24) !important;
+}
+.ritual-cardmat-inner{max-width:var(--reading-max);margin:0 auto}
+.ritual-cardmat .finf{font-size:.88rem !important;margin-bottom:.65rem !important;max-width:28rem;margin-left:auto;margin-right:auto;line-height:1.6 !important}
+.ritual-cardmat .fcnt{
+  min-height:1.4em;
+  font-family:Cinzel,Georgia,serif;
+  font-size:.68rem !important;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:#8c475c !important;
+  margin-bottom:1rem !important;
+}
+
+/* ═══ Shuffle: atmospheric interlude ═══ */
+.shuf{
+  position:relative;
+  padding:2.5rem 1rem 2.2rem !important;
+  overflow:hidden;
+}
+.shuf-veil{
+  position:absolute;
+  inset:0;
+  background:radial-gradient(ellipse 80% 70% at 50% 40%,rgba(180,99,122,.08),transparent 55%),
+    radial-gradient(circle at 20% 80%,rgba(212,168,67,.06),transparent 40%),
+    linear-gradient(180deg,rgba(252,248,244,.97),rgba(245,236,230,.94));
+  pointer-events:none;
+}
+.shuf-stage{
+  position:relative;
+  z-index:1;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:1rem;
+}
+.shuf-orbit{
+  position:relative;
+  width:min(240px,72vw);
+  height:min(240px,72vw);
+  margin:-.5rem auto .25rem;
+  pointer-events:none;
+  animation:shufOrbit 18s linear infinite;
+}
+.shuf-orbit span{
+  position:absolute;
+  width:3px;
+  height:3px;
+  border-radius:50%;
+  background:rgba(180,99,122,.22);
+  box-shadow:0 0 8px rgba(180,99,122,.14);
+}
+.shuf-orbit span:nth-child(1){top:8%;left:50%;transform:translateX(-50%)}
+.shuf-orbit span:nth-child(2){bottom:12%;left:18%}
+.shuf-orbit span:nth-child(3){bottom:20%;right:16%;background:rgba(212,168,67,.26);box-shadow:0 0 7px rgba(212,168,67,.12)}
+@keyframes shufOrbit{to{transform:rotate(360deg)}}
+.shuf-mist{
+  position:absolute;
+  inset:-20% -10%;
+  background:radial-gradient(ellipse 50% 40% at 50% 100%,rgba(255,255,255,.32),transparent 70%);
+  pointer-events:none;
+  opacity:.48;
+  animation:shufMist 3.5s ease-in-out infinite alternate;
+}
+@keyframes shufMist{0%{opacity:.28;transform:translateY(3px)}100%{opacity:.52;transform:translateY(-3px)}}
+.shuf-c{
+  position:relative;
+  z-index:2;
+  flex-wrap:wrap;
+  justify-content:center;
+  max-width:340px;
+  gap:.4rem .35rem !important;
+  margin-bottom:.5rem !important;
+}
+.sc{
+  width:28px !important;
+  height:44px !important;
+  border-radius:5px !important;
+  background:linear-gradient(145deg,#4a3038,#2a1a22 48%,#3d2830) !important;
+  border:1px solid rgba(212,168,67,.28) !important;
+  box-shadow:0 4px 14px rgba(30,14,20,.2),inset 0 1px 0 rgba(255,255,255,.06) !important;
+  animation:dan .7s ease-in-out infinite alternate !important;
+}
+.sc:nth-child(6){animation-delay:.25s}
+.sc:nth-child(7){animation-delay:.35s}
+.shuf-t{
+  position:relative;
+  z-index:2;
+  font-size:.92rem !important;
+  letter-spacing:.02em;
+  color:#5d4a52 !important;
+  max-width:20rem;
+  margin:0 auto;
+  line-height:1.5;
+}
+
+/* ═══ Card row: sacred spacing & complete moment ═══ */
+.ritual-cardmat.on .crow{
+  --card-gap:clamp(.75rem,2.2vw,1.35rem) !important;
+  margin-bottom:1.5rem !important;
+  padding:.35rem 0 .5rem;
+  transition:filter .8s ease,box-shadow .8s ease;
+}
+.crow.crow-complete{
+  filter:drop-shadow(0 0 28px rgba(180,99,122,.18));
+}
+.carea-spread-complete .ritual-cardmat-inner{
+  animation:careaGlow 1.2s ease forwards;
+}
+@keyframes careaGlow{
+  0%{box-shadow:inset 0 0 0 rgba(180,99,122,0)}
+  40%{box-shadow:inset 0 0 50px rgba(180,99,122,.06)}
+  100%{box-shadow:inset 0 0 0 rgba(180,99,122,0)}
+}
+.carea-spread-complete .finf{
+  color:#6c3440 !important;
+  font-weight:500;
+}
+
+/* ═══ Tarot cards: deal-in, flip, backs ═══ */
+.tc{
+  transition:transform .88s cubic-bezier(0.25,0.46,0.2,0.94),filter .5s ease !important;
+  filter:drop-shadow(0 14px 24px rgba(35,22,28,.14));
+  will-change:transform;
+}
+.tc-deal{
+  opacity:0;
+  animation:tcDealIn .75s cubic-bezier(0.22,1,0.36,1) forwards;
+  animation-delay:calc(var(--deal-i,0)*0.1s);
+}
+@keyframes tcDealIn{
+  from{opacity:0;transform:translateY(20px) scale(0.94)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+.tc.tc-pressing{
+  filter:drop-shadow(0 18px 32px rgba(108,52,64,.2));
+}
+.tc.fl{
+  transform:rotateY(180deg);
+  filter:drop-shadow(0 22px 38px rgba(108,52,64,.24));
+}
+.tc:not(.fl):hover{animation:wig .35s ease}
+.tc:focus-visible{
+  outline:2px solid rgba(180,99,122,.65);
+  outline-offset:4px;
+  border-radius:18px;
+}
+.cbk{
+  box-shadow:
+    0 0 0 1px rgba(212,168,67,.22),
+    0 18px 36px rgba(35,22,28,.18) !important;
+}
+.cbk-media::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  border-radius:11px;
+  pointer-events:none;
+  opacity:.4;
+  background-image:
+    radial-gradient(1.5px 1.5px at 15% 25%,rgba(255,248,240,.7),transparent),
+    radial-gradient(1px 1px at 45% 15%,rgba(255,255,255,.35),transparent),
+    radial-gradient(1px 1px at 75% 35%,rgba(212,168,67,.45),transparent),
+    radial-gradient(1.5px 1.5px at 85% 65%,rgba(255,255,255,.3),transparent),
+    radial-gradient(1px 1px at 25% 80%,rgba(180,99,122,.35),transparent),
+    radial-gradient(1px 1px at 60% 88%,rgba(255,255,255,.25),transparent);
+  z-index:2;
+}
+.cft{
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.06),
+    0 22px 44px rgba(35,22,28,.2) !important;
+}
+.tc.fl .cft::after{
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.28),
+    inset 0 -1px 0 rgba(0,0,0,.06),
+    0 0 40px rgba(180,99,122,.08) !important;
+}
+.cnm{
+  letter-spacing:.015em;
+}
+
+/* ═══ Preview arrival ═══ */
+.prev.prev-arrive{
+  animation:prevArrive .75s cubic-bezier(0.22,1,0.36,1) both;
+}
+#prev.prev.on.prev-arrive{
+  animation:prevArrive .78s cubic-bezier(0.22,1,0.36,1) both !important;
+}
+@keyframes prevArrive{
+  from{opacity:0;transform:translateY(16px) scale(0.98)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+
+/* ═══ Reading text (preview / full) ═══ */
+.demo .rw,
+#rc.rw{
+  border-radius:22px !important;
+  padding:clamp(1.5rem,4vw,2.25rem) clamp(1.15rem,3vw,1.85rem) !important;
+  background:linear-gradient(175deg,#fffefb 0%,#faf5ee 48%,#fff9f5 100%) !important;
+  border:1px solid rgba(184,148,82,.22) !important;
+  box-shadow:0 20px 50px rgba(47,39,50,.07),inset 0 1px 0 rgba(255,255,255,.85) !important;
+}
+.demo .rw>h3,
+#rc.rw>h3{
+  font-size:clamp(1.15rem,3.5vw,1.45rem) !important;
+  letter-spacing:-.02em;
+  margin-bottom:.75rem !important;
+}
+.demo .rw .cit,
+#rc.rw .cit{
+  font-size:.93rem !important;
+  line-height:1.78 !important;
+  color:#4a3f45 !important;
+}
+.demo .rw .clos,
+#rc.rw .clos{
+  border-radius:14px !important;
+  padding:1rem 1.05rem !important;
+  background:linear-gradient(180deg,rgba(255,252,248,.95),rgba(248,238,232,.9)) !important;
+  border-left-width:3px !important;
+}
+.demo .rw .cin,
+#rc.rw .cin{font-size:1.02rem !important}
+.demo-note{margin-top:1.1rem !important;line-height:1.55 !important}
+
+@media(max-width:480px){
+  .trk{max-width:72px;height:72px !important}
+  .tcloud{grid-template-columns:repeat(auto-fill,minmax(68px,1fr)) !important}
+  .shuf-orbit{width:200px;height:200px}
+  .sc{width:24px !important;height:40px !important}
+}
+
+/* ═══ Mobile: nav ergonomics, section rhythm, soft reading CTA ═══ */
+.mobile-soft-cta{
+  position:fixed;
+  left:50%;
+  bottom:max(.85rem, env(safe-area-inset-bottom));
+  transform:translate3d(-50%,calc(100% + 28px),0);
+  z-index:18;
+  padding:.62rem 1.45rem;
+  min-height:48px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  font-family:var(--f);
+  font-size:.68rem;
+  font-weight:600;
+  letter-spacing:.11em;
+  text-transform:uppercase;
+  border-radius:100px;
+  color:#fff;
+  text-decoration:none;
+  background:linear-gradient(135deg,#8c475c,#b4637a);
+  border:1px solid rgba(255,255,255,.2);
+  box-shadow:0 12px 32px rgba(108,52,64,.3),0 0 0 1px rgba(0,0,0,.06) inset;
+  opacity:0;
+  pointer-events:none;
+  visibility:hidden;
+  transition:transform .4s cubic-bezier(.22,1,.36,1),opacity .32s ease,visibility 0s linear .35s;
+}
+.mobile-soft-cta.is-visible{
+  transform:translate3d(-50%,0,0);
+  opacity:1;
+  pointer-events:auto;
+  visibility:visible;
+  transition:transform .4s cubic-bezier(.22,1,.36,1),opacity .32s ease,visibility 0s;
+}
+@media(min-width:721px){
+  .mobile-soft-cta{display:none !important}
+}
+@media(prefers-reduced-motion:reduce){
+  .mobile-soft-cta{transition:none}
+}
+@media(max-width:720px){
+  .hero{padding-bottom:2.15rem !important}
+  .hero-next{
+    margin-top:1.4rem !important;
+    padding-top:1.35rem;
+    border-top:1px solid rgba(184,148,82,.2);
+  }
+  .path-grid{
+    margin-top:1.55rem !important;
+    gap:1.05rem !important;
+  }
+  section.guide{
+    margin-top:1.85rem !important;
+    padding-top:2.85rem !important;
+    padding-bottom:3.05rem !important;
+    border-top:1px solid rgba(184,148,82,.22);
+  }
+  .flow-wrap{
+    margin-top:1.6rem !important;
+    padding-top:2.05rem !important;
+    border-top:1px solid rgba(184,148,82,.2);
+  }
+  .studio-below{
+    margin-top:2.1rem !important;
+    padding-top:2.1rem !important;
+    border-top:1px solid rgba(184,148,82,.16);
+  }
+  .wrap .tnav .tnav-in{
+    gap:.5rem !important;
+    padding-bottom:.6rem !important;
+  }
+  .wrap .tnav .tnav-links{
+    flex-wrap:nowrap !important;
+    justify-content:flex-start !important;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    overscroll-behavior-x:contain;
+    gap:.42rem !important;
+    padding:.48rem .35rem .52rem !important;
+    margin:0 -.3rem;
+    border-top:1px solid rgba(184,148,82,.22) !important;
+    scrollbar-width:none;
+  }
+  .wrap .tnav .tnav-links::-webkit-scrollbar{display:none}
+  .wrap .tnav .tnav-links a{
+    flex:0 0 auto;
+    min-height:44px;
+    display:inline-flex !important;
+    align-items:center !important;
+    box-sizing:border-box;
+    padding:.42rem .72rem !important;
+    border-radius:100px !important;
+    background:rgba(255,252,248,.94) !important;
+    border:1px solid rgba(184,148,82,.3) !important;
+    font-family:var(--f,'Manrope',sans-serif) !important;
+    font-size:.57rem !important;
+    letter-spacing:.11em !important;
+    text-transform:uppercase !important;
+    color:var(--final-muted,#5d5362) !important;
+  }
+  .wrap .tnav .tnav-links a:hover,
+  .wrap .tnav .tnav-links a:focus-visible{
+    color:var(--final-rose,#b4637a) !important;
+    border-color:rgba(180,99,122,.38) !important;
+    background:#fff !important;
+  }
+}
+
+/* ═══ Password gate — reading room threshold ═══ */
+.pw-gate{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:
+    max(1.35rem, env(safe-area-inset-top, 0px))
+    max(1.15rem, env(safe-area-inset-right, 0px))
+    max(1.35rem, env(safe-area-inset-bottom, 0px))
+    max(1.15rem, env(safe-area-inset-left, 0px));
+  font-family:var(--f,'Manrope',sans-serif);
+  color:var(--td);
+}
+.pw-gate__veil{
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(ellipse 90% 55% at 50% -15%, rgba(232,89,139,.11), transparent 52%),
+    radial-gradient(circle at 18% 78%, rgba(191,165,122,.1), transparent 42%),
+    radial-gradient(circle at 88% 40%, rgba(213,164,179,.08), transparent 38%),
+    linear-gradient(168deg, #fff9fc 0%, #f7eef2 45%, #faf7f8 100%);
+  pointer-events:none;
+}
+.pw-gate__panel{
+  position:relative;
+  width:100%;
+  max-width:22.5rem;
+  margin:0 auto;
+  padding:clamp(1.75rem, 5vw, 2.35rem) clamp(1.35rem, 4vw, 1.85rem) clamp(1.5rem, 4vw, 1.95rem);
+  border-radius:clamp(22px, 5vw, 30px);
+  background:linear-gradient(168deg, rgba(255,252,250,.98), rgba(248,240,244,.96));
+  border:1px solid rgba(184,148,82,.32);
+  box-shadow:
+    0 32px 90px rgba(47,39,50,.11),
+    0 12px 40px rgba(180,99,122,.06),
+    inset 0 1px 0 rgba(255,255,255,.9);
+  text-align:center;
+}
+.pw-gate__panel::before{
+  content:'';
+  position:absolute;
+  inset:10px;
+  border-radius:20px;
+  border:1px solid rgba(184,148,82,.14);
+  pointer-events:none;
+}
+.pw-gate__eyebrow{
+  font-family:var(--f);
+  font-size:.62rem;
+  letter-spacing:.26em;
+  text-transform:uppercase;
+  color:var(--pink);
+  font-weight:700;
+  margin:0 0 .85rem;
+}
+.pw-gate__brand{
+  font-family:var(--fb,'Cormorant Garamond',Georgia,serif);
+  font-size:clamp(2rem, 7vw, 2.55rem);
+  font-weight:400;
+  color:var(--pink);
+  line-height:1.05;
+  letter-spacing:-.03em;
+  margin:0 0 .9rem;
+}
+p.pw-gate__brand{margin-bottom:.9rem}
+.pw-gate__brand .pw-gate__to{font-size:.55em;color:var(--ts)}
+.pw-gate__brand .pw-gate__num{font-size:.65em;color:var(--pk-lt)}
+.pw-gate__lead{
+  font-family:var(--fd,'Cormorant Garamond',Georgia,serif);
+  font-size:.95rem;
+  line-height:1.62;
+  color:var(--tm);
+  margin:0 0 1.35rem;
+  max-width:19rem;
+  margin-left:auto;
+  margin-right:auto;
+}
+.pw-gate__form{margin:0;padding:0;border:0}
+.pw-gate__label{
+  display:block;
+  font-size:.58rem;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--ts);
+  font-weight:700;
+  margin:0 0 .45rem;
+  text-align:center;
+}
+.pw-gate__field-wrap{
+  position:relative;
+  margin:0 0 .5rem;
+}
+.pw-gate__input{
+  width:100%;
+  box-sizing:border-box;
+  padding:.88rem 1.15rem;
+  border:1.5px solid rgba(214,196,206,.65);
+  border-radius:100px;
+  font-family:inherit;
+  font-size:.92rem;
+  text-align:center;
+  color:var(--td);
+  background:rgba(255,255,255,.92);
+  outline:none;
+  transition:border-color .25s ease, box-shadow .25s ease, background .25s ease;
+}
+.pw-gate__input::placeholder{
+  color:var(--tmu);
+  font-style:italic;
+  letter-spacing:.02em;
+}
+.pw-gate__input:hover{border-color:rgba(180,99,122,.28)}
+.pw-gate__input:focus{
+  border-color:rgba(180,99,122,.55);
+  box-shadow:0 0 0 3px rgba(180,99,122,.12);
+  background:#fff;
+}
+.pw-gate__field-wrap--error .pw-gate__input,
+.pw-gate__input.pw-gate__input--error{
+  border-color:rgba(180,99,122,.5);
+  background:rgba(255,250,252,.98);
+  box-shadow:0 0 0 3px rgba(180,99,122,.1);
+}
+.pw-gate__hint{
+  font-size:.68rem;
+  line-height:1.55;
+  color:var(--tmu);
+  margin:0 0 1.15rem;
+  font-style:italic;
+  max-width:18rem;
+  margin-left:auto;
+  margin-right:auto;
+}
+.pw-gate__submit{
+  display:block;
+  width:100%;
+  margin:0;
+  padding:.88rem 1.25rem;
+  border:none;
+  border-radius:100px;
+  font-family:var(--fd,'Cormorant Garamond',Georgia,serif);
+  font-size:1.05rem;
+  font-weight:600;
+  letter-spacing:.02em;
+  color:#fffefb;
+  cursor:pointer;
+  background:linear-gradient(145deg, #c4788f, #8c475c 52%, #6c3440);
+  border:1px solid rgba(240,215,157,.35);
+  box-shadow:0 14px 32px rgba(108,52,64,.22), inset 0 1px 0 rgba(255,255,255,.12);
+  transition:transform .2s ease, box-shadow .2s ease, filter .2s ease;
+}
+.pw-gate__submit:hover{
+  transform:translateY(-1px);
+  filter:brightness(1.03);
+  box-shadow:0 18px 38px rgba(108,52,64,.26), inset 0 1px 0 rgba(255,255,255,.14);
+}
+.pw-gate__submit:focus-visible{
+  outline:2px solid var(--gold);
+  outline-offset:3px;
+}
+.pw-gate__submit:active{transform:translateY(0)}
+.pw-gate__err{
+  min-height:1.35rem;
+  margin:.65rem 0 0;
+  font-size:.72rem;
+  line-height:1.45;
+  color:#9a5c6e;
+  opacity:0;
+  transform:translateY(-4px);
+  transition:opacity .35s ease, transform .35s ease;
+  pointer-events:none;
+}
+.pw-gate__err.pw-gate__err--visible{
+  opacity:1;
+  transform:translateY(0);
+}
+.pw-gate__contact{
+  margin:1.25rem 0 0;
+  padding-top:1.1rem;
+  border-top:1px solid rgba(184,148,82,.18);
+  font-size:.68rem;
+  color:var(--ts);
+  line-height:1.5;
+}
+.pw-gate__contact a{
+  color:var(--pink);
+  text-decoration:underline;
+  text-underline-offset:3px;
+  font-weight:600;
+}
+.pw-gate__contact a:hover{color:var(--pk-hot)}
+@media(max-width:380px){
+  .pw-gate__panel{padding-left:1.15rem;padding-right:1.15rem}
+  .pw-gate__lead{font-size:.9rem}
+}
 </style>
 </head>
 <body>
-<div id="pw-gate" style="position:fixed;inset:0;z-index:9999;background:radial-gradient(circle at top,rgba(255,212,229,.38),transparent 34%),linear-gradient(160deg,#fff8fb 0%,#fff0f6 52%,#fff8fb 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;font-family:'Manrope',sans-serif">
-  <div style="text-align:center;max-width:360px;padding:2rem">
-    <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:2.4rem;color:#b4637a;margin-bottom:.2rem;letter-spacing:-.03em">Heart <span style="font-size:.55em;color:#877b87">to</span> Heart <span style="color:#d5a4b3;font-size:.65em">111</span></div>
-    <p style="color:#877b87;font-size:.78rem;margin-bottom:1.5rem;font-style:italic">This reading room is private. Enter the password to continue.</p>
-    <input id="pw-input" type="password" placeholder="Password" autocomplete="off" style="width:100%;padding:.75rem 1rem;border:1.5px solid #ede6ed;border-radius:100px;font-family:inherit;font-size:.9rem;text-align:center;color:#2f2732;background:#fff;outline:none;transition:border-color .3s" onfocus="this.style.borderColor='#b4637a'" onblur="this.style.borderColor='#ede6ed'">
-    <button id="pw-btn" onclick="checkPw()" style="display:block;width:100%;margin-top:.8rem;padding:.75rem;background:linear-gradient(135deg,#d96d98,#ef93b8);color:#fff;border:none;border-radius:100px;font-family:'Cormorant Garamond',Georgia,serif;font-size:1.08rem;font-weight:600;cursor:pointer;transition:transform .2s,box-shadow .2s;box-shadow:0 10px 24px rgba(180,99,122,.22)" onmouseover="this.style.transform='translateY(-1px)'" onmouseout="this.style.transform='none'">Enter</button>
-    <p id="pw-err" style="color:#b4637a;font-size:.72rem;margin-top:.6rem;opacity:0;transition:opacity .3s">Incorrect password</p>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<div id="pw-gate" class="pw-gate" role="dialog" aria-modal="true" aria-labelledby="pw-gate-title" aria-describedby="pw-gate-desc">
+  <div class="pw-gate__veil" aria-hidden="true"></div>
+  <div class="pw-gate__panel">
+    <p class="pw-gate__eyebrow">Private reading room</p>
+    <p class="pw-gate__brand" id="pw-gate-title">Heart <span class="pw-gate__to">to</span> Heart <span class="pw-gate__num">111</span></p>
+    <p class="pw-gate__lead" id="pw-gate-desc">You are at the threshold of a quiet space meant for invited guests. What happens here is gentle and unhurried—this door stays closed so the room stays yours.</p>
+    <form class="pw-gate__form" id="pw-form" action="#" onsubmit="event.preventDefault();checkPw();">
+      <label class="pw-gate__label" for="pw-input">Shared phrase</label>
+      <div class="pw-gate__field-wrap" id="pw-field-wrap">
+        <input id="pw-input" class="pw-gate__input" type="password" name="gate_phrase" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="Whisper it here" aria-describedby="pw-hint-line pw-err" aria-invalid="false">
+      </div>
+      <p class="pw-gate__hint" id="pw-hint-line">This private room opens with the shared password.</p>
+      <button type="submit" class="pw-gate__submit" id="pw-btn">Step inside</button>
+      <p id="pw-err" class="pw-gate__err" role="status" aria-live="polite"></p>
+    </form>
+    <p class="pw-gate__contact">Need access? <a href="contact.html">Contact Heart to Heart 111</a>—we will help you find your way in.</p>
   </div>
 </div>
 <script>
+let pwErrTimer=null;
+let _h2hAnnSig='',_h2hAnnAt=0;
+function announce(message,priority){
+  const mode=priority==='assertive'?'assertive':'polite';
+  if(!message)return;
+  const t=Date.now();
+  const sig=mode+'|'+message;
+  if(sig===_h2hAnnSig&&t-_h2hAnnAt<900)return;
+  _h2hAnnSig=sig;
+  _h2hAnnAt=t;
+  const polite=document.getElementById('sr-live-polite');
+  const asrt=document.getElementById('sr-live-assertive');
+  if(!polite||!asrt)return;
+  const el=mode==='assertive'?asrt:polite;
+  const other=mode==='assertive'?polite:asrt;
+  other.textContent='';
+  el.textContent='';
+  requestAnimationFrame(()=>{el.textContent=message});
+}
+function h2hPwGateFocusable(el){
+  if(!el||el.disabled)return false;
+  if(el.closest('[inert]')||el.closest('[aria-hidden="true"]'))return false;
+  const ti=el.getAttribute('tabindex');
+  if(ti==='-1'&&!el.matches('a[href],button,input,select,textarea'))return false;
+  const st=getComputedStyle(el);
+  if(st.visibility==='hidden'||st.display==='none')return false;
+  const r=el.getBoundingClientRect();
+  return r.width>=1&&r.height>=1;
+}
+function getPwGateTabbables(){
+  const panel=document.querySelector('#pw-gate .pw-gate__panel');
+  if(!panel)return [];
+  const sel='a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])';
+  return Array.from(panel.querySelectorAll(sel)).filter(h2hPwGateFocusable);
+}
+function pwGateTrapKeydown(e){
+  const gate=document.getElementById('pw-gate');
+  if(!gate||gate.style.display==='none'||getComputedStyle(gate).display==='none')return;
+  if(e.key==='Escape'){
+    e.preventDefault();
+    announce('This door stays closed until you enter the shared phrase.');
+    return;
+  }
+  if(e.key!=='Tab')return;
+  const list=getPwGateTabbables();
+  if(list.length===0)return;
+  const first=list[0],last=list[list.length-1];
+  if(e.shiftKey){
+    if(document.activeElement===first){
+      e.preventDefault();
+      last.focus();
+    }
+  }else if(document.activeElement===last){
+    e.preventDefault();
+    first.focus();
+  }
+}
+function activatePwGateModal(){
+  document.querySelector('.skip-link')?.setAttribute('tabindex','-1');
+  document.querySelector('.wrap')?.setAttribute('inert','');
+  document.getElementById('hbg')?.setAttribute('inert','');
+  document.getElementById('pw-gate')?.addEventListener('keydown',pwGateTrapKeydown,true);
+}
+function deactivatePwGateModal(){
+  const skip=document.querySelector('.skip-link');
+  if(skip)skip.removeAttribute('tabindex');
+  document.querySelector('.wrap')?.removeAttribute('inert');
+  document.getElementById('hbg')?.removeAttribute('inert');
+  document.getElementById('pw-gate')?.removeEventListener('keydown',pwGateTrapKeydown,true);
+}
+function clearPwGateError(){
+  const inp=document.getElementById('pw-input');
+  const wrap=document.getElementById('pw-field-wrap');
+  const err=document.getElementById('pw-err');
+  if(pwErrTimer){clearTimeout(pwErrTimer);pwErrTimer=null;}
+  if(inp){
+    inp.classList.remove('pw-gate__input--error');
+    inp.setAttribute('aria-invalid','false');
+    inp.removeAttribute('aria-errormessage');
+  }
+  if(wrap)wrap.classList.remove('pw-gate__field-wrap--error');
+  if(err){
+    err.textContent='';
+    err.classList.remove('pw-gate__err--visible');
+  }
+}
 async function checkPw(){
+  if(typeof h2hTrack==='function')h2hTrack('password_submit');
+  clearPwGateError();
   const input=document.getElementById('pw-input').value;
   const enc=new TextEncoder().encode(input);
   const buf=await crypto.subtle.digest('SHA-256',enc);
   const hex=Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
   if(hex==='ef5e9fb7860d070e42ed03ce439df2822aaa1d376550c11094055da0378e2aab'){
+    deactivatePwGateModal();
     document.getElementById('pw-gate').style.display='none';
     sessionStorage.setItem('pw-ok','1');
+    announce('Password accepted. You can start your reading.');
+    if(typeof h2hTrack==='function')h2hTrack('password_success');
+    requestAnimationFrame(()=>{
+      const m=document.getElementById('main-content');
+      if(m)m.focus({preventScroll:true});
+    });
   }else{
-    const err=document.getElementById('pw-err');err.style.opacity='1';
-    document.getElementById('pw-input').style.borderColor='#b4637a';
-    setTimeout(()=>err.style.opacity='0',2000);
+    if(typeof h2hTrack==='function')h2hTrack('password_failure');
+    const inp=document.getElementById('pw-input');
+    const wrap=document.getElementById('pw-field-wrap');
+    const err=document.getElementById('pw-err');
+    inp.classList.add('pw-gate__input--error');
+    if(wrap)wrap.classList.add('pw-gate__field-wrap--error');
+    inp.setAttribute('aria-invalid','true');
+    inp.setAttribute('aria-errormessage','pw-err');
+    err.textContent='Not quite—that is not the phrase we hold. Breathe, try again when you are ready, or reach out below and we will help you in.';
+    err.classList.add('pw-gate__err--visible');
+    announce('That phrase did not match. Try again, or use the contact link below.');
+    requestAnimationFrame(()=>inp.focus({preventScroll:true}));
+    pwErrTimer=setTimeout(()=>{clearPwGateError()},5200);
   }
 }
 document.addEventListener('DOMContentLoaded',()=>{
-  if(sessionStorage.getItem('pw-ok')==='1') document.getElementById('pw-gate').style.display='none';
-  document.getElementById('pw-input').addEventListener('keydown',e=>{if(e.key==='Enter')checkPw()});
+  const gate=document.getElementById('pw-gate');
+  const inp=document.getElementById('pw-input');
+  if(sessionStorage.getItem('pw-ok')==='1'){
+    gate.style.display='none';
+    deactivatePwGateModal();
+  }else{
+    activatePwGateModal();
+    if(typeof h2hTrack==='function'&&gate&&getComputedStyle(gate).display!=='none')h2hTrack('password_gate_view');
+  }
+  inp.addEventListener('input',clearPwGateError);
+  inp.addEventListener('focus',clearPwGateError);
+  if(gate&&gate.style.display!=='none'&&getComputedStyle(gate).display!=='none'){requestAnimationFrame(()=>inp.focus({preventScroll:true}));}
 });
 </script>
 <div class="hbg" id="hbg"></div>
 <div class="wrap">
-<nav class="tnav">
+<nav class="tnav" aria-label="Site">
   <div class="tnav-in">
     <a class="tnav-brand" href="#s1">Heart to Heart 111</a>
     <div class="tnav-links">
-      <a href="restore.html">Restore Reading</a>
+      <a href="#home-guide">Guide</a>
+      <a href="#reading-flow">Reading</a>
+      <a href="#visit-studio">Studio</a>
+      <a href="restore.html">Restore a reading</a>
       <a href="about.html">About</a>
       <a href="faq.html">FAQ</a>
       <a href="contact.html">Contact</a>
@@ -4018,153 +6109,179 @@ document.addEventListener('DOMContentLoaded',()=>{
   </div>
 </nav>
 
+<main id="main-content" tabindex="-1">
+
 <!-- HERO -->
 <section class="hero">
   <div class="hero-shell">
     <div class="hero-copy">
-      <p class="tag">Online Tarot App</p>
+      <p class="tag">Private reading room</p>
       <h1 class="brand">Heart <span class="to">to</span> Heart <span class="num">111</span></h1>
-      <p class="hero-lede">Choose a category, reveal your cards, and unlock a personalized tarot reading online.</p>
-      <p class="qt">Private flow. Multiple spread types. Preview before purchase. Restore later with your receipt.</p>
-      <p class="loc">Built by Heart to Heart 111 in Coopersburg, Pennsylvania</p>
+      <h2 class="hero-lede">Tarot in your own time—linger with the preview, then open the full written spread for <span class="hero-price">$5</span>.</h2>
+      <p class="qt">Whisper your question, choose a charm, watch the cards turn—then open the whole story when you are ready.</p>
+      <p class="loc">Heart to Heart 111 · Coopersburg, Pennsylvania</p>
       <div class="hero-actions">
-        <button class="hero-btn primary" type="button" onclick="jumpToQuestion()">Begin the Reading</button>
-        <a class="hero-btn secondary" href="restore.html">Return to Your Reading</a>
+        <button class="hero-btn primary" type="button" onclick="if(typeof h2hTrack==='function')h2hTrack('hero_cta_click',{entry:'hero_primary'});jumpToQuestion()">Begin the reading</button>
+        <a class="hero-restore-link" href="restore.html">Restore a paid reading</a>
       </div>
-      <div class="hero-trust">
-        <div class="trust-item"><strong>Guided Flow</strong><span>Question, charm, spread, reveal, and unlock in one sequence.</span></div>
-        <div class="trust-item"><strong>Personalized Setup</strong><span>Choose a topic, add a charm, and optionally include moon or zodiac details.</span></div>
-        <div class="trust-item"><strong>Restore Anytime</strong><span>Use your transaction ID to reopen a paid reading on any device.</span></div>
-      </div>
+      <ul class="hero-trust hero-trust--row" aria-label="How this reading works">
+        <li>Preview first, pay when you choose</li>
+        <li>Checkout with PayPal</li>
+        <li>No account on this site</li>
+        <li>Reopen anytime with your PayPal ID</li>
+      </ul>
     </div>
     <div class="hero-stage" aria-hidden="true">
       <div class="hero-stage-halo"></div>
       <div class="hero-stage-grid"></div>
       <div class="hero-stage-note hero-stage-note-top">
-        <strong>Start with a Question</strong>
-        <span>Type what you want the reading to focus on.</span>
+        <strong>Where your attention rests</strong>
+        <span>The cards lean in.</span>
       </div>
       <div class="hero-tarot-fan">
         <figure class="hero-card-preview hero-card-back">
           <img src="Tarot Images/Back.jpg" alt="">
         </figure>
         <figure class="hero-card-preview hero-card-left">
-          <img src="Tarot Images/The Lovers.jpg" alt="">
+          <img src="Tarot Images/The Lovers.jpg" alt="The Lovers">
         </figure>
         <figure class="hero-card-preview hero-card-center">
-          <img src="Tarot Images/The Moon.jpg" alt="">
+          <img src="Tarot Images/The Moon.jpg" alt="The Moon">
         </figure>
         <figure class="hero-card-preview hero-card-right">
-          <img src="Tarot Images/The Sun.jpg" alt="">
+          <img src="Tarot Images/The Sun.jpg" alt="The Sun">
         </figure>
       </div>
       <div class="hero-stage-note hero-stage-note-bottom">
-        <strong>Preview Before Unlock</strong>
-        <span>See the first layer, then open the full interpretation when you want more.</span>
+        <strong>Mystery, then meaning</strong>
+        <span>A glimpse first—the full voice when you say yes.</span>
       </div>
     </div>
   </div>
+  <div class="hero-next">
+    <h3 class="hero-next-title">Five quiet steps</h3>
+    <ol class="hero-next-track">
+      <li><span class="hero-next-n">1</span> Question</li>
+      <li><span class="hero-next-n">2</span> Charm</li>
+      <li><span class="hero-next-n">3</span> Spread</li>
+      <li><span class="hero-next-n">4</span> Reveal</li>
+      <li><span class="hero-next-n">5</span> Full read · $5</li>
+    </ol>
+  </div>
   <div class="path-grid">
-    <button class="path-card" type="button" data-cat="love" onclick="applyReadingPreset('love',3,'What is my heart trying to show me right now?')">
+    <button class="path-card" type="button" data-cat="love" aria-pressed="false" onclick="applyReadingPreset('love',3,'What is my heart trying to show me right now?')">
       <span class="path-kicker">Love Reading</span>
       <strong>Tenderness, distance, and desire</strong>
-      <p>For romance, uncertainty, reunion, and the things still left unsaid.</p>
-      <span class="path-meta">3-card parlor spread</span>
+      <p>Romance, uncertainty, reunion—what is still unsaid.</p>
+      <span class="path-meta">3 cards · parlor</span>
     </button>
-    <button class="path-card" type="button" data-cat="career" onclick="applyReadingPreset('career',5,'What should I understand about my career path right now?')">
+    <button class="path-card" type="button" data-cat="career" aria-pressed="false" onclick="applyReadingPreset('career',5,'What should I understand about my career path right now?')">
       <span class="path-kicker">Career Reading</span>
       <strong>Work, money, and next steps</strong>
-      <p>For choices, timing, purpose, and the move that wants your full attention.</p>
-      <span class="path-meta">5-card crossroads spread</span>
+      <p>Choices, timing, purpose—the move asking for your attention.</p>
+      <span class="path-meta">5 cards · crossroads</span>
     </button>
-    <button class="path-card" type="button" data-cat="spirit" onclick="applyReadingPreset('spirit',7,'What spiritual lesson is unfolding for me in this season?')">
+    <button class="path-card" type="button" data-cat="spirit" aria-pressed="false" onclick="applyReadingPreset('spirit',7,'What spiritual lesson is unfolding for me in this season?')">
       <span class="path-kicker">Spiritual Reading</span>
       <strong>Intuition, signs, and deeper seasons</strong>
-      <p>For inner shifts, recurring patterns, and the feeling that something is quietly changing.</p>
-      <span class="path-meta">7-card lantern spread</span>
+      <p>Inner shifts, patterns, the sense that something is turning.</p>
+      <span class="path-meta">7 cards · lantern</span>
     </button>
-    <button class="path-card" type="button" data-cat="open" onclick="applyReadingPreset('open',3,'What energy most needs my attention right now?')">
+    <button class="path-card" type="button" data-cat="open" aria-pressed="false" onclick="applyReadingPreset('open',3,'What energy most needs my attention right now?')">
       <span class="path-kicker">Open Reading</span>
       <strong>Let the cards choose the doorway</strong>
-      <p>For the moments when you do not want to narrow the question before the truth arrives.</p>
-      <span class="path-meta">3-card open spread</span>
+      <p>When you would rather not narrow the question before the cards speak.</p>
+      <span class="path-meta">3 cards · open</span>
     </button>
-  </div>
-  <div class="hero-proof">
-    <div class="proof-pill">3, 5, or 7 card spreads</div>
-    <div class="proof-pill">Preview before unlock</div>
-    <div class="proof-pill">Secure PayPal checkout</div>
-    <div class="proof-pill">No account required</div>
-  </div>
-  <div class="pbar" id="pbar">
-    <div class="ps a" id="p1"><span class="d">1</span>Question</div><div class="pdash"></div>
-    <div class="ps" id="p2"><span class="d">2</span>Trinket</div><div class="pdash"></div>
-    <div class="ps" id="p3"><span class="d">3</span>Spread</div><div class="pdash"></div>
-    <div class="ps" id="p4"><span class="d">4</span>Reveal</div><div class="pdash"></div>
-    <div class="ps" id="p5"><span class="d">5</span>Unlock</div>
   </div>
 </section>
 
-<section class="guide sr">
+<section class="guide sr" id="home-guide" aria-label="How the reading works">
   <div class="guide-shell">
     <div class="guide-head">
       <div>
-        <p class="tag">How It Works</p>
-        <h2>Set up the reading, then reveal it</h2>
+        <p class="tag">The path</p>
+        <h2>Gather, reveal, receive</h2>
       </div>
-      <p>Built as a guided online flow.</p>
+      <p>One unhurried flow—you set the pace.</p>
     </div>
     <div class="guide-grid">
       <article class="guide-card">
         <span class="guide-num">1</span>
-        <h3>Choose a category</h3>
-        <p>Love, work, self-care, family, spirit, or an open reading.</p>
+        <h3>Choose a focus</h3>
+        <p>Love, work, self-care, family, spirit—or leave the field open.</p>
       </article>
       <article class="guide-card">
         <span class="guide-num">2</span>
-        <h3>Add your charm</h3>
-        <p>The charm shapes the tone and symbolism of the reading.</p>
+        <h3>Choose a charm</h3>
+        <p>One symbol tilts the tone; let instinct lead.</p>
       </article>
       <article class="guide-card">
         <span class="guide-num">3</span>
-        <h3>Reveal the spread</h3>
-        <p>Turn the cards one by one and see the pattern form.</p>
+        <h3>Turn the cards</h3>
+        <p>Flip them yourself and watch the pattern gather.</p>
       </article>
       <article class="guide-card">
         <span class="guide-num">4</span>
-        <h3>Unlock the full reading</h3>
-        <p>Start with a preview, then open the full interpretation when you are ready.</p>
+        <h3>Open the full read</h3>
+        <p>Preview first, then the complete written reading—when it feels right.</p>
       </article>
     </div>
   </div>
 </section>
 
-<!-- STEP 1: QUESTION -->
-<section class="qsection" id="s1">
-  <p class="tag">Step 1</p>
-  <h2>Start with your question</h2>
-  <p class="qsub">Choose a category and type the question you want the reading to focus on.</p>
-  <div class="qcats" id="qcats">
-    <div class="qcat" onclick="setCat(this)" data-c="love">Love</div>
-    <div class="qcat" onclick="setCat(this)" data-c="career">Career</div>
-    <div class="qcat" onclick="setCat(this)" data-c="growth">Growth</div>
-    <div class="qcat" onclick="setCat(this)" data-c="family">Family</div>
-    <div class="qcat" onclick="setCat(this)" data-c="growth">Self-Care</div>
-    <div class="qcat" onclick="setCat(this)" data-c="money">Finances</div>
-    <div class="qcat" onclick="setCat(this)" data-c="spirit">Spiritual</div>
-    <div class="qcat" onclick="setCat(this)" data-c="open">Open Reading</div>
+<div class="flow-wrap" id="reading-flow" role="region" aria-label="Interactive tarot reading">
+<div class="sr-only" id="sr-live-polite" aria-live="polite" aria-atomic="true"></div>
+<div class="sr-only" id="sr-live-assertive" aria-live="assertive" aria-atomic="true"></div>
+<nav class="flow-progress" id="flowProgress" aria-label="Reading progress">
+  <div class="pbar" id="pbar" role="list">
+    <div class="ps a" id="p1" role="listitem"><span class="d" aria-hidden="true">1</span><span class="ps-label">Intention</span></div><div class="pdash" aria-hidden="true"></div>
+    <div class="ps" id="p2" role="listitem"><span class="d" aria-hidden="true">2</span><span class="ps-label">Charm</span></div><div class="pdash" aria-hidden="true"></div>
+    <div class="ps" id="p3" role="listitem"><span class="d" aria-hidden="true">3</span><span class="ps-label">Spread</span></div><div class="pdash" aria-hidden="true"></div>
+    <div class="ps" id="p4" role="listitem"><span class="d" aria-hidden="true">4</span><span class="ps-label">Cards</span></div><div class="pdash" aria-hidden="true"></div>
+    <div class="ps" id="p5" role="listitem"><span class="d" aria-hidden="true">5</span><span class="ps-label">Receive</span></div>
   </div>
-  <textarea class="qinput" id="qinput" placeholder="If you want, write your question here. For example: 'What am I meant to understand about this connection?'"></textarea>
-  <p class="qnote">Your words are held quietly and only used for this reading.</p>
+</nav>
+
+<!-- STEP 1: QUESTION -->
+<section class="qsection ritual-step" id="s1" aria-labelledby="s1-title" tabindex="-1">
+  <div class="ritual-panel">
+    <header class="ritual-panel-head">
+      <p class="tag">Step 1</p>
+      <h2 id="s1-title">Set your intention</h2>
+      <p class="qsub">Choose a focus, then add words if you wish—they give the cards a thread to follow.</p>
+    </header>
+    <div class="ritual-field" id="ritual-cat-group" role="group" aria-labelledby="cats-label">
+      <span id="cats-label" class="ritual-field-label">Where should this reading look?</span>
+      <div class="qcats" id="qcats">
+        <button type="button" class="qcat" onclick="setCat(this)" data-c="love" aria-pressed="false">Love</button>
+        <button type="button" class="qcat" onclick="setCat(this)" data-c="career" aria-pressed="false">Career</button>
+        <button type="button" class="qcat" onclick="setCat(this)" data-c="growth" aria-pressed="false">Growth</button>
+        <button type="button" class="qcat" onclick="setCat(this)" data-c="family" aria-pressed="false">Family</button>
+        <button type="button" class="qcat" onclick="setCat(this)" data-c="health" aria-pressed="false">Self-care</button>
+        <button type="button" class="qcat" onclick="setCat(this)" data-c="money" aria-pressed="false">Finances</button>
+        <button type="button" class="qcat" onclick="setCat(this)" data-c="spirit" aria-pressed="false">Spiritual</button>
+        <button type="button" class="qcat" onclick="setCat(this)" data-c="open" aria-pressed="false">Open Reading</button>
+      </div>
+      <p id="flow-err-cat" class="ritual-flow-error" role="status" aria-live="polite" hidden></p>
+    </div>
+    <label class="ritual-input-label" for="qinput">Your question <span class="ritual-optional-mark">(optional)</span></label>
+    <textarea class="qinput" id="qinput" name="question" rows="3" maxlength="2800" autocomplete="off" placeholder="Optional—e.g. What am I meant to see in this season?" aria-describedby="qhint qnote"></textarea>
+    <p class="qhint" id="qhint">A category alone is enough; words pull the thread tighter.</p>
+    <p class="qnote" id="qnote">What you share stays with this reading—yours alone.</p>
+  </div>
 </section>
 
 <!-- STEP 2: TREASURE CHEST -->
-<section class="chsec sr" id="s2">
-  <p class="tag">Step 2</p>
-  <h2>Choose your charm</h2>
-  <p class="chsub">Pick the symbol that will shape the tone of the reading.</p>
-
-  <div class="chest-container" id="chest" onclick="toggleChest()">
+<section class="chsec sr ritual-step" id="s2" aria-labelledby="s2-title">
+  <div class="ritual-panel">
+    <header class="ritual-panel-head">
+      <p class="tag">Step 2</p>
+      <h2 id="s2-title">The charm chest</h2>
+      <p class="chsub">Lift the lid; let one symbol step forward.</p>
+    </header>
+    <div class="ritual-chest-block" id="ritual-chest-block">
+  <div class="chest-container" id="chest" role="button" tabindex="0" aria-expanded="false" aria-controls="tcloud" aria-label="Open the charm chest" onclick="toggleChest()">
     <svg class="chest-svg" viewBox="0 0 180 170" fill="none" xmlns="http://www.w3.org/2000/svg">
       <!-- chest body -->
       <rect x="20" y="95" width="140" height="65" rx="6" fill="var(--chest-wood)"/>
@@ -4198,184 +6315,406 @@ document.addEventListener('DOMContentLoaded',()=>{
         </pattern>
       </defs>
     </svg>
-    <div class="chest-glow"></div>
+    <div class="chest-glow" aria-hidden="true"></div>
   </div>
-  <p class="chest-tap" id="chtap">Tap to open</p>
+  <p class="chest-tap" id="chtap"><span class="chest-tap-icon" aria-hidden="true">✦</span> Tap to open</p>
 
-  <div class="tcloud" id="tcloud">
-    <div class="trk" onclick="pickT(this)" data-t="crystal" data-m="The crystal amplifies clarity and truth">
-      <span class="ti"><svg viewBox="0 0 24 24"><path d="M12 2l-3 7h-2l5 13 5-13h-2z"/><path d="M7 9h10" opacity=".5"/><path d="M9 9l3-7 3 7" opacity=".4"/></svg></span><span class="tn">Crystal</span></div>
-    <div class="trk" onclick="pickT(this)" data-t="feather" data-m="The feather invites lightness and freedom">
-      <span class="ti"><svg viewBox="0 0 24 24"><path d="M5 21c1-4 4-7 7-9M12 12c2-2 5-5 7-8"/><path d="M19 4c-1 2-3 4-5 5.5M14 9.5C11 12 8 15 6 19"/><path d="M16 6c-2 1-4 3-4 6M12 12c-1 3-3 5-5 7"/></svg></span><span class="tn">Feather</span></div>
-    <div class="trk" onclick="pickT(this)" data-t="key" data-m="The key unlocks what's been hidden">
-      <span class="ti"><svg viewBox="0 0 24 24"><circle cx="8" cy="7" r="4"/><circle cx="8" cy="7" r="2" opacity=".4"/><path d="M11.5 10.5l9 9"/><path d="M17 16l2.5 2.5M15 18l2.5 2.5"/></svg></span><span class="tn">Key</span></div>
-    <div class="trk" onclick="pickT(this)" data-t="shell" data-m="The shell carries wisdom from deep waters">
-      <span class="ti"><svg viewBox="0 0 24 24"><path d="M3 18c0-8 4-14 9-14s9 6 9 14"/><path d="M12 4c0 4-.5 9 0 14"/><path d="M12 4c-2 3-4 8-6 14M12 4c2 3 4 8 6 14"/><path d="M5 16c2-1 4-2 7-2s5 1 7 2" opacity=".5"/></svg></span><span class="tn">Shell</span></div>
-    <div class="trk" onclick="pickT(this)" data-t="star" data-m="The star lights your path forward">
-      <span class="ti"><svg viewBox="0 0 24 24"><path d="M12 2l2.5 5.5L20 8.5l-4 4 1 5.5-5-2.8-5 2.8 1-5.5-4-4 5.5-1z"/></svg></span><span class="tn">Star</span></div>
-    <div class="trk" onclick="pickT(this)" data-t="moon" data-m="The moon reveals what hides in shadow">
-      <span class="ti"><svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/><circle cx="9" cy="9" r=".8" opacity=".3"/><circle cx="13" cy="15" r=".5" opacity=".3"/></svg></span><span class="tn">Moon</span></div>
-    <div class="trk" onclick="pickT(this)" data-t="rose" data-m="The rose opens the heart to love">
-      <span class="ti"><svg viewBox="0 0 24 24"><path d="M12 21c0 0-6-3-6-9c0-2 1-4 3-5"/><path d="M12 21c0 0 6-3 6-9c0-2-1-4-3-5"/><ellipse cx="12" cy="10" rx="4" ry="3"/><path d="M12 7V3"/><path d="M10 5c0-1 1-2 2-2s2 1 2 2" fill="none"/><path d="M8 13c1 .5 2.5 1 4 1s3-.5 4-1" opacity=".4"/></svg></span><span class="tn">Rose</span></div>
-    <div class="trk" onclick="pickT(this)" data-t="candle" data-m="The candle brings warmth and intention">
-      <span class="ti"><svg viewBox="0 0 24 24"><rect x="9" y="11" width="6" height="9" rx="1.5"/><path d="M9 14h6" opacity=".3"/><path d="M12 11V8"/><path d="M12 4c-1.5 1-1.5 3 0 4" stroke-width="1.8"/><circle cx="12" cy="4" r="1" fill="var(--peach)" stroke="var(--peach)"/></svg></span><span class="tn">Candle</span></div>
-    <div class="trk" onclick="pickT(this)" data-t="butterfly" data-m="The butterfly signals transformation">
-      <span class="ti"><svg viewBox="0 0 24 24"><path d="M12 7v13"/><path d="M12 11c-3-5-9-5-8 0s5 5.5 8 3.5"/><path d="M12 11c3-5 9-5 8 0s-5 5.5-8 3.5"/><circle cx="12" cy="7" r="1"/><path d="M11 6c-1-2-2-3-2-3M13 6c1-2 2-3 2-3" stroke-width="1"/></svg></span><span class="tn">Butterfly</span></div>
-    <div class="trk" onclick="pickT(this)" data-t="heart" data-m="The heart guides with pure love">
-      <span class="ti"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></span><span class="tn">Heart</span></div>
-    <div class="trk" onclick="pickT(this)" data-t="acorn" data-m="The acorn holds potential not yet seen">
-      <span class="ti"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="15" rx="5" ry="6"/><path d="M7 12c0-3 2-5 5-5s5 2 5 5"/><path d="M7 12h10" stroke-width="1.8"/><path d="M12 7V4"/><path d="M12 4c-1 0-2-1-2-1M12 4c1 0 2-1 2-1"/></svg></span><span class="tn">Acorn</span></div>
-    <div class="trk" onclick="pickT(this)" data-t="eye" data-m="The eye sees what others overlook">
-      <span class="ti"><svg viewBox="0 0 24 24"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="1" fill="var(--pink)" stroke="none"/></svg></span><span class="tn">Eye</span></div>
-    <div class="trk" onclick="pickT(this)" data-t="leaf" data-m="The leaf whispers of new growth">
-      <span class="ti"><svg viewBox="0 0 24 24"><path d="M6 21c0 0 1-8 6-13s11-5 11-5-1 6-6 11S6 21 6 21z"/><path d="M6 21C10 17 14 13 23 3" opacity=".4"/><path d="M10 17c-1-2 0-4 2-6" opacity=".4"/></svg></span><span class="tn">Leaf</span></div>
-    <div class="trk" onclick="pickT(this)" data-t="hourglass" data-m="The hourglass reminds you — timing is everything">
-      <span class="ti"><svg viewBox="0 0 24 24"><path d="M7 3h10M7 21h10"/><path d="M8 3c0 4 4 7 4 9s-4 5-4 9"/><path d="M16 3c0 4-4 7-4 9s4 5 4 9"/><path d="M10 12h4" opacity=".3"/></svg></span><span class="tn">Hourglass</span></div>
-    <div class="trk" onclick="pickT(this)" data-t="compass" data-m="The compass always finds true north">
-      <span class="ti"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M16.24 7.76l-2.12 6.36-6.36 2.12 2.12-6.36z"/><circle cx="12" cy="12" r="1.5" fill="var(--pink)" stroke="none"/></svg></span><span class="tn">Compass</span></div>
-    <div class="trk" onclick="pickT(this)" data-t="elephant" data-m="The elephant brings memory, loyalty, and steady protection">
-      <span class="ti"><svg viewBox="0 0 24 24"><path d="M4 13c0-4 3-7 7-7h4c3 0 5 2 5 5v3"/><path d="M16 11c2 0 4 2 4 4s-2 4-4 4h-1"/><path d="M8 12v5M13 12v5"/><path d="M7 17h7"/><circle cx="10.5" cy="10" r=".7" fill="var(--pink)" stroke="none"/></svg></span><span class="tn">Elephant</span></div>
-    <div class="trk" onclick="pickT(this)" data-t="owl" data-m="The owl sharpens wisdom and pattern recognition">
-      <span class="ti"><svg viewBox="0 0 24 24"><path d="M6 13c0-4 3-7 6-7s6 3 6 7v5H6z"/><circle cx="10" cy="12" r="2"/><circle cx="14" cy="12" r="2"/><path d="M11.5 15h1"/><path d="M7 8l-2-2M17 8l2-2"/><path d="M9 20h6"/></svg></span><span class="tn">Owl</span></div>
-    <div class="trk" onclick="pickT(this)" data-t="clover" data-m="The clover invites luck, openings, and timely support">
-      <span class="ti"><svg viewBox="0 0 24 24"><circle cx="9" cy="9" r="3"/><circle cx="15" cy="9" r="3"/><circle cx="9" cy="15" r="3"/><circle cx="15" cy="15" r="3"/><path d="M12 15v6"/><path d="M12 21c2 0 3 1 3 2" opacity=".4"/></svg></span><span class="tn">Clover</span></div>
-    <div class="trk" onclick="pickT(this)" data-t="dragonfly" data-m="The dragonfly signals quick perspective shifts and truth">
-      <span class="ti"><svg viewBox="0 0 24 24"><path d="M12 8v11"/><path d="M7 7c2 0 3 2 5 3"/><path d="M17 7c-2 0-3 2-5 3"/><path d="M6 11c2 0 4 1 6 2"/><path d="M18 11c-2 0-4 1-6 2"/><circle cx="12" cy="6" r="1.5" fill="var(--pink)" stroke="none"/></svg></span><span class="tn">Dragonfly</span></div>
-    <div class="trk" onclick="pickT(this)" data-t="anchor" data-m="The anchor keeps the reading grounded and steady">
-      <span class="ti"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2"/><path d="M12 7v9"/><path d="M8 12h8"/><path d="M5 16c1.5 3 4 5 7 5s5.5-2 7-5"/><path d="M5 16h3v3M19 16h-3v3"/></svg></span><span class="tn">Anchor</span></div>
+  <div class="charm-arena" id="charm-arena" inert>
+    <p class="charm-arena-eyebrow" id="charm-arena-label">Choose your charm</p>
+    <div class="tcloud" id="tcloud" role="group" aria-labelledby="charm-arena-label">
+    <button type="button" class="trk" aria-pressed="false" onclick="pickT(this)" data-t="crystal" data-m="The crystal amplifies clarity and truth">
+      <span class="ti"><svg viewBox="0 0 24 24"><path d="M12 2l-3 7h-2l5 13 5-13h-2z"/><path d="M7 9h10" opacity=".5"/><path d="M9 9l3-7 3 7" opacity=".4"/></svg></span><span class="tn">Crystal</span></button>
+    <button type="button" class="trk" aria-pressed="false" onclick="pickT(this)" data-t="feather" data-m="The feather invites lightness and freedom">
+      <span class="ti"><svg viewBox="0 0 24 24"><path d="M5 21c1-4 4-7 7-9M12 12c2-2 5-5 7-8"/><path d="M19 4c-1 2-3 4-5 5.5M14 9.5C11 12 8 15 6 19"/><path d="M16 6c-2 1-4 3-4 6M12 12c-1 3-3 5-5 7"/></svg></span><span class="tn">Feather</span></button>
+    <button type="button" class="trk" aria-pressed="false" onclick="pickT(this)" data-t="key" data-m="The key unlocks what's been hidden">
+      <span class="ti"><svg viewBox="0 0 24 24"><circle cx="8" cy="7" r="4"/><circle cx="8" cy="7" r="2" opacity=".4"/><path d="M11.5 10.5l9 9"/><path d="M17 16l2.5 2.5M15 18l2.5 2.5"/></svg></span><span class="tn">Key</span></button>
+    <button type="button" class="trk" aria-pressed="false" onclick="pickT(this)" data-t="shell" data-m="The shell carries wisdom from deep waters">
+      <span class="ti"><svg viewBox="0 0 24 24"><path d="M3 18c0-8 4-14 9-14s9 6 9 14"/><path d="M12 4c0 4-.5 9 0 14"/><path d="M12 4c-2 3-4 8-6 14M12 4c2 3 4 8 6 14"/><path d="M5 16c2-1 4-2 7-2s5 1 7 2" opacity=".5"/></svg></span><span class="tn">Shell</span></button>
+    <button type="button" class="trk" aria-pressed="false" onclick="pickT(this)" data-t="star" data-m="The star lights your path forward">
+      <span class="ti"><svg viewBox="0 0 24 24"><path d="M12 2l2.5 5.5L20 8.5l-4 4 1 5.5-5-2.8-5 2.8 1-5.5-4-4 5.5-1z"/></svg></span><span class="tn">Star</span></button>
+    <button type="button" class="trk" aria-pressed="false" onclick="pickT(this)" data-t="moon" data-m="The moon reveals what hides in shadow">
+      <span class="ti"><svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/><circle cx="9" cy="9" r=".8" opacity=".3"/><circle cx="13" cy="15" r=".5" opacity=".3"/></svg></span><span class="tn">Moon</span></button>
+    <button type="button" class="trk" aria-pressed="false" onclick="pickT(this)" data-t="rose" data-m="The rose opens the heart to love">
+      <span class="ti"><svg viewBox="0 0 24 24"><path d="M12 21c0 0-6-3-6-9c0-2 1-4 3-5"/><path d="M12 21c0 0 6-3 6-9c0-2-1-4-3-5"/><ellipse cx="12" cy="10" rx="4" ry="3"/><path d="M12 7V3"/><path d="M10 5c0-1 1-2 2-2s2 1 2 2" fill="none"/><path d="M8 13c1 .5 2.5 1 4 1s3-.5 4-1" opacity=".4"/></svg></span><span class="tn">Rose</span></button>
+    <button type="button" class="trk" aria-pressed="false" onclick="pickT(this)" data-t="candle" data-m="The candle brings warmth and intention">
+      <span class="ti"><svg viewBox="0 0 24 24"><rect x="9" y="11" width="6" height="9" rx="1.5"/><path d="M9 14h6" opacity=".3"/><path d="M12 11V8"/><path d="M12 4c-1.5 1-1.5 3 0 4" stroke-width="1.8"/><circle cx="12" cy="4" r="1" fill="var(--peach)" stroke="var(--peach)"/></svg></span><span class="tn">Candle</span></button>
+    <button type="button" class="trk" aria-pressed="false" onclick="pickT(this)" data-t="butterfly" data-m="The butterfly signals transformation">
+      <span class="ti"><svg viewBox="0 0 24 24"><path d="M12 7v13"/><path d="M12 11c-3-5-9-5-8 0s5 5.5 8 3.5"/><path d="M12 11c3-5 9-5 8 0s-5 5.5-8 3.5"/><circle cx="12" cy="7" r="1"/><path d="M11 6c-1-2-2-3-2-3M13 6c1-2 2-3 2-3" stroke-width="1"/></svg></span><span class="tn">Butterfly</span></button>
+    <button type="button" class="trk" aria-pressed="false" onclick="pickT(this)" data-t="heart" data-m="The heart guides with pure love">
+      <span class="ti"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></span><span class="tn">Heart</span></button>
+    <button type="button" class="trk" aria-pressed="false" onclick="pickT(this)" data-t="acorn" data-m="The acorn holds potential not yet seen">
+      <span class="ti"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="15" rx="5" ry="6"/><path d="M7 12c0-3 2-5 5-5s5 2 5 5"/><path d="M7 12h10" stroke-width="1.8"/><path d="M12 7V4"/><path d="M12 4c-1 0-2-1-2-1M12 4c1 0 2-1 2-1"/></svg></span><span class="tn">Acorn</span></button>
+    <button type="button" class="trk" aria-pressed="false" onclick="pickT(this)" data-t="eye" data-m="The eye sees what others overlook">
+      <span class="ti"><svg viewBox="0 0 24 24"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="1" fill="var(--pink)" stroke="none"/></svg></span><span class="tn">Eye</span></button>
+    <button type="button" class="trk" aria-pressed="false" onclick="pickT(this)" data-t="leaf" data-m="The leaf whispers of new growth">
+      <span class="ti"><svg viewBox="0 0 24 24"><path d="M6 21c0 0 1-8 6-13s11-5 11-5-1 6-6 11S6 21 6 21z"/><path d="M6 21C10 17 14 13 23 3" opacity=".4"/><path d="M10 17c-1-2 0-4 2-6" opacity=".4"/></svg></span><span class="tn">Leaf</span></button>
+    <button type="button" class="trk" aria-pressed="false" onclick="pickT(this)" data-t="hourglass" data-m="The hourglass reminds you — timing is everything">
+      <span class="ti"><svg viewBox="0 0 24 24"><path d="M7 3h10M7 21h10"/><path d="M8 3c0 4 4 7 4 9s-4 5-4 9"/><path d="M16 3c0 4-4 7-4 9s4 5 4 9"/><path d="M10 12h4" opacity=".3"/></svg></span><span class="tn">Hourglass</span></button>
+    <button type="button" class="trk" aria-pressed="false" onclick="pickT(this)" data-t="compass" data-m="The compass always finds true north">
+      <span class="ti"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M16.24 7.76l-2.12 6.36-6.36 2.12 2.12-6.36z"/><circle cx="12" cy="12" r="1.5" fill="var(--pink)" stroke="none"/></svg></span><span class="tn">Compass</span></button>
+    <button type="button" class="trk" aria-pressed="false" onclick="pickT(this)" data-t="elephant" data-m="The elephant brings memory, loyalty, and steady protection">
+      <span class="ti"><svg viewBox="0 0 24 24"><path d="M4 13c0-4 3-7 7-7h4c3 0 5 2 5 5v3"/><path d="M16 11c2 0 4 2 4 4s-2 4-4 4h-1"/><path d="M8 12v5M13 12v5"/><path d="M7 17h7"/><circle cx="10.5" cy="10" r=".7" fill="var(--pink)" stroke="none"/></svg></span><span class="tn">Elephant</span></button>
+    <button type="button" class="trk" aria-pressed="false" onclick="pickT(this)" data-t="owl" data-m="The owl sharpens wisdom and pattern recognition">
+      <span class="ti"><svg viewBox="0 0 24 24"><path d="M6 13c0-4 3-7 6-7s6 3 6 7v5H6z"/><circle cx="10" cy="12" r="2"/><circle cx="14" cy="12" r="2"/><path d="M11.5 15h1"/><path d="M7 8l-2-2M17 8l2-2"/><path d="M9 20h6"/></svg></span><span class="tn">Owl</span></button>
+    <button type="button" class="trk" aria-pressed="false" onclick="pickT(this)" data-t="clover" data-m="The clover invites luck, openings, and timely support">
+      <span class="ti"><svg viewBox="0 0 24 24"><circle cx="9" cy="9" r="3"/><circle cx="15" cy="9" r="3"/><circle cx="9" cy="15" r="3"/><circle cx="15" cy="15" r="3"/><path d="M12 15v6"/><path d="M12 21c2 0 3 1 3 2" opacity=".4"/></svg></span><span class="tn">Clover</span></button>
+    <button type="button" class="trk" aria-pressed="false" onclick="pickT(this)" data-t="dragonfly" data-m="The dragonfly signals quick perspective shifts and truth">
+      <span class="ti"><svg viewBox="0 0 24 24"><path d="M12 8v11"/><path d="M7 7c2 0 3 2 5 3"/><path d="M17 7c-2 0-3 2-5 3"/><path d="M6 11c2 0 4 1 6 2"/><path d="M18 11c-2 0-4 1-6 2"/><circle cx="12" cy="6" r="1.5" fill="var(--pink)" stroke="none"/></svg></span><span class="tn">Dragonfly</span></button>
+    <button type="button" class="trk" aria-pressed="false" onclick="pickT(this)" data-t="anchor" data-m="The anchor keeps the reading grounded and steady">
+      <span class="ti"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2"/><path d="M12 7v9"/><path d="M8 12h8"/><path d="M5 16c1.5 3 4 5 7 5s5.5-2 7-5"/><path d="M5 16h3v3M19 16h-3v3"/></svg></span><span class="tn">Anchor</span></button>
+    </div>
   </div>
-  <div class="tmsg" id="tmsg">&nbsp;</div>
-  <p class="tmeta">Every charm shifts the mood, imagery, and tone of the message.</p>
+  <div class="tmsg" id="tmsg" aria-hidden="true">&nbsp;</div>
+  <p class="tmeta">Each charm tilts the imagery—follow what pulls you.</p>
+  <p id="flow-err-charm" class="ritual-flow-error" role="status" aria-live="polite" hidden></p>
+    </div>
+  </div>
 </section>
 
 <!-- STEP 3: SPREAD -->
-<section class="spsec sr" id="s3">
-  <p class="tag">Step 3</p>
-  <h2>Select your spread</h2>
-  <p class="spsub">Choose 3, 5, or 7 cards depending on how much depth you want.</p>
-  <div class="sps">
-    <div class="sp on" data-s="3" onclick="setSp(this)"><span class="si">☽ ☾</span><span class="sn">3 Cards</span><span class="sd">Past · Present · Future</span></div>
-    <div class="sp" data-s="5" onclick="setSp(this)"><span class="si">✦ ✦ ✦</span><span class="sn">5 Cards</span><span class="sd">Cross Spread</span></div>
-    <div class="sp" data-s="7" onclick="setSp(this)"><span class="si">☆ ☆ ☆ ☆</span><span class="sn">7 Cards</span><span class="sd">Horseshoe</span></div>
+<section class="spsec sr ritual-step" id="s3" aria-labelledby="s3-title">
+  <div class="ritual-panel ritual-panel--spread">
+    <header class="ritual-panel-head">
+      <p class="tag">Step 3</p>
+      <h2 id="s3-title">Choose your spread</h2>
+      <p class="spsub">More cards, more nuance—only the depth you want.</p>
+    </header>
+    <p id="flow-err-spread" class="ritual-flow-error" role="status" aria-live="polite" hidden></p>
+    <div class="sps" id="spread-pick" role="radiogroup" aria-labelledby="s3-title">
+      <button type="button" class="sp on" role="radio" aria-checked="true" data-s="3" onclick="setSp(this)"><span class="sp-glyph" aria-hidden="true">☽ ☾</span><span class="sn">3 cards</span><span class="sd">Past · present · future</span></button>
+      <button type="button" class="sp" role="radio" aria-checked="false" data-s="5" onclick="setSp(this)"><span class="sp-glyph" aria-hidden="true">✦ ✦ ✦</span><span class="sn">5 cards</span><span class="sd">Crossroads · choice &amp; path</span></button>
+      <button type="button" class="sp" role="radio" aria-checked="false" data-s="7" onclick="setSp(this)"><span class="sp-glyph" aria-hidden="true">☆ ☆ ☆ ☆</span><span class="sn">7 cards</span><span class="sd">Lantern · full arc</span></button>
+    </div>
+    <details class="ext ritual-skymap">
+      <summary class="ritual-skymap-summary"><span class="ritual-skymap-title">Moon &amp; sign <em class="ritual-skymap-optional">optional</em></span><span class="ritual-skymap-hint">Borrow a tone from the sky</span><span class="ar" aria-hidden="true">▼</span></summary>
+      <div class="ext-in">
+        <div class="fi"><label for="moon">Moon phase</label><select id="moon"><option value="">— None —</option><option>🌑 New Moon</option><option>🌒 Waxing Crescent</option><option>🌓 First Quarter</option><option>🌔 Waxing Gibbous</option><option>🌕 Full Moon</option><option>🌖 Waning Gibbous</option><option>🌗 Third Quarter</option><option>🌘 Waning Crescent</option></select></div>
+        <div class="fi"><label for="zod">Zodiac sign</label><select id="zod"><option value="">— None —</option><option>♈ Aries</option><option>♉ Taurus</option><option>♊ Gemini</option><option>♋ Cancer</option><option>♌ Leo</option><option>♍ Virgo</option><option>♎ Libra</option><option>♏ Scorpio</option><option>♐ Sagittarius</option><option>♑ Capricorn</option><option>♒ Aquarius</option><option>♓ Pisces</option></select></div>
+      </div>
+    </details>
+    <div class="ritual-reveal-cta">
+      <p class="ritual-reveal-prep" id="reveal-prep">When it feels right, call the cards forward.</p>
+      <button type="button" class="rbtn" id="rbtn" onclick="doReveal()" aria-describedby="reveal-prep">✨ Call the cards</button>
+    </div>
   </div>
-  <details class="ext"><summary>add moon or zodiac (optional)<span class="ar">▼</span></summary><div class="ext-in"><div class="fi"><label>Moon Phase</label><select id="moon"><option value="">—</option><option>🌑 New Moon</option><option>🌒 Waxing Crescent</option><option>🌓 First Quarter</option><option>🌔 Waxing Gibbous</option><option>🌕 Full Moon</option><option>🌖 Waning Gibbous</option><option>🌗 Third Quarter</option><option>🌘 Waning Crescent</option></select></div><div class="fi"><label>Zodiac Sign</label><select id="zod"><option value="">—</option><option>♈ Aries</option><option>♉ Taurus</option><option>♊ Gemini</option><option>♋ Cancer</option><option>♌ Leo</option><option>♍ Virgo</option><option>♎ Libra</option><option>♏ Scorpio</option><option>♐ Sagittarius</option><option>♑ Capricorn</option><option>♒ Aquarius</option><option>♓ Pisces</option></select></div></div></details>
-  <button class="rbtn" id="rbtn" onclick="doReveal()">✨ Reveal the Cards</button>
-  <div class="shuf" id="shuf"><div class="shuf-c"><div class="sc"></div><div class="sc"></div><div class="sc"></div><div class="sc"></div><div class="sc"></div></div><p class="shuf-t" id="shtxt">Shuffling your deck…</p></div>
-  <div class="carea" id="carea"><p class="finf">Tap each card when you are ready to see it.</p><p class="fcnt" id="fcnt"></p><div class="crow" id="crow"></div></div>
-  <div class="prev" id="prev"><h3>Your reading preview is ready</h3><p class="psu" id="psu"></p><ul class="pks"><li>Every card in the full spread</li><li>Expanded interpretation for the overall pattern</li><li>Closing guidance for what to do next</li></ul><div class="pv-actions"><button class="ppb" id="ppb" onclick="pay()">Unlock Full Reading — $5</button><button class="ppb alt" id="pvb" onclick="previewUnlock()">Preview First</button></div><div class="demo" id="demo"></div><div class="pnt">Secure PayPal checkout</div><div class="vlk" onclick="vfy()">Already paid? Restore your reading</div></div>
-  <div class="frd" id="frd"><div class="rw" id="rc"></div><div class="racts"><button class="ab p" onclick="cpR(this)">Copy Reading</button><button class="ab g" onclick="redo()">Start Over</button></div></div>
-</section>
+  <div class="shuf" id="shuf" aria-live="polite">
+    <div class="shuf-veil" aria-hidden="true"></div>
+    <div class="shuf-stage">
+      <div class="shuf-orbit" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="shuf-c">
+        <div class="sc"></div><div class="sc"></div><div class="sc"></div><div class="sc"></div><div class="sc"></div><div class="sc"></div><div class="sc"></div>
+      </div>
+      <div class="shuf-mist" aria-hidden="true"></div>
+    </div>
+    <p class="shuf-t" id="shtxt">Shuffling the deck…</p>
+  </div>
+  <div class="carea ritual-cardmat" id="carea" role="region" aria-labelledby="finf" aria-describedby="spread-sr-context"><div class="ritual-cardmat-inner"><p class="finf" id="finf">Turn each card in your own time—the spread opens at its pace.</p><p class="fcnt" id="fcnt" aria-live="polite"></p><p id="spread-sr-context" class="sr-only"></p><div class="crow" id="crow" role="group"></div></div></div>
+  <div class="prev" id="prev" role="region" aria-labelledby="prev-panel-title" aria-describedby="prev-panel-desc">
+    <div class="prev-glow" aria-hidden="true"></div>
+    <div class="prev-card">
+      <header class="prev-head">
+        <p class="prev-eyebrow">Almost there</p>
+        <h3 class="prev-title" id="prev-panel-title" tabindex="-1">Your preview waits</h3>
+        <p class="prev-lead" id="prev-panel-desc">The spread is open. Beyond this is the full voice of the cards—patient, complete.</p>
+        <div class="prev-glimpse">
+          <span class="prev-glimpse-label">A taste</span>
+          <p class="psu" id="psu"></p>
+        </div>
+      </header>
 
-<!-- ABOUT -->
-<section class="isec sr story">
-  <div class="story-shell">
-    <div class="story-visual">
-      <img src="images/studio-wall.jpg" alt="Heart to Heart 111 studio wall in Coopersburg" onerror="this.parentElement.innerHTML='<div style=padding:2rem;color:#fff8f2;font-family:Fraunces,Georgia,serif;font-size:2rem;line-height:1.05>Art, ritual, and a real studio presence.</div>'">
-      <div class="story-overlay">
-        <strong>Main Street Magic</strong>
-        <p>Tarot, ritual objects, artwork, and quiet conversation.</p>
+      <div class="prev-split">
+        <div class="prev-panel prev-panel--now">
+          <h4 class="prev-panel-head">
+            <span class="prev-panel-title">Right now</span>
+            <span class="prev-tag prev-tag--mist">Included</span>
+          </h4>
+          <ul class="prev-panel-list">
+            <li>Your spread, face-up—every card you turned</li>
+            <li>The lines above: mood and orientation, not the deep read</li>
+          </ul>
+        </div>
+        <div class="prev-panel prev-panel--unlock">
+          <h4 class="prev-panel-head">
+            <span class="prev-panel-title">The full read</span>
+            <span class="prev-tag prev-tag--gold">$5 once</span>
+          </h4>
+          <ul class="prev-panel-list">
+            <li>Every position fully spoken—written for this draw</li>
+            <li>How the cards speak together—the pattern as a whole</li>
+            <li>Closing guidance and a next step to carry</li>
+            <li>Restore anytime with your PayPal transaction ID</li>
+          </ul>
+        </div>
       </div>
-    </div>
-    <div class="story-copy">
-      <p class="tag">About the Studio</p>
-      <h2>The room behind the reading</h2>
-      <p>Heart to Heart 111 is a Main Street studio in Coopersburg where tarot, spiritual sessions, ritual tools, art, and small treasures live together.</p>
-      <p>The online reading keeps that same feeling: intimate, unhurried, and a little ceremonial.</p>
-      <div class="principles">
-        <div class="principle"><strong>Unrushed</strong><p>Sessions are meant to feel personal, not transactional.</p></div>
-        <div class="principle"><strong>In Person or Online</strong><p>Visit the studio or sit with the cards from home.</p></div>
-        <div class="principle"><strong>Ritual Details</strong><p>Charms, spreads, and symbols shape the tone of each reading.</p></div>
-        <div class="principle"><strong>Stay in Touch</strong><p>Facebook is the best place for hours, openings, and seasonal events.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- BUSINESS INFO -->
-<section class="isec sr offerings">
-  <p class="tag">In-Person Sessions</p>
-  <h2>Readings, ritual work, and beautiful things</h2>
-  <div class="offer-grid">
-    <article class="offer-card feature">
-      <div>
-        <strong class="offer-meta">By Appointment</strong>
-        <h3>Appointments in the Main Street studio</h3>
-        <p>Psychic and medium readings, tarot, Reiki, chakra sessions, pendulum work, and other one-to-one offerings.</p>
+      <div class="prev-offering">
+        <div class="prev-offering-card">
+          <p class="prev-offering-verse">The whole story—for this spread alone—is a single <strong>$5</strong> offering. No subscription. No account here.</p>
+          <div class="prev-price-display">
+            <span class="prev-price-num" aria-hidden="true">5</span>
+            <div class="prev-price-copy">
+              <span class="prev-price-currency">US$</span>
+              <span class="prev-price-once">one time</span>
+            </div>
+          </div>
+          <div class="pv-actions">
+            <button type="button" class="ppb ppb-unlock" id="ppb" onclick="pay()">
+              <span class="ppb-line1">Open the full reading</span>
+              <span class="ppb-line2">$5 · once · yours to restore</span>
+            </button>
+            <button type="button" class="ppb alt ppb-keep" id="pvb" onclick="previewUnlock()">See a sample first</button>
+          </div>
+        </div>
       </div>
-      <div>
-        <strong class="offer-meta">Some virtual sessions available</strong>
-      </div>
-    </article>
-    <article class="offer-card">
-      <div class="offer-media"><img src="images/trinket-chest.jpg" alt="Handcrafted trinket chest used in Heart to Heart 111 readings"></div>
-      <div class="offer-body">
-        <h3>Psychic, Medium, and Tarot Readings</h3>
-        <p>Private one-to-one sessions in the Coopersburg studio.</p>
-        <span class="offer-meta">Kristy: (610) 762-8341</span>
-      </div>
-    </article>
-    <article class="offer-card">
-      <div class="offer-media"><img src="images/paint-wine-clean.svg" alt="Paint and wine party at Heart to Heart 111"></div>
-      <div class="offer-body">
-        <h3>Reiki, Chakra, and Energy Work</h3>
-        <p>Reiki, chakra, and energy sessions for rest, reflection, and spiritual support.</p>
-        <span class="offer-meta">By appointment</span>
-      </div>
-    </article>
-    <article class="offer-card">
-      <div class="offer-media"><img src="images/gallery-gifts-clean.svg" alt="Art gallery and gift shop at Heart to Heart 111"></div>
-      <div class="offer-body">
-        <h3>Gift Shop, Art, and Studio Treasures</h3>
-        <p>Crystals, artwork, handmade gifts, and the little things that make a room feel alive.</p>
-        <span class="offer-meta">111 S Main St, Coopersburg</span>
-      </div>
-    </article>
-  </div>
-</section>
 
-<!-- REVIEWS -->
-<section class="isec sr testimonials">
-  <div class="testimonial-shell">
-    <div class="testimonial-lead">
-      <p class="tag">Studio Reviews</p>
-      <h2>What visitors mention most</h2>
-      <blockquote>Kind, down to earth, beautiful, and worth returning to.</blockquote>
-      <p class="testimonial-note">Summarized from public Google reviews for the Main Street studio in Coopersburg.</p>
-      <p class="testimonial-note">These notes describe the shop and in-person atmosphere, not the online reading flow.</p>
-      <p class="testimonial-note"><a href="https://www.chamberofcommerce.com/business-directory/pennsylvania/coopersburg/psychic/2015206554-heart-to-heart" target="_blank" rel="noopener">Read all posted reviews →</a></p>
-    </div>
-    <div class="revs">
-      <div class="rev"><div class="rev-s">★★★★★</div><p>Down to earth and welcoming.</p><div class="rev-n">Seen in public Google reviews</div></div>
-      <div class="rev"><div class="rev-s">★★★★★</div><p>A beautiful little shop.</p><div class="rev-n">Seen in public Google reviews</div></div>
-      <div class="rev"><div class="rev-s">★★★★★</div><p>Kind and respectful.</p><div class="rev-n">Seen in public Google reviews</div></div>
-      <div class="rev"><div class="rev-s">★★★★★</div><p>Patient and encouraging.</p><div class="rev-n">Seen in public Google reviews</div></div>
+      <section class="prev-trust-panel" aria-label="How a paid reading works">
+        <h4 class="prev-trust-heading">When you are ready to pay</h4>
+        <ol class="prev-trust-steps">
+          <li>Tap the button—PayPal opens safely. Guest checkout is welcome; you never need an account on this site.</li>
+          <li>When you are done, come back to <strong>this tab</strong>. The full reading appears here: every position, the weave between them, and closing words.</li>
+          <li>Keep your PayPal confirmation. The transaction ID is how you <a href="restore.html">restore this same reading</a> later, on any device.</li>
+        </ol>
+        <ul class="prev-trust-chips" aria-label="At a glance">
+          <li>Preview first</li>
+          <li>$5 once · no subscription</li>
+          <li>Pay with PayPal</li>
+        </ul>
+      </section>
+
+      <div class="demo" id="demo"></div>
+
+      <div class="prev-pay-foot">
+        <p class="pnt" id="pnt">Pay through PayPal · guest checkout welcome · no account here</p>
+        <p class="pnt-static">After paying, return to this page—the reading opens here. Your receipt holds the ID to restore.</p>
+      </div>
+
+      <details class="prev-soft-faq">
+        <summary>Questions, softly</summary>
+        <div class="prev-soft-faq-body">
+          <p><strong>What do I receive?</strong> The full written reading for this draw: each card in place, how they work as one piece, and parting guidance.</p>
+          <p><strong>After PayPal?</strong> Close their window and come back here. If nothing moves, wait a beat or refresh once—this session keeps your spread.</p>
+          <p><strong>Again later?</strong> Yes. <a href="restore.html">Restore</a> with the transaction ID on your PayPal receipt—that matches you to what you bought.</p>
+          <p><strong>Professional advice?</strong> No—for reflection and spiritual exploration only, not medical, legal, or financial decisions. Our <a href="terms.html#disclaimer">disclaimer</a> has the full language.</p>
+          <p class="prev-soft-faq-more"><a href="faq.html">Full FAQ →</a></p>
+        </div>
+      </details>
+
+      <p class="prev-restore-note">Paid already? Tap below and keep your PayPal transaction ID handy.</p>
+      <button type="button" class="vlk vlk-btn" onclick="vfy()">Verify payment · restore reading</button>
     </div>
   </div>
+  <div class="frd" id="frd" role="region" aria-label="Your full reading" aria-describedby="reading-spread-rel"><p id="reading-spread-rel" class="sr-only">Written interpretation for the tarot spread you turned above.</p><div class="rw" id="rc"></div><div class="racts"><button type="button" class="ab p" onclick="cpR(this)">Copy reading</button><button type="button" class="ab g" onclick="redo()">Begin again</button></div></div>
 </section>
+</div>
+
+<!-- In-person studio (supplementary; below online funnel) -->
+<div class="studio-below" id="visit-studio" aria-label="Visit the Coopersburg studio">
+  <div class="studio-divider" aria-hidden="true">
+    <span class="studio-divider-line"></span>
+    <span class="studio-divider-mark">✦</span>
+    <span class="studio-divider-line"></span>
+  </div>
+  <p class="studio-divider-caption">In person, on Main Street</p>
+
+  <section class="isec sr studio-inperson">
+    <header class="studio-inperson-head">
+      <p class="tag studio-inperson-tag">The studio</p>
+      <h2 class="studio-inperson-title">Visit Coopersburg</h2>
+      <p class="studio-inperson-lede">The online reading is complete on its own. When you want walls, shelves, and voice in the same room, Heart to Heart 111 is on Main Street.</p>
+    </header>
+
+    <div class="studio-spotlight">
+      <div class="studio-spotlight-visual">
+        <img src="images/studio-wall.jpg" alt="Heart to Heart 111 studio wall in Coopersburg" onerror="this.parentElement.innerHTML='<div style=padding:2rem;color:#fff8f2;font-family:Fraunces,Georgia,serif;font-size:2rem;line-height:1.05>Art, ritual, and a real studio presence.</div>'">
+        <div class="studio-spotlight-cap">Main Street · Coopersburg</div>
+      </div>
+      <p class="studio-spotlight-note">Unhurried visits—personal, never rushed.</p>
+    </div>
+
+    <div class="studio-cards" role="list">
+      <article class="studio-card" role="listitem">
+        <div class="studio-card-media">
+          <img src="images/trinket-chest.jpg" alt="Handcrafted trinket chest used in Heart to Heart 111 readings">
+        </div>
+        <div class="studio-card-body">
+          <h3 class="studio-card-title">Tarot, psychic &amp; medium</h3>
+          <p class="studio-card-text">Private sessions: tarot, psychic and medium readings, pendulum, and one-to-one spiritual work.</p>
+          <p class="studio-card-meta">By appointment · Kristy: <a href="tel:6107628341">(610) 762-8341</a></p>
+        </div>
+      </article>
+      <article class="studio-card" role="listitem">
+        <div class="studio-card-media">
+          <img src="images/paint-wine-clean.svg" alt="Paint and wine party at Heart to Heart 111">
+        </div>
+        <div class="studio-card-body">
+          <h3 class="studio-card-title">Reiki &amp; energy work</h3>
+          <p class="studio-card-text">Rest, alignment, and gentle spiritual support—some sessions available virtually.</p>
+          <p class="studio-card-meta">By appointment · some virtual sessions available</p>
+        </div>
+      </article>
+      <article class="studio-card" role="listitem">
+        <div class="studio-card-media">
+          <img src="images/gallery-gifts-clean.svg" alt="Art gallery and gift shop at Heart to Heart 111">
+        </div>
+        <div class="studio-card-body">
+          <h3 class="studio-card-title">Gifts, art &amp; crystals</h3>
+          <p class="studio-card-text">Crystals, art, handmade gifts—pieces that warm a room.</p>
+          <p class="studio-card-meta">111 S Main St, Coopersburg</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="studio-strip">
+      <a class="studio-strip-a" href="https://www.facebook.com/heart.to.heart111" target="_blank" rel="noopener">Facebook · hours &amp; news</a>
+      <span class="studio-strip-sep" aria-hidden="true">·</span>
+      <a class="studio-strip-a" href="contact.html">Contact</a>
+      <span class="studio-strip-sep" aria-hidden="true">·</span>
+      <a class="studio-strip-a" href="about.html">About</a>
+    </div>
+  </section>
+
+  <section class="isec sr testimonials studio-reviews-below">
+    <div class="testimonial-shell testimonial-shell--studio">
+      <div class="testimonial-lead">
+        <p class="tag">Studio reviews</p>
+        <h2>What Main Street visitors say</h2>
+        <blockquote>Kind, down to earth, beautiful—worth returning to.</blockquote>
+        <p class="testimonial-note">Public reviews of the shop, not the online reading. <a href="https://www.chamberofcommerce.com/business-directory/pennsylvania/coopersburg/psychic/2015206554-heart-to-heart" target="_blank" rel="noopener">Read reviews →</a></p>
+      </div>
+      <div class="revs">
+        <div class="rev"><div class="rev-s">★★★★★</div><p>Down to earth and welcoming.</p><div class="rev-n">Google</div></div>
+        <div class="rev"><div class="rev-s">★★★★★</div><p>A beautiful little shop.</p><div class="rev-n">Google</div></div>
+        <div class="rev"><div class="rev-s">★★★★★</div><p>Kind and respectful.</p><div class="rev-n">Google</div></div>
+        <div class="rev"><div class="rev-s">★★★★★</div><p>Patient and encouraging.</p><div class="rev-n">Google</div></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+</main>
 
 <footer>
   <div class="ftb">Heart to Heart 111</div>
-  <div class="ftt">Online Readings, Spiritual Services & Gift Shop</div>
-  <div class="fso"><a href="https://www.facebook.com/heart.to.heart111" target="_blank" rel="noopener">Follow on Facebook →</a></div>
+  <div class="ftt">Online readings · spiritual services · gifts</div>
+  <div class="fso"><a href="https://www.facebook.com/heart.to.heart111" target="_blank" rel="noopener">Facebook →</a></div>
   <div class="fco">111 S Main St, Coopersburg, Pennsylvania · Kristy: <a href="tel:6107628341">(610) 762-8341</a></div>
-  <div class="fln"><a href="restore.html">Restore Reading</a><a href="about.html">About</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a><a href="terms.html#terms">Terms</a><a href="terms.html#privacy">Privacy</a><a href="terms.html#disclaimer">Disclaimer</a></div>
+  <div class="fln"><a href="restore.html">Restore</a><a href="about.html">About</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a><a href="terms.html#terms">Terms</a><a href="terms.html#privacy">Privacy</a><a href="terms.html#disclaimer">Disclaimer</a></div>
+  <p class="footer-legal-hint">Readings are for reflection, not professional advice · <a href="terms.html#disclaimer">Disclaimer</a> · <a href="terms.html#terms">Terms</a> (18+, all sales final)</p>
   <p class="fdi">Readings and spiritual services are for entertainment, personal reflection, and spiritual exploration only. Not a substitute for medical, legal, financial, or mental health advice. Must be 18+. All sales are final. © 2026 Heart to Heart 111.</p>
 </footer>
+<a href="#s1" class="mobile-soft-cta" id="mobileSoftCta" aria-label="Begin reading" aria-hidden="true" tabindex="-1">Begin reading</a>
 </div>
 
 <script>
 // ambient tarot symbols
-!function(){const b=document.getElementById('hbg'),h=['✦','✧','☽','☾','✶','✷','✹'],c=['#5d2f3b','#8a4e57','#c4a06a','#b57351','#9b7d67'];for(let i=0;i<18;i++){const d=document.createElement('div');d.className='fh';d.textContent=h[Math.random()*h.length|0];d.style.left=(4+Math.random()*92)+'%';d.style.color=c[Math.random()*c.length|0];d.style.fontSize=(10+Math.random()*18)+'px';d.style.setProperty('--d',(11+Math.random()*12)+'s');d.style.setProperty('--dl',(Math.random()*10)+'s');d.style.setProperty('--p',(0.04+Math.random()*0.06).toFixed(2));d.style.setProperty('--r',(Math.random()*50-25)+'deg');b.appendChild(d)}}();
+!function(){const b=document.getElementById('hbg'),h=['✦','✧','☽','☾','✶','✷','✹'],c=['#5d2f3b','#8a4e57','#c4a06a','#b57351','#9b7d67'];for(let i=0;i<14;i++){const d=document.createElement('div');d.className='fh';d.textContent=h[Math.random()*h.length|0];d.style.left=(4+Math.random()*92)+'%';d.style.color=c[Math.random()*c.length|0];d.style.fontSize=(10+Math.random()*16)+'px';d.style.setProperty('--d',(11+Math.random()*12)+'s');d.style.setProperty('--dl',(Math.random()*10)+'s');d.style.setProperty('--p',(0.028+Math.random()*0.04).toFixed(3));d.style.setProperty('--r',(Math.random()*50-25)+'deg');b.appendChild(d)}}();
 
 // scroll reveals
 const sro=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('v')}),{threshold:.08});
 document.querySelectorAll('.sr').forEach(el=>sro.observe(el));
 
+document.querySelectorAll('.tnav-links a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',()=>{
+    const id=(a.getAttribute('href')||'').replace('#','');
+    const el=id?document.getElementById(id):null;
+    if(el&&el.classList.contains('sr'))el.classList.add('v');
+  });
+});
+
+document.addEventListener('click',e=>{
+  const a=e.target.closest&&e.target.closest('a[href]');
+  if(!a)return;
+  const href=a.getAttribute('href')||'';
+  if(href.indexOf('restore.html')===-1)return;
+  let placement='other';
+  if(a.closest('.hero'))placement='hero';
+  else if(a.closest('.tnav'))placement='nav';
+  else if(a.closest('footer'))placement='footer';
+  else if(a.closest('#prev'))placement='paywall';
+  if(typeof h2hTrack==='function')h2hTrack('restore_cta_click',{placement});
+},true);
+
+document.addEventListener('DOMContentLoaded',()=>{
+  const qi=document.getElementById('qinput');
+  if(qi){
+    const logQ=()=>{
+      if(h2hQuestionLogged)return;
+      if(!qi.value||!qi.value.trim())return;
+      h2hQuestionLogged=true;
+      if(typeof window.h2hTrack==='function')window.h2hTrack('question_entered',{length:qi.value.trim().length});
+    };
+    qi.addEventListener('blur',logQ);
+    qi.addEventListener('input',()=>{
+      if(qi.value&&qi.value.trim().length>=4)logQ();
+    });
+  }
+  const moonEl=document.getElementById('moon');
+  if(moonEl){
+    moonEl.addEventListener('change',()=>{
+      if(!moonEl.value||h2hMoonOptLogged)return;
+      h2hMoonOptLogged=true;
+      if(typeof h2hTrack==='function')h2hTrack('moon_option_used');
+    });
+  }
+  const zodEl=document.getElementById('zod');
+  if(zodEl){
+    zodEl.addEventListener('change',()=>{
+      if(!zodEl.value||h2hZodiacOptLogged)return;
+      h2hZodiacOptLogged=true;
+      if(typeof h2hTrack==='function')h2hTrack('zodiac_option_used');
+    });
+  }
+});
+
+// subtle mobile CTA: appears after leaving the hero, hides during paywall / full reading / near footer
+(function(){
+  const cta=document.getElementById('mobileSoftCta');
+  const hero=document.querySelector('.hero');
+  if(!cta||!hero)return;
+  let ticking=false;
+  const mq=window.matchMedia('(max-width:720px)');
+  function update(){
+    ticking=false;
+    if(!mq.matches){
+      cta.classList.remove('is-visible');
+      cta.setAttribute('aria-hidden','true');
+      return;
+    }
+    const y=window.scrollY;
+    const threshold=Math.min(hero.offsetHeight*.32,220);
+    const nearBottom=y+window.innerHeight>document.documentElement.scrollHeight-140;
+    const prevOn=document.getElementById('prev')?.classList.contains('on');
+    const fullOn=document.getElementById('frd')?.classList.contains('on');
+    const gate=document.getElementById('pw-gate');
+    const gateOpen=gate&&gate.style.display!=='none'&&getComputedStyle(gate).display!=='none';
+    const show=y>threshold&&!nearBottom&&!prevOn&&!fullOn&&!gateOpen;
+    cta.classList.toggle('is-visible',show);
+    cta.setAttribute('aria-hidden',show?'false':'true');
+    cta.setAttribute('tabindex',show?'0':'-1');
+  }
+  function onScroll(){if(!ticking){requestAnimationFrame(()=>{update();ticking=true});}}
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',update);
+  if(mq.addEventListener)mq.addEventListener('change',update);
+  else if(mq.addListener)mq.addListener(update);
+  cta.addEventListener('click',e=>{
+    e.preventDefault();
+    if(typeof h2hTrack==='function')h2hTrack('hero_cta_click',{entry:'mobile_sticky'});
+    if(typeof jumpToQuestion==='function')jumpToQuestion();
+  });
+  update();
+})();
+
 // trinket stagger delays
 document.querySelectorAll('.trk').forEach((t,i)=>{t.style.transitionDelay=(.04*i)+'s'});
 
+document.getElementById('chest')?.addEventListener('keydown',e=>{
+  if(e.key==='Enter'||e.key===' '){e.preventDefault();toggleChest();}
+});
+
 // state
 let cat=null,chosenT=null,spN=3,drawn=[],flipped=0,chestIsOpen=false,readingSalt='';
+let h2hQuestionLogged=false,h2hMoonOptLogged=false,h2hZodiacOptLogged=false;
 const DRAW_VARIETY_CFG={
   key:'h2h_recent_draw_signatures_v1',
   limit:20,
@@ -4448,25 +6787,170 @@ function setPaymentNote(text){
   const n=document.querySelector('#prev .pnt');
   if(n&&text)n.textContent=text;
 }
+function setPpbLabel(line1,line2){
+  const b=document.getElementById('ppb');
+  if(!b)return;
+  const l1=b.querySelector('.ppb-line1');
+  const l2=b.querySelector('.ppb-line2');
+  if(l1){
+    l1.textContent=line1;
+    if(l2){
+      if(line2){
+        l2.textContent=line2;
+        l2.hidden=false;
+      }else{
+        l2.textContent='';
+        l2.hidden=true;
+      }
+    }
+  }else{
+    b.textContent=line2?`${line1} — ${line2}`:line1;
+  }
+}
 
 function jumpToQuestion(){
   const section=document.getElementById('s1');
+  if(!section)return;
   section.classList.add('v');
-  section.scrollIntoView({behavior:'smooth',block:'start'});
+  const reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  section.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+}
+
+function clearFlowErrEl(id){
+  const el=document.getElementById(id);
+  if(!el)return;
+  el.textContent='';
+  el.setAttribute('hidden','');
+}
+function clearAllFlowStepErrors(){
+  ['flow-err-cat','flow-err-charm','flow-err-spread'].forEach(clearFlowErrEl);
+  document.getElementById('ritual-cat-group')?.classList.remove('flow-step-invalid');
+  document.getElementById('ritual-cat-group')?.removeAttribute('aria-invalid');
+  document.getElementById('ritual-chest-block')?.classList.remove('charm-step-invalid');
+  const chest=document.getElementById('chest');
+  if(chest){
+    chest.removeAttribute('aria-invalid');
+    chest.removeAttribute('aria-errormessage');
+  }
+  document.getElementById('spread-pick')?.classList.remove('flow-step-invalid');
+  document.querySelectorAll('.qcat,.sp').forEach(b=>{
+    b.removeAttribute('aria-invalid');
+    b.removeAttribute('aria-errormessage');
+  });
+}
+function clearCatFlowErrorOnly(){
+  clearFlowErrEl('flow-err-cat');
+  document.getElementById('ritual-cat-group')?.classList.remove('flow-step-invalid');
+  document.getElementById('ritual-cat-group')?.removeAttribute('aria-invalid');
+  document.querySelectorAll('.qcat').forEach(b=>{
+    b.removeAttribute('aria-invalid');
+    b.removeAttribute('aria-errormessage');
+  });
+}
+function clearCharmFlowErrorOnly(){
+  clearFlowErrEl('flow-err-charm');
+  document.getElementById('ritual-chest-block')?.classList.remove('charm-step-invalid');
+  const chest=document.getElementById('chest');
+  if(chest){
+    chest.removeAttribute('aria-invalid');
+    chest.removeAttribute('aria-errormessage');
+  }
+}
+function clearSpreadFlowErrorOnly(){
+  clearFlowErrEl('flow-err-spread');
+  document.getElementById('spread-pick')?.classList.remove('flow-step-invalid');
+  document.querySelectorAll('.sp').forEach(b=>{
+    b.removeAttribute('aria-invalid');
+    b.removeAttribute('aria-errormessage');
+  });
+}
+function focusCatStep(){
+  const s1=document.getElementById('s1');
+  if(!s1)return;
+  s1.classList.add('v');
+  const reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  s1.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+  requestAnimationFrame(()=>document.querySelector('#qcats .qcat')?.focus());
+}
+function focusCharmStep(){
+  const s2=document.getElementById('s2');
+  if(!s2)return;
+  s2.classList.add('v');
+  const reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  s2.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+  requestAnimationFrame(()=>{
+    const cloud=document.getElementById('tcloud');
+    if(cloud&&cloud.classList.contains('show')){
+      document.querySelector('#tcloud .trk')?.focus();
+    }else{
+      document.getElementById('chest')?.focus();
+    }
+  });
+}
+function focusSpreadStep(){
+  const s3=document.getElementById('s3');
+  if(!s3)return;
+  s3.classList.add('v');
+  const reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  s3.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+  requestAnimationFrame(()=>document.querySelector('#spread-pick .sp')?.focus());
+}
+function showFlowStepError(kind,message){
+  clearAllFlowStepErrors();
+  const ids={cat:'flow-err-cat',charm:'flow-err-charm',spread:'flow-err-spread'};
+  const errId=ids[kind];
+  const el=errId?document.getElementById(errId):null;
+  if(el){
+    el.textContent=message;
+    el.removeAttribute('hidden');
+  }
+  if(kind==='cat'){
+    document.getElementById('ritual-cat-group')?.classList.add('flow-step-invalid');
+    document.getElementById('ritual-cat-group')?.setAttribute('aria-invalid','true');
+    document.querySelectorAll('.qcat').forEach(b=>{
+      b.setAttribute('aria-invalid','true');
+      b.setAttribute('aria-errormessage','flow-err-cat');
+    });
+    focusCatStep();
+  }else if(kind==='charm'){
+    document.getElementById('ritual-chest-block')?.classList.add('charm-step-invalid');
+    const ch=document.getElementById('chest');
+    if(ch){
+      ch.setAttribute('aria-invalid','true');
+      ch.setAttribute('aria-errormessage','flow-err-charm');
+    }
+    focusCharmStep();
+  }else if(kind==='spread'){
+    document.getElementById('spread-pick')?.classList.add('flow-step-invalid');
+    document.querySelectorAll('.sp').forEach(b=>{
+      b.setAttribute('aria-invalid','true');
+      b.setAttribute('aria-errormessage','flow-err-spread');
+    });
+    focusSpreadStep();
+  }
 }
 
 function syncPresetCards(){
   document.querySelectorAll('.path-card').forEach(card=>{
-    card.classList.toggle('on',card.dataset.cat===cat);
+    const on=card.dataset.cat===cat;
+    card.classList.toggle('on',on);
+    card.setAttribute('aria-pressed',on?'true':'false');
   });
 }
 
 function chooseCategory(category){
   const target=document.querySelector(`.qcat[data-c="${category}"]`);
   if(!target)return false;
-  document.querySelectorAll('.qcat').forEach(c=>c.classList.toggle('on',c===target));
+  const prevCat=cat;
+  document.querySelectorAll('.qcat').forEach(c=>{
+    const on=c===target;
+    c.classList.toggle('on',on);
+    c.setAttribute('aria-pressed',on?'true':'false');
+  });
   cat=category;
+  if(prevCat!==category&&typeof h2hTrack==='function')h2hTrack('category_selected',{category:String(category)});
   syncPresetCards();
+  clearCatFlowErrorOnly();
   return true;
 }
 
@@ -4541,14 +7025,18 @@ async function checkPaymentStatus(showPendingNotice){
     }
     stopPaymentPolling();
     if(txid)activeTxId=txid;
-    setPaymentNote('Payment confirmed. Unlocking your full reading...');
-    unlock(activeTxId);
+    if(typeof h2hTrack==='function')h2hTrack('paypal_checkout_success');
+    setPaymentNote('Payment received—opening your full reading…');
+    unlock(activeTxId,'paid');
     clearCheckoutSnapshot(activeCheckoutSessionId);
     const cleanUrl=window.location.pathname+window.location.hash;
     window.history.replaceState({},'',cleanUrl);
     return true;
   }
-  if(showPendingNotice)alert('Payment is still pending. Complete PayPal checkout, then tap again.');
+  if(showPendingNotice){
+    announce('Payment still pending. Finish in PayPal, then tap verify again.');
+    alert('Still processing—finish in PayPal, then tap verify again.');
+  }
   return false;
 }
 
@@ -4567,14 +7055,18 @@ async function resumeCheckoutFromUrl(){
     }
   }
   if(activeTxId&&hydrated){
-    setPaymentNote('Payment confirmed. Unlocking your full reading...');
-    unlock(activeTxId);
+    if(typeof h2hTrack==='function')h2hTrack('paypal_checkout_success');
+    setPaymentNote('Payment received—opening your full reading…');
+    unlock(activeTxId,'restored');
     const cleanUrl=window.location.pathname+window.location.hash;
     window.history.replaceState({},'',cleanUrl);
     return;
   }
   if(activeCheckoutSessionId){
-    try{await checkPaymentStatus(false)}catch(e){console.warn('Payment status check failed:',e.message)}
+    try{await checkPaymentStatus(false)}catch(e){
+      console.warn('Payment status check failed:',e.message);
+      announce('Could not restore this session from the link. Try Restore with your PayPal transaction ID.','assertive');
+    }
   }
 }
 
@@ -4589,29 +7081,57 @@ function setCat(el){
 function toggleChest(){chestIsOpen?closeChest():openChest()}
 function openChest(){
   chestIsOpen=true;
-  const c=document.getElementById('chest');c.classList.add('open');
+  const arena=document.getElementById('charm-arena');
+  if(arena)arena.removeAttribute('inert');
+  const c=document.getElementById('chest');c.classList.add('open');c.setAttribute('aria-expanded','true');
   // sparkles
   for(let i=0;i<14;i++){const s=document.createElement('div');s.className='spk';const cols=['#e8598b','#fdcb9e','#87ceeb','#f5a0ba','#c3aed6','#ff7675','#D4A843'];s.style.background=cols[Math.random()*cols.length|0];s.style.left=(40+Math.random()*20)+'%';s.style.top='50%';s.style.setProperty('--sx',(Math.random()*100-50)+'px');s.style.setProperty('--sy',(-20-Math.random()*70)+'px');s.style.animation='spkUp .55s ease-out forwards';s.style.animationDelay=(i*.03)+'s';c.appendChild(s);setTimeout(()=>s.remove(),700)}
   document.getElementById('chtap').style.opacity='0';
-  setTimeout(()=>document.getElementById('tcloud').classList.add('show'),250);
+  setTimeout(()=>{
+    document.getElementById('tcloud').classList.add('show');
+    announce('Charm chest open. Choose a charm.');
+    clearCharmFlowErrorOnly();
+  },250);
 }
 function closeChest(){
   chestIsOpen=false;
   const c=document.getElementById('chest'),cloud=document.getElementById('tcloud'),trks=cloud.querySelectorAll('.trk');
   const cr=c.getBoundingClientRect();
   trks.forEach(t=>{const r=t.getBoundingClientRect();t.style.setProperty('--bx',(cr.left+cr.width/2-r.left-r.width/2)+'px');t.style.setProperty('--by',(cr.top+cr.height*.6-r.top-r.height/2)+'px');t.classList.add('suck')});
-  setTimeout(()=>{cloud.classList.remove('show');trks.forEach(t=>{t.classList.remove('suck');t.style.removeProperty('--bx');t.style.removeProperty('--by')});c.classList.remove('open');document.getElementById('chtap').style.opacity='1'},450);
+  setTimeout(()=>{cloud.classList.remove('show');trks.forEach(t=>{t.classList.remove('suck');t.style.removeProperty('--bx');t.style.removeProperty('--by')});c.classList.remove('open');c.setAttribute('aria-expanded','false');document.getElementById('chtap').style.opacity='1';const arena=document.getElementById('charm-arena');if(arena)arena.setAttribute('inert','')},450);
 }
 function pickT(el){
-  document.querySelectorAll('.trk').forEach(t=>t.classList.remove('pk'));
-  el.classList.add('pk');chosenT=el.dataset.t;
+  const prevT=chosenT;
+  document.querySelectorAll('.trk').forEach(t=>{
+    const on=t===el;
+    t.classList.toggle('pk',on);
+    t.setAttribute('aria-pressed',on?'true':'false');
+  });
+  chosenT=el.dataset.t;
+  if(prevT!==chosenT&&typeof h2hTrack==='function')h2hTrack('charm_selected',{charm:String(chosenT||'')});
   document.getElementById('tmsg').textContent=el.dataset.m;
+  const tnEl=el.querySelector('.tn');
+  const charmLabel=((tnEl&&tnEl.textContent)||chosenT||'Charm').trim();
+  if(prevT!==chosenT)announce(charmLabel+' charm selected.');
+  clearCharmFlowErrorOnly();
   setStep(3);
   setTimeout(()=>{const s=document.getElementById('s3');s.classList.add('v');s.scrollIntoView({behavior:'smooth',block:'start'})},350);
 }
 
 // SPREAD
-function setSp(el){document.querySelectorAll('.sp').forEach(b=>b.classList.remove('on'));el.classList.add('on');spN=+el.dataset.s}
+function setSp(el){
+  const prevN=spN;
+  const nextN=+el.dataset.s;
+  document.querySelectorAll('.sp').forEach(b=>{
+    const on=b===el;
+    b.classList.toggle('on',on);
+    b.setAttribute('aria-checked',on?'true':'false');
+  });
+  spN=nextN;
+  clearSpreadFlowErrorOnly();
+  if(prevN!==nextN&&typeof h2hTrack==='function')h2hTrack('spread_selected',{card_count:nextN});
+  if(prevN!==nextN)announce(nextN+'-card spread selected.');
+}
 
 // TAROT — SVG line art for all 22 Major Arcana
 const CARD_ART={
@@ -4800,6 +7320,14 @@ const POS={
   5:['Present','Challenge','Root Cause','Near Future','Outcome'],
   7:['Past','Present','Hidden Influence','Obstacle','Environment','Advice','Outcome']
 };
+const SPREAD_SR_TITLE={3:'Parlor spread',5:'Crossroads spread',7:'Lantern spread'};
+function buildSpreadSrContext(n){
+  const labels=POS[n]||[];
+  const title=SPREAD_SR_TITLE[n]||`${n}-card spread`;
+  if(!labels.length)return `${title}. ${n} cards.`;
+  const slots=labels.map((lab,i)=>`${i+1}: ${lab}`).join('; ');
+  return `${title} (${n} cards). Positions—${slots}.`;
+}
 
 const SPREAD_GUIDE={
   3:{
@@ -6111,7 +8639,7 @@ function formatChoiceLabel(value){
 }
 
 function getCategoryLabel(category){
-  const labels={love:'Love',career:'Career',growth:'Growth',family:'Family',health:'Wellness',money:'Finances',spirit:'Spiritual',open:'Open Reading'};
+  const labels={love:'Love',career:'Career',growth:'Growth',family:'Family',health:'Self-care',money:'Finances',spirit:'Spiritual',open:'Open reading'};
   return labels[category] || formatChoiceLabel(category||'open');
 }
 
@@ -6170,15 +8698,15 @@ function buildReadingHighlights(ctx){
         : 'The spread is mixed and layered, so the message is about balance rather than a single dramatic theme.';
   return {
     chips:[
-      {label:'Focus',value:getCategoryLabel(ctx.category)},
-      {label:'Trinket',value:ctx.trinket?formatChoiceLabel(ctx.trinket):'None'},
-      {label:'Spread',value:`${spN} cards`},
-      {label:'Layout',value:spreadPositions}
+      {label:'Thread',value:getCategoryLabel(ctx.category)},
+      {label:'Charm',value:ctx.trinket?formatChoiceLabel(ctx.trinket):'—'},
+      {label:'Draw',value:`${spN} cards`},
+      {label:'Positions',value:spreadPositions}
     ],
     cards:[
-      {label:'Quick Take',value:buildQuickTake(ctx)},
-      {label:'Main Pattern',value:pattern},
-      {label:'Best Next Move',value:buildNextStep(ctx)}
+      {label:'At a glance',value:buildQuickTake(ctx)},
+      {label:'The pattern',value:pattern},
+      {label:'A next step',value:buildNextStep(ctx)}
     ]
   };
 }
@@ -6307,6 +8835,20 @@ function buildClosing(ctx){
 }
 
 function doReveal(){
+  clearAllFlowStepErrors();
+  if(!cat){
+    showFlowStepError('cat','Choose where this reading should rest—a focus from step one gives the cards a thread to follow.');
+    return;
+  }
+  if(!chosenT){
+    showFlowStepError('charm','Open the chest when you are ready, and let one charm choose you—the deck waits for that touch.');
+    return;
+  }
+  if(!document.querySelector('#spread-pick .sp.on')){
+    showFlowStepError('spread','Choose how many cards to lay—three, five, or the full seven.');
+    return;
+  }
+  if(typeof h2hTrack==='function')h2hTrack('reveal_click',{spread_cards:spN});
   stopPaymentPolling();
   if(activeCheckoutSessionId)clearCheckoutSnapshot(activeCheckoutSessionId);
   activeCheckoutSessionId='';
@@ -6323,79 +8865,160 @@ function doReveal(){
   const chance=reversedChance(ctx);
   drawn=drawWithVariety(chance,ctx);
   readingSalt=makeReadingSalt({...ctx,drawSignature:buildDrawSignature(drawn)});
-  const msgs=['Shuffling the deck…','Drawing the right pattern…','Refining the reading…','Almost ready…'];
+  const msgs=['Shuffling the deck…','Laying the pattern meant for you…','Settling the last cards…','Almost there…'];
   const st=document.getElementById('shtxt');let mi=0;
-  const iv=setInterval(()=>{mi++;if(mi<msgs.length)st.textContent=msgs[mi]},600);
+  const iv=setInterval(()=>{mi++;if(mi<msgs.length)st.textContent=msgs[mi]},720);
   setTimeout(()=>{
     clearInterval(iv);
     sh.classList.remove('on');
     ca.classList.add('on');
+    ca.classList.remove('carea-spread-complete');
     buildC();
-    ca.scrollIntoView({behavior:'smooth',block:'center'});
-  },2500);
+    const reduceMv=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    ca.scrollIntoView({behavior:reduceMv?'auto':'smooth',block:'center'});
+  },3000);
 }
 
 function buildC(){
   const r=document.getElementById('crow'),p=POS[spN];
+  const spreadSr=document.getElementById('spread-sr-context');
+  if(spreadSr)spreadSr.textContent=buildSpreadSrContext(spN);
   r.innerHTML='';
+  r.classList.remove('crow-complete');
   r.dataset.count=String(spN);
   r.style.setProperty('--cards-count',String(spN));
+  r.setAttribute('aria-label',`${drawn.length}-card tarot spread`);
+  r.setAttribute('aria-describedby','spread-sr-context');
   uCnt();
   drawn.forEach((c,i)=>{
     const e=document.createElement('div');
-    e.className='tc';
+    e.className='tc tc-deal';
+    e.style.setProperty('--deal-i',String(i));
+    e.setAttribute('data-card-idx',String(i));
+    const posName=p[i]||(`Position ${i+1}`);
     const art=getCardArt(c);
     const backArt=getCardBackArt();
-    e.innerHTML=`<div class="cf cbk">${backArt}</div><div class="cf cft ${c.reversed?'rev-face':''}"><div class="cft-inner"><div class="cart"></div><div class="ctop"><div class="cnm"></div></div></div></div>`;
+    e.innerHTML=`<div class="cf cbk" aria-hidden="true">${backArt}</div><div class="cf cft ${c.reversed?'rev-face':''}" aria-hidden="true"><div class="cft-inner"><div class="cart" aria-hidden="true"></div><div class="ctop"><div class="cnm" aria-hidden="true"></div></div></div></div>`;
     const cft=e.querySelector('.cft');
     cft.querySelector('.cart').innerHTML=art;
     cft.querySelector('.cnm').textContent=c.n||'';
-    e.onclick=()=>{if(!e.classList.contains('fl')){e.classList.add('fl');flipped++;uCnt();if(flipped===drawn.length)setTimeout(showPrev,600)}};
+    function onFlipKey(ev){
+      if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();flipCard();}
+    }
+    function flipCard(){
+      if(e.classList.contains('fl'))return;
+      e.classList.add('tc-pressing');
+      requestAnimationFrame(()=>{
+        e.classList.add('fl');
+        window.setTimeout(()=>e.classList.remove('tc-pressing'),820);
+      });
+      cft.removeAttribute('aria-hidden');
+      const cnm=cft.querySelector('.cnm');
+      if(cnm)cnm.removeAttribute('aria-hidden');
+      const orient=c.reversed?'reversed':'upright';
+      e.removeEventListener('keydown',onFlipKey);
+      e.onclick=null;
+      e.setAttribute('role','img');
+      e.removeAttribute('tabindex');
+      e.setAttribute('aria-label',`${c.n||'Card'}, ${posName}, ${orient}, revealed`);
+      flipped++;
+      uCnt(posName);
+      if(flipped===drawn.length){
+        const ca=document.getElementById('carea');
+        const finf=document.getElementById('finf');
+        r.classList.add('crow-complete');
+        ca.classList.add('carea-spread-complete');
+        document.getElementById('fcnt').textContent='All cards revealed.';
+        if(finf)finf.textContent='Every card is face-up. Pause—your reading opens next.';
+        window.setTimeout(()=>{
+          r.classList.remove('crow-complete');
+          ca.classList.remove('carea-spread-complete');
+          showPrev();
+        },1200);
+      }
+    }
+    e.onclick=flipCard;
+    e.setAttribute('role','button');
+    e.setAttribute('tabindex','0');
+    e.setAttribute('aria-label',`Card ${i+1} of ${drawn.length}, ${posName}, face down`);
+    e.addEventListener('keydown',onFlipKey);
     r.appendChild(e);
   });
 }
 
-function uCnt(){document.getElementById('fcnt').textContent=flipped?`${flipped} of ${drawn.length} revealed`:'';}
+function uCnt(latestPosition){
+  const el=document.getElementById('fcnt');
+  if(!el||!drawn.length)return;
+  if(flipped>=drawn.length)return;
+  if(!flipped)el.textContent='';
+  else if(latestPosition)el.textContent=`${flipped} of ${drawn.length} revealed. Latest: ${latestPosition}.`;
+  else el.textContent=`${flipped} of ${drawn.length} revealed.`;
+}
 
 function showPrev(){
+  if(typeof h2hTrack==='function')h2hTrack('preview_ready',{spread_cards:spN,cards_drawn:drawn.length});
   setStep(5);
   const b=document.getElementById('prev'),s=document.getElementById('psu');
   const payBtn=document.getElementById('ppb');
+  const fcnt=document.getElementById('fcnt');
+  const finf=document.getElementById('finf');
+  if(fcnt)fcnt.textContent='';
+  if(finf)finf.textContent='Turn each card in your own time—the spread opens at its pace.';
   payBtn.disabled=false;
-  payBtn.textContent='Unlock Full Reading — $5';
   payBtn.style.background='';
-  setPaymentNote('secure checkout via PayPal');
+  setPpbLabel('Open the full reading','$5 · once · yours to restore');
+  setPaymentNote('Pay through PayPal · guest checkout welcome · no account here');
   document.getElementById('demo').classList.remove('on');
   document.getElementById('demo').innerHTML='';
   s.textContent=buildSummaryText(buildContext());
-  b.classList.add('on');
-  b.scrollIntoView({behavior:'smooth',block:'center'});
+  b.classList.remove('prev-arrive');
+  void b.offsetWidth;
+  b.classList.add('on','prev-arrive');
+  const reduceMv=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  b.scrollIntoView({behavior:reduceMv?'auto':'smooth',block:'center'});
+  announce('Preview ready. Your summary is below—you can unlock the full reading when you like.');
+  requestAnimationFrame(()=>{
+    const h=document.getElementById('prev-panel-title');
+    if(h)h.focus({preventScroll:true});
+  });
 }
 
 function pay(){
+  if(typeof h2hTrack==='function')h2hTrack('unlock_click');
   const b=document.getElementById('ppb');
   b.disabled=true;
-  b.textContent='Connecting to PayPal...';
-  setPaymentNote('Creating secure PayPal checkout...');
+  setPpbLabel('Connecting to PayPal…','');
+  setPaymentNote('Preparing checkout…');
   createCheckoutSession().then(({checkoutUrl})=>{
+    if(typeof h2hTrack==='function')h2hTrack('paypal_checkout_start');
     b.disabled=false;
-    b.textContent='Complete payment in PayPal →';
+    setPpbLabel('Finish in PayPal','Then return to this tab');
     b.style.background='var(--pk-hot)';
-    setPaymentNote('PayPal opened. Complete payment, then return here.');
+    setPaymentNote('PayPal is open in a new tab—complete payment, then come back here.');
     startPaymentPolling();
     const w=window.open(checkoutUrl,'_blank','noopener');
     if(!w)window.location.href=checkoutUrl;
   }).catch(err=>{
+    if(typeof h2hTrack==='function')h2hTrack('paypal_checkout_cancel',{reason:'checkout_start_failed',message:String(err&&err.message||'').slice(0,100)});
     b.disabled=false;
-    b.textContent='Unlock Full Reading — $5';
+    setPpbLabel('Open the full reading','$5 · once · yours to restore');
     alert(err.message||'Unable to start PayPal checkout right now.');
-    setPaymentNote('secure checkout via PayPal');
+    setPaymentNote('Pay through PayPal · guest checkout welcome · no account here');
+    requestAnimationFrame(()=>b.focus({preventScroll:true}));
   });
 }
 
 function vfy(){
-  if(!activeCheckoutSessionId){alert('Start checkout first by tapping "Unlock Full Reading — $5".');return;}
-  checkPaymentStatus(true).catch(err=>alert(err.message||'Unable to verify payment right now.'));
+  if(!activeCheckoutSessionId){
+    announce('No active checkout to verify. Use Restore with your PayPal transaction ID, or open the full reading first.','assertive');
+    alert('Pay with Open the full reading first, then return to this tab. Already paid? Use Restore a paid reading with your PayPal transaction ID.');
+    return;
+  }
+  checkPaymentStatus(true).catch(err=>{
+    const m=String(err&&err.message||'Unable to verify payment right now.').slice(0,140);
+    announce(m,'assertive');
+    alert(err.message||'Unable to verify payment right now.');
+  });
 }
 
 function clipSentences(text,count){
@@ -6407,24 +9030,25 @@ function buildReadingHtml(ctx,previewMode){
   const p=POS[spN];
   const usedSentences=new Set();
   const highlights=buildReadingHighlights(ctx);
-  let h=`<div class="rw"><h3>${previewMode?'Unlocked Reading Preview':'Your Private Reading'}</h3>`;
-  h+=`<p style="text-align:center;color:var(--ts);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;margin-top:-.5rem;margin-bottom:1.2rem">${previewMode?'a sample of the paid reading':'crafted for this exact draw'}</p>`;
+  const titleAttrs=previewMode?' id="preview-reading-title" tabindex="-1"':' id="reading-title" tabindex="-1"';
+  let h=`<div class="rw"><h3${titleAttrs}>${previewMode?'Sample reading':'Your reading'}</h3>`;
+  h+=`<p style="text-align:center;color:var(--ts);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;margin-top:-.5rem;margin-bottom:1.2rem">${previewMode?'one card · a glimpse':'written for this draw'}</p>`;
   if(ctx.question) h+=`<p style="text-align:center;font-style:italic;color:var(--ts);font-size:.82rem;margin-bottom:1.2rem">"${ctx.question.replace(/"/g,'&quot;')}"</p>`;
   h+=`<div class="rmeta">${highlights.chips.map(item=>`<span class="rchip">${escapeHtml(item.label)}<strong>${escapeHtml(item.value)}</strong></span>`).join('')}</div>`;
   h+=`<div class="rglance">${highlights.cards.map(item=>`<div class="rgl"><strong>${escapeHtml(item.label)}</strong><p>${escapeHtml(item.value)}</p></div>`).join('')}</div>`;
   const overview=uniqueSentences(buildOverview(ctx),usedSentences);
-  if(overview) h+=`<div class="clos" style="margin-bottom:1rem"><h4>Overall Energy</h4><p>${previewMode?clipSentences(overview,3):overview}</p></div>`;
+  if(overview) h+=`<div class="clos" style="margin-bottom:1rem"><h4>The weave</h4><p>${previewMode?clipSentences(overview,3):overview}</p></div>`;
   const cardsToShow=previewMode?drawn.slice(0,1):drawn;
   cardsToShow.forEach((c,i)=>{
     const interp=uniqueSentences(buildCardInterpretation(c,p[i],ctx,i),usedSentences);
     h+=`<div class="ci"><div class="cih"><span class="cis" style="font-family:var(--fd);font-size:1rem;color:var(--pink);font-weight:600">${c.u}</span><div><div class="cin">${c.n}</div><div class="cip">${p[i]} · ${c.reversed?'Reversed':'Upright'}</div></div></div><p class="cit">${previewMode?clipSentences(interp,3):interp}</p></div>`;
   });
   const closing=uniqueSentences(buildClosing(ctx),usedSentences);
-  h+=`<div class="clos"><h4>Closing Guidance</h4><p>${previewMode?clipSentences(closing,2):closing}</p></div>`;
+  h+=`<div class="clos"><h4>Parting words</h4><p>${previewMode?clipSentences(closing,2):closing}</p></div>`;
   if(previewMode){
-    h+=`<p class="demo-note">The full unlock includes every drawn card, the full interpretation for each position, and the complete closing guidance.</p>`;
+    h+=`<p class="demo-note">The full reading includes every card you drew, each position in full, and the complete parting message.</p>`;
   }else if(activeTxId){
-    h+=`<p class="demo-note">PayPal Transaction ID: <strong style="color:var(--pink)">${activeTxId}</strong></p>`;
+    h+=`<p class="demo-note">PayPal transaction ID (keep for restore): <strong style="color:var(--pink)">${activeTxId}</strong></p>`;
   }
   h+='</div>';
   return h;
@@ -6434,18 +9058,31 @@ function previewUnlock(){
   const demo=document.getElementById('demo');
   demo.innerHTML=buildReadingHtml(buildContext(),true);
   demo.classList.add('on');
-  demo.scrollIntoView({behavior:'smooth',block:'nearest'});
+  const reduceMv=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  demo.scrollIntoView({behavior:reduceMv?'auto':'smooth',block:'nearest'});
+  requestAnimationFrame(()=>{
+    const t=document.getElementById('preview-reading-title');
+    if(t)t.focus({preventScroll:true});
+  });
 }
 
-function unlock(txid){
+function unlock(txid,source){
   if(txid)activeTxId=normalizeTxId(txid);
   const ctx=buildContext();
   document.getElementById('prev').classList.remove('on');
   const w=document.getElementById('rc'),f=document.getElementById('frd');
   w.innerHTML=buildReadingHtml(ctx,false);
+  w.setAttribute('aria-labelledby','reading-title');
   if(activeTxId)saveReadingByTxId(activeTxId);
   f.classList.add('on');
-  f.scrollIntoView({behavior:'smooth',block:'start'});
+  const reduceMv=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  f.scrollIntoView({behavior:reduceMv?'auto':'smooth',block:'start'});
+  if(source==='restored')announce('Reading restored successfully. Full text below.');
+  else announce('Full reading unlocked. Complete text below.');
+  requestAnimationFrame(()=>{
+    const t=document.getElementById('reading-title');
+    if(t)t.focus({preventScroll:true});
+  });
 }
 
 function cpR(){
@@ -6453,7 +9090,7 @@ function cpR(){
   navigator.clipboard.writeText(document.getElementById('rc').innerText).then(()=>{
     if(btn){
       btn.textContent='Copied ✓';
-      setTimeout(()=>btn.textContent='Copy Reading',2000);
+      setTimeout(()=>btn.textContent='Copy reading',2000);
     }
   })
 }
@@ -6465,18 +9102,36 @@ function redo(){
   activeTxId='';
   ['carea','prev','frd','demo'].forEach(id=>document.getElementById(id).classList.remove('on'));
   document.getElementById('demo').innerHTML='';
+  const rc=document.getElementById('rc');
+  if(rc){
+    rc.innerHTML='';
+    rc.removeAttribute('aria-labelledby');
+  }
+  const spreadSr=document.getElementById('spread-sr-context');
+  if(spreadSr)spreadSr.textContent='';
+  const crow=document.getElementById('crow');
+  if(crow){
+    crow.innerHTML='';
+    crow.removeAttribute('aria-describedby');
+    crow.removeAttribute('aria-label');
+  }
   document.getElementById('rbtn').style.display='block';
   const b=document.getElementById('ppb');
-  b.textContent='Unlock Full Reading — $5';
+  setPpbLabel('Open the full reading','$5 · once · yours to restore');
   b.disabled=false;
   b.style.background='';
-  setPaymentNote('secure checkout via PayPal');
+  setPaymentNote('Pay through PayPal · guest checkout welcome · no account here');
   flipped=0;
   drawn=[];
+  clearAllFlowStepErrors();
   setStep(1);
   const cleanUrl=window.location.pathname+window.location.hash;
   window.history.replaceState({},'',cleanUrl);
-  document.getElementById('s1').scrollIntoView({behavior:'smooth'});
+  const reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const s1=document.getElementById('s1');
+  s1.scrollIntoView({behavior:reduce?'auto':'smooth'});
+  announce('Reading cleared. Starting fresh from step one.');
+  requestAnimationFrame(()=>s1.focus({preventScroll:true}));
 }
 
 resumeCheckoutFromUrl();

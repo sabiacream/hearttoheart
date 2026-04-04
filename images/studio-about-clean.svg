@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" role="img" aria-label="Illustrated Heart to Heart 111 studio wall">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f7f3f2"/>
+      <stop offset="100%" stop-color="#efe7e5"/>
+    </linearGradient>
+    <linearGradient id="wood" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#b98d60"/>
+      <stop offset="100%" stop-color="#8e6742"/>
+    </linearGradient>
+    <linearGradient id="table" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fefefe"/>
+      <stop offset="100%" stop-color="#e3dcda"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="1200" fill="url(#bg)"/>
+  <rect y="1020" width="1600" height="180" fill="url(#table)"/>
+
+  <g stroke="url(#wood)" stroke-width="18" fill="none" opacity="0.95">
+    <polygon points="170,210 300,430 40,430"/>
+    <polygon points="560,120 670,320 450,320"/>
+    <polygon points="960,180 1090,380 830,380"/>
+    <polygon points="1310,170 1440,390 1180,390"/>
+    <polygon points="560,560 710,840 410,840"/>
+    <polygon points="1160,740 1280,940 1040,940"/>
+  </g>
+
+  <g fill="#f8d9a5" opacity="0.85">
+    <circle cx="578" cy="284" r="16"/>
+    <circle cx="1062" cy="350" r="15"/>
+    <circle cx="1360" cy="365" r="16"/>
+    <circle cx="600" cy="554" r="18"/>
+    <circle cx="1175" cy="905" r="18"/>
+  </g>
+
+  <g fill="#2d2224" font-family="Georgia,serif">
+    <text x="355" y="560" font-size="120" letter-spacing="8">HEART</text>
+    <text x="760" y="680" font-size="110" letter-spacing="8">2 HEART</text>
+    <text x="1035" y="810" font-size="96" letter-spacing="10">111</text>
+  </g>
+
+  <g>
+    <rect x="580" y="915" width="440" height="90" rx="14" fill="#f4dfdc" stroke="#d7bbb8"/>
+    <rect x="600" y="855" width="400" height="80" rx="14" fill="#fbe9e6" stroke="#d7bbb8"/>
+    <path d="M705 885h170" stroke="#b9915a" stroke-width="14" stroke-linecap="round"/>
+    <circle cx="690" cy="885" r="24" fill="none" stroke="#b9915a" stroke-width="12"/>
+    <rect x="870" y="870" width="36" height="26" rx="4" fill="#b9915a"/>
+  </g>
+
+  <rect x="62" y="68" width="230" height="100" rx="10" fill="#f3dccf" stroke="#d9b8a7"/>
+  <text x="92" y="128" fill="#fff" font-family="Arial,sans-serif" font-weight="700" font-size="56">OHM</text>
+  <text x="122" y="157" fill="#fff" font-family="Arial,sans-serif" font-weight="700" font-size="38">SWEET OHM</text>
+</svg>

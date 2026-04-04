@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Heart to Heart 111 — Private Online Tarot Reading</title>
+<meta name="description" content="Bright, intuitive tarot readings for $5. Choose your trinket, draw your cards, unlock your truth. Coopersburg, PA.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💗</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --pink:#b4637a;--pk-lt:#d5a4b3;--pk-pale:#f5ece8;--pk-hot:#8c475c;
+  --coral:#c7866a;--peach:#dfc4a8;--sky:#b8c7d9;--lav:#b8a8c6;--mint:#bfd6cc;
+  --cream:#fbf7f2;--white:#fff;
+  --td:#2f2732;--tm:#5d5362;--ts:#877b87;--tmu:#b0a7b2;
+  --gold:#bfa57a;
+  --sp:rgba(180,99,122,.10);--ss:rgba(47,39,50,.07);
+  --fb:'Cormorant Garamond',Georgia,serif;--fd:'Cormorant Garamond',Georgia,serif;--f:'Manrope',sans-serif;
+  --chest-wood:#8B5E3C;--chest-dark:#6B3F22;--chest-gold:#D4A843;--chest-band:#5C3A1E;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--f);background:var(--cream);color:var(--td);overflow-x:hidden;font-weight:400;line-height:1.78;font-size:16px;letter-spacing:.003em}
+
+/* floating hearts */
+.hbg{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.hbg .fh{position:absolute;opacity:0;animation:fhu var(--d,14s) ease-in-out infinite var(--dl,0s)}
+@keyframes fhu{0%{transform:translateY(105vh) rotate(0) scale(.4);opacity:0}8%{opacity:var(--p,.1)}92%{opacity:var(--p,.1)}100%{transform:translateY(-8vh) rotate(var(--r,30deg)) scale(1);opacity:0}}
+
+.wrap{position:relative;z-index:1}
+section{padding:3rem 1.25rem;max-width:800px;margin:0 auto}
+h1,h2,h3,h4{font-family:var(--fd);font-weight:500;line-height:1.25;color:var(--td)}
+h2{font-size:clamp(1.45rem,4vw,2.1rem)}h3{font-size:clamp(1rem,2.5vw,1.3rem)}
+.brand{font-family:var(--fb);font-weight:400;color:var(--pink);line-height:1.1}
+.brand .to{font-size:.55em;color:var(--ts);margin:0 .05em}.brand .num{color:var(--pk-lt);font-size:.65em}
+.tag{font-family:var(--f);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--pink);font-weight:700}
+.sr{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}.sr.v{opacity:1;transform:none}
+
+/* top nav */
+.tnav{position:sticky;top:0;z-index:20;backdrop-filter:blur(10px);background:rgba(251,247,242,.88);border-bottom:1px solid rgba(191,165,122,.18)}
+.tnav-in{max-width:980px;margin:0 auto;padding:.55rem .9rem;display:flex;align-items:center;justify-content:space-between;gap:.7rem}
+.tnav-brand{font-family:var(--fb);font-size:1.2rem;color:var(--pink);text-decoration:none;white-space:nowrap}
+.tnav-links{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:.35rem}
+.tnav-links a{color:var(--tm);text-decoration:none;font-size:.68rem;padding:.3rem .65rem;border-radius:100px;border:1px solid #eee;background:#fff}
+.tnav-links a:hover{border-color:var(--pk-lt);color:var(--pink);background:var(--pk-pale)}
+@media(max-width:720px){
+  .tnav-in{flex-direction:column;align-items:stretch}
+  .tnav-brand{text-align:center}
+  .tnav-links{justify-content:center}
+}
+
+/* ═══ HERO ═══ */
+.hero{text-align:center;padding:4rem 1.25rem 1.5rem;position:relative}
+.hero::before{content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:500px;height:500px;background:radial-gradient(circle,rgba(232,89,139,.06) 0%,transparent 70%);pointer-events:none}
+.hh{font-size:2.2rem;display:inline-block;opacity:.85;filter:drop-shadow(0 3px 10px rgba(180,99,122,.14))}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+.hero .brand{font-size:clamp(3rem,8vw,4.9rem);margin:.35rem 0 .15rem;letter-spacing:.01em}
+.hero .qt{font-family:var(--fd);font-style:italic;color:var(--tm);font-size:1rem;margin:.45rem 0 .9rem;opacity:.92}
+.hero .loc{font-size:.68rem;color:var(--tmu);letter-spacing:.13em;text-transform:uppercase}
+
+/* progress */
+.pbar{display:flex;justify-content:center;gap:.4rem;margin:2rem auto 0;max-width:440px;flex-wrap:wrap}
+.ps{display:flex;align-items:center;gap:.3rem;font-size:.6rem;color:var(--tmu);font-weight:700;letter-spacing:.02em;transition:color .4s}
+.ps.a{color:var(--pink)}
+.ps .d{width:20px;height:20px;border-radius:50%;border:2px solid var(--pk-lt);display:flex;align-items:center;justify-content:center;font-size:.55rem;font-weight:700;color:var(--pk-lt);transition:all .4s}
+.ps.a .d{background:var(--pink);color:#fff;border-color:var(--pink);box-shadow:0 2px 8px var(--sp)}
+.ps.dn .d{background:var(--pk-pale);color:var(--pink);border-color:var(--pink)}
+.pdash{width:18px;height:2px;background:var(--pk-pale);border-radius:1px;align-self:center}
+
+/* ═══ QUESTION BOX ═══ */
+.qsection{text-align:center;padding-top:1rem}
+.qsection h2{margin-bottom:.15rem}
+.qsub{color:var(--ts);font-size:.82rem;margin-bottom:1.2rem}
+.qcats{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin-bottom:1rem}
+.qcat{background:#fff;border:1.5px solid #eee;border-radius:100px;padding:.4rem 1rem;font-size:.75rem;font-weight:600;cursor:pointer;transition:all .25s;color:var(--tm)}
+.qcat:hover{border-color:var(--pk-lt);color:var(--pink)}
+.qcat.on{border-color:var(--pink);background:var(--pk-pale);color:var(--pk-hot)}
+.qinput{width:100%;max-width:480px;margin:0 auto;background:#fff;border:1.5px solid #eee;border-radius:14px;padding:.8rem 1rem;font-family:var(--f);font-size:.88rem;color:var(--td);resize:none;height:70px;transition:border-color .3s;display:block}
+.qinput:focus{outline:none;border-color:var(--pink)}
+.qinput::placeholder{color:var(--tmu);font-style:italic}
+.qnote{font-size:.68rem;color:var(--tmu);margin-top:.5rem;font-style:italic}
+
+/* ═══ TREASURE CHEST ═══ */
+.chsec{text-align:center;padding-top:1rem}
+.chsec h2{margin-bottom:.15rem}
+.chsub{color:var(--ts);font-size:.82rem;margin-bottom:1.5rem}
+
+.chest-container{position:relative;width:180px;height:170px;margin:0 auto 1rem;cursor:pointer;user-select:none}
+.chest-svg{width:100%;height:100%}
+.chest-lid-group{transform-origin:50% 72%;transition:transform .5s cubic-bezier(.34,1.56,.64,1)}
+.chest-container.open .chest-lid-group{transform:rotate(-65deg) translateY(-8px)}
+.chest-glow{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);width:100px;height:30px;background:radial-gradient(ellipse,rgba(253,203,158,.5),transparent);opacity:0;transition:opacity .4s;filter:blur(6px)}
+.chest-container.open .chest-glow{opacity:1}
+.chest-tap{font-size:.72rem;color:var(--tmu);margin-bottom:1.5rem;transition:opacity .3s}
+
+/* sparkles */
+.spk{position:absolute;width:5px;height:5px;border-radius:50%;pointer-events:none;z-index:5}
+@keyframes spkUp{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(var(--sx),var(--sy)) scale(0)}}
+
+/* trinkets cloud */
+.tcloud{display:flex;flex-wrap:wrap;justify-content:center;gap:.55rem;max-width:520px;margin:0 auto;opacity:0;transform:scale(.85);transition:opacity .4s .15s,transform .4s .15s;pointer-events:none}
+.tcloud.show{opacity:1;transform:scale(1);pointer-events:auto}
+
+.trk{width:58px;height:58px;background:#fff;border:1.5px solid #ede6ed;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:all .35s cubic-bezier(.34,1.56,.64,1);opacity:0;transform:translateY(40px) scale(.3)}
+.tcloud.show .trk{opacity:1;transform:none}
+/* stagger delays via JS */
+.trk:hover{transform:scale(1.15)!important;border-color:var(--pk-lt);background:var(--pk-pale)}
+.trk.pk{border-color:var(--pink);background:var(--pk-pale);box-shadow:0 0 0 3px rgba(232,89,139,.1);transform:scale(1.08)!important}
+.trk .ti{width:26px;height:26px;display:flex;align-items:center;justify-content:center}
+.trk .ti svg{width:100%;height:100%;stroke:var(--pk-lt);stroke-width:1.4;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:stroke .3s}
+.trk:hover .ti svg,.trk.pk .ti svg{stroke:var(--pink)}
+.trk .tn{font-size:.44rem;color:var(--tmu);margin-top:.1rem;text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+.tmsg{text-align:center;margin-top:.7rem;font-size:.8rem;color:var(--pink);font-style:italic;min-height:1.3em}
+
+/* suck back */
+.trk.suck{animation:suckB .35s ease-in forwards}
+@keyframes suckB{0%{opacity:1;transform:scale(1) translate(0,0)}100%{opacity:0;transform:scale(.15) translate(var(--bx,0),var(--by,0))}}
+
+@media(max-width:480px){.tcloud{gap:.4rem}.trk{width:50px;height:50px}.trk .ti{width:22px;height:22px}.trk .tn{font-size:.4rem}}
+
+/* ═══ SPREAD ═══ */
+.spsec{text-align:center;padding-top:1rem}
+.spsec h2{margin-bottom:.15rem}
+.spsub{color:var(--ts);font-size:.82rem;margin-bottom:1.2rem}
+.sps{display:flex;justify-content:center;gap:.6rem;flex-wrap:wrap;margin-bottom:1.2rem}
+.sp{background:#fff;border:2px solid #eee;border-radius:14px;padding:.9rem 1rem;min-width:125px;cursor:pointer;transition:all .25s;text-align:center}
+.sp:hover{border-color:var(--pk-lt);transform:translateY(-2px)}
+.sp.on{border-color:var(--pink);background:var(--pk-pale);box-shadow:0 3px 14px var(--sp)}
+.sp .si{font-size:1.2rem;display:block;margin-bottom:.15rem}
+.sp .sn{font-family:var(--fd);font-size:.9rem;color:var(--td);display:block;font-weight:500}
+.sp .sd{font-size:.58rem;color:var(--tmu);display:block;margin-top:.1rem;letter-spacing:.02em}
+
+/* extras */
+.ext{background:#fff;border-radius:12px;margin-bottom:1.2rem;box-shadow:0 2px 8px var(--ss);overflow:hidden}
+.ext summary{cursor:pointer;list-style:none;padding:.7rem 1rem;display:flex;align-items:center;justify-content:space-between;font-size:.78rem;font-weight:500;color:var(--ts)}
+.ext summary::-webkit-details-marker{display:none}
+.ext summary .ar{transition:transform .3s;color:var(--pk-lt);font-size:.65rem}
+.ext[open] summary .ar{transform:rotate(180deg)}
+.ext-in{padding:0 1rem 1rem;display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+.fi label{display:block;font-size:.6rem;text-transform:uppercase;letter-spacing:.08em;color:var(--tmu);margin-bottom:.25rem;font-weight:700}
+.fi select{width:100%;background:var(--cream);border:1.5px solid #eee;color:var(--td);padding:.45rem .6rem;border-radius:8px;font-family:var(--f);font-size:.8rem;appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10'%3E%3Cpath fill='%23e8598b' d='M5 7L0 2h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center;transition:border-color .2s}
+.fi select:focus{outline:none;border-color:var(--pink)}
+@media(max-width:480px){.ext-in{grid-template-columns:1fr}}
+
+/* ═══ REVEAL BUTTON ═══ */
+.rbtn{display:block;width:100%;max-width:340px;margin:.8rem auto 1.5rem;padding:1rem 2rem;background:linear-gradient(135deg,var(--pk-hot),var(--pink));color:#fff;border:none;border-radius:100px;font-family:var(--fd);font-size:1.15rem;font-weight:600;letter-spacing:.02em;cursor:pointer;transition:all .3s;position:relative;overflow:hidden;box-shadow:0 10px 30px var(--sp)}
+.rbtn::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.12),transparent);animation:shi 5s ease-in-out infinite}
+@keyframes shi{0%,100%{left:-100%}50%{left:100%}}
+.rbtn:hover{transform:translateY(-2px);box-shadow:0 10px 36px rgba(232,89,139,.28)}
+.rbtn:active{transform:scale(.97)}
+
+/* ═══ SHUFFLE ═══ */
+.shuf{display:none;text-align:center;padding:2rem 0}.shuf.on{display:block}
+.shuf-c{display:flex;justify-content:center;gap:.35rem;margin-bottom:.8rem}
+.sc{width:32px;height:48px;background:linear-gradient(135deg,var(--pk-pale),#fff);border:2px solid var(--pk-lt);border-radius:4px;animation:dan .65s ease-in-out infinite alternate}
+.sc:nth-child(2){animation-delay:.1s}.sc:nth-child(3){animation-delay:.2s}.sc:nth-child(4){animation-delay:.3s}.sc:nth-child(5){animation-delay:.4s}
+@keyframes dan{0%{transform:translateY(0) rotate(-2deg)}100%{transform:translateY(-8px) rotate(2deg)}}
+.shuf-t{font-family:var(--fd);font-style:italic;color:var(--ts);font-size:.9rem}
+
+/* ═══ CARDS ═══ */
+.carea{display:none;margin-top:.5rem;text-align:center}.carea.on{display:block}
+.finf{font-size:.8rem;color:var(--ts);margin-bottom:.5rem;font-style:italic}
+.fcnt{font-size:.68rem;color:var(--pink);font-weight:700;margin-bottom:.8rem}
+.crow{display:flex;justify-content:center;gap:.7rem;flex-wrap:wrap;perspective:1200px;margin-bottom:1.2rem}
+
+.tc{width:108px;height:184px;cursor:pointer;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.4,0,.2,1);position:relative}
+.tc.fl{transform:rotateY(180deg)}
+.tc:not(.fl):hover{animation:wig .3s ease}
+@keyframes wig{0%,100%{transform:rotate(0)}25%{transform:rotate(-1.5deg)}75%{transform:rotate(1.5deg)}}
+.cf{position:absolute;inset:0;border-radius:10px;backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center}
+
+/* CARD BACK — minimalist H2H */
+.cbk{background:linear-gradient(180deg,#fffdfa,#f6f0e8);border:1px solid rgba(191,165,122,.34);box-shadow:0 12px 30px rgba(47,39,50,.08);z-index:1;overflow:hidden}
+.cbk::before{content:'';position:absolute;inset:8px;border:1px solid rgba(191,165,122,.28);border-radius:7px}
+.cbk-inner{display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:1;position:relative;height:100%;gap:.35rem}
+.cbk-mark{font-family:var(--fd);font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(93,83,98,.78)}
+.cbk-heart{font-size:.92rem;color:rgba(191,165,122,.78);line-height:1}
+.cbk-111{font-family:var(--fd);font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(93,83,98,.5)}
+.cbk-line{width:34px;height:1px;background:rgba(191,165,122,.46)}
+
+.cft{background:linear-gradient(180deg,#fffefb,#fcf7f0);border:1px solid rgba(191,165,122,.32);transform:rotateY(180deg);color:var(--td);text-align:center;padding:.72rem .55rem;box-shadow:0 12px 30px rgba(47,39,50,.09);display:flex;flex-direction:column;align-items:center;justify-content:space-between}
+.cnu{font-family:var(--fd);font-size:.5rem;color:var(--tmu);letter-spacing:.18em;flex-shrink:0;text-transform:uppercase}
+.cart{width:58px;height:72px;flex-shrink:0;margin:.1rem 0 .2rem;display:flex;align-items:center;justify-content:center}
+.cart svg{width:100%;height:100%}
+.cart svg .line,.cart svg .shape,.cart svg .pip{stroke:rgba(93,83,98,.5);stroke-width:1.05;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.cart svg .soft{stroke:rgba(191,165,122,.52);stroke-width:.9;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.cart svg .fill{fill:rgba(180,99,122,.82);stroke:none}
+.cart svg .glyph,.cart svg .label{font-family:var(--fd);fill:rgba(93,83,98,.72);stroke:none}
+.cart svg .label{font-size:4.7px;letter-spacing:.7px}
+.cnm{font-family:var(--fd);font-size:.76rem;font-weight:600;line-height:1.12;letter-spacing:.01em;flex-shrink:0;max-width:84px}
+.cpo{font-size:.44rem;color:var(--pk-hot);letter-spacing:.12em;text-transform:uppercase;font-weight:700;flex-shrink:0;margin-top:auto}
+.cor{font-size:.42rem;color:var(--ts);letter-spacing:.12em;text-transform:uppercase;font-weight:700;flex-shrink:0}
+.cart.rev svg{transform:rotate(180deg)}
+
+@media(max-width:550px){.tc{width:88px;height:148px}.cart{width:46px;height:58px}.crow{gap:.45rem}}
+@media(max-width:380px){.tc{width:72px;height:122px}.cart{width:36px;height:46px}.cnm{font-size:.55rem}}
+
+/* ═══ PREVIEW ═══ */
+.prev{display:none;background:#fff;border-radius:18px;padding:1.8rem 1.3rem;text-align:center;box-shadow:0 6px 30px var(--sp);border:2px solid var(--pk-lt);position:relative;overflow:hidden;margin-top:.8rem}
+.prev.on{display:block;animation:popI .35s ease}
+@keyframes popI{0%{opacity:0;transform:scale(.96)}100%{opacity:1;transform:scale(1)}}
+.prev::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--pink),var(--gold))}
+.prev h3{margin-bottom:.3rem;font-size:1.2rem}
+.psu{color:var(--ts);font-size:.78rem;font-style:italic;margin-bottom:1rem;line-height:1.5}
+.pks{list-style:none;margin:0 auto 1.2rem;text-align:left;max-width:280px}
+.pks li{padding:.35rem 0;font-size:.82rem;color:var(--tm);display:flex;align-items:center;gap:.55rem}
+.pks li::before{content:'';width:6px;height:6px;background:var(--pink);border-radius:50%;flex-shrink:0}
+.ppb{display:inline-block;background:var(--pink);color:#fff;border:none;padding:.8rem 1.8rem;border-radius:100px;font-size:.9rem;font-family:var(--f);font-weight:600;cursor:pointer;transition:all .25s;box-shadow:0 4px 18px var(--sp)}
+.ppb:hover{background:var(--pk-hot);transform:translateY(-2px)}
+.pnt{font-size:.65rem;color:var(--tmu);margin-top:.5rem}
+.vlk{display:inline-block;margin-top:.5rem;font-size:.72rem;color:var(--pink);cursor:pointer;text-decoration:underline;text-underline-offset:3px;font-weight:500}
+
+/* ═══ FULL READING ═══ */
+.frd{display:none;margin-top:1.2rem}.frd.on{display:block}
+.rw{background:#fff;border-radius:22px;padding:2.2rem 1.5rem;box-shadow:0 14px 40px var(--ss);border:1px solid rgba(191,165,122,.16)}
+.rw>h3{text-align:center;margin-bottom:1.2rem;font-size:1.2rem}
+.ci{padding:1rem 0;border-bottom:1px solid #f4eef4}.ci:last-of-type{border-bottom:none}
+.cih{display:flex;align-items:center;gap:.6rem;margin-bottom:.4rem}
+.cis{font-size:1.3rem}.cin{font-family:var(--fd);font-size:.95rem}.cip{font-size:.55rem;color:var(--pink);text-transform:uppercase;letter-spacing:.07em;font-weight:700}
+.cit{color:var(--tm);font-size:.93rem;line-height:1.95}
+.clos{margin-top:1.2rem;padding:1.15rem 1.1rem;background:linear-gradient(180deg,#faf5ef,#f5ede6);border-radius:14px;border-left:2px solid var(--gold)}
+.clos h4{font-size:.9rem;color:var(--pk-hot);margin-bottom:.25rem;font-family:var(--fd)}
+.clos p{color:var(--tm);font-size:.82rem}
+.racts{display:flex;gap:.7rem;justify-content:center;margin-top:1.2rem;flex-wrap:wrap}
+.ab{padding:.55rem 1.4rem;border-radius:100px;font-family:var(--f);font-size:.78rem;font-weight:600;cursor:pointer;transition:all .2s;border:2px solid}
+.ab.p{background:var(--pink);color:#fff;border-color:var(--pink)}.ab.p:hover{background:var(--pk-hot);border-color:var(--pk-hot)}
+.ab.g{background:transparent;color:var(--tm);border-color:#eee}.ab.g:hover{border-color:var(--pk-lt);color:var(--pink)}
+
+/* ═══ INFO SECTIONS ═══ */
+.isec{text-align:center}
+.isec .tag{margin-bottom:.25rem}
+
+.arow{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.2rem;text-align:left}
+.aimg{border-radius:16px;overflow:hidden;aspect-ratio:4/3;background:var(--pk-pale);display:flex;align-items:center;justify-content:center}
+.aimg img{width:100%;height:100%;object-fit:cover}
+.atxt p{color:var(--tm);font-size:.85rem;margin-bottom:.5rem}
+.svcs{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.3rem}
+.svc{background:var(--pk-pale);color:var(--pk-hot);padding:.2rem .6rem;border-radius:100px;font-size:.6rem;font-weight:700;letter-spacing:.03em}
+@media(max-width:600px){.arow{grid-template-columns:1fr}}
+
+/* business details */
+.biz-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.8rem;margin-top:1.2rem}
+.biz-card{background:#fff;border-radius:12px;padding:1rem;text-align:center;box-shadow:0 2px 10px var(--ss)}
+.biz-icon{font-size:1.5rem;margin-bottom:.3rem}
+.biz-card h4{font-size:.85rem;margin-bottom:.15rem}
+.biz-card p{font-size:.75rem;color:var(--ts)}
+.biz-card a{color:var(--pink);text-decoration:none;font-weight:600;font-size:.75rem}
+
+/* reviews */
+.revs{display:flex;gap:.8rem;margin-top:1.2rem;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:.4rem}
+.revs::-webkit-scrollbar{display:none}
+.rev{flex:0 0 240px;scroll-snap-align:start;background:#fff;border-radius:12px;padding:1rem;text-align:left;box-shadow:0 2px 14px var(--ss);border-top:2.5px solid var(--pk-lt)}
+.rev-s{color:var(--peach);font-size:.75rem;margin-bottom:.3rem}
+.rev p{font-size:.78rem;color:var(--tm);font-style:italic;line-height:1.5}
+.rev-n{margin-top:.5rem;font-size:.68rem;color:var(--pink);font-weight:600}
+
+/* ═══ FOOTER ═══ */
+footer{border-top:2px solid var(--pk-pale);padding:2rem 1.25rem 1.2rem;text-align:center;max-width:800px;margin:1.5rem auto 0}
+.ftb{font-family:var(--fb);font-size:1.6rem;color:var(--pink)}
+.ftt{color:var(--tmu);font-size:.72rem;margin-bottom:.8rem}
+.fso{margin-bottom:.8rem}
+.fso a{display:inline-flex;align-items:center;gap:.3rem;color:var(--tm);text-decoration:none;font-size:.75rem;font-weight:500;padding:.35rem .9rem;border:1.5px solid var(--pk-lt);border-radius:100px;transition:all .2s}
+.fso a:hover{background:var(--pk-pale);color:var(--pk-hot)}
+.fco{color:var(--tmu);font-size:.68rem;margin-bottom:.3rem}
+.fco a{color:var(--tmu);text-decoration:none}.fco a:hover{color:var(--pink)}
+.fln{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;margin-bottom:.8rem}
+.fln a{color:var(--ts);text-decoration:none;font-size:.68rem}.fln a:hover{color:var(--pink)}
+.fdi{color:var(--tmu);font-size:.58rem;max-width:440px;margin:0 auto;line-height:1.6}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+</head>
+<body>
+<div class="hbg" id="hbg"></div>
+<div class="wrap">
+<nav class="tnav">
+  <div class="tnav-in">
+    <a class="tnav-brand" href="#s1">Heart to Heart 111</a>
+    <div class="tnav-links">
+      <a href="restore.html">Restore Reading</a>
+      <a href="about.html">About</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="terms.html#terms">Terms</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <span class="hh">💗</span>
+  <p class="tag">Private Online Tarot</p>
+  <h1 class="brand">Heart <span class="to">to</span> Heart <span class="num">111</span></h1>
+  <p class="qt">"The heart always knows what the mind is still learning."</p>
+  <p class="loc">Coopersburg, Pennsylvania</p>
+  <div class="pbar" id="pbar">
+    <div class="ps a" id="p1"><span class="d">1</span>Question</div><div class="pdash"></div>
+    <div class="ps" id="p2"><span class="d">2</span>Trinket</div><div class="pdash"></div>
+    <div class="ps" id="p3"><span class="d">3</span>Spread</div><div class="pdash"></div>
+    <div class="ps" id="p4"><span class="d">4</span>Reveal</div><div class="pdash"></div>
+    <div class="ps" id="p5"><span class="d">5</span>Unlock</div>
+  </div>
+</section>
+
+<!-- STEP 1: QUESTION -->
+<section class="qsection" id="s1">
+  <p class="tag">Step 1</p>
+  <h2>What's on Your Heart?</h2>
+  <p class="qsub">choose a topic and share your question — the cards will listen</p>
+  <div class="qcats" id="qcats">
+    <div class="qcat" onclick="setCat(this)" data-c="love">💕 Love</div>
+    <div class="qcat" onclick="setCat(this)" data-c="career">✨ Career</div>
+    <div class="qcat" onclick="setCat(this)" data-c="growth">🌱 Growth</div>
+    <div class="qcat" onclick="setCat(this)" data-c="family">🏡 Family</div>
+    <div class="qcat" onclick="setCat(this)" data-c="health">🌿 Wellness</div>
+    <div class="qcat" onclick="setCat(this)" data-c="money">🪙 Finances</div>
+    <div class="qcat" onclick="setCat(this)" data-c="spirit">🔮 Spiritual</div>
+    <div class="qcat" onclick="setCat(this)" data-c="open">🌀 Open Reading</div>
+  </div>
+  <textarea class="qinput" id="qinput" placeholder="optional — type your question here (e.g. 'Will I find peace with my decision?')"></textarea>
+  <p class="qnote">your question stays private and is never stored or shared</p>
+</section>
+
+<!-- STEP 2: TREASURE CHEST -->
+<section class="chsec sr" id="s2">
+  <p class="tag">Step 2</p>
+  <h2>Open the Treasure Chest</h2>
+  <p class="chsub">tap the chest to release your charms</p>
+
+  <div class="chest-container" id="chest" onclick="toggleChest()">
+    <svg class="chest-svg" viewBox="0 0 180 170" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- chest body -->
+      <rect x="20" y="95" width="140" height="65" rx="6" fill="var(--chest-wood)"/>
+      <rect x="20" y="95" width="140" height="65" rx="6" fill="url(#woodGrain)" opacity=".3"/>
+      <rect x="20" y="95" width="140" height="8" fill="var(--chest-dark)" rx="2"/>
+      <rect x="20" y="150" width="140" height="8" fill="var(--chest-dark)" rx="2"/>
+      <!-- metal bands -->
+      <rect x="55" y="95" width="6" height="65" fill="var(--chest-gold)" opacity=".7"/>
+      <rect x="119" y="95" width="6" height="65" fill="var(--chest-gold)" opacity=".7"/>
+      <!-- lock plate -->
+      <rect x="80" y="108" width="20" height="18" rx="4" fill="var(--chest-gold)"/>
+      <circle cx="90" cy="118" r="3" fill="var(--chest-dark)"/>
+      <!-- feet -->
+      <rect x="24" y="155" width="14" height="8" rx="3" fill="var(--chest-dark)"/>
+      <rect x="142" y="155" width="14" height="8" rx="3" fill="var(--chest-dark)"/>
+      <!-- lid group -->
+      <g class="chest-lid-group">
+        <path d="M18 95 Q90 40 162 95 L162 95 L18 95 Z" fill="var(--chest-wood)"/>
+        <path d="M18 95 Q90 40 162 95 L162 95 L18 95 Z" fill="url(#woodGrain)" opacity=".25"/>
+        <path d="M18 95 Q90 62 162 95" stroke="var(--chest-dark)" stroke-width="5" fill="none"/>
+        <path d="M53 80 L53 95" stroke="var(--chest-gold)" stroke-width="5" opacity=".7"/>
+        <path d="M127 80 L127 95" stroke="var(--chest-gold)" stroke-width="5" opacity=".7"/>
+        <!-- lid top trim -->
+        <path d="M25 94 Q90 48 155 94" stroke="var(--chest-gold)" stroke-width="2" fill="none" opacity=".5"/>
+        <!-- heart on lid -->
+        <path d="M90 65 C85 58 74 58 74 67 C74 76 90 82 90 82 C90 82 106 76 106 67 C106 58 95 58 90 65Z" fill="var(--pink)" opacity=".6"/>
+      </g>
+      <defs>
+        <pattern id="woodGrain" width="8" height="8" patternUnits="userSpaceOnUse">
+          <line x1="0" y1="0" x2="8" y2="8" stroke="#5C3A1E" stroke-width=".5" opacity=".4"/>
+        </pattern>
+      </defs>
+    </svg>
+    <div class="chest-glow"></div>
+  </div>
+  <p class="chest-tap" id="chtap">tap to open</p>
+
+  <div class="tcloud" id="tcloud">
+    <div class="trk" onclick="pickT(this)" data-t="crystal" data-m="The crystal amplifies clarity and truth">
+      <span class="ti"><svg viewBox="0 0 24 24"><path d="M12 2l-3 7h-2l5 13 5-13h-2z"/><path d="M7 9h10" opacity=".5"/><path d="M9 9l3-7 3 7" opacity=".4"/></svg></span><span class="tn">Crystal</span></div>
+    <div class="trk" onclick="pickT(this)" data-t="feather" data-m="The feather invites lightness and freedom">
+      <span class="ti"><svg viewBox="0 0 24 24"><path d="M5 21c1-4 4-7 7-9M12 12c2-2 5-5 7-8"/><path d="M19 4c-1 2-3 4-5 5.5M14 9.5C11 12 8 15 6 19"/><path d="M16 6c-2 1-4 3-4 6M12 12c-1 3-3 5-5 7"/></svg></span><span class="tn">Feather</span></div>
+    <div class="trk" onclick="pickT(this)" data-t="key" data-m="The key unlocks what's been hidden">
+      <span class="ti"><svg viewBox="0 0 24 24"><circle cx="8" cy="7" r="4"/><circle cx="8" cy="7" r="2" opacity=".4"/><path d="M11.5 10.5l9 9"/><path d="M17 16l2.5 2.5M15 18l2.5 2.5"/></svg></span><span class="tn">Key</span></div>
+    <div class="trk" onclick="pickT(this)" data-t="shell" data-m="The shell carries wisdom from deep waters">
+      <span class="ti"><svg viewBox="0 0 24 24"><path d="M3 18c0-8 4-14 9-14s9 6 9 14"/><path d="M12 4c0 4-.5 9 0 14"/><path d="M12 4c-2 3-4 8-6 14M12 4c2 3 4 8 6 14"/><path d="M5 16c2-1 4-2 7-2s5 1 7 2" opacity=".5"/></svg></span><span class="tn">Shell</span></div>
+    <div class="trk" onclick="pickT(this)" data-t="star" data-m="The star lights your path forward">
+      <span class="ti"><svg viewBox="0 0 24 24"><path d="M12 2l2.5 5.5L20 8.5l-4 4 1 5.5-5-2.8-5 2.8 1-5.5-4-4 5.5-1z"/></svg></span><span class="tn">Star</span></div>
+    <div class="trk" onclick="pickT(this)" data-t="moon" data-m="The moon reveals what hides in shadow">
+      <span class="ti"><svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/><circle cx="9" cy="9" r=".8" opacity=".3"/><circle cx="13" cy="15" r=".5" opacity=".3"/></svg></span><span class="tn">Moon</span></div>
+    <div class="trk" onclick="pickT(this)" data-t="rose" data-m="The rose opens the heart to love">
+      <span class="ti"><svg viewBox="0 0 24 24"><path d="M12 21c0 0-6-3-6-9c0-2 1-4 3-5"/><path d="M12 21c0 0 6-3 6-9c0-2-1-4-3-5"/><ellipse cx="12" cy="10" rx="4" ry="3"/><path d="M12 7V3"/><path d="M10 5c0-1 1-2 2-2s2 1 2 2" fill="none"/><path d="M8 13c1 .5 2.5 1 4 1s3-.5 4-1" opacity=".4"/></svg></span><span class="tn">Rose</span></div>
+    <div class="trk" onclick="pickT(this)" data-t="candle" data-m="The candle brings warmth and intention">
+      <span class="ti"><svg viewBox="0 0 24 24"><rect x="9" y="11" width="6" height="9" rx="1.5"/><path d="M9 14h6" opacity=".3"/><path d="M12 11V8"/><path d="M12 4c-1.5 1-1.5 3 0 4" stroke-width="1.8"/><circle cx="12" cy="4" r="1" fill="var(--peach)" stroke="var(--peach)"/></svg></span><span class="tn">Candle</span></div>
+    <div class="trk" onclick="pickT(this)" data-t="butterfly" data-m="The butterfly signals transformation">
+      <span class="ti"><svg viewBox="0 0 24 24"><path d="M12 7v13"/><path d="M12 11c-3-5-9-5-8 0s5 5.5 8 3.5"/><path d="M12 11c3-5 9-5 8 0s-5 5.5-8 3.5"/><circle cx="12" cy="7" r="1"/><path d="M11 6c-1-2-2-3-2-3M13 6c1-2 2-3 2-3" stroke-width="1"/></svg></span><span class="tn">Butterfly</span></div>
+    <div class="trk" onclick="pickT(this)" data-t="heart" data-m="The heart guides with pure love">
+      <span class="ti"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></span><span class="tn">Heart</span></div>
+    <div class="trk" onclick="pickT(this)" data-t="acorn" data-m="The acorn holds potential not yet seen">
+      <span class="ti"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="15" rx="5" ry="6"/><path d="M7 12c0-3 2-5 5-5s5 2 5 5"/><path d="M7 12h10" stroke-width="1.8"/><path d="M12 7V4"/><path d="M12 4c-1 0-2-1-2-1M12 4c1 0 2-1 2-1"/></svg></span><span class="tn">Acorn</span></div>
+    <div class="trk" onclick="pickT(this)" data-t="eye" data-m="The eye sees what others overlook">
+      <span class="ti"><svg viewBox="0 0 24 24"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="1" fill="var(--pink)" stroke="none"/></svg></span><span class="tn">Eye</span></div>
+    <div class="trk" onclick="pickT(this)" data-t="leaf" data-m="The leaf whispers of new growth">
+      <span class="ti"><svg viewBox="0 0 24 24"><path d="M6 21c0 0 1-8 6-13s11-5 11-5-1 6-6 11S6 21 6 21z"/><path d="M6 21C10 17 14 13 23 3" opacity=".4"/><path d="M10 17c-1-2 0-4 2-6" opacity=".4"/></svg></span><span class="tn">Leaf</span></div>
+    <div class="trk" onclick="pickT(this)" data-t="hourglass" data-m="The hourglass reminds you — timing is everything">
+      <span class="ti"><svg viewBox="0 0 24 24"><path d="M7 3h10M7 21h10"/><path d="M8 3c0 4 4 7 4 9s-4 5-4 9"/><path d="M16 3c0 4-4 7-4 9s4 5 4 9"/><path d="M10 12h4" opacity=".3"/></svg></span><span class="tn">Hourglass</span></div>
+    <div class="trk" onclick="pickT(this)" data-t="compass" data-m="The compass always finds true north">
+      <span class="ti"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M16.24 7.76l-2.12 6.36-6.36 2.12 2.12-6.36z"/><circle cx="12" cy="12" r="1.5" fill="var(--pink)" stroke="none"/></svg></span><span class="tn">Compass</span></div>
+  </div>
+  <div class="tmsg" id="tmsg">&nbsp;</div>
+</section>
+
+<!-- STEP 3: SPREAD -->
+<section class="spsec sr" id="s3">
+  <p class="tag">Step 3</p>
+  <h2>Choose Your Spread</h2>
+  <p class="spsub">how many cards do you want to draw?</p>
+  <div class="sps">
+    <div class="sp on" data-s="3" onclick="setSp(this)"><span class="si">☽ ☾</span><span class="sn">3 Cards</span><span class="sd">Past · Present · Future</span></div>
+    <div class="sp" data-s="5" onclick="setSp(this)"><span class="si">✦ ✦ ✦</span><span class="sn">5 Cards</span><span class="sd">Cross Spread</span></div>
+    <div class="sp" data-s="7" onclick="setSp(this)"><span class="si">☆ ☆ ☆ ☆</span><span class="sn">7 Cards</span><span class="sd">Horseshoe</span></div>
+  </div>
+  <details class="ext"><summary>personalize further (optional)<span class="ar">▼</span></summary><div class="ext-in"><div class="fi"><label>Moon Phase</label><select id="moon"><option value="">—</option><option>🌑 New Moon</option><option>🌒 Waxing Crescent</option><option>🌓 First Quarter</option><option>🌔 Waxing Gibbous</option><option>🌕 Full Moon</option><option>🌖 Waning Gibbous</option><option>🌗 Third Quarter</option><option>🌘 Waning Crescent</option></select></div><div class="fi"><label>Zodiac Sign</label><select id="zod"><option value="">—</option><option>♈ Aries</option><option>♉ Taurus</option><option>♊ Gemini</option><option>♋ Cancer</option><option>♌ Leo</option><option>♍ Virgo</option><option>♎ Libra</option><option>♏ Scorpio</option><option>♐ Sagittarius</option><option>♑ Capricorn</option><option>♒ Aquarius</option><option>♓ Pisces</option></select></div></div></details>
+  <button class="rbtn" id="rbtn" onclick="doReveal()">✨ Reveal My Cards</button>
+  <div class="shuf" id="shuf"><div class="shuf-c"><div class="sc"></div><div class="sc"></div><div class="sc"></div><div class="sc"></div><div class="sc"></div></div><p class="shuf-t" id="shtxt">Shuffling your deck…</p></div>
+  <div class="carea" id="carea"><p class="finf">tap each card to turn it over</p><p class="fcnt" id="fcnt"></p><div class="crow" id="crow"></div></div>
+  <div class="prev" id="prev"><h3>your cards have spoken 💗</h3><p class="psu" id="psu"></p><ul class="pks"><li>Full card-by-card interpretation</li><li>Hidden influences &amp; current energy</li><li>Personalized closing guidance</li></ul><button class="ppb" id="ppb" onclick="pay()">Unlock Full Reading — $5</button><div class="pnt">secure checkout via PayPal</div><div class="vlk" onclick="vfy()">already paid? tap here</div></div>
+  <div class="frd" id="frd"><div class="rw" id="rc"></div><div class="racts"><button class="ab p" onclick="cpR()">Copy Reading</button><button class="ab g" onclick="redo()">Start Over</button></div></div>
+</section>
+
+<!-- ABOUT -->
+<section class="isec sr">
+  <p class="tag">your reader</p>
+  <h2>From Our Heart to Yours</h2>
+  <div class="arow">
+    <div class="aimg"><img src="" alt="Heart to Heart studio" onerror="this.parentElement.innerHTML='<div style=font-size:2.2rem>💗🎨🖌️</div><div style=font-size:.7rem;color:#e8598b;margin-top:.3rem>Art · Spirit · Heart</div>'"></div>
+    <div class="atxt">
+      <p>Welcome to Heart to Heart 111 — where art meets spirit. Our studio in Coopersburg is a place where colorful hearts cover the walls and every reading comes straight from the soul.</p>
+      <p>The cards are a conversation between your heart and the universe. No scripts, no gimmicks — just honest, heartfelt guidance tailored to you.</p>
+      <div class="svcs"><span class="svc">Tarot Readings</span><span class="svc">Spiritual Guidance</span><span class="svc">Art Gallery</span><span class="svc">Paint &amp; Wine Parties</span><span class="svc">Gift Shop</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- BUSINESS INFO -->
+<section class="isec sr">
+  <p class="tag">visit us</p>
+  <h2>More Than Just Readings</h2>
+  <div class="biz-row">
+    <div class="biz-card"><div class="biz-icon">🎨</div><h4>Paint &amp; Wine Parties</h4><p>Book a private party for birthdays, girls' night, or team events. Bring your own wine!</p></div>
+    <div class="biz-card"><div class="biz-icon">🖼️</div><h4>Art Gallery &amp; Gift Shop</h4><p>Original heart artwork, handmade gifts, and unique treasures for every occasion.</p></div>
+    <div class="biz-card"><div class="biz-icon">🔮</div><h4>In-Person Readings</h4><p>Visit our Coopersburg studio for a deeper, face-to-face tarot session.</p><a href="tel:2676642928">Book: (267) 664-2928</a></div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="isec sr">
+  <p class="tag">love notes</p>
+  <h2>What People Are Saying</h2>
+  <div class="revs">
+    <div class="rev"><div class="rev-s">★★★★★</div><p>The reading was so accurate it gave me chills. I felt truly seen. This is the real deal.</p><div class="rev-n">— Sarah M.</div></div>
+    <div class="rev"><div class="rev-s">★★★★★</div><p>I was skeptical but curious. The cards spoke directly to what I've been going through.</p><div class="rev-n">— Jess R.</div></div>
+    <div class="rev"><div class="rev-s">★★★★★</div><p>The trinket box is the cutest thing ever! And the reading brought me to tears.</p><div class="rev-n">— Danielle K.</div></div>
+    <div class="rev"><div class="rev-s">★★★★★</div><p>I come back every month. Like a heart-to-heart with a best friend who just gets it.</p><div class="rev-n">— Maria T.</div></div>
+    <div class="rev"><div class="rev-s">★★★★★</div><p>The question feature made it feel so personal. Like the cards really heard me.</p><div class="rev-n">— Ana L.</div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="ftb">Heart to Heart 111</div>
+  <div class="ftt">Private Online Tarot Readings</div>
+  <div class="fso"><a href="https://www.facebook.com/heart.to.heart111" target="_blank" rel="noopener">Follow on Facebook →</a></div>
+  <div class="fco">Coopersburg, Pennsylvania · <a href="tel:2676642928">(267) 664-2928</a></div>
+  <div class="fln"><a href="restore.html">Restore Reading</a><a href="about.html">About</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a><a href="terms.html#terms">Terms</a><a href="terms.html#privacy">Privacy</a><a href="terms.html#disclaimer">Disclaimer</a></div>
+  <p class="fdi">Readings and spiritual services are for entertainment, personal reflection, and spiritual exploration only. Not a substitute for medical, legal, financial, or mental health advice. Must be 18+. All sales are final. © 2025 Heart to Heart 111.</p>
+</footer>
+</div>
+
+<script>
+// floating hearts
+!function(){const b=document.getElementById('hbg'),h=['♡','♥','💗','💖','💕'],c=['#e8598b','#f5a0ba','#ff7675','#fdcb9e','#c3aed6','#87ceeb'];for(let i=0;i<18;i++){const d=document.createElement('div');d.className='fh';d.textContent=h[Math.random()*h.length|0];d.style.left=Math.random()*100+'%';d.style.color=c[Math.random()*c.length|0];d.style.fontSize=(10+Math.random()*16)+'px';d.style.setProperty('--d',(11+Math.random()*12)+'s');d.style.setProperty('--dl',(Math.random()*10)+'s');d.style.setProperty('--p',(0.05+Math.random()*0.08).toFixed(2));d.style.setProperty('--r',(Math.random()*50-25)+'deg');b.appendChild(d)}}();
+
+// scroll reveals
+const sro=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('v')}),{threshold:.08});
+document.querySelectorAll('.sr').forEach(el=>sro.observe(el));
+
+// trinket stagger delays
+document.querySelectorAll('.trk').forEach((t,i)=>{t.style.transitionDelay=(.04*i)+'s'});
+
+// state
+let cat=null,chosenT=null,spN=3,drawn=[],flipped=0,chestIsOpen=false,readingSalt='';
+
+function setStep(n){for(let i=1;i<=5;i++){const e=document.getElementById('p'+i);e.classList.toggle('a',i===n);e.classList.toggle('dn',i<n)}}
+
+// QUESTION
+function setCat(el){
+  document.querySelectorAll('.qcat').forEach(c=>c.classList.remove('on'));
+  el.classList.add('on');cat=el.dataset.c;
+  setStep(2);
+  setTimeout(()=>{const s=document.getElementById('s2');s.classList.add('v');s.scrollIntoView({behavior:'smooth',block:'start'})},300);
+}
+
+// CHEST
+function toggleChest(){chestIsOpen?closeChest():openChest()}
+function openChest(){
+  chestIsOpen=true;
+  const c=document.getElementById('chest');c.classList.add('open');
+  // sparkles
+  for(let i=0;i<14;i++){const s=document.createElement('div');s.className='spk';const cols=['#e8598b','#fdcb9e','#87ceeb','#f5a0ba','#c3aed6','#ff7675','#D4A843'];s.style.background=cols[Math.random()*cols.length|0];s.style.left=(40+Math.random()*20)+'%';s.style.top='50%';s.style.setProperty('--sx',(Math.random()*100-50)+'px');s.style.setProperty('--sy',(-20-Math.random()*70)+'px');s.style.animation='spkUp .55s ease-out forwards';s.style.animationDelay=(i*.03)+'s';c.appendChild(s);setTimeout(()=>s.remove(),700)}
+  document.getElementById('chtap').style.opacity='0';
+  setTimeout(()=>document.getElementById('tcloud').classList.add('show'),250);
+}
+function closeChest(){
+  chestIsOpen=false;
+  const c=document.getElementById('chest'),cloud=document.getElementById('tcloud'),trks=cloud.querySelectorAll('.trk');
+  const cr=c.getBoundingClientRect();
+  trks.forEach(t=>{const r=t.getBoundingClientRect();t.style.setProperty('--bx',(cr.left+cr.width/2-r.left-r.width/2)+'px');t.style.setProperty('--by',(cr.top+cr.height*.6-r.top-r.height/2)+'px');t.classList.add('suck')});
+  setTimeout(()=>{cloud.classList.remove('show');trks.forEach(t=>{t.classList.remove('suck');t.style.removeProperty('--bx');t.style.removeProperty('--by')});c.classList.remove('open');document.getElementById('chtap').style.opacity='1'},450);
+}
+function pickT(el){
+  document.querySelectorAll('.trk').forEach(t=>t.classList.remove('pk'));
+  el.classList.add('pk');chosenT=el.dataset.t;
+  document.getElementById('tmsg').textContent=el.dataset.m;
+  setStep(3);
+  setTimeout(()=>{const s=document.getElementById('s3');s.classList.add('v');s.scrollIntoView({behavior:'smooth',block:'start'})},350);
+}
+
+// SPREAD
+function setSp(el){document.querySelectorAll('.sp').forEach(b=>b.classList.remove('on'));el.classList.add('on');spN=+el.dataset.s}
+
+// TAROT — SVG line art for all 22 Major Arcana
+const CARD_ART={
+'The Fool':'<svg viewBox="0 0 48 48"><circle cx="24" cy="12" r="5"/><path d="M24 17v14"/><path d="M18 23h12"/><path d="M20 31l4 7 4-7"/><path d="M30 14c2 0 4 1 4 3"/><circle cx="34" cy="20" r="2" opacity=".4"/><path d="M14 40h20" stroke-dasharray="2 2" opacity=".3"/><path d="M10 38l4-3" opacity=".4"/></svg>',
+'The Magician':'<svg viewBox="0 0 48 48"><path d="M24 4v6"/><path d="M20 4h8"/><circle cx="24" cy="16" r="5"/><path d="M24 21v10"/><path d="M16 26h16"/><path d="M14 38h5v4h-5z" opacity=".5"/><circle cx="27" cy="40" r="2" opacity=".5"/><path d="M34 38l3 4" opacity=".5"/><path d="M37 38l-3 4" opacity=".5"/><path d="M24 4l-2-2M24 4l2-2" stroke-width="1"/></svg>',
+'The High Priestess':'<svg viewBox="0 0 48 48"><circle cx="24" cy="12" r="5"/><path d="M24 17v12"/><path d="M20 29h8v8h-8z"/><path d="M16 8h-4v32h4" opacity=".3"/><path d="M32 8h4v32h-4" opacity=".3"/><path d="M21 22h6" opacity=".4"/><circle cx="24" cy="7" r="1.5" fill="var(--pk-lt)" stroke="none"/><path d="M22 33h4" opacity=".4"/></svg>',
+'The Empress':'<svg viewBox="0 0 48 48"><circle cx="24" cy="11" r="5"/><path d="M24 16v8"/><path d="M18 18c-2 3-2 8 0 12h12c2-4 2-9 0-12"/><path d="M20 24h8"/><path d="M15 34c3 3 6 5 9 5s6-2 9-5"/><path d="M20 7l4-4 4 4" opacity=".5"/><circle cx="14" cy="38" r="2" opacity=".3"/><circle cx="34" cy="38" r="2" opacity=".3"/><path d="M21 42c1 1 2 2 3 2s2-1 3-2" opacity=".4"/></svg>',
+'The Emperor':'<svg viewBox="0 0 48 48"><circle cx="24" cy="11" r="5"/><path d="M24 16v14"/><rect x="16" y="26" width="16" height="12" rx="2" opacity=".3"/><path d="M18 22h12"/><path d="M14 8l6 3M34 8l-6 3" opacity=".5"/><path d="M20 6h8"/><path d="M16 26v12M32 26v12"/><path d="M14 38h20"/></svg>',
+'The Hierophant':'<svg viewBox="0 0 48 48"><circle cx="24" cy="12" r="5"/><path d="M24 17v10"/><path d="M20 22h8"/><path d="M18 30h12v8h-12z" opacity=".3"/><path d="M24 30v8"/><path d="M21 7l3-4 3 4" opacity=".5"/><path d="M15 42l5-4M33 42l-5-4" opacity=".4"/><circle cx="24" cy="27" r="1.5" opacity=".4"/></svg>',
+'The Lovers':'<svg viewBox="0 0 48 48"><circle cx="16" cy="16" r="4"/><circle cx="32" cy="16" r="4"/><path d="M16 20v10M32 20v10"/><path d="M16 25h16"/><path d="M24 6l-3 4h6z" opacity=".4"/><path d="M20.84 34a4 4 0 0 0-5.66 0L14 35l-1-1a4 4 0 0 0-5.66 5.66L14 46.5l6.84-6.84a4 4 0 0 0 0-5.66z" transform="translate(10,-6) scale(.6)"/></svg>',
+'The Chariot':'<svg viewBox="0 0 48 48"><circle cx="24" cy="10" r="4"/><path d="M24 14v10"/><rect x="14" y="24" width="20" height="10" rx="3"/><circle cx="14" cy="38" r="4"/><circle cx="34" cy="38" r="4"/><path d="M14 34v0M34 34v0"/><path d="M18 10h-4M30 10h4" opacity=".4"/><path d="M20 7l4-3 4 3" opacity=".5"/></svg>',
+'Strength':'<svg viewBox="0 0 48 48"><circle cx="28" cy="12" r="4"/><path d="M28 16v8"/><path d="M10 30c0-6 5-10 10-10"/><path d="M10 30c0 4 3 8 8 8s8-3 10-6"/><path d="M12 28c2-1 4 0 5 2" opacity=".5"/><path d="M10 26c1-1 2-1 3 0" opacity=".4"/><circle cx="14" cy="32" r="1" fill="var(--pk-lt)" stroke="none"/><path d="M26 24l2 2" opacity=".4"/><path d="M24 8l4-5 4 5" stroke-dasharray="1 1" opacity=".3"/></svg>',
+'The Hermit':'<svg viewBox="0 0 48 48"><circle cx="24" cy="12" r="4"/><path d="M24 16v16"/><path d="M20 32l4 8 4-8"/><path d="M24 22l-8-4"/><path d="M16 14l-2 4" opacity=".4"/><circle cx="15" cy="13" r="2.5" opacity=".3"/><path d="M14 11l1 2 2-1" fill="var(--pk-lt)" stroke="none" opacity=".6"/><path d="M30 28c2 0 3-1 3-3" opacity=".3"/></svg>',
+'Wheel of Fortune':'<svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="14"/><circle cx="24" cy="24" r="8" opacity=".4"/><circle cx="24" cy="24" r="2" fill="var(--pk-lt)" stroke="none"/><path d="M24 10v4M24 34v4M10 24h4M34 24h4"/><path d="M15 15l2 2M31 31l2 2M15 33l2-2M31 15l2-2" opacity=".4"/></svg>',
+'Justice':'<svg viewBox="0 0 48 48"><circle cx="24" cy="10" r="4"/><path d="M24 14v18"/><path d="M12 22h24"/><path d="M12 22l-2 8h8l-2-8" opacity=".5"/><path d="M36 22l-2 8h8l-2-8" opacity=".5"/><path d="M20 36h8"/><path d="M22 6h4" opacity=".4"/></svg>',
+'The Hanged Man':'<svg viewBox="0 0 48 48"><path d="M14 6h20"/><path d="M24 6v10"/><circle cx="24" cy="30" r="4"/><path d="M24 16v10"/><path d="M20 20l-4 6M28 20l4 6" opacity=".5"/><path d="M22 34l-2 6M26 34l2 6"/><circle cx="24" cy="30" r="6" opacity=".2"/></svg>',
+'Death':'<svg viewBox="0 0 48 48"><path d="M16 10c0-4 3-7 8-7s8 3 8 7c0 3-2 5-4 6h-8c-2-1-4-3-4-6z" opacity=".4"/><circle cx="20" cy="9" r="1.5" fill="var(--pk-lt)" stroke="none"/><circle cx="28" cy="9" r="1.5" fill="var(--pk-lt)" stroke="none"/><path d="M22 14h4"/><path d="M24 16v8"/><path d="M18 24h12"/><path d="M18 24l-4 10M30 24l4 10"/><path d="M24 32v8"/><path d="M10 40c4-2 8-3 14-3s10 1 14 3" opacity=".3"/></svg>',
+'Temperance':'<svg viewBox="0 0 48 48"><circle cx="24" cy="10" r="4"/><path d="M24 14v10"/><path d="M14 18c0 4 2 6 4 6h4"/><path d="M34 18c0 4-2 6-4 6h-4"/><path d="M14 18v-6h6M34 18v-6h-6" opacity=".4"/><path d="M16 15c2 2 4 1 6 0" stroke-dasharray="1 1" opacity=".3"/><path d="M24 24l-6 12h12z" opacity=".3"/><path d="M20 30h8" opacity=".4"/><path d="M18 38h12"/></svg>',
+'The Devil':'<svg viewBox="0 0 48 48"><circle cx="24" cy="12" r="5"/><path d="M19 7l2 5M29 7l-2 5"/><path d="M24 17v8"/><path d="M18 25c0 5 3 8 6 8s6-3 6-8"/><path d="M24 33v6"/><path d="M14 36l6-3M34 36l-6-3" opacity=".5"/><circle cx="22" cy="10" r="1" fill="var(--pk-lt)" stroke="none"/><circle cx="26" cy="10" r="1" fill="var(--pk-lt)" stroke="none"/><path d="M16 42l4-3M32 42l-4-3" opacity=".3"/></svg>',
+'The Tower':'<svg viewBox="0 0 48 48"><rect x="18" y="16" width="12" height="24" rx="1"/><path d="M16 40h16"/><path d="M18 16l6-10 6 10"/><path d="M21 22h6M21 28h6M21 34h6" opacity=".4"/><path d="M10 10l5 3M38 10l-5 3"/><path d="M8 16l4 1M40 16l-4 1" opacity=".4"/><path d="M14 8l2 2M34 8l-2 2" stroke-width="1.5"/><circle cx="12" cy="6" r="1.5" fill="var(--pk-lt)" stroke="none"/><circle cx="36" cy="6" r="1.5" fill="var(--pk-lt)" stroke="none"/></svg>',
+'The Star':'<svg viewBox="0 0 48 48"><path d="M24 4l3 7h7l-5.5 4.5 2 7L24 18l-6.5 4.5 2-7L14 11h7z"/><circle cx="24" cy="30" r="5" opacity=".3"/><path d="M19 30v8M29 30v8" opacity=".4"/><path d="M16 42c2-2 5-3 8-3s6 1 8 3" opacity=".3"/><circle cx="10" cy="14" r="1" opacity=".3"/><circle cx="38" cy="20" r="1" opacity=".3"/><circle cx="14" cy="24" r="1" opacity=".3"/></svg>',
+'The Moon':'<svg viewBox="0 0 48 48"><path d="M32 8A12 12 0 1 1 16 28a9 9 0 0 0 16-20z"/><circle cx="20" cy="18" r="1" opacity=".3"/><circle cx="26" cy="22" r=".8" opacity=".3"/><path d="M8 36c4-3 8 0 12-3s8 0 12-3s4 0 8-3" opacity=".3"/><path d="M14 38c2-3 4-2 6 0s4 3 6 0" opacity=".4"/></svg>',
+'The Sun':'<svg viewBox="0 0 48 48"><circle cx="24" cy="20" r="8"/><circle cx="24" cy="20" r="5" fill="var(--pk-lt)" stroke="none" opacity=".15"/><path d="M24 8v-4M24 32v4M12 20H8M40 20h-4"/><path d="M15.5 11.5l-2-2M32.5 28.5l2 2M15.5 28.5l-2 2M32.5 11.5l2-2"/><circle cx="20" cy="38" r="3" opacity=".3"/><path d="M20 35v-3" opacity=".4"/></svg>',
+'Judgement':'<svg viewBox="0 0 48 48"><path d="M24 4v12"/><path d="M20 4l4-2 4 2"/><path d="M22 16h4l2 4h-8z" opacity=".4"/><path d="M12 28c0-5 3-8 6-8M36 28c0-5-3-8-6-8"/><circle cx="18" cy="32" r="3" opacity=".4"/><circle cx="30" cy="32" r="3" opacity=".4"/><path d="M18 35v5M30 35v5" opacity=".4"/><path d="M10 42h28" opacity=".3"/><path d="M24 20v6" opacity=".3"/></svg>',
+'The World':'<svg viewBox="0 0 48 48"><ellipse cx="24" cy="24" rx="16" ry="18"/><circle cx="24" cy="20" r="4"/><path d="M24 24v8"/><path d="M20 28h8"/><path d="M22 32l-2 4M26 32l2 4"/><path d="M8 24h4M36 24h4" opacity=".3"/><path d="M24 6v2M24 42v-2" opacity=".3"/><circle cx="12" cy="12" r="1" opacity=".3"/><circle cx="36" cy="36" r="1" opacity=".3"/></svg>'
+};
+
+const MAJOR_ARCANA=[
+  {n:'The Fool',u:'0',arcana:'Major',up:'new beginnings, trust, spontaneity',rev:'recklessness, hesitation, poor timing'},
+  {n:'The Magician',u:'I',arcana:'Major',up:'manifestation, skill, focused action',rev:'misdirection, scattered energy, untapped ability'},
+  {n:'The High Priestess',u:'II',arcana:'Major',up:'intuition, mystery, inner knowing',rev:'disconnection, secrets, ignored intuition'},
+  {n:'The Empress',u:'III',arcana:'Major',up:'abundance, nurture, growth',rev:'smothering, creative block, depletion'},
+  {n:'The Emperor',u:'IV',arcana:'Major',up:'structure, authority, stability',rev:'control issues, rigidity, imbalance'},
+  {n:'The Hierophant',u:'V',arcana:'Major',up:'tradition, guidance, shared values',rev:'rebellion, dogma, misalignment'},
+  {n:'The Lovers',u:'VI',arcana:'Major',up:'union, alignment, heartfelt choice',rev:'disharmony, temptation, divided priorities'},
+  {n:'The Chariot',u:'VII',arcana:'Major',up:'drive, willpower, momentum',rev:'stalling, force, loss of direction'},
+  {n:'Strength',u:'VIII',arcana:'Major',up:'courage, patience, compassionate power',rev:'self-doubt, overwhelm, reactive behavior'},
+  {n:'The Hermit',u:'IX',arcana:'Major',up:'reflection, solitude, wisdom',rev:'withdrawal, loneliness, avoidance'},
+  {n:'Wheel of Fortune',u:'X',arcana:'Major',up:'turning point, fate, cycles',rev:'setbacks, resistance to change, repetition'},
+  {n:'Justice',u:'XI',arcana:'Major',up:'truth, fairness, accountability',rev:'avoidance, imbalance, blurred facts'},
+  {n:'The Hanged Man',u:'XII',arcana:'Major',up:'pause, surrender, new perspective',rev:'delay, resistance, limbo'},
+  {n:'Death',u:'XIII',arcana:'Major',up:'ending, transition, release',rev:'clinging, stalled transformation, fear of change'},
+  {n:'Temperance',u:'XIV',arcana:'Major',up:'balance, healing, moderation',rev:'excess, imbalance, impatience'},
+  {n:'The Devil',u:'XV',arcana:'Major',up:'attachment, shadow, desire',rev:'release, awareness, reclaiming power'},
+  {n:'The Tower',u:'XVI',arcana:'Major',up:'upheaval, revelation, truth breaking through',rev:'delayed shake-up, denial, unstable calm'},
+  {n:'The Star',u:'XVII',arcana:'Major',up:'hope, renewal, guidance',rev:'discouragement, doubt, dimmed faith'},
+  {n:'The Moon',u:'XVIII',arcana:'Major',up:'intuition, uncertainty, subconscious patterns',rev:'clarity emerging, fear, confusion lifting'},
+  {n:'The Sun',u:'XIX',arcana:'Major',up:'joy, vitality, success',rev:'temporary cloud, ego, muted confidence'},
+  {n:'Judgement',u:'XX',arcana:'Major',up:'awakening, reckoning, calling',rev:'self-judgment, avoidance, unfinished lessons'},
+  {n:'The World',u:'XXI',arcana:'Major',up:'completion, wholeness, integration',rev:'delay, loose ends, incomplete cycle'}
+];
+
+const MINOR_SUIT_META={
+  Wands:{symbol:'🪄',brief:'passion, action, confidence',cat:{love:'chemistry and momentum',career:'ambition and initiative',growth:'motivation and courage',family:'heated dynamics and enthusiasm',health:'energy levels and stress',money:'risk, hustle, and enterprise',spirit:'creative fire and calling',open:'movement and personal spark'}},
+  Cups:{symbol:'🩷',brief:'emotion, intuition, connection',cat:{love:'feelings and emotional bonding',career:'satisfaction and relationships at work',growth:'emotional healing and self-trust',family:'care, closeness, and sensitivity',health:'emotional wellbeing and nervous system tone',money:'values and emotional spending patterns',spirit:'intuition and heart wisdom',open:'inner feelings and bonds'}},
+  Swords:{symbol:'⚔️',brief:'thought, truth, tension',cat:{love:'communication and mental stories',career:'clarity, pressure, and decisions',growth:'beliefs and mindset shifts',family:'hard conversations and boundaries',health:'stress, worry, and mental load',money:'contracts, choices, and sharp realities',spirit:'discernment and truth',open:'mental patterns and perspective'}},
+  Pentacles:{symbol:'🪙',brief:'work, money, body, stability',cat:{love:'reliability and real-world commitment',career:'results, craft, and steady progress',growth:'grounding and practical change',family:'home, security, and tangible support',health:'body, rest, and routines',money:'finances and material stability',spirit:'embodiment and practical ritual',open:'resources and foundations'}}
+};
+
+const MINOR_RANKS=[
+  {r:'Ace',u:'A',up:'a beginning, seed, potential',rev:'a blocked start, delay, hesitation'},
+  {r:'Two',u:'2',up:'choice, balance, adjustment',rev:'stalemate, indecision, tension'},
+  {r:'Three',u:'3',up:'growth, support, expansion',rev:'delay, disconnection, scattered effort'},
+  {r:'Four',u:'4',up:'stability, pause, protection',rev:'stagnation, restlessness, withdrawal'},
+  {r:'Five',u:'5',up:'conflict, challenge, disruption',rev:'recovery, resolution, learning through friction'},
+  {r:'Six',u:'6',up:'progress, harmony, movement forward',rev:'setback, imbalance, unfinished transition'},
+  {r:'Seven',u:'7',up:'assessment, perseverance, testing',rev:'doubt, impatience, avoidance'},
+  {r:'Eight',u:'8',up:'movement, mastery, momentum',rev:'restriction, frustration, slowdown'},
+  {r:'Nine',u:'9',up:'fruition, resilience, nearing completion',rev:'fatigue, anxiety, lack of readiness'},
+  {r:'Ten',u:'10',up:'culmination, burden, completion',rev:'release, overload, lessons peaking'},
+  {r:'Page',u:'P',up:'curiosity, message, fresh perspective',rev:'immaturity, false start, mixed signals'},
+  {r:'Knight',u:'Kn',up:'pursuit, motion, determination',rev:'recklessness, delay, misdirected force'},
+  {r:'Queen',u:'Q',up:'inner mastery, nurture, intuition',rev:'insecurity, overgiving, withdrawn power'},
+  {r:'King',u:'K',up:'leadership, command, mature expression',rev:'rigidity, control, misuse of influence'}
+];
+
+function makeMinorCard(rank,suit){
+  const meta=MINOR_SUIT_META[suit];
+  const name=`${rank.r} of ${suit}`;
+  return {
+    n:name,
+    u:rank.u,
+    arcana:'Minor',
+    suit,
+    rank:rank.r,
+    up:`${meta.brief}; ${rank.up}`,
+    rev:`${meta.brief}; ${rank.rev}`
+  };
+}
+
+const DK=[...MAJOR_ARCANA,...Object.keys(MINOR_SUIT_META).flatMap(suit=>MINOR_RANKS.map(rank=>makeMinorCard(rank,suit)))];
+
+const POS={
+  3:['Past','Present','Future'],
+  5:['Present','Challenge','Root Cause','Near Future','Outcome'],
+  7:['Past','Present','Hidden Influence','Obstacle','Environment','Advice','Outcome']
+};
+
+const SPREAD_GUIDE={
+  3:{
+    Past:'what shaped the situation',
+    Present:'what is most active now',
+    Future:'the direction this energy is moving'
+  },
+  5:{
+    Present:'the core energy of the matter',
+    Challenge:'what complicates it',
+    'Root Cause':'what sits underneath it',
+    'Near Future':'what is beginning to unfold',
+    Outcome:'where this path may lead if nothing changes'
+  },
+  7:{
+    Past:'what brought you here',
+    Present:'what is strongest now',
+    'Hidden Influence':'what is operating beneath the surface',
+    Obstacle:'what resists movement',
+    Environment:'the outside energy around this',
+    Advice:'how to work with the situation',
+    Outcome:'the likely direction of the pattern'
+  }
+};
+
+const CAT_CLOSE={
+  love:'Lead with honesty and softness at the same time. The heart usually asks for courage before it offers peace.',
+  career:'Let your next step be intentional, not frantic. Progress grows faster when your effort and values match.',
+  growth:'Your evolution is already happening. The lesson is to cooperate with it rather than rush it.',
+  family:'Closeness strengthens when truth and patience share the same room.',
+  health:'Gentle consistency will help more than extremes. Listen to what your body has been repeating.',
+  money:'Stability builds through clear choices, not panic. Honor what is practical and sustainable.',
+  spirit:'The signs matter most when they draw you back to your own inner wisdom.',
+  open:'Take what feels true, leave what does not, and notice what keeps echoing after the reading ends.'
+};
+
+const TRINKET_INFLUENCE={
+  crystal:'It sharpens the message, asking for honesty and clear seeing.',
+  feather:'It asks you to release pressure and notice where ease wants to return.',
+  key:'It points to something opening, revealing, or finally making sense.',
+  shell:'It softens the reading and brings attention to emotional depth and protection.',
+  star:'It brightens the outcome with hope, guidance, and future-facing energy.',
+  moon:'It heightens intuition, uncertainty, dreams, and what has not fully surfaced yet.',
+  rose:'It turns the reading toward tenderness, desire, vulnerability, and heart truth.',
+  candle:'It focuses the reading on intention, devotion, and what deserves your energy.',
+  butterfly:'It emphasizes transformation, identity shifts, and what is changing shape.',
+  heart:'It magnifies emotion, attachment, care, and the need to be sincere.',
+  acorn:'It points to slow growth, potential, and something important still developing.',
+  eye:'It sharpens perception and asks what you may be overlooking.',
+  leaf:'It supports healing, cycles, and natural growth rather than forcing.',
+  hourglass:'It makes timing, pacing, and patience more relevant than usual.',
+  compass:'It emphasizes alignment, direction, and whether the path truly fits.'
+};
+
+const MOON_INFLUENCE={
+  '🌑 New Moon':'New Moon energy favors beginnings, intention-setting, and choices made from a clean slate.',
+  '🌕 Full Moon':'Full Moon energy heightens emotion, truth, culmination, and what can no longer stay hidden.',
+  '🌒 Waxing Crescent':'Waxing Crescent energy supports early momentum and fragile hope.',
+  '🌓 First Quarter':'First Quarter energy highlights action, friction, and the need to commit.',
+  '🌔 Waxing Gibbous':'Waxing Gibbous energy emphasizes refinement and preparation.',
+  '🌖 Waning Gibbous':'Waning Gibbous energy favors reflection, gratitude, and perspective.',
+  '🌗 Third Quarter':'Third Quarter energy is about release, reevaluation, and course correction.',
+  '🌘 Waning Crescent':'Waning Crescent energy asks for rest, surrender, and quiet trust.'
+};
+
+const ZODIAC_INFLUENCE={
+  '♈ Aries':'Aries adds urgency, bravery, and impulsive fire.',
+  '♉ Taurus':'Taurus adds steadiness, attachment, and the need for security.',
+  '♊ Gemini':'Gemini adds questions, mixed signals, and a need for clarity.',
+  '♋ Cancer':'Cancer adds emotional depth, protectiveness, and sensitivity.',
+  '♌ Leo':'Leo adds visibility, pride, courage, and the desire to be chosen.',
+  '♍ Virgo':'Virgo adds analysis, refinement, and a focus on what is fixable.',
+  '♎ Libra':'Libra adds relationship focus, fairness, and decision tension.',
+  '♏ Scorpio':'Scorpio adds intensity, secrecy, desire, and transformation.',
+  '♐ Sagittarius':'Sagittarius adds expansion, truth-seeking, and restlessness.',
+  '♑ Capricorn':'Capricorn adds responsibility, long-game thinking, and discipline.',
+  '♒ Aquarius':'Aquarius adds detachment, originality, and a need for perspective.',
+  '♓ Pisces':'Pisces adds intuition, imagination, and blurred boundaries.'
+};
+
+function cleanText(v){return (v||'').trim();}
+function lower(v){return cleanText(v).toLowerCase();}
+function qText(){return cleanText(document.getElementById('qinput').value);}
+function selectedMoon(){return cleanText(document.getElementById('moon').value);}
+function selectedZodiac(){return cleanText(document.getElementById('zod').value);}
+
+function inferQuestionSignals(question,category){
+  const q=lower(question);
+  const has=(arr)=>arr.some(x=>q.includes(x));
+  return {
+    relationship: category==='love' || has(['love','relationship','partner','boyfriend','girlfriend','marriage','husband','wife','ex','crush']),
+    timing: has(['when','how soon','timing','soon','timeline','wait']),
+    reconciliation: has(['come back','reconcile','reconciliation','return','text me again']),
+    career: category==='career' || has(['job','career','work','promotion','boss','business','client']),
+    money: category==='money' || has(['money','finances','debt','income','cash','abundance']),
+    health: category==='health' || has(['health','body','healing','stress','burnout','anxiety','sleep']),
+    decision: has(['should i','do i','which','choice','decision','stay or go']),
+    communication: has(['say','text','call','conversation','talk','message']),
+    closure: has(['let go','move on','closure','ending','done']),
+    open: !cleanText(question)
+  };
+}
+
+function hashString(str){
+  let h=2166136261;
+  for(let i=0;i<str.length;i++){
+    h^=str.charCodeAt(i);
+    h=Math.imul(h,16777619);
+  }
+  return h>>>0;
+}
+
+function makeReadingSalt(ctx){
+  const cryptoPart=(window.crypto&&crypto.getRandomValues)?Array.from(crypto.getRandomValues(new Uint32Array(2))).join('-'):String(Math.random()).slice(2);
+  return [Date.now(),Math.random(),cryptoPart,ctx.category,ctx.trinket,ctx.question].join('|');
+}
+
+function seededPick(arr,key){
+  if(!arr||!arr.length) return '';
+  const idx=hashString(`${readingSalt}|${key}`)%arr.length;
+  return arr[idx];
+}
+
+function seededShuffle(arr,key){
+  const list=[...(arr||[])];
+  for(let i=list.length-1;i>0;i--){
+    const j=hashString(`${readingSalt}|${key}|${i}`)%(i+1);
+    [list[i],list[j]]=[list[j],list[i]];
+  }
+  return list;
+}
+
+function sentenceCase(str){
+  if(!str) return '';
+  return str.charAt(0).toUpperCase()+str.slice(1);
+}
+
+const CATEGORY_TONES={
+  love:['the emotional truth under the surface','the push and pull between desire and discernment','what this connection is really asking of you'],
+  career:['where your energy is best invested','the difference between activity and alignment','what is sustainable instead of performative'],
+  growth:['the lesson trying to mature in you','the version of you this moment is shaping','what wants to be integrated, not escaped'],
+  family:['the deeper family pattern underneath the moment','where tenderness and boundaries need each other','what needs to be acknowledged without dramatizing it'],
+  health:['what your system is trying to communicate','the pace your body or mind may actually need','the difference between care and pressure'],
+  money:['your relationship to security and self-trust','what is stable versus what only looks urgent','the practical pattern behind the stress'],
+  spirit:['the symbolic thread moving through this season','what intuition keeps repeating','the lesson beneath the synchronicities'],
+  open:['the strongest current around you right now','the pattern asking for your attention','what keeps returning because it matters']
+};
+
+const ORIENTATION_LEADS={
+  upright:['arrives clearly','shows its message without much disguise','lands as direct guidance'],
+  reversed:['shows up through delay, resistance, or private tension','speaks through what is tangled rather than obvious','asks to be read beneath the surface, not at face value']
+};
+
+const INTEGRATION_LINES=[
+  'Read this less as a fixed verdict and more as precise guidance about how to move with what is already here.',
+  'The value of this card is in its accuracy, especially where the truth has been easy to romanticize or postpone.',
+  'What makes this message useful is its refusal to flatter the situation.',
+  'This card asks for composure, not performance, and for discernment over urgency.',
+  'Its lesson becomes more elegant once you stop trying to squeeze an instant answer out of it.',
+  'The guidance here grows sharper when you meet it with honesty instead of momentum.'
+];
+
+const PREMIUM_OPENERS=[
+  'The first thing this card does is refine the emotional atmosphere around the question.',
+  'This part of the spread narrows the reading down to what is essential rather than what is loudest.',
+  'Here, the cards move away from surface detail and toward the truer pressure point underneath it.',
+  'This position is less about spectacle and more about the exact tone of what is unfolding.'
+];
+
+const PREMIUM_TRANSITIONS=[
+  'More specifically,',
+  'At a deeper level,',
+  'In practical terms,',
+  'What matters most here is that',
+  'Underneath that,'
+];
+
+const QUESTION_FRAME_LINES=[
+  'Your question shapes the reading, but it does not overpower it; the cards are still naming the deeper pattern beneath the ask.',
+  'The spread responds to the question directly, while also showing what the question may be circling rather than saying outright.',
+  'The cards are answering the question, but with more nuance than a simple yes, no, or soon.',
+  'What comes through here is not just an answer to the question, but the emotional architecture around it.'
+];
+
+const MAJOR_MINI_ART={
+  'The Fool': `<circle class="soft" cx="44" cy="14" r="6"/><path class="shape" d="M18 52c8-4 13-10 16-20"/><path class="shape" d="M28 22l4 10"/><path class="shape" d="M26 22c3-4 7-6 12-5"/><path class="shape" d="M34 32l8 2"/><path class="shape" d="M21 43c3 0 6 1 8 3"/><path class="soft" d="M16 54h30"/><path class="shape" d="M38 26l4-4"/><circle class="fill" cx="40" cy="22" r="1.4"/>`,
+  'The Magician': `<path class="shape" d="M30 16c5 0 8 4 8 9"/><path class="shape" d="M22 18c2-3 5-5 8-5"/><path class="soft" d="M20 34h20"/><path class="shape" d="M30 16v26"/><path class="shape" d="M24 12c2-2 10-2 12 0"/><path class="shape" d="M20 36l4 0"/><path class="shape" d="M27 36c1.8-3 4.2-3 6 0"/><path class="shape" d="M37 32l0 8"/><circle class="shape" cx="23" cy="30" r="2.2"/><path class="shape" d="M14 30h4M39 28h6"/>`,
+  'The High Priestess': `<path class="shape" d="M19 16v32M41 16v32"/><circle class="soft" cx="30" cy="16" r="7"/><path class="shape" d="M24 26c2-2 10-2 12 0"/><path class="shape" d="M26 28v12h8V28"/><path class="soft" d="M24 44c4 2 8 2 12 0"/><path class="shape" d="M28 14a4 4 0 1 0 4 0"/>`,
+  'The Empress': `<path class="shape" d="M22 19l8-6 8 6"/><path class="soft" d="M17 48c4-4 9-6 13-6s9 2 13 6"/><circle class="shape" cx="30" cy="28" r="7"/><path class="shape" d="M24 37c4-2 8-2 12 0"/><path class="shape" d="M17 38l5-4M43 38l-5-4"/><path class="soft" d="M17 52h26"/><path class="fill" d="M22 47c2-3 6-4 8-4s6 1 8 4c-3 2-5 3-8 3s-5-1-8-3z"/>`,
+  'The Emperor': `<rect class="shape" x="20" y="20" width="20" height="18" rx="2"/><path class="shape" d="M20 20l10-7 10 7"/><path class="shape" d="M25 28h10"/><path class="soft" d="M17 40h26"/><path class="shape" d="M17 22l3-3 3 3"/><path class="shape" d="M37 22l3-3 3 3"/><path class="shape" d="M24 41l-4 6M36 41l4 6"/>`,
+  'The Hierophant': `<path class="shape" d="M30 14v28"/><path class="shape" d="M24 20h12M24 26h12"/><path class="shape" d="M22 14c3-3 13-3 16 0"/><path class="soft" d="M19 46c3-4 6-6 11-6s8 2 11 6"/><path class="shape" d="M22 48l5-6M38 48l-5-6"/>`,
+  'The Lovers': `<circle class="shape" cx="22" cy="31" r="4"/><circle class="shape" cx="38" cy="31" r="4"/><path class="shape" d="M22 35v9M38 35v9"/><path class="soft" d="M30 16l-4 7h8z"/><path class="shape" d="M18 50c4-3 8-5 12-5s8 2 12 5"/><path class="soft" d="M24 21c2-2 10-2 12 0"/>`,
+  'The Chariot': `<path class="shape" d="M18 36h24l-3-9H21z"/><path class="shape" d="M24 23h12"/><path class="shape" d="M23 18c2-2 10-2 12 0"/><path class="soft" d="M22 45h16"/><path class="shape" d="M18 43c2-3 6-3 8 0"/><path class="shape" d="M34 43c2-3 6-3 8 0"/><path class="shape" d="M17 43h10M33 43h10"/>`,
+  'Strength': `<path class="soft" d="M26 14c2-3 6-3 8 0"/><path class="shape" d="M24 22c2-3 10-3 12 0"/><path class="shape" d="M18 38c2-7 8-11 16-11"/><path class="shape" d="M18 38c0 5 4 8 9 8s9-3 13-8"/><path class="shape" d="M20 34c2-2 5-2 7 0"/><circle class="fill" cx="23" cy="37" r="1.3"/>`,
+  'The Hermit': `<path class="shape" d="M30 16v23"/><path class="shape" d="M24 44h12"/><path class="soft" d="M15 50c5-6 10-8 15-8"/><path class="shape" d="M20 21l6-3"/><path class="shape" d="M17 22l3 6 6-3-3-6z"/><circle class="fill" cx="21.5" cy="24.5" r="1.2"/>`,
+  'Wheel of Fortune': `<circle class="shape" cx="30" cy="30" r="11"/><circle class="soft" cx="30" cy="30" r="4"/><path class="shape" d="M30 19v22M19 30h22"/><path class="soft" d="M22 22l3 3M35 35l3 3M22 38l3-3M35 25l3-3"/><path class="shape" d="M30 12l2 4 4 .5-3 2.5.8 4-3.8-2-3.8 2 .8-4-3-2.5 4-.5z" opacity=".55"/>`,
+  'Justice': `<path class="shape" d="M30 14v29"/><path class="shape" d="M22 20h16"/><path class="soft" d="M23 24l-4 8h8zM41 24l-4 8h8z"/><path class="shape" d="M27 43h6"/><path class="shape" d="M30 16l5 4"/>`,
+  'The Hanged Man': `<path class="shape" d="M18 16h24"/><path class="shape" d="M30 16v11"/><circle class="soft" cx="30" cy="31" r="6"/><path class="shape" d="M28 38l-3 7M32 38l3 7"/><path class="shape" d="M26 25l-6 6M34 25l6 6"/><circle class="fill" cx="30" cy="31" r=".8"/>`,
+  'Death': `<path class="shape" d="M19 45l9-17 11 17"/><path class="shape" d="M25 19c0-4 3-7 7-7s7 3 7 7c0 3-2 5-4 6h-6c-2-1-4-3-4-6z"/><circle class="fill" cx="31" cy="17.5" r="1.1"/><circle class="fill" cx="35" cy="17.5" r="1.1"/><path class="soft" d="M18 49h24"/><path class="shape" d="M39 21l4 7"/>`,
+  'Temperance': `<path class="shape" d="M22 22h8l-1 7h-6z"/><path class="shape" d="M31 30h8l-1 7h-6z"/><path class="soft" d="M28 27c4 2 5 4 6 7"/><path class="shape" d="M30 15v8"/><path class="soft" d="M17 49c4-3 9-5 13-5s9 2 13 5"/><path class="shape" d="M26 42l4 4 4-4"/>`,
+  'The Devil': `<path class="shape" d="M24 19l3 6h6l3-6"/><path class="shape" d="M22 25v11h16V25"/><path class="soft" d="M24 39c2 3 4 4 6 4s4-1 6-4"/><path class="shape" d="M22 19l-2-4M36 19l2-4"/><circle class="fill" cx="28" cy="28" r="1"/><circle class="fill" cx="34" cy="28" r="1"/>`,
+  'The Tower': `<path class="shape" d="M24 46V18h12v28"/><path class="shape" d="M22 21l8-8 8 8"/><path class="soft" d="M18 18l5 4M42 18l-5 4"/><path class="shape" d="M18 26l6-4M42 24l-6 4"/><path class="shape" d="M20 42l-4 5M40 40l4 5"/><path class="fill" d="M30 12l2.4 5H38l-4.7 3.2 1.8 5.4L30 22.3l-5.1 3.3 1.8-5.4L22 17h5.6z" opacity=".75"/>`,
+  'The Star': `<path class="shape" d="M30 15l2.6 7.6H40l-6 4.4 2.3 7.1-6.3-4.2-6.3 4.2 2.3-7.1-6-4.4h7.4z"/><path class="soft" d="M18 45c6-5 18-5 24 0"/><path class="shape" d="M22 39c4-2 12-2 16 0"/><circle class="soft" cx="15" cy="22" r="1.4"/><circle class="soft" cx="43" cy="25" r="1.4"/>`,
+  'The Moon': `<path class="shape" d="M35 16a10 10 0 1 0 0 20a8 8 0 1 1 0-20z"/><path class="shape" d="M16 46c4-5 8-7 14-7s10 2 14 7"/><path class="soft" d="M18 44V26M42 44V26"/><path class="shape" d="M28 44c2-4 4-6 8-7"/><circle class="soft" cx="20" cy="18" r="1.2"/><circle class="soft" cx="25" cy="22" r=".9"/>`,
+  'The Sun': `<circle class="shape" cx="30" cy="21" r="8"/><path class="soft" d="M30 8v5M30 29v5M17 21h5M38 21h5M21 12l3 3M39 30l3 3M39 12l-3 3M21 30l-3 3"/><path class="shape" d="M19 47c6-4 16-4 22 0"/><path class="soft" d="M22 42h16"/><path class="shape" d="M26 42c2-4 6-4 8 0"/>`,
+  'Judgement': `<path class="shape" d="M30 14v16"/><path class="shape" d="M26 18h8"/><path class="soft" d="M20 43c3-5 17-5 20 0"/><path class="shape" d="M22 39v-5M30 39v-7M38 39v-5"/><path class="shape" d="M26 14l4-2 4 2"/>`,
+  'The World': `<ellipse class="shape" cx="30" cy="30" rx="13" ry="16"/><path class="soft" d="M30 18c4 5 4 19 0 24c-4-5-4-19 0-24z"/><path class="shape" d="M18 30c4-4 20-4 24 0c-4 4-20 4-24 0z"/><circle class="soft" cx="16" cy="16" r="2"/><circle class="soft" cx="44" cy="16" r="2"/><circle class="soft" cx="16" cy="44" r="2"/><circle class="soft" cx="44" cy="44" r="2"/>`
+};
+
+function suitIcon(suit,x,y,scale=1,cls='shape'){
+  const s=scale;
+  if(suit==='Wands'){
+    return `<g transform="translate(${x},${y}) scale(${s})">
+      <path class="${cls}" d="M0 8L12 -8"/>
+      <path class="soft" d="M3 5c2-1 3-3 4-5M6 2c2 0 4 1 5 3"/>
+    </g>`;
+  }
+  if(suit==='Cups'){
+    return `<g transform="translate(${x},${y}) scale(${s})">
+      <path class="${cls}" d="M-5 -4h10c0 5-2 8-5 8s-5-3-5-8z"/>
+      <path class="${cls}" d="M-2 4h4M0 4v4M-4 8h8"/>
+    </g>`;
+  }
+  if(suit==='Swords'){
+    return `<g transform="translate(${x},${y}) scale(${s})">
+      <path class="${cls}" d="M0 8V-8"/>
+      <path class="${cls}" d="M0-8l2 3H-2z"/>
+      <path class="${cls}" d="M-3 3h6M-2 5h4"/>
+    </g>`;
+  }
+  return `<g transform="translate(${x},${y}) scale(${s})">
+    <circle class="${cls}" cx="0" cy="0" r="6"/>
+    <path class="soft" d="M0-4l1.2 3.2H5l-3 2.1 1.2 3.5L0 2.8l-3.2 2 1.2-3.5-3-2.1h3.8z"/>
+  </g>`;
+}
+
+function minorSceneArt(card){
+  const suit=card.suit, rank=card.rank;
+  if(suit==='Wands'){
+    switch(rank){
+      case 'Ace': return `${suitIcon('Wands',30,30,1.15)}<path class="soft" d="M24 39c2-2 4-3 6-3s4 1 6 3"/>`;
+      case 'Two': return `<path class="shape" d="M20 18v28M40 18v28"/><circle class="soft" cx="30" cy="28" r="5"/><path class="shape" d="M22 45h16"/>`;
+      case 'Three': return `<path class="shape" d="M20 20v24M30 18v26M40 20v24"/><path class="soft" d="M18 46c4-4 20-4 24 0"/>`;
+      case 'Four': return `<path class="shape" d="M20 20v24M28 20v24M36 20v24M44 20v24"/><path class="soft" d="M20 21c5-4 19-4 24 0"/><path class="soft" d="M22 40c3 2 5 3 8 3s5-1 8-3"/>`;
+      case 'Five': return `<path class="shape" d="M18 22l24 20M18 42l24-20M22 18l16 28M26 18l8 28M30 18v28"/>`;
+      case 'Six': return `${suitIcon('Wands',30,31,1.05)}<path class="soft" d="M22 24c3-4 13-4 16 0"/><path class="shape" d="M20 46c4-3 16-3 20 0"/>`;
+      case 'Seven': return `<path class="shape" d="M30 18v24"/><path class="shape" d="M19 40l8-5M20 29l8-2M22 20l7 4M41 40l-8-5M40 29l-8-2M38 20l-7 4"/>`;
+      case 'Eight': return `<path class="shape" d="M14 44l10-20M20 46l10-20M26 44l10-20M32 46l10-20M18 38l10-20M24 40l10-20M30 38l10-20M36 40l10-20"/>`;
+      case 'Nine': return `<path class="shape" d="M20 20v24M24 20v24M28 20v24M32 20v24M36 20v24M40 20v24M44 20v24M48 20v24"/><path class="shape" d="M18 30c2-4 6-6 10-6"/><path class="soft" d="M17 33c2 3 4 4 6 4"/>`;
+      case 'Ten': return `<path class="shape" d="M20 43l18-18M22 45l16-20M24 46l14-21M26 46l12-22M28 46l10-22M30 46l8-22M32 46l6-22M34 46l4-22M36 46l2-22M38 46V24"/><path class="soft" d="M20 47h20"/>`;
+      case 'Page': return `${suitIcon('Wands',30,28,1.05)}<path class="shape" d="M24 46c3-3 9-3 12 0"/><path class="soft" d="M33 17c2 0 4 1 5 3"/>`;
+      case 'Knight': return `${suitIcon('Wands',33,27,1.05)}<path class="shape" d="M18 38c3-7 8-10 14-10"/><path class="shape" d="M18 38c1 4 4 6 8 6"/><path class="soft" d="M17 44h18"/>`;
+      case 'Queen': return `${suitIcon('Wands',34,27,1)}<path class="shape" d="M18 42h24"/><path class="soft" d="M20 22c2-3 10-3 12 0"/><circle class="soft" cx="22" cy="32" r="2"/>`;
+      case 'King': return `${suitIcon('Wands',34,26,1.05)}<rect class="shape" x="18" y="32" width="16" height="10" rx="2"/><path class="soft" d="M18 32l8-6 8 6"/>`;
+    }
+  }
+  if(suit==='Cups'){
+    switch(rank){
+      case 'Ace': return `${suitIcon('Cups',30,31,1.2)}<path class="soft" d="M30 12c2 2 5 4 6 7"/><path class="soft" d="M24 42c2 4 4 6 6 6s4-2 6-6"/>`;
+      case 'Two': return `${suitIcon('Cups',23,32,.9)}${suitIcon('Cups',37,32,.9)}<path class="soft" d="M26 20c3-3 5-4 7-4s4 1 7 4"/><path class="shape" d="M30 20v8"/>`;
+      case 'Three': return `${suitIcon('Cups',20,34,.82)}${suitIcon('Cups',30,30,.82)}${suitIcon('Cups',40,34,.82)}<path class="soft" d="M18 42c3 3 7 4 12 4s9-1 12-4"/>`;
+      case 'Four': return `${suitIcon('Cups',20,36,.76)}${suitIcon('Cups',30,36,.76)}${suitIcon('Cups',40,36,.76)}${suitIcon('Cups',44,22,.76,'soft')}<path class="shape" d="M18 26c3-5 10-7 16-5"/>`;
+      case 'Five': return `${suitIcon('Cups',22,36,.76)}${suitIcon('Cups',30,37,.76)}${suitIcon('Cups',38,36,.76)}${suitIcon('Cups',44,24,.76,'soft')} ${suitIcon('Cups',48,24,.76,'soft')}<path class="shape" d="M18 24c3 3 5 10 4 16"/>`;
+      case 'Six': return `${suitIcon('Cups',23,24,.72)}${suitIcon('Cups',37,24,.72)}${suitIcon('Cups',23,38,.72)}${suitIcon('Cups',37,38,.72)}${suitIcon('Cups',30,31,.72)}${suitIcon('Cups',46,31,.72)}<path class="soft" d="M17 47c4-2 9-3 13-3"/>`;
+      case 'Seven': return `${suitIcon('Cups',18,20,.62,'soft')}${suitIcon('Cups',30,18,.62,'soft')}${suitIcon('Cups',42,20,.62,'soft')}${suitIcon('Cups',18,32,.62,'soft')}${suitIcon('Cups',30,30,.62,'soft')}${suitIcon('Cups',42,32,.62,'soft')}${suitIcon('Cups',30,43,.62,'soft')}<path class="soft" d="M14 14c6-5 26-5 32 0"/>`;
+      case 'Eight': return `${suitIcon('Cups',20,37,.62)}${suitIcon('Cups',28,37,.62)}${suitIcon('Cups',36,37,.62)}${suitIcon('Cups',44,37,.62)}${suitIcon('Cups',24,27,.62)}${suitIcon('Cups',32,27,.62)}${suitIcon('Cups',40,27,.62)}${suitIcon('Cups',48,27,.62)}<path class="shape" d="M16 22c4-6 8-9 13-10"/><path class="soft" d="M12 48c6-1 10-4 14-8"/>`;
+      case 'Nine': return `${suitIcon('Cups',18,20,.58)}${suitIcon('Cups',30,20,.58)}${suitIcon('Cups',42,20,.58)}${suitIcon('Cups',18,30,.58)}${suitIcon('Cups',30,30,.58)}${suitIcon('Cups',42,30,.58)}${suitIcon('Cups',18,40,.58)}${suitIcon('Cups',30,40,.58)}${suitIcon('Cups',42,40,.58)}<path class="soft" d="M18 48c4-3 20-3 24 0"/>`;
+      case 'Ten': return `${suitIcon('Cups',14,20,.54)}${suitIcon('Cups',22,16,.54)}${suitIcon('Cups',30,14,.54)}${suitIcon('Cups',38,16,.54)}${suitIcon('Cups',46,20,.54)}${suitIcon('Cups',18,28,.54)}${suitIcon('Cups',26,30,.54)}${suitIcon('Cups',34,30,.54)}${suitIcon('Cups',42,28,.54)}${suitIcon('Cups',50,24,.54)}<path class="soft" d="M16 44c4-4 8-6 14-6s10 2 14 6"/><path class="shape" d="M24 44c2-4 10-4 12 0"/>`;
+      case 'Page': return `${suitIcon('Cups',31,28,1)}<path class="soft" d="M33 24c2-1 4-1 5 1"/><path class="shape" d="M22 46c4-3 12-3 16 0"/>`;
+      case 'Knight': return `${suitIcon('Cups',36,30,.95)}<path class="shape" d="M16 38c3-7 9-10 16-10"/><path class="shape" d="M16 38c1 4 4 6 9 6"/>`;
+      case 'Queen': return `${suitIcon('Cups',35,28,.95)}<path class="shape" d="M18 42h24"/><path class="soft" d="M22 24c3-3 11-3 14 0"/>`;
+      case 'King': return `${suitIcon('Cups',35,28,.95)}<rect class="shape" x="18" y="32" width="16" height="10" rx="2"/><path class="soft" d="M18 32l8-6 8 6"/><path class="shape" d="M40 39c2-2 4-2 6 0"/>`;
+    }
+  }
+  if(suit==='Swords'){
+    switch(rank){
+      case 'Ace': return `${suitIcon('Swords',30,30,1.18)}<path class="soft" d="M24 16c3-2 9-2 12 0"/><path class="shape" d="M24 14l6-4 6 4"/>`;
+      case 'Two': return `${suitIcon('Swords',26,30,.95)}${suitIcon('Swords',34,30,.95)}<path class="soft" d="M22 22c2-3 14-3 16 0"/><path class="shape" d="M20 43c4-3 16-3 20 0"/>`;
+      case 'Three': return `<path class="shape" d="M30 22c5-5 15-2 15 5c0 9-15 17-15 17S15 36 15 27c0-7 10-10 15-5z"/><path class="shape" d="M20 38l20-20M18 28l24 4M24 18l12 24"/>`;
+      case 'Four': return `${suitIcon('Swords',22,18,.7)}${suitIcon('Swords',28,18,.7)}${suitIcon('Swords',34,18,.7)}${suitIcon('Swords',40,18,.7)}<path class="shape" d="M18 39h22"/><path class="soft" d="M22 35c3-3 11-3 14 0"/>`;
+      case 'Five': return `${suitIcon('Swords',21,34,.7)}${suitIcon('Swords',27,36,.7)}${suitIcon('Swords',33,38,.7)}${suitIcon('Swords',41,24,.7)}${suitIcon('Swords',47,26,.7)}<path class="shape" d="M18 20c4 0 8 2 10 6"/>`;
+      case 'Six': return `${suitIcon('Swords',18,18,.62)}${suitIcon('Swords',24,18,.62)}${suitIcon('Swords',30,18,.62)}${suitIcon('Swords',36,18,.62)}${suitIcon('Swords',42,18,.62)}${suitIcon('Swords',48,18,.62)}<path class="shape" d="M16 42h28"/><path class="soft" d="M21 42c3-6 10-10 17-10"/>`;
+      case 'Seven': return `${suitIcon('Swords',18,18,.6)}${suitIcon('Swords',24,18,.6)}${suitIcon('Swords',30,18,.6)}${suitIcon('Swords',36,18,.6,'soft')}${suitIcon('Swords',42,18,.6,'soft')}${suitIcon('Swords',48,18,.6,'soft')}${suitIcon('Swords',32,36,.6)}<path class="shape" d="M18 44c4-6 9-9 14-10"/>`;
+      case 'Eight': return `${suitIcon('Swords',18,18,.58)}${suitIcon('Swords',42,18,.58)}${suitIcon('Swords',18,28,.58)}${suitIcon('Swords',42,28,.58)}${suitIcon('Swords',18,38,.58)}${suitIcon('Swords',42,38,.58)}${suitIcon('Swords',18,48,.58)}${suitIcon('Swords',42,48,.58)}<path class="shape" d="M30 46c-4-5-4-13 0-18"/><path class="soft" d="M26 24c2-2 6-2 8 0"/>`;
+      case 'Nine': return `${suitIcon('Swords',18,18,.56)}${suitIcon('Swords',24,18,.56)}${suitIcon('Swords',30,18,.56)}${suitIcon('Swords',36,18,.56)}${suitIcon('Swords',42,18,.56)}${suitIcon('Swords',18,26,.56)}${suitIcon('Swords',24,26,.56)}${suitIcon('Swords',30,26,.56)}${suitIcon('Swords',36,26,.56)}<path class="shape" d="M18 44h16"/><path class="soft" d="M40 43c-3-4-4-8-4-13"/>`;
+      case 'Ten': return `${suitIcon('Swords',18,22,.5)}${suitIcon('Swords',22,24,.5)}${suitIcon('Swords',26,26,.5)}${suitIcon('Swords',30,28,.5)}${suitIcon('Swords',34,30,.5)}${suitIcon('Swords',38,32,.5)}${suitIcon('Swords',42,34,.5)}${suitIcon('Swords',46,36,.5)}${suitIcon('Swords',50,38,.5)}${suitIcon('Swords',54,40,.5)}<path class="soft" d="M16 49c5-2 9-3 14-3"/><path class="soft" d="M42 49c3-4 6-6 10-7"/>`;
+      case 'Page': return `${suitIcon('Swords',30,28,1)}<path class="soft" d="M24 20c3-3 9-3 12 0"/><path class="shape" d="M22 46c4-3 12-3 16 0"/>`;
+      case 'Knight': return `${suitIcon('Swords',35,26,1)}<path class="shape" d="M16 38c3-7 9-10 16-10"/><path class="shape" d="M16 38c1 4 4 6 9 6"/><path class="soft" d="M18 44h20"/>`;
+      case 'Queen': return `${suitIcon('Swords',34,27,.98)}<path class="shape" d="M18 42h24"/><path class="soft" d="M20 24c3-3 11-3 14 0"/><path class="shape" d="M42 24v18"/>`;
+      case 'King': return `${suitIcon('Swords',34,26,1)}<rect class="shape" x="18" y="32" width="16" height="10" rx="2"/><path class="soft" d="M18 32l8-6 8 6"/><path class="shape" d="M42 22v20"/>`;
+    }
+  }
+  if(suit==='Pentacles'){
+    switch(rank){
+      case 'Ace': return `${suitIcon('Pentacles',30,30,1.18)}<path class="soft" d="M18 45c4-4 8-6 12-6s8 2 12 6"/>`;
+      case 'Two': return `${suitIcon('Pentacles',24,28,.86)}${suitIcon('Pentacles',36,34,.86)}<path class="shape" d="M24 28c6-8 12-8 12 6"/><path class="soft" d="M18 46c4-2 20-2 24 0"/>`;
+      case 'Three': return `${suitIcon('Pentacles',22,20,.65)}${suitIcon('Pentacles',30,16,.65)}${suitIcon('Pentacles',38,20,.65)}<path class="shape" d="M18 46V28h24v18"/><path class="soft" d="M24 34h12"/>`;
+      case 'Four': return `${suitIcon('Pentacles',30,18,.72)}${suitIcon('Pentacles',22,34,.72)}${suitIcon('Pentacles',38,34,.72)}${suitIcon('Pentacles',30,46,.72)}<path class="shape" d="M26 26h8"/>`;
+      case 'Five': return `${suitIcon('Pentacles',22,24,.62,'soft')}${suitIcon('Pentacles',38,24,.62,'soft')}${suitIcon('Pentacles',22,38,.62,'soft')}${suitIcon('Pentacles',38,38,.62,'soft')}${suitIcon('Pentacles',30,31,.62,'soft')}<path class="shape" d="M16 46c4-6 8-9 14-10"/><path class="shape" d="M42 45c-2-4-3-8-3-12"/>`;
+      case 'Six': return `${suitIcon('Pentacles',20,20,.58)}${suitIcon('Pentacles',30,18,.58)}${suitIcon('Pentacles',40,20,.58)}${suitIcon('Pentacles',20,34,.58)}${suitIcon('Pentacles',30,34,.58)}${suitIcon('Pentacles',40,34,.58)}<path class="shape" d="M30 24v8"/><path class="soft" d="M26 27c2-2 6-2 8 0"/>`;
+      case 'Seven': return `${suitIcon('Pentacles',20,20,.56)}${suitIcon('Pentacles',20,30,.56)}${suitIcon('Pentacles',20,40,.56)}${suitIcon('Pentacles',34,20,.56)}${suitIcon('Pentacles',34,30,.56)}${suitIcon('Pentacles',34,40,.56)}${suitIcon('Pentacles',27,14,.56)}<path class="shape" d="M40 46c-4-3-6-7-6-12"/>`;
+      case 'Eight': return `${suitIcon('Pentacles',22,18,.52)}${suitIcon('Pentacles',22,27,.52)}${suitIcon('Pentacles',22,36,.52)}${suitIcon('Pentacles',22,45,.52)}${suitIcon('Pentacles',38,18,.52)}${suitIcon('Pentacles',38,27,.52)}${suitIcon('Pentacles',38,36,.52)}${suitIcon('Pentacles',38,45,.52)}<path class="shape" d="M30 42c-2-4-2-8 0-12"/>`;
+      case 'Nine': return `${suitIcon('Pentacles',19,18,.52)}${suitIcon('Pentacles',30,16,.52)}${suitIcon('Pentacles',41,18,.52)}${suitIcon('Pentacles',19,30,.52)}${suitIcon('Pentacles',30,28,.52)}${suitIcon('Pentacles',41,30,.52)}${suitIcon('Pentacles',19,42,.52)}${suitIcon('Pentacles',30,40,.52)}${suitIcon('Pentacles',41,42,.52)}<path class="soft" d="M46 20c2 2 3 5 3 8"/>`;
+      case 'Ten': return `${suitIcon('Pentacles',16,18,.48)}${suitIcon('Pentacles',27,16,.48)}${suitIcon('Pentacles',38,16,.48)}${suitIcon('Pentacles',49,18,.48)}${suitIcon('Pentacles',16,30,.48)}${suitIcon('Pentacles',27,30,.48)}${suitIcon('Pentacles',38,30,.48)}${suitIcon('Pentacles',49,30,.48)}${suitIcon('Pentacles',24,44,.48)}${suitIcon('Pentacles',41,44,.48)}<path class="shape" d="M16 48c5-5 9-7 14-7s9 2 14 7"/>`;
+      case 'Page': return `${suitIcon('Pentacles',30,29,1)}<path class="shape" d="M22 46c4-3 12-3 16 0"/><path class="soft" d="M28 17c2-1 4-1 6 0"/>`;
+      case 'Knight': return `${suitIcon('Pentacles',36,30,.98)}<path class="shape" d="M16 38c3-7 9-10 16-10"/><path class="shape" d="M16 38c1 4 4 6 9 6"/>`;
+      case 'Queen': return `${suitIcon('Pentacles',34,28,.96)}<path class="shape" d="M18 42h24"/><path class="soft" d="M20 24c3-3 11-3 14 0"/><path class="shape" d="M40 20c2 3 3 6 3 10"/>`;
+      case 'King': return `${suitIcon('Pentacles',34,28,.98)}<rect class="shape" x="18" y="32" width="16" height="10" rx="2"/><path class="soft" d="M18 32l8-6 8 6"/><path class="shape" d="M42 36c2 2 3 5 3 8"/>`;
+    }
+  }
+  return `<text class="glyph" x="30" y="34" text-anchor="middle" font-size="12">${card.u}</text>`;
+}
+
+function getCardArt(card){
+  const sub=card.arcana==='Major' ? 'major arcana' : `${card.rank.toLowerCase()} of ${card.suit.toLowerCase()}`;
+  const art=card.arcana==='Major'
+    ? (MAJOR_MINI_ART[card.n] || `<text class="glyph" x="30" y="34" text-anchor="middle" font-size="12">${card.u}</text>`)
+    : minorSceneArt(card);
+  return `<svg viewBox="0 0 60 80" aria-hidden="true">
+    <path class="soft" d="M18 10h24"/>
+    ${art}
+    <path class="soft" d="M18 58h24"/>
+    <text class="label" x="30" y="67" text-anchor="middle">${sub.toUpperCase()}</text>
+  </svg>`;
+}
+
+function reversedChance(ctx){
+  let chance=0.34;
+  if(ctx.moon==='🌕 Full Moon' || ctx.moon==='🌘 Waning Crescent') chance+=0.06;
+  if(ctx.trinket==='moon' || ctx.trinket==='eye') chance+=0.04;
+  if(ctx.signals.decision || ctx.signals.timing) chance+=0.03;
+  return Math.min(0.55,chance);
+}
+
+function shuffle(arr){
+  const a=[...arr];
+  for(let i=a.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+
+function buildContext(){
+  const question=qText();
+  return {
+    category:cat||'open',
+    question,
+    trinket:chosenT||'',
+    moon:selectedMoon(),
+    zodiac:selectedZodiac(),
+    signals:inferQuestionSignals(question,cat||'open')
+  };
+}
+
+function getSuitCategoryLine(card,ctx){
+  if(card.arcana==='Major') return 'A Major Arcana card suggests this issue matters on a deeper lesson level, not just day-to-day circumstances.';
+  return `${card.suit} energy in this reading speaks to ${MINOR_SUIT_META[card.suit].cat[ctx.category] || MINOR_SUIT_META[card.suit].brief}.`;
+}
+
+function getPositionLine(position,ctx){
+  return SPREAD_GUIDE[spN]?.[position] ? `${position} shows ${SPREAD_GUIDE[spN][position]}.` : `${position} reveals part of the pattern around your question.`;
+}
+
+function getQuestionLine(card,ctx){
+  if(!ctx.question) return 'Because this is an open reading, the card is acting like a spotlight on the strongest energy around you right now.';
+  if(ctx.signals.relationship) return card.reversed ? 'In relationship matters, this points to crossed wires, fear, or attachment patterns that still need honesty.' : 'In relationship matters, this points toward emotional truth, mutuality, and what the connection is really asking for.';
+  if(ctx.signals.career) return card.reversed ? 'For work or purpose, this suggests friction, hesitation, or misalignment that needs to be addressed directly.' : 'For work or purpose, this supports aligned effort, clearer direction, and smarter use of your energy.';
+  if(ctx.signals.money) return card.reversed ? 'Around money, it suggests tightening, delay, or a pattern that needs more realism.' : 'Around money, it favors grounded choices, steady improvement, and practical confidence.';
+  if(ctx.signals.health) return card.reversed ? 'For wellbeing, it suggests your system may be asking for rest, regulation, or less pushing.' : 'For wellbeing, it supports restoration through consistency, awareness, and gentler pacing.';
+  if(ctx.signals.decision) return card.reversed ? 'Because your question carries a decision, the reversed card warns against acting from fear, pressure, or confusion.' : 'Because your question carries a decision, the upright card highlights what aligns more cleanly with your deeper truth.';
+  if(ctx.signals.communication) return card.reversed ? 'Communication here may be delayed, distorted, or emotionally loaded.' : 'Communication here looks clearer when spoken plainly and without overediting yourself.';
+  return card.reversed ? 'This suggests the issue is tangled more internally than it first appears.' : 'This suggests the path becomes clearer when you trust what is already showing itself.';
+}
+
+function getTrinketLine(ctx){
+  return ctx.trinket && TRINKET_INFLUENCE[ctx.trinket] ? TRINKET_INFLUENCE[ctx.trinket] : '';
+}
+
+function getAstroLine(ctx){
+  const bits=[];
+  if(ctx.moon && MOON_INFLUENCE[ctx.moon]) bits.push(MOON_INFLUENCE[ctx.moon]);
+  if(ctx.zodiac && ZODIAC_INFLUENCE[ctx.zodiac]) bits.push(ZODIAC_INFLUENCE[ctx.zodiac]);
+  return bits.join(' ');
+}
+
+
+function getSpreadTone(ctx,position){
+  const tones=CATEGORY_TONES[ctx.category] || CATEGORY_TONES.open;
+  return seededPick(tones,`tone-${position}-${ctx.category}`);
+}
+
+function getNeighborLine(index){
+  const card=drawn[index];
+  const near=drawn[index+1] || drawn[index-1];
+  if(!near) return '';
+  if(card.arcana==='Major' && near.arcana==='Major') return `Beside ${near.n}, the message feels amplified and less like a passing mood than a real turning point.`;
+  if(card.suit && near.suit && card.suit===near.suit) return `Next to ${near.n}, this doubles down on ${MINOR_SUIT_META[card.suit].brief}.`;
+  if(card.reversed!==near.reversed) return `Its contrast with ${near.n} suggests tension between what is felt internally and what is ready to happen externally.`;
+  if(card.suit && near.suit && card.suit!==near.suit) return `Against ${near.n}, this card adds a different layer to the story rather than repeating the same message.`;
+  return '';
+}
+
+function getQuestionSpecificLine(ctx){
+  const q=cleanText(ctx.question);
+  if(!q) return seededPick(QUESTION_FRAME_LINES,'question-frame-open');
+  const trimmed=q.length>120 ? `${q.slice(0,117).trim()}…` : q;
+  if(ctx.signals.timing) return 'The question carries timing energy, but the spread is more interested in readiness, conditions, and alignment than in offering a theatrical deadline.';
+  if(ctx.signals.reconciliation) return 'Because reunion is part of the question, the reading becomes more discerning: it is weighing emotional truth and health, not merely the hope of return.';
+  if(ctx.signals.closure) return 'Because closure is part of the question, the cards are tracing what still has energetic weight rather than pretending everything is already resolved.';
+  return `With your question — “${trimmed.replace(/"/g,'&quot;')}” — the spread keeps returning to ${getSpreadTone(ctx,'question')}.`;
+}
+
+function buildCardInterpretation(card,position,ctx,index){
+  const orientWord=card.reversed?'reversed':'upright';
+  const meaning=card.reversed?card.rev:card.up;
+  const opener=seededPick([
+    `${position} highlights ${getSpreadTone(ctx,position)}.`,
+    `In the ${position.toLowerCase()} position, the emphasis is on ${getSpreadTone(ctx,position)}.`,
+    `${position} is speaking most loudly about ${getSpreadTone(ctx,position)}.`,
+    `${seededPick(PREMIUM_OPENERS,`premium-open-${position}`)} In the ${position.toLowerCase()} position, the spread is concentrating on ${getSpreadTone(ctx,position)}.`
+  ],`opener-${card.n}-${position}`);
+  const cardLine=seededPick([
+    `${card.n} ${orientWord} ${seededPick(ORIENTATION_LEADS[orientWord],`orient-${card.n}`)} and points to ${meaning}.`,
+    `Here, ${card.n} appears ${orientWord} and points toward ${meaning}.`,
+    `${card.n} comes through ${orientWord}, emphasizing ${meaning}.`,
+    `${card.n} arrives ${orientWord}, which makes its message feel less literal and more exact: ${sentenceCase(meaning)}.`
+  ],`cardline-${card.n}-${position}`);
+
+  const clauses = [
+    opener,
+    cardLine,
+    seededPick(PREMIUM_TRANSITIONS,`transition-a-${card.n}-${position}`) + ' ' + getSuitCategoryLine(card,ctx),
+    seededPick(PREMIUM_TRANSITIONS,`transition-b-${card.n}-${position}`) + ' ' + getQuestionLine(card,ctx),
+    getQuestionSpecificLine(ctx)
+  ];
+
+  const neighbor=getNeighborLine(index);
+  if(neighbor) clauses.push(neighbor);
+
+  const trinket=getTrinketLine(ctx);
+  if(trinket && hashString(`${readingSalt}|trinket-${card.n}-${position}`)%2===0){
+    clauses.push(seededPick([
+      `${sentenceCase(trinket)}`,
+      `There is also a symbolic echo from your chosen trinket here: ${trinket.charAt(0).toLowerCase()+trinket.slice(1)}`,
+      `Your trinket choice subtly reinforces this card, suggesting that ${trinket.charAt(0).toLowerCase()+trinket.slice(1)}`
+    ],`trinket-line-${card.n}-${position}`));
+  }
+
+  clauses.push(seededPick(INTEGRATION_LINES,`integration-${card.n}-${position}`));
+
+  const ordered = [clauses[0],clauses[1],...seededShuffle(clauses.slice(2),`clause-order-${card.n}-${position}`)];
+  return ordered.filter(Boolean).join(' ');
+}
+
+function buildSummaryText(ctx){
+  const p=POS[spN];
+  return drawn.map((c,i)=>`${c.n}${c.reversed?' reversed':''} (${p[i]})`).join('  ·  ');
+}
+
+function buildOverview(ctx){
+  const reversedCount=drawn.filter(c=>c.reversed).length;
+  const majors=drawn.filter(c=>c.arcana==='Major').length;
+  const suitCounts=drawn.reduce((acc,c)=>{if(c.suit) acc[c.suit]=(acc[c.suit]||0)+1; return acc;},{});
+  const dominantSuit=Object.entries(suitCounts).sort((a,b)=>b[1]-a[1])[0]?.[0];
+  const bits=[];
+  bits.push(seededPick([
+    'The spread opens with a composed but unmistakable tone: something meaningful is already in motion, and the cards are asking for precision rather than panic.',
+    'Overall, the reading feels less like ambient reassurance and more like a clear private conversation about what is actually unfolding.',
+    'The atmosphere of the spread is thoughtful, intimate, and exact; it is not exaggerating the situation, but it is taking it seriously.'
+  ],'overview-base'));
+  if(majors>=Math.ceil(drawn.length/2)) bits.push(seededPick([
+    'Major Arcana dominates, which usually marks a larger chapter, karmic lesson, or turning point rather than a brief passing fluctuation.',
+    'With so many Major Arcana cards present, this reading carries the feeling of a threshold moment — something formative, not incidental.'
+  ],'overview-majors'));
+  if(reversedCount>=Math.ceil(drawn.length/2)) bits.push(seededPick([
+    'The high reversal count suggests part of the story is still interior, delayed, or quietly rearranging itself before it becomes obvious in the outer world.',
+    'Because reversals are strong here, the reading leans toward what is private, unresolved, or not yet ready to declare itself plainly.'
+  ],'overview-reversed'));
+  if(dominantSuit) bits.push(seededPick([
+    `${dominantSuit} carries the strongest weight in the spread, emphasizing ${MINOR_SUIT_META[dominantSuit].brief}.`,
+    `The repeated ${dominantSuit.toLowerCase()} current keeps drawing the interpretation back to ${MINOR_SUIT_META[dominantSuit].brief}.`
+  ],`overview-suit-${dominantSuit}`));
+  const astro=getAstroLine(ctx);
+  if(astro) bits.push(`Around that, ${astro.charAt(0).toLowerCase()+astro.slice(1)}`);
+  return bits.join(' ');
+}
+
+function buildClosing(ctx){
+  const base=CAT_CLOSE[ctx.category] || CAT_CLOSE.open;
+  const astro=getAstroLine(ctx);
+  const trinket=getTrinketLine(ctx);
+  const timingNote=ctx.signals.timing ? 'Treat timing here as energetic guidance rather than a contract; the more useful question is whether the emotional and practical conditions are truly aligning.' : '';
+  const finalNote=seededPick([
+    'Sit with the portion of the reading that felt a little too exact — that is often where the real guidance begins.',
+    'What deserves your attention now is the pattern the cards named, because once a pattern is named, your response to it can become deliberate.',
+    'Let the reading refine your discernment rather than replace it.',
+    'The spread does not ask for a dramatic reaction; it asks for a cleaner relationship with the truth of the situation.'
+  ],'closing-final');
+  const signoff=seededPick([
+    'Notice what continues to echo after you leave the page; that is usually the part meant for you.',
+    'The message worth keeping is the one that still feels quietly true tomorrow.',
+    'What remains after the mood passes is usually the guidance.'
+  ],'closing-signoff');
+  return [base,trinket,astro,timingNote,finalNote,signoff].filter(Boolean).join(' ');
+}
+
+function doReveal(){
+  const ctx=buildContext();
+  setStep(4);
+  const btn=document.getElementById('rbtn'),sh=document.getElementById('shuf'),ca=document.getElementById('carea'),pv=document.getElementById('prev'),fr=document.getElementById('frd');
+  btn.style.display='none';
+  sh.classList.add('on');
+  ca.classList.remove('on');
+  pv.classList.remove('on');
+  fr.classList.remove('on');
+  flipped=0;
+  const chance=reversedChance(ctx);
+  readingSalt=makeReadingSalt(ctx);
+  drawn=shuffle(DK).slice(0,spN).map(card=>({...card,reversed:Math.random()<chance}));
+  const msgs=['Shuffling the deck…','Drawing the right pattern…','Refining the reading…','Almost ready…'];
+  const st=document.getElementById('shtxt');let mi=0;
+  const iv=setInterval(()=>{mi++;if(mi<msgs.length)st.textContent=msgs[mi]},600);
+  setTimeout(()=>{
+    clearInterval(iv);
+    sh.classList.remove('on');
+    ca.classList.add('on');
+    buildC();
+    ca.scrollIntoView({behavior:'smooth',block:'center'});
+  },2500);
+}
+
+function buildC(){
+  const r=document.getElementById('crow'),p=POS[spN];
+  r.innerHTML='';
+  uCnt();
+  drawn.forEach((c,i)=>{
+    const e=document.createElement('div');
+    e.className='tc';
+    const art=getCardArt(c);
+    e.innerHTML=`<div class="cf cbk"><div class="cbk-inner"><div class="cbk-line"></div><div class="cbk-mark">Heart to Heart</div><div class="cbk-heart">♡</div><div class="cbk-111">111</div><div class="cbk-line"></div></div></div><div class="cf cft"><div class="cnu">${c.u}</div><div class="cart ${c.reversed?'rev':''}">${art}</div><div class="cnm">${c.n}</div><div class="cpo">${p[i]}</div><div class="cor">${c.reversed?'Reversed':'Upright'}</div></div>`;
+    e.onclick=()=>{if(!e.classList.contains('fl')){e.classList.add('fl');flipped++;uCnt();if(flipped===drawn.length)setTimeout(showPrev,600)}};
+    r.appendChild(e);
+  });
+}
+
+function uCnt(){document.getElementById('fcnt').textContent=flipped?`${flipped} of ${drawn.length} revealed`:'';}
+
+function showPrev(){
+  setStep(5);
+  const b=document.getElementById('prev'),s=document.getElementById('psu');
+  s.textContent=buildSummaryText(buildContext());
+  b.classList.add('on');
+  b.scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+function pay(){
+  window.open('https://www.paypal.com/paypalme/YourPayPalHere/5','_blank');
+  const b=document.getElementById('ppb');
+  b.textContent='Complete payment in PayPal →';
+  b.style.background='var(--pk-hot)';
+}
+
+function vfy(){if(confirm('Have you completed your $5 PayPal payment?'))unlock();}
+
+function unlock(){
+  const ctx=buildContext();
+  document.getElementById('prev').classList.remove('on');
+  const w=document.getElementById('rc'),f=document.getElementById('frd'),p=POS[spN];
+  let h='<h3>Your Private Reading</h3>';
+  h+=`<p style="text-align:center;color:var(--ts);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;margin-top:-.5rem;margin-bottom:1.2rem">crafted for this exact draw</p>`;
+  if(ctx.question) h+=`<p style="text-align:center;font-style:italic;color:var(--ts);font-size:.82rem;margin-bottom:1.2rem">"${ctx.question.replace(/"/g,'&quot;')}"</p>`;
+  const overview=buildOverview(ctx);
+  if(overview) h+=`<div class="clos" style="margin-bottom:1rem"><h4>Overall Energy</h4><p>${overview}</p></div>`;
+  drawn.forEach((c,i)=>{
+    h+=`<div class="ci"><div class="cih"><span class="cis" style="font-family:var(--fd);font-size:1rem;color:var(--pink);font-weight:600">${c.u}</span><div><div class="cin">${c.n}</div><div class="cip">${p[i]} · ${c.reversed?'Reversed':'Upright'}</div></div></div><p class="cit">${buildCardInterpretation(c,p[i],ctx,i)}</p></div>`;
+  });
+  h+=`<div class="clos"><h4>Closing Guidance</h4><p>${buildClosing(ctx)} The reading points back to your own discernment — notice what part of it keeps echoing after you leave the page.</p></div>`;
+  w.innerHTML=h;
+  f.classList.add('on');
+  f.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function cpR(){navigator.clipboard.writeText(document.getElementById('rc').innerText).then(()=>{const b=event.target;b.textContent='Copied ✓';setTimeout(()=>b.textContent='Copy Reading',2000)})}
+
+function redo(){
+  ['carea','prev','frd'].forEach(id=>document.getElementById(id).classList.remove('on'));
+  document.getElementById('rbtn').style.display='block';
+  const b=document.getElementById('ppb');
+  b.textContent='Unlock Full Reading — $5';
+  b.style.background='';
+  flipped=0;
+  drawn=[];
+  setStep(1);
+  document.getElementById('s1').scrollIntoView({behavior:'smooth'});
+}
+</script>
+</body>
+</html>

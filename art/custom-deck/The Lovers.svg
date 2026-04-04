@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">The Lovers</title>
+  <desc id="desc">A blush-toned tarot card showing a radiant angel over two figures with symbolic trees and a mountain.</desc>
+  <defs>
+    <style>
+      .paper{fill:#fbf6f1}
+      .ink{fill:none;stroke:#2a211f;stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+      .fine{fill:none;stroke:#2a211f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+      .deep{fill:#2a211f}
+      .rose{fill:#efc3d1}
+      .gold{fill:#ecd6b3}
+      .sage{fill:#d9e3d0}
+      .label{font-family:Georgia,"Times New Roman",serif;fill:#2a211f;letter-spacing:7px}
+    </style>
+  </defs>
+
+  <rect class="paper" width="600" height="1000" rx="34"/>
+  <rect class="ink" x="46" y="46" width="508" height="908" rx="34"/>
+  <rect class="fine" x="76" y="76" width="448" height="848" rx="18"/>
+  <rect class="fine" x="92" y="92" width="416" height="816" rx="10"/>
+
+  <path class="ink" d="M92 156c0-35 29-64 64-64"/>
+  <path class="ink" d="M508 156c0-35-29-64-64-64"/>
+  <path class="ink" d="M92 844c0 35 29 64 64 64"/>
+  <path class="ink" d="M508 844c0 35-29 64-64 64"/>
+
+  <path class="fine" d="M140 152l12-12l12 12l-12 12z"/>
+  <path class="fine" d="M436 152l12-12l12 12l-12 12z"/>
+  <path class="fine" d="M140 836l12-12l12 12l-12 12z"/>
+  <path class="fine" d="M436 836l12-12l12 12l-12 12z"/>
+
+  <g transform="translate(0 8)">
+    <ellipse class="rose" cx="300" cy="184" rx="140" ry="92"/>
+    <path class="gold" d="M300 122c20 0 36 14 36 34c0 16-12 30-36 52c-24-22-36-36-36-52c0-20 16-34 36-34z"/>
+    <path class="ink" d="M300 122c20 0 36 14 36 34c0 16-12 30-36 52c-24-22-36-36-36-52c0-20 16-34 36-34z"/>
+    <path class="fine" d="M300 206v54"/>
+    <path class="fine" d="M248 232c18-8 36-12 52-12s34 4 52 12"/>
+    <path class="fine" d="M226 262c24 24 50 36 74 36s50-12 74-36"/>
+  </g>
+
+  <path class="gold" d="M230 420c22-26 46-40 70-40s48 14 70 40c-22 10-46 16-70 16s-48-6-70-16z"/>
+  <path class="fine" d="M300 350l62 86h-124z"/>
+
+  <g transform="translate(0 12)">
+    <path class="sage" d="M120 786c30-156 72-236 126-236s96 80 126 236c-34 18-76 28-126 28s-92-10-126-28z"/>
+    <path class="sage" d="M228 564c0-20 14-34 34-34s34 14 34 34"/>
+    <ellipse class="rose" cx="246" cy="544" rx="34" ry="24"/>
+    <path class="fine" d="M246 568v124"/>
+    <path class="fine" d="M246 608c-28 22-52 32-72 32"/>
+    <path class="fine" d="M246 652c-22 28-42 42-58 44"/>
+  </g>
+
+  <g transform="translate(0 12)">
+    <path class="gold" d="M480 786c-30-156-72-236-126-236s-96 80-126 236c34 18 76 28 126 28s92-10 126-28z"/>
+    <path class="gold" d="M372 564c0-20-14-34-34-34s-34 14-34 34"/>
+    <ellipse class="rose" cx="354" cy="544" rx="34" ry="24"/>
+    <path class="fine" d="M354 568v124"/>
+    <path class="fine" d="M354 608c28 22 52 32 72 32"/>
+    <path class="fine" d="M354 652c22 28 42 42 58 44"/>
+    <path class="deep" d="M396 466c-8 0-14 6-14 14c0 6 4 12 10 18c-18 4-30 20-30 38c0 18 12 32 32 34c14 18 22 34 24 50c4-18 0-40-14-66c12-8 18-18 18-30c0-18-10-34-26-42c6-6 10-12 10-18c0-8-4-14-10-18z"/>
+  </g>
+
+  <path class="fine" d="M132 318v24M120 330h24"/>
+  <path class="fine" d="M456 318v24M444 330h24"/>
+  <circle class="deep" cx="300" cy="114" r="6"/>
+
+  <text class="label" x="300" y="886" text-anchor="middle" font-size="28">THE LOVERS</text>
+</svg>

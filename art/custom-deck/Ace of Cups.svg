@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Ace of Cups</title>
+  <desc id="desc">A soft pink tarot card showing a hand from the clouds offering an overflowing chalice above lotus water.</desc>
+  <defs>
+    <style>
+      .paper{fill:#fbf6f1}
+      .ink{fill:none;stroke:#2a211f;stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+      .fine{fill:none;stroke:#2a211f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+      .deep{fill:#2a211f}
+      .rose{fill:#efc3d1}
+      .rose-line{stroke:#cc8ea6}
+      .soft-blue{fill:#d6e8ec}
+      .gold{fill:#ecd6b3}
+      .label{font-family:Georgia,"Times New Roman",serif;fill:#2a211f;letter-spacing:7px}
+    </style>
+  </defs>
+
+  <rect class="paper" width="600" height="1000" rx="34"/>
+  <rect class="ink" x="46" y="46" width="508" height="908" rx="34"/>
+  <rect class="fine" x="76" y="76" width="448" height="848" rx="18"/>
+  <rect class="fine" x="92" y="92" width="416" height="816" rx="10"/>
+
+  <path class="ink" d="M92 156c0-35 29-64 64-64"/>
+  <path class="ink" d="M508 156c0-35-29-64-64-64"/>
+  <path class="ink" d="M92 844c0 35 29 64 64 64"/>
+  <path class="ink" d="M508 844c0 35-29 64-64 64"/>
+
+  <path class="fine" d="M140 152l12-12l12 12l-12 12z"/>
+  <path class="fine" d="M436 152l12-12l12 12l-12 12z"/>
+  <path class="fine" d="M140 836l12-12l12 12l-12 12z"/>
+  <path class="fine" d="M436 836l12-12l12 12l-12 12z"/>
+
+  <g transform="translate(0 8)">
+    <ellipse class="rose" cx="214" cy="188" rx="78" ry="42"/>
+    <ellipse class="rose" cx="302" cy="154" rx="92" ry="50"/>
+    <ellipse class="rose" cx="394" cy="188" rx="78" ry="42"/>
+    <path class="fine rose-line" d="M246 132c18 0 32 14 32 32c0 14-10 24-32 38c-22-14-32-24-32-38c0-18 14-32 32-32z"/>
+    <path class="fine rose-line" d="M354 132c18 0 32 14 32 32c0 14-10 24-32 38c-22-14-32-24-32-38c0-18 14-32 32-32z"/>
+  </g>
+
+  <g transform="translate(0 8)">
+    <path class="paper" d="M318 232c62 0 118 26 144 66c-40-6-82-8-124-6c-26 1-46 6-60 14c-2-28 12-50 40-74z"/>
+    <path class="ink" d="M318 232c62 0 118 26 144 66"/>
+    <path class="fine" d="M336 246c20 8 38 22 52 40"/>
+    <path class="rose" d="M304 246c22 16 32 34 30 52c-18 0-34 6-46 16c-6-26 0-48 16-68z"/>
+    <path class="ink" d="M304 246c22 16 32 34 30 52"/>
+    <path class="fine" d="M304 246c-18 18-26 36-24 54"/>
+  </g>
+
+  <g transform="translate(0 6)">
+    <path class="gold" d="M208 374c0 96 40 154 92 154s92-58 92-154c-26 11-58 17-92 17s-66-6-92-17z"/>
+    <path class="ink" d="M208 374c0 96 40 154 92 154s92-58 92-154"/>
+    <ellipse class="rose" cx="300" cy="362" rx="112" ry="28"/>
+    <ellipse class="paper" cx="300" cy="354" rx="88" ry="16"/>
+    <path class="ink" d="M188 362c28 12 64 18 112 18s84-6 112-18"/>
+    <path class="fine" d="M246 528h108c0 18-12 30-26 30h-56c-14 0-26-12-26-30z"/>
+    <path class="rose" d="M286 558h28v100h-28z"/>
+    <path class="ink" d="M286 558h28v100h-28z"/>
+    <path class="gold" d="M214 658h172c0 28-22 48-48 48h-76c-26 0-48-20-48-48z"/>
+    <path class="ink" d="M214 658h172c0 28-22 48-48 48h-76c-26 0-48-20-48-48z"/>
+  </g>
+
+  <g transform="translate(0 -2)">
+    <path class="soft-blue" d="M214 382c0 40-18 78-48 126c-18 28-44 60-80 94c16-46 28-88 42-128c18-52 46-89 86-112z"/>
+    <path class="soft-blue" d="M386 382c0 40 18 78 48 126c18 28 44 60 80 94c-16-46-28-88-42-128c-18-52-46-89-86-112z"/>
+    <path class="soft-blue" d="M300 392c0 72 14 140 0 208c-8 40-26 76-58 110c14-56 20-110 20-164c0-62 12-112 38-154z"/>
+    <path class="fine" d="M214 382c0 40-18 78-48 126"/>
+    <path class="fine" d="M386 382c0 40 18 78 48 126"/>
+    <path class="fine" d="M300 392v210"/>
+  </g>
+
+  <g transform="translate(0 8)">
+    <path class="soft-blue" d="M118 784c42-56 94-84 154-84s112 28 154 84c-42 22-94 34-154 34s-112-12-154-34z"/>
+    <path class="fine" d="M144 790c34-44 76-66 128-66s94 22 128 66"/>
+    <path class="rose" d="M154 848c16-20 30-30 42-30s26 10 42 30c-14 8-28 12-42 12s-28-4-42-12z"/>
+    <path class="rose" d="M258 848c16-20 30-30 42-30s26 10 42 30c-14 8-28 12-42 12s-28-4-42-12z"/>
+    <path class="rose" d="M362 848c16-20 30-30 42-30s26 10 42 30c-14 8-28 12-42 12s-28-4-42-12z"/>
+  </g>
+
+  <path class="fine" d="M138 288v24M126 300h24"/>
+  <path class="fine" d="M450 316v24M438 328h24"/>
+  <circle class="deep" cx="300" cy="112" r="6"/>
+
+  <text class="label" x="300" y="886" text-anchor="middle" font-size="28">ACE OF CUPS</text>
+</svg>

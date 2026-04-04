@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" role="img" aria-label="Illustrated gift shop and spiritual goods display">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f7f5f4"/>
+      <stop offset="100%" stop-color="#ece6e4"/>
+    </linearGradient>
+    <linearGradient id="wood" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#9a734f"/>
+      <stop offset="100%" stop-color="#6f5036"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="1200" fill="url(#bg)"/>
+  <rect x="0" y="900" width="1600" height="300" fill="#efe7e5"/>
+
+  <g fill="none" stroke="url(#wood)" stroke-width="18">
+    <rect x="130" y="180" width="1340" height="680" rx="20"/>
+    <path d="M130 360h1340M130 540h1340M130 720h1340"/>
+    <path d="M465 180v680M800 180v680M1135 180v680"/>
+  </g>
+
+  <g>
+    <g fill="#ffdce5" stroke="#c68b9a" stroke-width="5">
+      <rect x="190" y="272" width="88" height="70" rx="12"/>
+      <rect x="298" y="272" width="88" height="70" rx="12"/>
+      <rect x="406" y="272" width="88" height="70" rx="12"/>
+      <rect x="514" y="272" width="88" height="70" rx="12"/>
+    </g>
+    <g fill="#d4f0f1" stroke="#8ab8bb" stroke-width="5">
+      <rect x="865" y="268" width="88" height="74" rx="12"/>
+      <rect x="973" y="268" width="88" height="74" rx="12"/>
+      <rect x="1081" y="268" width="88" height="74" rx="12"/>
+      <rect x="1189" y="268" width="88" height="74" rx="12"/>
+    </g>
+    <g fill="#ffeec8" stroke="#d7b176" stroke-width="5">
+      <circle cx="265" cy="455" r="36"/>
+      <circle cx="375" cy="455" r="36"/>
+      <circle cx="485" cy="455" r="36"/>
+      <circle cx="595" cy="455" r="36"/>
+      <circle cx="705" cy="455" r="36"/>
+    </g>
+    <g fill="#f7e3f1" stroke="#bf92b1" stroke-width="5">
+      <rect x="855" y="628" width="88" height="88" rx="14"/>
+      <rect x="963" y="628" width="88" height="88" rx="14"/>
+      <rect x="1071" y="628" width="88" height="88" rx="14"/>
+      <rect x="1179" y="628" width="88" height="88" rx="14"/>
+      <rect x="1287" y="628" width="88" height="88" rx="14"/>
+    </g>
+  </g>
+
+  <g fill="#f6f0ec" stroke="#cab3a2" stroke-width="8">
+    <rect x="190" y="610" width="500" height="220" rx="20"/>
+    <rect x="860" y="430" width="510" height="170" rx="20"/>
+  </g>
+
+  <text x="170" y="120" fill="#a34f6e" font-family="Arial,sans-serif" font-size="64" font-weight="700">Gift Shop + Spiritual Boutique</text>
+  <text x="190" y="850" fill="#6d5550" font-family="Arial,sans-serif" font-size="38">Candles, crystals, oils, and curated spiritual finds</text>
+</svg>

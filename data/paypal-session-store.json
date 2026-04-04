@@ -1,0 +1,190 @@
+{
+  "sessionsById": {
+    "TEST-H2H-001": {
+      "sessionId": "TEST-H2H-001",
+      "createdAt": "2026-03-18T20:37:20.298Z",
+      "status": "checkout-created",
+      "orderId": "6RJ14548HD4553832",
+      "amountDollars": 5,
+      "draft": {
+        "question": "test"
+      },
+      "preview": {
+        "drawn": [
+          {
+            "n": "The Fool",
+            "u": "0",
+            "reversed": false
+          }
+        ],
+        "spN": 1
+      },
+      "updatedAt": "2026-03-18T20:37:20.294Z"
+    },
+    "d93e4fcb-d3af-137c-82fe-1a8101f1ad11": {
+      "sessionId": "d93e4fcb-d3af-137c-82fe-1a8101f1ad11",
+      "createdAt": "2026-03-18T20:58:46.302Z",
+      "status": "paid",
+      "paypalStatus": "COMPLETED",
+      "orderId": "8U481631H66031715",
+      "transactionId": "42311647XV020574X",
+      "txId": "42311647XV020574X",
+      "source": "webhook",
+      "paidAt": "2026-03-18T20:58:46.300Z",
+      "updatedAt": "2026-03-18T20:58:46.300Z"
+    },
+    "H2H-20260318-EAQBXL": {
+      "sessionId": "H2H-20260318-EAQBXL",
+      "createdAt": "2026-03-18T21:14:18.981Z",
+      "status": "paid",
+      "orderId": "5FC46382ES901612E",
+      "amountDollars": 5,
+      "draft": {
+        "question": "",
+        "category": "money",
+        "trinket": "leaf",
+        "spread": 7
+      },
+      "preview": {
+        "cat": "money",
+        "chosenT": "leaf",
+        "spN": 7,
+        "readingSalt": "1773868440191|0.8119070173991632|1582830197-591160078|money|leaf|",
+        "drawn": [
+          {
+            "n": "Eight of Pentacles",
+            "u": "8",
+            "arcana": "Minor",
+            "suit": "Pentacles",
+            "rank": "Eight",
+            "up": "Movement, skill, and building momentum. Eights carry the energy of mastery through practice — things are accelerating, and the effort you have invested is beginning to pay off in visible ways.",
+            "rev": "Something feels stuck, restricted, or frustratingly slow despite effort. The momentum has been blocked — whether by external circumstances or by mental traps of your own making. Identify the real obstacle, not just the obvious one.",
+            "suitBrief": "work, money, body, stability",
+            "reversed": false
+          },
+          {
+            "n": "Three of Swords",
+            "u": "3",
+            "arcana": "Minor",
+            "suit": "Swords",
+            "rank": "Three",
+            "up": "Early growth, collaboration, and creative expansion are present. Something planted is starting to show results, and the energy of others may be supporting or accelerating it. This is momentum worth protecting.",
+            "rev": "The growth has hit a snag — whether through disconnection, scattered effort, or premature celebration. Collaboration may have gone sideways, or the early momentum has stalled because the foundation was not solid enough.",
+            "suitBrief": "thought, truth, tension",
+            "reversed": false
+          },
+          {
+            "n": "Four of Cups",
+            "u": "4",
+            "arcana": "Minor",
+            "suit": "Cups",
+            "rank": "Four",
+            "up": "Stability, structure, and a moment of consolidation are holding the energy in place. This is a time to protect what you have, rest within what is working, and resist the urge to force the next move prematurely.",
+            "rev": "What once felt stable now feels stifling, or security has come at the cost of stagnation. The fortress you built may have become a cage. Restlessness is not always immaturity — sometimes it is the signal that growth requires a new container.",
+            "suitBrief": "emotion, intuition, connection",
+            "reversed": false
+          },
+          {
+            "n": "Temperance",
+            "u": "XIV",
+            "arcana": "Major",
+            "up": "Balance, patience, and slow integration are doing the real work right now. Temperance says the answer is not in extremes but in the careful blending of what you have. Healing happens here — not through dramatic action, but through moderation and steady attention.",
+            "rev": "Something has gone too far in one direction — excess, impatience, or a refusal to moderate. The balance has tipped and the system is asking for recalibration. What feels urgent may actually need more time, and what feels indulgent may need more discipline.",
+            "reversed": true
+          },
+          {
+            "n": "Four of Wands",
+            "u": "4",
+            "arcana": "Minor",
+            "suit": "Wands",
+            "rank": "Four",
+            "up": "Stability, structure, and a moment of consolidation are holding the energy in place. This is a time to protect what you have, rest within what is working, and resist the urge to force the next move prematurely.",
+            "rev": "What once felt stable now feels stifling, or security has come at the cost of stagnation. The fortress you built may have become a cage. Restlessness is not always immaturity — sometimes it is the signal that growth requires a new container.",
+            "suitBrief": "passion, action, confidence",
+            "reversed": false
+          },
+          {
+            "n": "The Sun",
+            "u": "XIX",
+            "arcana": "Major",
+            "up": "Warmth, vitality, and genuine success are present. The Sun is one of the clearest cards in the deck — it says yes, things are growing, joy is real, and the energy around this situation is bright and life-giving. Let yourself receive it fully.",
+            "rev": "The joy or success is real but slightly muted — perhaps by self-doubt, ego, or an inability to fully trust that things are actually going well. The Sun reversed is not darkness; it is a cloud that dims what should be shining. Ask what is blocking your ability to enjoy what is here.",
+            "reversed": false
+          },
+          {
+            "n": "The World",
+            "u": "XXI",
+            "arcana": "Major",
+            "up": "A chapter is reaching its natural completion, and there is real wholeness available. The World says you have done the work, the cycle is closing, and integration — of lessons, experiences, and identity — is the reward. Something is genuinely coming together.",
+            "rev": "The completion is delayed, or there are loose ends preventing the sense of closure you need. The World reversed says the cycle is almost done but not quite — something still needs your attention before you can truly move on. Finish what you started.",
+            "reversed": false
+          }
+        ]
+      },
+      "updatedAt": "2026-03-18T21:17:07.128Z",
+      "paypalStatus": "COMPLETED",
+      "transactionId": "1E926140S38824739",
+      "txId": "1E926140S38824739",
+      "source": "webhook",
+      "paidAt": "2026-03-18T21:17:07.128Z"
+    },
+    "H2H-20260318-2YEGGK": {
+      "sessionId": "H2H-20260318-2YEGGK",
+      "createdAt": "2026-03-18T21:17:37.946Z",
+      "status": "checkout-created",
+      "orderId": "3NN17293WS916983K",
+      "amountDollars": 5,
+      "draft": {
+        "question": "",
+        "category": null,
+        "trinket": null,
+        "spread": 3
+      },
+      "preview": {
+        "cat": null,
+        "chosenT": null,
+        "spN": 3,
+        "readingSalt": "1773868649449|0.23607737584080923|2616800153-2062661785|open||",
+        "drawn": [
+          {
+            "n": "Seven of Wands",
+            "u": "7",
+            "arcana": "Minor",
+            "suit": "Wands",
+            "rank": "Seven",
+            "up": "Perseverance, assessment, and a strategic moment. Sevens ask you to look at what you have, decide what is worth defending, and hold your ground with intelligence rather than brute force.",
+            "rev": "Doubt, avoidance, or the temptation to take shortcuts is undermining the effort. Patience is running thin, and it may feel easier to give up or cheat the process than to do the harder, slower work that actually leads somewhere.",
+            "suitBrief": "passion, action, confidence",
+            "reversed": false
+          },
+          {
+            "n": "The Lovers",
+            "u": "VI",
+            "arcana": "Major",
+            "up": "A meaningful choice is at the center of this — one that involves alignment between your values and your actions. The Lovers is less about romance than about choosing with your whole heart. When the head and heart agree, the path clarifies itself.",
+            "rev": "There is a split between what you want and what you are choosing, or a relationship is reflecting a deeper misalignment within yourself. Temptation, avoidance, or divided loyalties are pulling the energy apart. Honesty with yourself comes before honesty with anyone else.",
+            "reversed": false
+          },
+          {
+            "n": "Five of Wands",
+            "u": "5",
+            "arcana": "Minor",
+            "suit": "Wands",
+            "rank": "Five",
+            "up": "Friction, challenge, or disruption is testing what was built. Fives are uncomfortable but they are rarely pointless — the conflict is revealing what is actually strong and what was only pretending to be.",
+            "rev": "The worst of the difficulty may be passing, or you are beginning to recover from a period of tension. The lesson from the conflict is starting to crystallize, and healing becomes possible once you stop re-fighting the battle.",
+            "suitBrief": "passion, action, confidence",
+            "reversed": false
+          }
+        ]
+      },
+      "updatedAt": "2026-03-18T21:17:37.942Z"
+    }
+  },
+  "orderToSession": {
+    "6RJ14548HD4553832": "TEST-H2H-001",
+    "8U481631H66031715": "d93e4fcb-d3af-137c-82fe-1a8101f1ad11",
+    "5FC46382ES901612E": "H2H-20260318-EAQBXL",
+    "3NN17293WS916983K": "H2H-20260318-2YEGGK"
+  }
+}

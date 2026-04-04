@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Heart to Heart Card Back</title>
+  <desc id="desc">Monochrome occult line-art tarot card back with decorative border, celestial ornaments, and a central heart sigil.</desc>
+  <defs>
+    <style>
+      .bg{fill:#f4f0e8}
+      .ink{fill:none;stroke:#1f1a17;stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+      .fine{fill:none;stroke:#1f1a17;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+      .solid{fill:#1f1a17}
+      .label{font-family:Georgia,"Times New Roman",serif;fill:#1f1a17;letter-spacing:8px}
+    </style>
+  </defs>
+
+  <rect class="bg" width="600" height="1000" rx="34"/>
+  <rect class="ink" x="46" y="46" width="508" height="908" rx="34"/>
+  <rect class="fine" x="76" y="76" width="448" height="848" rx="18"/>
+  <rect class="fine" x="92" y="92" width="416" height="816" rx="10"/>
+
+  <path class="ink" d="M92 156c0-35 29-64 64-64"/>
+  <path class="ink" d="M508 156c0-35-29-64-64-64"/>
+  <path class="ink" d="M92 844c0 35 29 64 64 64"/>
+  <path class="ink" d="M508 844c0 35-29 64-64 64"/>
+
+  <path class="fine" d="M116 156c0-22 18-40 40-40"/>
+  <path class="fine" d="M484 156c0-22-18-40-40-40"/>
+  <path class="fine" d="M116 844c0 22 18 40 40 40"/>
+  <path class="fine" d="M484 844c0 22-18 40-40 40"/>
+
+  <g transform="translate(140 140)">
+    <path class="fine" d="M0 12L10 0l10 12l-10 12z"/>
+  </g>
+  <g transform="translate(440 140)">
+    <path class="fine" d="M0 12L10 0l10 12l-10 12z"/>
+  </g>
+  <g transform="translate(140 820)">
+    <path class="fine" d="M0 12L10 0l10 12l-10 12z"/>
+  </g>
+  <g transform="translate(440 820)">
+    <path class="fine" d="M0 12L10 0l10 12l-10 12z"/>
+  </g>
+
+  <circle class="fine" cx="300" cy="500" r="122"/>
+  <circle class="fine" cx="300" cy="500" r="84"/>
+  <path class="fine" d="M300 334v52M300 614v52M134 500h52M414 500h52"/>
+  <path class="fine" d="M188 388l36 36M376 576l36 36M188 612l36-36M376 424l36-36"/>
+
+  <path class="ink" d="M300 408c28-35 70-35 98 0c0 44-98 98-98 98s-98-54-98-98c28-35 70-35 98 0z"/>
+  <path class="fine" d="M300 454c16 0 30 13 30 29c0 13-10 25-30 42c-20-17-30-29-30-42c0-16 14-29 30-29z"/>
+  <path class="fine" d="M300 280c16 16 24 34 24 52c-16-6-32-6-48 0c0-18 8-36 24-52z"/>
+  <path class="fine" d="M300 720c-16-16-24-34-24-52c16 6 32 6 48 0c0 18-8 36-24 52z"/>
+
+  <circle class="solid" cx="300" cy="500" r="8"/>
+  <circle class="solid" cx="300" cy="356" r="5"/>
+  <circle class="solid" cx="300" cy="644" r="5"/>
+  <circle class="solid" cx="156" cy="500" r="5"/>
+  <circle class="solid" cx="444" cy="500" r="5"/>
+
+  <text class="label" x="300" y="886" text-anchor="middle" font-size="28">HEART TO HEART</text>
+</svg>

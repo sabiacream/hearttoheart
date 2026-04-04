@@ -1,0 +1,206 @@
+[
+  {
+    "viewport": {
+      "name": "iphone12",
+      "width": 390,
+      "height": 844
+    },
+    "page": "/",
+    "status": 200,
+    "metrics": {
+      "viewportW": 390,
+      "docClientW": 390,
+      "docScrollW": 390,
+      "overflowPx": 0
+    },
+    "screenshot": "/Users/sabrinablose/Downloads/Tarot/qa/mobile/iphone12-home.png",
+    "ok": true
+  },
+  {
+    "viewport": {
+      "name": "iphone12",
+      "width": 390,
+      "height": 844
+    },
+    "page": "/about.html",
+    "status": 200,
+    "metrics": {
+      "viewportW": 390,
+      "docClientW": 390,
+      "docScrollW": 390,
+      "overflowPx": 0
+    },
+    "screenshot": "/Users/sabrinablose/Downloads/Tarot/qa/mobile/iphone12-about.png",
+    "ok": true
+  },
+  {
+    "viewport": {
+      "name": "iphone12",
+      "width": 390,
+      "height": 844
+    },
+    "page": "/contact.html",
+    "status": 200,
+    "metrics": {
+      "viewportW": 390,
+      "docClientW": 390,
+      "docScrollW": 390,
+      "overflowPx": 0
+    },
+    "screenshot": "/Users/sabrinablose/Downloads/Tarot/qa/mobile/iphone12-contact.png",
+    "ok": true
+  },
+  {
+    "viewport": {
+      "name": "iphone12",
+      "width": 390,
+      "height": 844
+    },
+    "page": "/faq.html",
+    "status": 200,
+    "metrics": {
+      "viewportW": 390,
+      "docClientW": 390,
+      "docScrollW": 390,
+      "overflowPx": 0
+    },
+    "screenshot": "/Users/sabrinablose/Downloads/Tarot/qa/mobile/iphone12-faq.png",
+    "ok": true
+  },
+  {
+    "viewport": {
+      "name": "iphone12",
+      "width": 390,
+      "height": 844
+    },
+    "page": "/restore.html",
+    "status": 200,
+    "metrics": {
+      "viewportW": 390,
+      "docClientW": 390,
+      "docScrollW": 390,
+      "overflowPx": 0
+    },
+    "screenshot": "/Users/sabrinablose/Downloads/Tarot/qa/mobile/iphone12-restore.png",
+    "ok": true
+  },
+  {
+    "viewport": {
+      "name": "iphone12",
+      "width": 390,
+      "height": 844
+    },
+    "page": "/terms.html",
+    "status": 200,
+    "metrics": {
+      "viewportW": 390,
+      "docClientW": 390,
+      "docScrollW": 390,
+      "overflowPx": 0
+    },
+    "screenshot": "/Users/sabrinablose/Downloads/Tarot/qa/mobile/iphone12-terms.png",
+    "ok": true
+  },
+  {
+    "viewport": {
+      "name": "small",
+      "width": 360,
+      "height": 740
+    },
+    "page": "/",
+    "status": 200,
+    "metrics": {
+      "viewportW": 360,
+      "docClientW": 360,
+      "docScrollW": 360,
+      "overflowPx": 0
+    },
+    "screenshot": "/Users/sabrinablose/Downloads/Tarot/qa/mobile/small-home.png",
+    "ok": true
+  },
+  {
+    "viewport": {
+      "name": "small",
+      "width": 360,
+      "height": 740
+    },
+    "page": "/about.html",
+    "status": 200,
+    "metrics": {
+      "viewportW": 360,
+      "docClientW": 360,
+      "docScrollW": 360,
+      "overflowPx": 0
+    },
+    "screenshot": "/Users/sabrinablose/Downloads/Tarot/qa/mobile/small-about.png",
+    "ok": true
+  },
+  {
+    "viewport": {
+      "name": "small",
+      "width": 360,
+      "height": 740
+    },
+    "page": "/contact.html",
+    "status": 200,
+    "metrics": {
+      "viewportW": 360,
+      "docClientW": 360,
+      "docScrollW": 360,
+      "overflowPx": 0
+    },
+    "screenshot": "/Users/sabrinablose/Downloads/Tarot/qa/mobile/small-contact.png",
+    "ok": true
+  },
+  {
+    "viewport": {
+      "name": "small",
+      "width": 360,
+      "height": 740
+    },
+    "page": "/faq.html",
+    "status": 200,
+    "metrics": {
+      "viewportW": 360,
+      "docClientW": 360,
+      "docScrollW": 360,
+      "overflowPx": 0
+    },
+    "screenshot": "/Users/sabrinablose/Downloads/Tarot/qa/mobile/small-faq.png",
+    "ok": true
+  },
+  {
+    "viewport": {
+      "name": "small",
+      "width": 360,
+      "height": 740
+    },
+    "page": "/restore.html",
+    "status": 200,
+    "metrics": {
+      "viewportW": 360,
+      "docClientW": 360,
+      "docScrollW": 360,
+      "overflowPx": 0
+    },
+    "screenshot": "/Users/sabrinablose/Downloads/Tarot/qa/mobile/small-restore.png",
+    "ok": true
+  },
+  {
+    "viewport": {
+      "name": "small",
+      "width": 360,
+      "height": 740
+    },
+    "page": "/terms.html",
+    "status": 200,
+    "metrics": {
+      "viewportW": 360,
+      "docClientW": 360,
+      "docScrollW": 360,
+      "overflowPx": 0
+    },
+    "screenshot": "/Users/sabrinablose/Downloads/Tarot/qa/mobile/small-terms.png",
+    "ok": true
+  }
+]

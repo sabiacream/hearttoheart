@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">The Moon</title>
+  <desc id="desc">A blush and blue tarot card showing the moon face, towers, a winding path, two guardians, and a crayfish rising from water.</desc>
+  <defs>
+    <style>
+      .paper{fill:#fbf6f1}
+      .ink{fill:none;stroke:#2a211f;stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+      .fine{fill:none;stroke:#2a211f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+      .deep{fill:#2a211f}
+      .rose{fill:#efc3d1}
+      .soft-blue{fill:#d6e8ec}
+      .label{font-family:Georgia,"Times New Roman",serif;fill:#2a211f;letter-spacing:7px}
+    </style>
+  </defs>
+
+  <rect class="paper" width="600" height="1000" rx="34"/>
+  <rect class="ink" x="46" y="46" width="508" height="908" rx="34"/>
+  <rect class="fine" x="76" y="76" width="448" height="848" rx="18"/>
+  <rect class="fine" x="92" y="92" width="416" height="816" rx="10"/>
+
+  <path class="ink" d="M92 156c0-35 29-64 64-64"/>
+  <path class="ink" d="M508 156c0-35-29-64-64-64"/>
+  <path class="ink" d="M92 844c0 35 29 64 64 64"/>
+  <path class="ink" d="M508 844c0 35-29 64-64 64"/>
+
+  <path class="fine" d="M140 152l12-12l12 12l-12 12z"/>
+  <path class="fine" d="M436 152l12-12l12 12l-12 12z"/>
+  <path class="fine" d="M140 836l12-12l12 12l-12 12z"/>
+  <path class="fine" d="M436 836l12-12l12 12l-12 12z"/>
+
+  <g transform="translate(0 4)">
+    <ellipse class="rose" cx="300" cy="196" rx="150" ry="104"/>
+    <circle class="soft-blue" cx="300" cy="188" r="84"/>
+    <path class="ink" d="M332 128c-44 8-64 58-38 94c18 26 46 36 72 30c-18 16-40 24-66 24c-54 0-98-44-98-98s44-98 98-98c12 0 24 2 36 6c-22 6-34 20-40 42c12-2 24-2 36 0z"/>
+    <circle class="deep" cx="276" cy="184" r="5"/>
+    <circle class="deep" cx="332" cy="184" r="5"/>
+    <path class="fine" d="M284 220c10 8 22 8 32 0"/>
+  </g>
+
+  <g transform="translate(0 6)">
+    <path class="soft-blue" d="M126 430l-40 158h80z"/>
+    <path class="soft-blue" d="M474 430l40 158h-80z"/>
+    <path class="ink" d="M126 430l-40 158h80z"/>
+    <path class="ink" d="M474 430l40 158h-80z"/>
+    <path class="fine" d="M134 478h24M134 526h24M442 478h24M442 526h24"/>
+  </g>
+
+  <path class="rose" d="M300 402c28 34 50 58 70 72c-24 10-48 14-70 14s-46-4-70-14c20-14 42-38 70-72z"/>
+  <path class="fine" d="M300 402c28 34 50 58 70 72"/>
+  <path class="fine" d="M300 402c-28 34-50 58-70 72"/>
+
+  <g transform="translate(0 8)">
+    <path class="soft-blue" d="M132 778c46-86 102-130 168-130s122 44 168 130c-42 24-98 36-168 36s-126-12-168-36z"/>
+    <path class="fine" d="M300 468c-26 106-36 178-30 216c10-6 20-8 30-8s20 2 30 8c6-38-4-110-30-216z"/>
+    <path class="fine" d="M148 782c40-72 88-108 152-108s112 36 152 108"/>
+  </g>
+
+  <path class="ink" d="M136 790c26-34 54-52 86-52s58 18 78 52c-22 18-48 26-78 26s-56-8-86-26z"/>
+  <path class="rose" d="M464 790c-26-34-54-52-86-52s-58 18-78 52c22 18 48 26 78 26s56-8 86-26z"/>
+  <path class="fine" d="M136 790c26-34 54-52 86-52"/>
+  <path class="fine" d="M464 790c-26-34-54-52-86-52"/>
+
+  <g transform="translate(268 740)">
+    <path class="rose" d="M32 16c18 0 30 12 30 28c0 14-10 24-30 40c-20-16-30-26-30-40c0-16 12-28 30-28z"/>
+    <path class="ink" d="M32 16c18 0 30 12 30 28c0 14-10 24-30 40c-20-16-30-26-30-40c0-16 12-28 30-28z"/>
+    <path class="fine" d="M12 56c-10 12-16 28-16 48c8-4 16-10 22-18c4 6 8 10 14 14c6-4 10-8 14-14c6 8 14 14 22 18c0-20-6-36-16-48c-6 8-13 13-20 18c-7-5-14-10-20-18z"/>
+  </g>
+
+  <path class="fine" d="M132 306v24M120 318h24"/>
+  <path class="fine" d="M456 330v24M444 342h24"/>
+  <circle class="deep" cx="300" cy="106" r="6"/>
+
+  <text class="label" x="300" y="886" text-anchor="middle" font-size="28">THE MOON</text>
+</svg>

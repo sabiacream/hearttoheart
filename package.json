@@ -1,0 +1,18 @@
+{
+  "name": "heart2heart-paywall",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Heart 2 Heart 111 tarot site with PayPal paywall backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node qa/reading-engine-check.mjs",
+    "generate:missing-art": "node qa/generate-missing-card-art.mjs"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "playwright": "^1.58.2"
+  }
+}

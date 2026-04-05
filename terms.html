@@ -6,6 +6,7 @@
 <title>Terms, Privacy, and Disclaimer — Heart to Heart 111</title>
 <meta name="description" content="Terms of service, privacy policy, and disclaimer for Heart to Heart 111 tarot readings.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💗</text></svg>">
+<script src="analytics.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -152,23 +153,71 @@ footer{
   body::after{inset:12px}
   .main{padding:1.05rem .85rem 1.55rem}
 }
+/* Sticky nav (FAQ / Contact parity) */
+.tnav{position:sticky;top:1rem;z-index:20;width:min(1060px,calc(100% - 2rem));margin:1rem auto 0;padding:0;border:1px solid rgba(184,148,82,.48);border-radius:28px;background:linear-gradient(180deg,rgba(251,245,236,.98),rgba(241,228,209,.95));box-shadow:0 24px 50px rgba(0,0,0,.26)}
+.tnav-in{max-width:none;padding:1rem 1.2rem .75rem;display:flex;flex-direction:column;align-items:stretch}
+.tnav-brand{font-family:var(--fb);font-size:clamp(1.8rem,3vw,2.5rem);color:var(--final-rose);text-align:center;text-decoration:none;letter-spacing:-.02em}
+.tnav-links{display:flex;flex-wrap:wrap;width:100%;justify-content:center;gap:.9rem;padding-top:.7rem;border-top:1px solid rgba(214,180,106,.24)}
+.tnav-links a{font-family:var(--f-orn,'Cinzel',Georgia,serif);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--final-muted);text-decoration:none;padding:.2rem .35rem;background:transparent;border:none;font-weight:500}
+.tnav-links a:hover,.tnav-links a.active,.tnav-links a[aria-current="page"]{color:var(--final-rose)}
+@media(max-width:700px){
+  .tnav{width:calc(100% - 1.4rem);top:.7rem;margin-top:.7rem}
+  .tnav-in{padding:.9rem .9rem .7rem}
+  .tnav-links{gap:.7rem}
+  .tnav-links a{font-size:.59rem;min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center;padding:.35rem .85rem;box-sizing:border-box}
+}
+/* a11y + focus (mirrors FAQ / Contact) */
+:root{--focus-strong:#6b3446;}
+html{scroll-behavior:smooth;scroll-padding-top:calc(5.85rem + env(safe-area-inset-top, 0px));}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto !important}}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip-link{position:absolute;left:-9999px;top:0;z-index:100001;padding:.65rem 1.2rem;background:var(--final-ink,#261c1b);color:#fff;font-weight:600;font-size:.875rem;border-radius:12px;text-decoration:none;box-shadow:0 8px 28px rgba(0,0,0,.25)}
+.skip-link:focus,.skip-link:focus-visible{left:max(.75rem,env(safe-area-inset-left));top:max(.75rem,env(safe-area-inset-top));outline:2px solid var(--final-gold,#b89452);outline-offset:3px}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:2px solid var(--focus-strong);outline-offset:3px}
+.jump a:focus-visible,.tnav-links a:focus-visible{outline-offset:2px}
+body{min-height:100vh;display:flex;flex-direction:column}
+main.main{flex:1}
+.main h1{padding-bottom:.75rem;margin-bottom:.15rem}
+.main h1::after{content:'';display:block;width:4rem;height:2px;margin:.55rem auto 0;border-radius:2px;background:linear-gradient(90deg,transparent,rgba(184,148,82,.88),transparent)}
+.ftl{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:.35rem .5rem;max-width:36rem;margin:1rem auto 0;padding:0 .5rem}
+.ftl a{padding:.2rem .12rem;color:rgba(248,235,214,.82);text-decoration:none;font-size:.74rem;margin:0}
+.ftl a:hover{color:#fff7ef}
+.ftl-sep{color:rgba(111,95,90,.45);font-size:.8rem;user-select:none}
+.ftl-legal{display:inline-flex;flex-wrap:wrap;align-items:center;gap:.35rem}
+.ftl a:focus-visible{outline-offset:2px}
+@media(max-width:700px){
+  .ftl a{min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center;padding:.25rem .5rem;box-sizing:border-box}
+}
 </style>
 </head>
 <body>
-<div class="main">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<nav class="tnav" aria-label="Site">
+  <div class="tnav-in">
+    <a href="index.html" class="tnav-brand">Heart to Heart 111</a>
+    <div class="tnav-links">
+      <a href="about.html">About</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="restore.html">Restore</a>
+      <a href="terms.html" aria-current="page">Terms</a>
+    </div>
+  </div>
+</nav>
+<main id="main-content" class="main" tabindex="-1">
   <a href="index.html" class="brand">Heart to Heart 111</a>
   <p class="sub">Policies & Reading Terms</p>
-  <h1>Policies & Legal</h1>
+  <h1 id="terms-page-title">Policies & Legal</h1>
   <p class="intro">Everything you may want to know before purchasing a reading or booking a studio session.</p>
 
-  <div class="jump">
+  <nav class="jump" aria-label="On this page">
     <a href="#terms">Terms</a>
     <a href="#privacy">Privacy</a>
     <a href="#disclaimer">Disclaimer</a>
-  </div>
+  </nav>
 
-  <section class="card" id="terms">
-    <h2>Terms of Service</h2>
+  <section class="card" id="terms" aria-labelledby="terms-heading">
+    <h2 id="terms-heading">Terms of Service</h2>
     <p>By purchasing a reading from Heart to Heart 111, you agree to the following terms:</p>
     <ul>
       <li>You must be at least 18 years old.</li>
@@ -180,8 +229,8 @@ footer{
     </ul>
   </section>
 
-  <section class="card" id="privacy">
-    <h2>Privacy Policy</h2>
+  <section class="card" id="privacy" aria-labelledby="privacy-heading">
+    <h2 id="privacy-heading">Privacy Policy</h2>
     <p>We respect your privacy and keep personal data collection minimal.</p>
     <ul>
       <li>We may store your question, selected cards, selected trinket, and transaction ID to allow reading restoration.</li>
@@ -191,22 +240,20 @@ footer{
     </ul>
   </section>
 
-  <section class="card" id="disclaimer">
-    <h2>Disclaimer</h2>
+  <section class="card" id="disclaimer" aria-labelledby="disclaimer-heading">
+    <h2 id="disclaimer-heading">Disclaimer</h2>
     <p>Tarot readings, Reiki, chakra sessions, and other spiritual services are not medical, legal, financial, or mental health advice, treatment, diagnosis, or therapy. Please consult licensed professionals for those topics. Heart to Heart 111 does not guarantee specific outcomes and is not liable for decisions made based on a reading or session.</p>
   </section>
-</div>
+</main>
 
 <footer>
   <div class="ftb">Heart to Heart 111</div>
-  <div class="ftl">
-    <a href="index.html">Home</a>
-    <a href="restore.html">Restore Reading</a>
-    <a href="about.html">About</a>
-    <a href="faq.html">FAQ</a>
-    <a href="contact.html">Contact</a>
-  </div>
-  <p class="fdi">Readings and spiritual services are for entertainment, personal reflection, and spiritual exploration only. Must be 18+. © 2026 Heart to Heart 111.</p>
+  <nav class="ftl" aria-label="Site links and legal">
+    <a href="index.html">Home</a><span class="ftl-sep" aria-hidden="true">·</span><a href="restore.html">Restore</a><span class="ftl-sep" aria-hidden="true">·</span><a href="about.html">About</a><span class="ftl-sep" aria-hidden="true">·</span><a href="faq.html">FAQ</a><span class="ftl-sep" aria-hidden="true">·</span><a href="contact.html">Contact</a><span class="ftl-sep" aria-hidden="true">·</span><span class="ftl-legal" role="group" aria-label="Legal sections on the terms page"><a href="terms.html#terms">Terms</a><span class="ftl-sep" aria-hidden="true">·</span><a href="terms.html#privacy">Privacy</a><span class="ftl-sep" aria-hidden="true">·</span><a href="terms.html#disclaimer">Disclaimer</a></span>
+  </nav>
+  <p class="fdi">Readings and spiritual services are for entertainment, personal reflection, and spiritual exploration only. Not a substitute for medical, legal, financial, or mental health advice. Must be 18+. © 2026 Heart to Heart 111.</p>
 </footer>
+<div class="sr-only" id="sr-live-polite" aria-live="polite" aria-atomic="true"></div>
+<div class="sr-only" id="sr-live-assertive" aria-live="assertive" aria-atomic="true"></div>
 </body>
 </html>

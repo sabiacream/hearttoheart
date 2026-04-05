@@ -64,7 +64,7 @@ On a **narrow viewport** (~375px width), with a finger (or mobile emulator):
 
 - [ ] **Top nav links** (`index.html` and inner pages): easy to tap without hitting neighbors (~44×44px minimum effective target—padding counts).
 - [ ] **Hero CTA** and primary **reading flow** buttons: comfortable to tap.
-- [ ] **Preview / paywall:** “Open the full reading” / PayPal-related controls and verify: tappable, not edge-to-edge cramped.
+- [ ] **Preview / paywall:** “Unlock full reading — $5” / PayPal-related controls and verify: tappable, not edge-to-edge cramped.
 - [ ] **Charm / chest / spread** (if changed): primary taps are not tiny single-pixel hit areas.
 - [ ] **restore.html:** “Restore My Reading”, “Copy Reading”, “New Reading”, footer links: comfortable spacing.
 - [ ] **contact.html / faq.html:** nav pills and footer links: tappable.

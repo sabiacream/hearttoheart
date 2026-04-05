@@ -3,22 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Heart to Heart 111 | Private Online Tarot — Preview, Then Your Full Reading</title>
-<meta name="description" content="A calm, private online tarot experience: lay your spread, read a real preview, then unlock the full written interpretation when you are ready ($5). From Heart to Heart 111 in Coopersburg, PA—also a Main Street studio for readings, energy work, and gifts.">
+<title>Heart to Heart 111 | Private Online Tarot — Preview first, Unlock full reading — $5</title>
+<meta name="description" content="A calm, private online tarot: lay your spread, use Preview first for a glimpse, then Unlock full reading — $5 for every card and position in full. Heart to Heart 111, Coopersburg, PA—Main Street studio for readings, energy work, and gifts.">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="theme-color" content="#fbf7f2">
 <meta name="author" content="Heart to Heart 111">
 <!-- Canonical + absolute og:image: set when you know your live site URL (avoid duplicate-content and broken social previews). -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Heart to Heart 111">
-<meta property="og:title" content="Heart to Heart 111 | Private online tarot with a preview first">
-<meta property="og:description" content="Lay your cards, linger with a genuine preview, then open the full written reading when it feels right. PayPal checkout · Coopersburg, PA.">
+<meta property="og:title" content="Heart to Heart 111 | Preview first, Unlock full reading — $5">
+<meta property="og:description" content="Lay your cards, linger with Preview first, then Unlock full reading — $5 when you want the full written spread. PayPal checkout · Coopersburg, PA.">
 <meta property="og:image" content="images/studio-wall.jpg">
 <meta property="og:image:alt" content="Heart to Heart 111 studio in Coopersburg, Pennsylvania">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Heart to Heart 111 | Private online tarot">
-<meta name="twitter:description" content="Preview your spread, then unlock the full interpretation—unhurried, invitation-only online room plus a real Main Street studio.">
+<meta name="twitter:title" content="Heart to Heart 111 | Preview first, Unlock full reading — $5">
+<meta name="twitter:description" content="Preview first on your spread, then Unlock full reading — $5 for the full interpretation. Unhurried online room plus a Main Street studio in Coopersburg, PA.">
 <meta name="twitter:image" content="images/studio-wall.jpg">
 <meta name="twitter:image:alt" content="Heart to Heart 111 studio in Coopersburg, Pennsylvania">
 <script type="application/ld+json">
@@ -29,7 +29,7 @@
       "@type": ["Organization", "LocalBusiness"],
       "@id": "#h2h",
       "name": "Heart to Heart 111",
-      "description": "Private online tarot readings with an honest preview before purchase, plus in-person spiritual services and a gift shop on Main Street in Coopersburg, Pennsylvania.",
+      "description": "Private online tarot with Preview first, then Unlock full reading — $5, plus in-person spiritual services and a gift shop on Main Street in Coopersburg, Pennsylvania.",
       "telephone": "+1-610-762-8341",
       "address": {
         "@type": "PostalAddress",
@@ -43,20 +43,20 @@
     {
       "@type": "WebSite",
       "name": "Heart to Heart 111",
-      "description": "Private online tarot reading: preview your spread, then choose to unlock the paid, full written interpretation.",
+      "description": "Private online tarot: Preview first on your spread, then Unlock full reading — $5 for the full written interpretation.",
       "publisher": { "@id": "#h2h" }
     },
     {
       "@type": "Service",
       "name": "Private online tarot reading",
       "serviceType": "Tarot reading (online)",
-      "description": "Guided online tarot spread with a written preview; optional one-time purchase for the complete interpretation. For reflection and spiritual exploration—not a substitute for professional advice.",
+      "description": "Guided online tarot spread with Preview first; one-time Unlock full reading — $5 for the complete interpretation. For reflection and spiritual exploration—not a substitute for professional advice.",
       "provider": { "@id": "#h2h" },
       "offers": {
         "@type": "Offer",
         "price": "5.00",
         "priceCurrency": "USD",
-        "description": "Full written tarot interpretation for your current spread (one-time)",
+        "description": "Unlock full reading — $5: full written interpretation for your current spread (one-time)",
         "availability": "https://schema.org/InStock"
       }
     }
@@ -456,8 +456,11 @@ footer{border-top:2px solid var(--pk-pale);padding:2rem 1.4rem 1.2rem;text-align
 .fso a:hover{background:var(--pk-pale);color:var(--pk-hot)}
 .fco{color:var(--tmu);font-size:.68rem;margin-bottom:.3rem}
 .fco a{color:var(--tmu);text-decoration:none}.fco a:hover{color:var(--pink)}
-.fln{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;margin-bottom:.8rem}
-.fln a{color:var(--ts);text-decoration:none;font-size:.68rem}.fln a:hover{color:var(--pink)}
+.fln{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:.4rem .55rem;margin-bottom:.85rem;max-width:42rem;margin-left:auto;margin-right:auto;padding:0 .5rem}
+.fln a{color:var(--ts);text-decoration:none;font-size:.68rem;padding:.2rem .15rem}
+.fln a:hover{color:var(--pink);text-decoration:underline;text-underline-offset:3px}
+.fln-sep{color:rgba(135,123,135,.5);font-size:.75rem;user-select:none;padding:0 .1rem}
+.fln-legal{display:inline-flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.35rem}
 .footer-legal-hint{
   font-size:.62rem;
   line-height:1.55;
@@ -2673,6 +2676,15 @@ p{
     height:18px !important;
   }
   .qinput{height:88px}
+  .prev .pv-actions{
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:stretch !important;
+    max-width:100% !important;
+    gap:.55rem !important;
+  }
+  .prev .ppb-unlock,
+  .prev .ppb-keep{width:100% !important;max-width:100% !important}
 }
 @media(max-width:420px){
   .qcat{
@@ -3886,12 +3898,12 @@ body::after{
 .path-grid{
   max-width:1040px !important;
   grid-template-columns:repeat(2,minmax(0,1fr)) !important;
-  gap:1rem !important;
+  gap:1.08rem !important;
   margin:1.5rem auto 0 !important;
 }
 .path-card{
-  min-height:225px !important;
-  padding:1.35rem 1.25rem 1.2rem !important;
+  min-height:228px !important;
+  padding:1.4rem 1.3rem 1.25rem !important;
   text-align:left !important;
   align-items:flex-start !important;
 }
@@ -4342,7 +4354,7 @@ ul.hero-trust.hero-trust--row,
 .prev-card{
   position:relative;
   z-index:1;
-  padding:clamp(1.35rem,4vw,2rem) clamp(1.15rem,4vw,1.85rem) clamp(1.5rem,4vw,2.1rem);
+  padding:clamp(1.5rem,4vw,2.2rem) clamp(1.2rem,4vw,1.95rem) clamp(1.65rem,4vw,2.3rem);
   border-radius:26px;
   background:
     linear-gradient(165deg,rgba(255,252,248,.97) 0%,rgba(250,242,234,.98) 45%,rgba(255,248,252,.96) 100%);
@@ -4560,22 +4572,48 @@ ul.hero-trust.hero-trust--row,
 .prev .pv-actions{
   position:relative;
   z-index:1;
-  display:flex;
-  flex-direction:column;
-  align-items:stretch;
-  gap:.65rem;
-  max-width:20rem;
-  margin:0 auto;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:stretch !important;
+  flex-wrap:nowrap !important;
+  gap:.62rem;
+  max-width:min(22rem,100%);
+  width:100%;
+  margin:.25rem auto 0;
+  padding:0 .15rem;
+  box-sizing:border-box;
+}
+.prev-cta-block--primary,
+.prev-cta-block--secondary{
+  width:100%;
+  flex:0 0 auto;
+}
+.prev-cta-or{
+  margin:0;
+  padding:.15rem 0 .05rem;
+  text-align:center;
+  font-family:Cinzel,Georgia,serif;
+  font-size:.58rem;
+  letter-spacing:.26em;
+  text-transform:uppercase;
+  color:rgba(252,246,240,.48);
+  line-height:1.3;
+  flex:0 0 auto;
+}
+.prev-cta-block--secondary{
+  padding-top:.85rem;
+  margin-top:.2rem;
+  border-top:1px solid rgba(255,252,248,.14);
 }
 .prev .ppb-unlock{
   display:flex !important;
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  gap:.2rem;
+  gap:.28rem;
   width:100% !important;
-  min-height:56px;
-  padding:.85rem 1.25rem !important;
+  min-height:58px;
+  padding:.92rem 1.2rem !important;
   border-radius:14px !important;
   border:1px solid rgba(240,215,157,.45) !important;
   background:linear-gradient(180deg,#c4788f,#8c475c 55%,#6c3440) !important;
@@ -4598,22 +4636,28 @@ ul.hero-trust.hero-trust--row,
   cursor:wait;
 }
 .prev .ppb-line1{
-  font-size:1.12rem;
+  font-size:clamp(1rem,3.8vw,1.14rem);
   font-weight:600;
-  letter-spacing:.015em;
+  letter-spacing:.02em;
+  text-wrap:balance;
+  max-width:100%;
+  line-height:1.22;
+  text-align:center;
 }
 .prev .ppb-line2{
   font-family:Manrope,sans-serif !important;
-  font-size:.72rem !important;
+  font-size:.7rem !important;
   font-weight:500 !important;
-  letter-spacing:.06em !important;
-  opacity:.92;
+  letter-spacing:.05em !important;
+  opacity:.9;
+  line-height:1.35;
+  text-align:center;
 }
 .prev .ppb-keep,
 .prev .ppb.alt.ppb-keep{
   width:100% !important;
-  min-height:48px;
-  padding:.72rem 1rem !important;
+  min-height:50px;
+  padding:.78rem 1.05rem !important;
   border-radius:12px !important;
   background:rgba(255,252,248,.08) !important;
   border:1px solid rgba(255,252,248,.22) !important;
@@ -4659,8 +4703,8 @@ ul.hero-trust.hero-trust--row,
 }
 .prev .vlk.vlk-btn:hover{color:#8c475c !important}
 .prev-trust-panel{
-  margin:1.1rem 0 0;
-  padding:1rem 1.05rem 1.05rem;
+  margin:1.35rem 0 0;
+  padding:1.15rem 1.1rem 1.15rem;
   border-radius:18px;
   background:linear-gradient(180deg,rgba(255,252,248,.92),rgba(248,240,232,.88));
   border:1px solid rgba(191,165,122,.22);
@@ -5080,7 +5124,14 @@ ul.hero-trust.hero-trust--row,
 }
 .ritual-panel--spread{max-width:min(720px,100%)}
 .ritual-panel-head .tag{margin-bottom:.35rem !important}
-.ritual-field{margin:1rem 0}
+.ritual-field{
+  margin:1.2rem 0;
+  padding:1rem .75rem 1.05rem;
+  border-radius:20px;
+  background:linear-gradient(180deg,rgba(255,252,248,.9),rgba(252,246,238,.72));
+  border:1px solid rgba(184,148,82,.2);
+  box-shadow:0 10px 28px rgba(47,39,50,.04);
+}
 .ritual-field-label{
   display:block;
   font-family:Cinzel,Georgia,serif;
@@ -5088,12 +5139,12 @@ ul.hero-trust.hero-trust--row,
   letter-spacing:.2em;
   text-transform:uppercase;
   color:#8c475c;
-  margin-bottom:.75rem;
+  margin-bottom:.85rem;
 }
 .qcats{
   display:grid !important;
   grid-template-columns:repeat(2,minmax(0,1fr)) !important;
-  gap:.55rem !important;
+  gap:.82rem !important;
   max-width:100% !important;
 }
 @media(min-width:520px){
@@ -5101,10 +5152,11 @@ ul.hero-trust.hero-trust--row,
 }
 .qcat{
   min-height:48px !important;
-  padding:.65rem .75rem !important;
+  padding:.68rem .8rem !important;
   border-radius:14px !important;
   border-width:2px !important;
   font-size:.8rem !important;
+  letter-spacing:.02em !important;
   justify-content:center;
   align-items:center;
   text-align:center;
@@ -5231,9 +5283,9 @@ ul.hero-trust.hero-trust--row,
 .sps{
   display:grid !important;
   grid-template-columns:1fr !important;
-  gap:.75rem !important;
+  gap:.92rem !important;
   max-width:100% !important;
-  margin:1rem 0 !important;
+  margin:1.15rem 0 !important;
 }
 @media(min-width:600px){
   .sps{grid-template-columns:repeat(3,minmax(0,1fr)) !important}
@@ -5243,8 +5295,8 @@ ul.hero-trust.hero-trust--row,
   flex-direction:column !important;
   align-items:center !important;
   text-align:center !important;
-  min-height:138px !important;
-  padding:1.1rem .85rem 1rem !important;
+  min-height:148px !important;
+  padding:1.25rem 1rem 1.12rem !important;
   border-radius:18px !important;
   border-width:2px !important;
   width:100% !important;
@@ -5266,8 +5318,8 @@ ul.hero-trust.hero-trust--row,
   opacity:.72;
 }
 .sp.on .sp-glyph{opacity:1}
-.sp .sn{font-size:1.05rem !important;margin-top:.1rem}
-.sp .sd{font-size:.68rem !important;margin-top:.38rem !important;line-height:1.45 !important;max-width:17rem}
+.sp .sn{font-size:1.08rem !important;margin-top:.12rem;font-weight:600 !important;letter-spacing:.01em !important}
+.sp .sd{font-size:.74rem !important;margin-top:.42rem !important;line-height:1.52 !important;max-width:18rem;color:#5d4f55 !important}
 .sp.on{
   border-color:rgba(180,99,122,.52) !important;
   background:linear-gradient(180deg,rgba(255,250,252,1),rgba(252,236,242,.95)) !important;
@@ -5279,16 +5331,17 @@ ul.hero-trust.hero-trust--row,
   outline-offset:3px;
 }
 .ritual-skymap{
-  margin:1rem auto 0 !important;
+  margin:1.35rem auto 0 !important;
   max-width:100% !important;
-  border-radius:16px !important;
-  border:1px solid rgba(184,148,82,.28) !important;
-  background:rgba(255,255,255,.72) !important;
+  border-radius:18px !important;
+  border:1px solid rgba(184,148,82,.3) !important;
+  background:linear-gradient(180deg,rgba(255,252,248,.88),rgba(248,240,230,.78)) !important;
   overflow:hidden;
   text-align:left;
+  box-shadow:0 8px 26px rgba(47,39,50,.05);
 }
 .ritual-skymap-summary{
-  padding:.85rem 2.4rem .85rem 1rem !important;
+  padding:1.05rem 2.5rem 1.05rem 1.2rem !important;
   align-items:flex-start !important;
   position:relative;
   list-style:none;
@@ -5318,7 +5371,15 @@ ul.hero-trust.hero-trust--row,
   transition:transform .3s;
 }
 .ritual-skymap[open] .ritual-skymap-summary .ar{transform:translateY(-50%) rotate(180deg)}
-.ritual-skymap .ext-in{padding:0 1rem 1.1rem !important}
+.ritual-skymap .ext-in{
+  padding:.5rem 1.15rem 1.35rem !important;
+  gap:1rem .95rem !important;
+  display:grid !important;
+  grid-template-columns:1fr 1fr !important;
+}
+@media(max-width:520px){
+  .ritual-skymap .ext-in{grid-template-columns:1fr !important}
+}
 .ritual-skymap .fi select{
   min-height:48px;
   padding:.55rem .75rem !important;
@@ -6044,7 +6105,6 @@ function clearPwGateError(){
   }
 }
 async function checkPw(){
-  if(typeof h2hTrack==='function')h2hTrack('password_submit');
   clearPwGateError();
   const input=document.getElementById('pw-input').value;
   const enc=new TextEncoder().encode(input);
@@ -6055,13 +6115,13 @@ async function checkPw(){
     document.getElementById('pw-gate').style.display='none';
     sessionStorage.setItem('pw-ok','1');
     announce('Password accepted. You can start your reading.');
-    if(typeof h2hTrack==='function')h2hTrack('password_success');
+    if(typeof h2hFunnel==='function')h2hFunnel('password_success',{source_page:'index'});
     requestAnimationFrame(()=>{
       const m=document.getElementById('main-content');
       if(m)m.focus({preventScroll:true});
     });
   }else{
-    if(typeof h2hTrack==='function')h2hTrack('password_failure');
+    if(typeof h2hFunnel==='function')h2hFunnel('password_failure',{source_page:'index'});
     const inp=document.getElementById('pw-input');
     const wrap=document.getElementById('pw-field-wrap');
     const err=document.getElementById('pw-err');
@@ -6084,7 +6144,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     deactivatePwGateModal();
   }else{
     activatePwGateModal();
-    if(typeof h2hTrack==='function'&&gate&&getComputedStyle(gate).display!=='none')h2hTrack('password_gate_view');
+    if(typeof h2hFunnel==='function'&&gate&&getComputedStyle(gate).display!=='none')h2hFunnel('password_gate_view',{source_page:'index'});
   }
   inp.addEventListener('input',clearPwGateError);
   inp.addEventListener('focus',clearPwGateError);
@@ -6117,15 +6177,15 @@ document.addEventListener('DOMContentLoaded',()=>{
     <div class="hero-copy">
       <p class="tag">Private reading room</p>
       <h1 class="brand">Heart <span class="to">to</span> Heart <span class="num">111</span></h1>
-      <h2 class="hero-lede">Tarot in your own time—linger with the preview, then open the full written spread for <span class="hero-price">$5</span>.</h2>
-      <p class="qt">Whisper your question, choose a charm, watch the cards turn—then open the whole story when you are ready.</p>
+      <h2 class="hero-lede">Tarot in your own time—linger with <strong>Preview first</strong>, then <strong>Unlock full reading — $5</strong> when you want every position in full.</h2>
+      <p class="qt">Whisper your question, choose a charm, watch the cards turn—Preview first if you want a glimpse, then tap <strong>Unlock full reading — $5</strong> when you want every position in full.</p>
       <p class="loc">Heart to Heart 111 · Coopersburg, Pennsylvania</p>
       <div class="hero-actions">
-        <button class="hero-btn primary" type="button" onclick="if(typeof h2hTrack==='function')h2hTrack('hero_cta_click',{entry:'hero_primary'});jumpToQuestion()">Begin the reading</button>
+        <button class="hero-btn primary" type="button" id="heroPrimaryCta">Begin the reading</button>
         <a class="hero-restore-link" href="restore.html">Restore a paid reading</a>
       </div>
       <ul class="hero-trust hero-trust--row" aria-label="How this reading works">
-        <li>Preview first, pay when you choose</li>
+        <li><strong>Preview first</strong>, then <strong>Unlock full reading — $5</strong> when you choose</li>
         <li>Checkout with PayPal</li>
         <li>No account on this site</li>
         <li>Reopen anytime with your PayPal ID</li>
@@ -6154,7 +6214,7 @@ document.addEventListener('DOMContentLoaded',()=>{
       </div>
       <div class="hero-stage-note hero-stage-note-bottom">
         <strong>Mystery, then meaning</strong>
-        <span>A glimpse first—the full voice when you say yes.</span>
+        <span>Preview first—the full voice after <strong>Unlock full reading — $5</strong>.</span>
       </div>
     </div>
   </div>
@@ -6165,7 +6225,7 @@ document.addEventListener('DOMContentLoaded',()=>{
       <li><span class="hero-next-n">2</span> Charm</li>
       <li><span class="hero-next-n">3</span> Spread</li>
       <li><span class="hero-next-n">4</span> Reveal</li>
-      <li><span class="hero-next-n">5</span> Full read · $5</li>
+      <li><span class="hero-next-n">5</span> Unlock full reading — $5</li>
     </ol>
   </div>
   <div class="path-grid">
@@ -6223,8 +6283,8 @@ document.addEventListener('DOMContentLoaded',()=>{
       </article>
       <article class="guide-card">
         <span class="guide-num">4</span>
-        <h3>Open the full read</h3>
-        <p>Preview first, then the complete written reading—when it feels right.</p>
+        <h3>Unlock full reading — $5</h3>
+        <p><strong>Preview first</strong> if you want a glimpse—then <strong>Unlock full reading — $5</strong> when you are ready for every card and position in full.</p>
       </article>
     </div>
   </div>
@@ -6449,7 +6509,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 
       <div class="prev-offering">
         <div class="prev-offering-card">
-          <p class="prev-offering-verse">The whole story—for this spread alone—is a single <strong>$5</strong> offering. No subscription. No account here.</p>
+          <p class="prev-offering-verse"><strong>Unlock full reading — $5</strong> for this spread alone—every position, the weave, and parting words. No subscription. No account here.</p>
           <div class="prev-price-display">
             <span class="prev-price-num" aria-hidden="true">5</span>
             <div class="prev-price-copy">
@@ -6457,12 +6517,17 @@ document.addEventListener('DOMContentLoaded',()=>{
               <span class="prev-price-once">one time</span>
             </div>
           </div>
-          <div class="pv-actions">
-            <button type="button" class="ppb ppb-unlock" id="ppb" onclick="pay()">
-              <span class="ppb-line1">Open the full reading</span>
-              <span class="ppb-line2">$5 · once · yours to restore</span>
-            </button>
-            <button type="button" class="ppb alt ppb-keep" id="pvb" onclick="previewUnlock()">See a sample first</button>
+          <div class="pv-actions" role="group" aria-label="Unlock full reading — $5, or Preview first">
+            <div class="prev-cta-block prev-cta-block--primary">
+              <button type="button" class="ppb ppb-unlock" id="ppb" onclick="pay()">
+                <span class="ppb-line1">Unlock full reading — $5</span>
+                <span class="ppb-line2">PayPal · once · restore anytime</span>
+              </button>
+            </div>
+            <p class="prev-cta-or" aria-hidden="true">or</p>
+            <div class="prev-cta-block prev-cta-block--secondary">
+              <button type="button" class="ppb alt ppb-keep" id="pvb" onclick="previewUnlock()">Preview first</button>
+            </div>
           </div>
         </div>
       </div>
@@ -6470,7 +6535,7 @@ document.addEventListener('DOMContentLoaded',()=>{
       <section class="prev-trust-panel" aria-label="How a paid reading works">
         <h4 class="prev-trust-heading">When you are ready to pay</h4>
         <ol class="prev-trust-steps">
-          <li>Tap the button—PayPal opens safely. Guest checkout is welcome; you never need an account on this site.</li>
+          <li>Tap <strong>Unlock full reading — $5</strong>—PayPal opens safely. Guest checkout is welcome; you never need an account on this site.</li>
           <li>When you are done, come back to <strong>this tab</strong>. The full reading appears here: every position, the weave between them, and closing words.</li>
           <li>Keep your PayPal confirmation. The transaction ID is how you <a href="restore.html">restore this same reading</a> later, on any device.</li>
         </ol>
@@ -6598,8 +6663,10 @@ document.addEventListener('DOMContentLoaded',()=>{
   <div class="ftt">Online readings · spiritual services · gifts</div>
   <div class="fso"><a href="https://www.facebook.com/heart.to.heart111" target="_blank" rel="noopener">Facebook →</a></div>
   <div class="fco">111 S Main St, Coopersburg, Pennsylvania · Kristy: <a href="tel:6107628341">(610) 762-8341</a></div>
-  <div class="fln"><a href="restore.html">Restore</a><a href="about.html">About</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a><a href="terms.html#terms">Terms</a><a href="terms.html#privacy">Privacy</a><a href="terms.html#disclaimer">Disclaimer</a></div>
-  <p class="footer-legal-hint">Readings are for reflection, not professional advice · <a href="terms.html#disclaimer">Disclaimer</a> · <a href="terms.html#terms">Terms</a> (18+, all sales final)</p>
+  <nav class="fln" aria-label="Site links and legal">
+    <a href="restore.html">Restore</a><span class="fln-sep" aria-hidden="true">·</span><a href="about.html">About</a><span class="fln-sep" aria-hidden="true">·</span><a href="faq.html">FAQ</a><span class="fln-sep" aria-hidden="true">·</span><a href="contact.html">Contact</a><span class="fln-sep" aria-hidden="true">·</span><span class="fln-legal" role="group" aria-label="Legal: separate sections on the terms page"><a href="terms.html#terms">Terms</a><span class="fln-sep" aria-hidden="true">·</span><a href="terms.html#privacy">Privacy</a><span class="fln-sep" aria-hidden="true">·</span><a href="terms.html#disclaimer">Disclaimer</a></span>
+  </nav>
+  <p class="footer-legal-hint">Readings are for reflection, not professional advice. Legal: <a href="terms.html#terms">Terms</a>, <a href="terms.html#privacy">Privacy</a>, <a href="terms.html#disclaimer">Disclaimer</a> (18+, all sales final).</p>
   <p class="fdi">Readings and spiritual services are for entertainment, personal reflection, and spiritual exploration only. Not a substitute for medical, legal, financial, or mental health advice. Must be 18+. All sales are final. © 2026 Heart to Heart 111.</p>
 </footer>
 <a href="#s1" class="mobile-soft-cta" id="mobileSoftCta" aria-label="Begin reading" aria-hidden="true" tabindex="-1">Begin reading</a>
@@ -6635,6 +6702,13 @@ document.addEventListener('click',e=>{
 },true);
 
 document.addEventListener('DOMContentLoaded',()=>{
+  const heroPrimary=document.getElementById('heroPrimaryCta');
+  if(heroPrimary){
+    heroPrimary.addEventListener('click',()=>{
+      if(typeof h2hFunnel==='function')h2hFunnel('hero_cta_click',{source_page:'index',entry:'hero_primary'});
+      if(typeof jumpToQuestion==='function')jumpToQuestion();
+    });
+  }
   const qi=document.getElementById('qinput');
   if(qi){
     const logQ=()=>{
@@ -6699,7 +6773,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   else if(mq.addListener)mq.addListener(update);
   cta.addEventListener('click',e=>{
     e.preventDefault();
-    if(typeof h2hTrack==='function')h2hTrack('hero_cta_click',{entry:'mobile_sticky'});
+    if(typeof h2hFunnel==='function')h2hFunnel('hero_cta_click',{source_page:'index',entry:'mobile_sticky'});
     if(typeof jumpToQuestion==='function')jumpToQuestion();
   });
   update();
@@ -6727,6 +6801,25 @@ const PAYMENT_CFG={
   checkoutStorePrefix:'h2h_checkout_'
 };
 let activeCheckoutSessionId='',activeTxId='',paymentPollTimer=null;
+
+/** Stable funnel props for reading flow (index). Merged into h2hFunnel calls where useful. */
+function h2hFunnelContext(extra){
+  const o=extra&&typeof extra==='object'?extra:{};
+  const moonEl=document.getElementById('moon');
+  const zodEl=document.getElementById('zod');
+  const mv=moonEl&&String(moonEl.value||'').trim();
+  const zv=zodEl&&String(zodEl.value||'').trim();
+  return Object.assign({
+    source_page:'index',
+    category:cat==null?'':String(cat),
+    charm:String(chosenT||''),
+    spread:spN,
+    spread_cards:spN,
+    cards_drawn:drawn.length,
+    has_moon:Boolean(mv),
+    has_zodiac:Boolean(zv)
+  },o);
+}
 
 function setStep(n){for(let i=1;i<=5;i++){const e=document.getElementById('p'+i);e.classList.toggle('a',i===n);e.classList.toggle('dn',i<n)}}
 
@@ -6948,7 +7041,7 @@ function chooseCategory(category){
     c.setAttribute('aria-pressed',on?'true':'false');
   });
   cat=category;
-  if(prevCat!==category&&typeof h2hTrack==='function')h2hTrack('category_selected',{category:String(category)});
+  if(prevCat!==category&&typeof h2hFunnel==='function')h2hFunnel('category_selected',h2hFunnelContext());
   syncPresetCards();
   clearCatFlowErrorOnly();
   return true;
@@ -7025,8 +7118,8 @@ async function checkPaymentStatus(showPendingNotice){
     }
     stopPaymentPolling();
     if(txid)activeTxId=txid;
-    if(typeof h2hTrack==='function')h2hTrack('paypal_checkout_success');
-    setPaymentNote('Payment received—opening your full reading…');
+    if(typeof h2hFunnel==='function')h2hFunnel('paypal_checkout_success',h2hFunnelContext());
+    setPaymentNote('Payment received—your full reading is loading here…');
     unlock(activeTxId,'paid');
     clearCheckoutSnapshot(activeCheckoutSessionId);
     const cleanUrl=window.location.pathname+window.location.hash;
@@ -7042,6 +7135,17 @@ async function checkPaymentStatus(showPendingNotice){
 
 async function resumeCheckoutFromUrl(){
   const params=new URLSearchParams(window.location.search);
+  if(params.get('cancelled')==='1'){
+    if(typeof h2hFunnel==='function')h2hFunnel('paypal_checkout_cancel',h2hFunnelContext({reason:'buyer_cancelled'}));
+  }else{
+    const paypalErrRaw=params.get('paypal_error');
+    if(paypalErrRaw!=null&&String(paypalErrRaw).trim()!==''){
+      if(typeof h2hFunnel==='function')h2hFunnel('paypal_checkout_return_error',h2hFunnelContext({
+        reason:'paypal_return_error',
+        paypal_error:String(paypalErrRaw).trim().slice(0,20)
+      }));
+    }
+  }
   const fromUrlSession=String(params.get('reading')||'').trim();
   const fromUrlTx=normalizeTxId(params.get('tx'));
   if(!fromUrlSession&&!fromUrlTx)return;
@@ -7055,8 +7159,8 @@ async function resumeCheckoutFromUrl(){
     }
   }
   if(activeTxId&&hydrated){
-    if(typeof h2hTrack==='function')h2hTrack('paypal_checkout_success');
-    setPaymentNote('Payment received—opening your full reading…');
+    if(typeof h2hFunnel==='function')h2hFunnel('paypal_checkout_success',h2hFunnelContext());
+    setPaymentNote('Payment received—your full reading is loading here…');
     unlock(activeTxId,'restored');
     const cleanUrl=window.location.pathname+window.location.hash;
     window.history.replaceState({},'',cleanUrl);
@@ -7108,7 +7212,7 @@ function pickT(el){
     t.setAttribute('aria-pressed',on?'true':'false');
   });
   chosenT=el.dataset.t;
-  if(prevT!==chosenT&&typeof h2hTrack==='function')h2hTrack('charm_selected',{charm:String(chosenT||'')});
+  if(prevT!==chosenT&&typeof h2hFunnel==='function')h2hFunnel('charm_selected',h2hFunnelContext());
   document.getElementById('tmsg').textContent=el.dataset.m;
   const tnEl=el.querySelector('.tn');
   const charmLabel=((tnEl&&tnEl.textContent)||chosenT||'Charm').trim();
@@ -7129,7 +7233,7 @@ function setSp(el){
   });
   spN=nextN;
   clearSpreadFlowErrorOnly();
-  if(prevN!==nextN&&typeof h2hTrack==='function')h2hTrack('spread_selected',{card_count:nextN});
+  if(prevN!==nextN&&typeof h2hFunnel==='function')h2hFunnel('spread_selected',h2hFunnelContext());
   if(prevN!==nextN)announce(nextN+'-card spread selected.');
 }
 
@@ -8956,7 +9060,7 @@ function uCnt(latestPosition){
 }
 
 function showPrev(){
-  if(typeof h2hTrack==='function')h2hTrack('preview_ready',{spread_cards:spN,cards_drawn:drawn.length});
+  if(typeof h2hFunnel==='function')h2hFunnel('preview_ready',h2hFunnelContext());
   setStep(5);
   const b=document.getElementById('prev'),s=document.getElementById('psu');
   const payBtn=document.getElementById('ppb');
@@ -8966,7 +9070,7 @@ function showPrev(){
   if(finf)finf.textContent='Turn each card in your own time—the spread opens at its pace.';
   payBtn.disabled=false;
   payBtn.style.background='';
-  setPpbLabel('Open the full reading','$5 · once · yours to restore');
+  setPpbLabel('Unlock full reading — $5','PayPal · once · restore anytime');
   setPaymentNote('Pay through PayPal · guest checkout welcome · no account here');
   document.getElementById('demo').classList.remove('on');
   document.getElementById('demo').innerHTML='';
@@ -8976,7 +9080,7 @@ function showPrev(){
   b.classList.add('on','prev-arrive');
   const reduceMv=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
   b.scrollIntoView({behavior:reduceMv?'auto':'smooth',block:'center'});
-  announce('Preview ready. Your summary is below—you can unlock the full reading when you like.');
+  announce('Preview ready. Your summary is below—tap Unlock full reading — $5 when you are ready, or Preview first.');
   requestAnimationFrame(()=>{
     const h=document.getElementById('prev-panel-title');
     if(h)h.focus({preventScroll:true});
@@ -8984,13 +9088,13 @@ function showPrev(){
 }
 
 function pay(){
-  if(typeof h2hTrack==='function')h2hTrack('unlock_click');
+  if(typeof h2hFunnel==='function')h2hFunnel('unlock_full_reading_click',h2hFunnelContext());
   const b=document.getElementById('ppb');
   b.disabled=true;
   setPpbLabel('Connecting to PayPal…','');
   setPaymentNote('Preparing checkout…');
   createCheckoutSession().then(({checkoutUrl})=>{
-    if(typeof h2hTrack==='function')h2hTrack('paypal_checkout_start');
+    if(typeof h2hFunnel==='function')h2hFunnel('paypal_checkout_start',h2hFunnelContext());
     b.disabled=false;
     setPpbLabel('Finish in PayPal','Then return to this tab');
     b.style.background='var(--pk-hot)';
@@ -8999,9 +9103,9 @@ function pay(){
     const w=window.open(checkoutUrl,'_blank','noopener');
     if(!w)window.location.href=checkoutUrl;
   }).catch(err=>{
-    if(typeof h2hTrack==='function')h2hTrack('paypal_checkout_cancel',{reason:'checkout_start_failed',message:String(err&&err.message||'').slice(0,100)});
+    if(typeof h2hFunnel==='function')h2hFunnel('paypal_checkout_init_failure',h2hFunnelContext({reason:'session_create_failed',message:String(err&&err.message||'').slice(0,100)}));
     b.disabled=false;
-    setPpbLabel('Open the full reading','$5 · once · yours to restore');
+    setPpbLabel('Unlock full reading — $5','PayPal · once · restore anytime');
     alert(err.message||'Unable to start PayPal checkout right now.');
     setPaymentNote('Pay through PayPal · guest checkout welcome · no account here');
     requestAnimationFrame(()=>b.focus({preventScroll:true}));
@@ -9010,8 +9114,8 @@ function pay(){
 
 function vfy(){
   if(!activeCheckoutSessionId){
-    announce('No active checkout to verify. Use Restore with your PayPal transaction ID, or open the full reading first.','assertive');
-    alert('Pay with Open the full reading first, then return to this tab. Already paid? Use Restore a paid reading with your PayPal transaction ID.');
+    announce('No active checkout to verify. Use Restore with your PayPal transaction ID, or tap Unlock full reading — $5 first.','assertive');
+    alert('Use Unlock full reading — $5 first, then return to this tab. Already paid? Use Restore a paid reading with your PayPal transaction ID.');
     return;
   }
   checkPaymentStatus(true).catch(err=>{
@@ -9031,8 +9135,8 @@ function buildReadingHtml(ctx,previewMode){
   const usedSentences=new Set();
   const highlights=buildReadingHighlights(ctx);
   const titleAttrs=previewMode?' id="preview-reading-title" tabindex="-1"':' id="reading-title" tabindex="-1"';
-  let h=`<div class="rw"><h3${titleAttrs}>${previewMode?'Sample reading':'Your reading'}</h3>`;
-  h+=`<p style="text-align:center;color:var(--ts);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;margin-top:-.5rem;margin-bottom:1.2rem">${previewMode?'one card · a glimpse':'written for this draw'}</p>`;
+  let h=`<div class="rw"><h3${titleAttrs}>${previewMode?'Preview first':'Your reading'}</h3>`;
+  h+=`<p style="text-align:center;color:var(--ts);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;margin-top:-.5rem;margin-bottom:1.2rem">${previewMode?'one card · not the full reading yet':'written for this draw'}</p>`;
   if(ctx.question) h+=`<p style="text-align:center;font-style:italic;color:var(--ts);font-size:.82rem;margin-bottom:1.2rem">"${ctx.question.replace(/"/g,'&quot;')}"</p>`;
   h+=`<div class="rmeta">${highlights.chips.map(item=>`<span class="rchip">${escapeHtml(item.label)}<strong>${escapeHtml(item.value)}</strong></span>`).join('')}</div>`;
   h+=`<div class="rglance">${highlights.cards.map(item=>`<div class="rgl"><strong>${escapeHtml(item.label)}</strong><p>${escapeHtml(item.value)}</p></div>`).join('')}</div>`;
@@ -9046,7 +9150,7 @@ function buildReadingHtml(ctx,previewMode){
   const closing=uniqueSentences(buildClosing(ctx),usedSentences);
   h+=`<div class="clos"><h4>Parting words</h4><p>${previewMode?clipSentences(closing,2):closing}</p></div>`;
   if(previewMode){
-    h+=`<p class="demo-note">The full reading includes every card you drew, each position in full, and the complete parting message.</p>`;
+    h+=`<p class="demo-note"><strong>Unlock full reading — $5</strong> includes every card you drew, each position in full, and the complete parting message.</p>`;
   }else if(activeTxId){
     h+=`<p class="demo-note">PayPal transaction ID (keep for restore): <strong style="color:var(--pink)">${activeTxId}</strong></p>`;
   }
@@ -9055,6 +9159,7 @@ function buildReadingHtml(ctx,previewMode){
 }
 
 function previewUnlock(){
+  if(typeof h2hFunnel==='function')h2hFunnel('preview_first_click',h2hFunnelContext());
   const demo=document.getElementById('demo');
   demo.innerHTML=buildReadingHtml(buildContext(),true);
   demo.classList.add('on');
@@ -9078,7 +9183,7 @@ function unlock(txid,source){
   const reduceMv=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
   f.scrollIntoView({behavior:reduceMv?'auto':'smooth',block:'start'});
   if(source==='restored')announce('Reading restored successfully. Full text below.');
-  else announce('Full reading unlocked. Complete text below.');
+  else announce('Unlock full reading — $5 complete. Every position is below.');
   requestAnimationFrame(()=>{
     const t=document.getElementById('reading-title');
     if(t)t.focus({preventScroll:true});
@@ -9117,7 +9222,7 @@ function redo(){
   }
   document.getElementById('rbtn').style.display='block';
   const b=document.getElementById('ppb');
-  setPpbLabel('Open the full reading','$5 · once · yours to restore');
+  setPpbLabel('Unlock full reading — $5','PayPal · once · restore anytime');
   b.disabled=false;
   b.style.background='';
   setPaymentNote('Pay through PayPal · guest checkout welcome · no account here');

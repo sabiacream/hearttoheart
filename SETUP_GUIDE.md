@@ -349,40 +349,22 @@ Go to **Supabase → Table Editor → readings** anytime to:
 
 ## ANALYTICS (FUNNEL EVENTS)
 
-The site loads `analytics.js`, which defines `window.h2hTrack(eventName, props?)`. If no provider is installed, calls are no-ops. To debug: `localStorage.setItem('h2h_debug_analytics','1')` then open the console.
+The site loads `analytics.js`, which defines:
 
-**Wire a provider:** add GA4 (`gtag`), Plausible (`plausible`), or GTM (`dataLayer`) — see comments at the top of `analytics.js`.
+- **`h2hFunnel(eventName, props?)`** — use for canonical funnel steps (whitelisted; no-op if the script did not load or the name is unknown).
+- **`h2hTrack(eventName, props?)`** — forwards to GA4 / Plausible / `dataLayer` when present; still used for a few optional events (e.g. `question_entered`, `reveal_click`).
+- **`H2H_FUNNEL`** — frozen map of funnel event names for reference.
 
-| Event | Where it fires |
-|-------|----------------|
-| `password_gate_view` | `index.html` — password gate visible on load (session not already unlocked) |
-| `password_submit` | `index.html` — `checkPw()` started (button or Enter) |
-| `password_success` | `index.html` — correct hash, gate dismissed |
-| `password_failure` | `index.html` — wrong password |
-| `hero_cta_click` | `index.html` — hero “Begin the reading” (`entry: hero_primary`) or mobile sticky (`entry: mobile_sticky`) |
-| `restore_cta_click` | `index.html` — any link to `restore.html` (`placement`: hero, nav, footer, paywall, other) |
-| `category_selected` | `index.html` — `chooseCategory()` when category changes (`category`) |
-| `question_entered` | `index.html` — question field blur with text, or 4+ chars typed (`length`) |
-| `charm_selected` | `index.html` — `pickT()` when charm changes (`charm`) |
-| `spread_selected` | `index.html` — `setSp()` when card count changes (`card_count`) |
-| `moon_option_used` | `index.html` — first time moon `<select>` set to a non-empty value (once per page load) |
-| `zodiac_option_used` | `index.html` — first time zodiac `<select>` set to a non-empty value (once per page load) |
-| `reveal_click` | `index.html` — start of `doReveal()` (`spread_cards`) |
-| `preview_ready` | `index.html` — `showPrev()` when paywall preview is shown (`spread_cards`, `cards_drawn`) |
-| `unlock_click` | `index.html` — start of `pay()` (intent before API call) |
-| `paypal_checkout_start` | `index.html` — checkout session created, URL ready (before `window.open` / redirect) |
-| `paypal_checkout_success` | `index.html` — `checkPaymentStatus()` paid path or `resumeCheckoutFromUrl()` success |
-| `paypal_checkout_cancel` | `index.html` — `pay()` rejected / checkout session failed (`reason: checkout_start_failed`, `message`) |
-| `restore_submit` | `restore.html` — valid ID, lookup starting |
-| `restore_success` | `restore.html` — reading found and rendered |
-| `restore_failure` | `restore.html` — empty ID, invalid format, or not found (`reason`: `empty_id`, `invalid_format`, `not_found`) |
+If no provider is installed, `h2hTrack` is still safe. To debug: `localStorage.setItem('h2h_debug_analytics','1')` then open the console.
+
+**Wire a provider:** add GA4 (`gtag`), Plausible (`plausible`), or GTM (`dataLayer`) — see `analytics.js`, **`ANALYTICS-FUNNEL.md`** (events and props), and **`ANALYTICS-REPORTING.md`** (funnel + metrics cheat sheet).
 
 ---
 
 ## FILE CHECKLIST
 
 Your GitHub repo should have:
-- [ ] `analytics.js` — funnel event bridge (`h2hTrack`)
+- [ ] `analytics.js` — funnel bridge (`h2hFunnel`, `h2hTrack`); see `ANALYTICS-FUNNEL.md`
 - [ ] `index.html` — main site (with Supabase + PayPal changes)
 - [ ] `restore.html` — reading restore page
 - [ ] `terms.html` — terms, privacy, disclaimer

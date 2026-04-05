@@ -30,7 +30,7 @@ body{
 .tnav-brand{font-family:var(--fb);font-size:1.18rem;color:var(--wine);text-decoration:none;white-space:nowrap;letter-spacing:-.01em}
 .tnav-links{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:.32rem}
 .tnav-links a{color:var(--muted);text-decoration:none;font-size:.67rem;padding:.27rem .7rem;border-radius:100px;border:1px solid rgba(217,109,152,.18);background:rgba(255,255,255,.75);transition:all .2s;font-weight:500}
-.tnav-links a:hover,.tnav-links a.active{border-color:var(--rose);color:var(--wine);background:var(--blush);font-weight:600}
+.tnav-links a:hover,.tnav-links a.active,.tnav-links a[aria-current="page"]{border-color:var(--rose);color:var(--wine);background:var(--blush);font-weight:600}
 @media(max-width:560px){.tnav-in{flex-direction:column;align-items:stretch}.tnav-brand{text-align:center;font-size:1.05rem}.tnav-links{justify-content:center}}
 
 .main{flex:1;max-width:760px;margin:0 auto;padding:2rem 1.25rem 2.8rem;width:100%}
@@ -91,7 +91,7 @@ h1{font-family:var(--fd);font-size:2rem;line-height:1.08;text-align:center;margi
 .loading.on{display:block}
 footer{border-top:1px solid var(--line);padding:1.5rem 1.25rem 1rem;text-align:center;max-width:760px;margin:0 auto;width:100%}
 .ftb{font-family:var(--fb);font-size:1.45rem;color:var(--wine)}
-.ftl{margin-top:.5rem;display:flex;flex-wrap:wrap;justify-content:center;gap:.4rem .65rem}.ftl a{color:var(--muted);text-decoration:none;font-size:.74rem;margin:0}.ftl a:hover{color:var(--wine)}
+.ftl{margin-top:.5rem;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:.35rem .5rem;max-width:38rem;margin-left:auto;margin-right:auto;padding:0 .5rem}.ftl a{color:var(--muted);text-decoration:none;font-size:.74rem;margin:0;padding:.15rem .1rem}.ftl a:hover{color:var(--wine)}.ftl-sep{color:rgba(111,95,90,.45);font-size:.78rem;user-select:none}.ftl-legal{display:inline-flex;flex-wrap:wrap;align-items:center;gap:.35rem}
 .fdi{color:var(--soft);font-size:.6rem;margin-top:.5rem;max-width:400px;margin-left:auto;margin-right:auto}
 @media(max-width:700px){
   .tnav-in{flex-direction:column;align-items:stretch}
@@ -115,7 +115,7 @@ body::after{content:'';position:fixed;inset:18px;border:1px solid rgba(214,180,1
 .tnav-brand{font-size:clamp(1.8rem,3vw,2.5rem);color:var(--wine);text-align:center}
 .tnav-links{width:100%;justify-content:center;gap:.9rem;padding-top:.7rem;border-top:1px solid rgba(214,180,106,.24)}
 .tnav-links a{background:transparent;border:none;padding:0;font-family:var(--f-orn);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
-.tnav-links a:hover,.tnav-links a.active{background:transparent;color:var(--wine)}
+.tnav-links a:hover,.tnav-links a.active,.tnav-links a[aria-current="page"]{background:transparent;color:var(--wine)}
 .main{max-width:980px;margin:1.1rem auto 0;padding:1.5rem 1.05rem 2rem;position:relative;z-index:1}
 .main::before{content:'';position:absolute;inset:0;border-radius:30px;background:linear-gradient(180deg,var(--panel-hi),var(--panel));border:1px solid rgba(214,180,106,.48);box-shadow:0 28px 60px rgba(0,0,0,.28);z-index:-2}
 .main::after{content:'';position:absolute;inset:12px;border-radius:20px;border:1px solid rgba(214,180,106,.2);z-index:-1}
@@ -170,6 +170,7 @@ body::after{inset:16px;border-color:rgba(184,148,82,.52);box-shadow:inset 0 0 0 
 }
 .tnav-brand{color:var(--final-rose)}
 .tnav-links a{color:var(--final-muted)}
+.tnav-links a:hover,.tnav-links a[aria-current="page"]{color:var(--final-rose)}
 .main{
   max-width:1060px;
   padding:1.6rem 1.1rem 2.3rem;
@@ -203,7 +204,8 @@ h1,.rw h3,.clos h4{color:var(--final-ink)}
   background:linear-gradient(180deg,rgba(255,250,245,.97),rgba(243,231,214,.94));
 }
 .input-box{
-  padding:1.35rem 1.2rem;
+  padding:1.45rem 1.25rem 1.4rem;
+  margin-bottom:1.85rem;
 }
 .txf{
   min-height:52px;
@@ -211,6 +213,12 @@ h1,.rw h3,.clos h4{color:var(--final-ink)}
 }
 .rbtn,.ab.p,.ab.g{
   border-radius:10px;
+}
+.rbtn{
+  margin-top:1.35rem;
+}
+.input-box .help{
+  margin-top:.95rem;
 }
 .loading{
   color:#f3e2c1;
@@ -292,7 +300,8 @@ main.main{flex:1}
       <a href="about.html">About</a>
       <a href="faq.html">FAQ</a>
       <a href="contact.html">Contact</a>
-      <a href="restore.html" class="active">Restore</a>
+      <a href="restore.html" aria-current="page">Restore</a>
+      <a href="terms.html">Terms</a>
     </div>
   </div>
 </nav>
@@ -327,7 +336,9 @@ main.main{flex:1}
 </main>
 <footer>
   <div class="ftb">Heart to Heart 111</div>
-  <div class="ftl"><a href="index.html">Home</a><a href="about.html">About</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a><a href="terms.html#terms">Terms</a><a href="terms.html#privacy">Privacy</a><a href="terms.html#disclaimer">Disclaimer</a></div>
+  <nav class="ftl" aria-label="Site links and legal">
+    <a href="index.html">Home</a><span class="ftl-sep" aria-hidden="true">·</span><a href="restore.html" aria-current="page">Restore</a><span class="ftl-sep" aria-hidden="true">·</span><a href="about.html">About</a><span class="ftl-sep" aria-hidden="true">·</span><a href="faq.html">FAQ</a><span class="ftl-sep" aria-hidden="true">·</span><a href="contact.html">Contact</a><span class="ftl-sep" aria-hidden="true">·</span><span class="ftl-legal" role="group" aria-label="Legal sections on the terms page"><a href="terms.html#terms">Terms</a><span class="ftl-sep" aria-hidden="true">·</span><a href="terms.html#privacy">Privacy</a><span class="ftl-sep" aria-hidden="true">·</span><a href="terms.html#disclaimer">Disclaimer</a></span>
+  </nav>
   <p class="fdi">Readings and spiritual services are for entertainment, personal reflection, and spiritual exploration only. Not a substitute for medical, legal, financial, or mental health advice. Must be 18+. © 2026 Heart to Heart 111.</p>
 </footer>
 <div class="sr-only" id="sr-live-polite" aria-live="polite" aria-atomic="true"></div>
@@ -395,16 +406,16 @@ async function restore(){
   const txid=document.getElementById('txid').value.trim().toUpperCase();
   document.getElementById('errBox').classList.remove('on');
   if(!txid){
-    if(typeof h2hTrack==='function')h2hTrack('restore_failure',{reason:'empty_id'});
+    if(typeof h2hFunnel==='function')h2hFunnel('restore_failure',{source_page:'restore',reason:'empty_id'});
     showTxidInline('The transaction ID is the gentle key—paste or type the one from your PayPal receipt when you are ready.');
     return;
   }
   if(!/^[A-Z0-9-]{8,40}$/.test(txid)){
-    if(typeof h2hTrack==='function')h2hTrack('restore_failure',{reason:'invalid_format'});
+    if(typeof h2hFunnel==='function')h2hFunnel('restore_failure',{source_page:'restore',reason:'invalid_format'});
     showTxidInline('That shape does not match a PayPal ID yet—letters, numbers, and dashes only. Softly try again.');
     return;
   }
-  if(typeof h2hTrack==='function')h2hTrack('restore_submit');
+  if(typeof h2hFunnel==='function')h2hFunnel('restore_submit',{source_page:'restore'});
 
   // Reset UI
   clearTxidInline();
@@ -439,7 +450,7 @@ async function restore(){
   document.getElementById('rbtn').textContent='Restore My Reading';
 
   if(!data){
-    if(typeof h2hTrack==='function')h2hTrack('restore_failure',{reason:'not_found'});
+    if(typeof h2hFunnel==='function')h2hFunnel('restore_failure',{source_page:'restore',reason:'not_found'});
     showError(
       "We couldn't find a reading with that Transaction ID.",
       "Double-check the ID from your PayPal receipt. If you need help, call us at <a href='tel:6107628341' style='color:var(--wine)'>(610) 762-8341</a>."
@@ -447,7 +458,7 @@ async function restore(){
     return;
   }
 
-  if(typeof h2hTrack==='function')h2hTrack('restore_success');
+  if(typeof h2hFunnel==='function')h2hFunnel('restore_success',{source_page:'restore'});
   announce('Reading restored successfully. Full reading below.');
 
   // Render

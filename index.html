@@ -5435,6 +5435,10 @@ ul.hero-trust.hero-trust--row,
   border:1px solid rgba(180,99,122,.3);
   box-shadow:inset 0 1px 0 rgba(255,252,250,.75);
 }
+.prev-pay-error{
+  margin-top:.85rem;
+  margin-bottom:.25rem;
+}
 #ritual-cat-group.flow-step-invalid{
   outline:2px solid rgba(180,99,122,.32);
   outline-offset:6px;
@@ -6546,6 +6550,7 @@ document.addEventListener('DOMContentLoaded',()=>{
               <button type="button" class="ppb alt ppb-keep" id="pvb" onclick="previewUnlock()">Preview first</button>
             </div>
           </div>
+          <p id="pay-err" class="ritual-flow-error prev-pay-error" role="alert" hidden></p>
         </div>
       </div>
 
@@ -6918,6 +6923,111 @@ function setPpbLabel(line1,line2){
   }
 }
 
+function clearPaywallCheckoutError(){
+  const el=document.getElementById('pay-err');
+  const btn=document.getElementById('ppb');
+  if(el){
+    el.textContent='';
+    el.setAttribute('hidden','');
+  }
+  if(btn){
+    btn.removeAttribute('aria-describedby');
+    btn.removeAttribute('aria-invalid');
+  }
+}
+
+function setPaywallCheckoutError(message){
+  const el=document.getElementById('pay-err');
+  const btn=document.getElementById('ppb');
+  if(!el)return;
+  el.textContent=message||'';
+  if(message){
+    el.removeAttribute('hidden');
+    if(btn){
+      btn.setAttribute('aria-describedby','pay-err');
+      btn.setAttribute('aria-invalid','true');
+    }
+  }else{
+    el.setAttribute('hidden','');
+    if(btn){
+      btn.removeAttribute('aria-describedby');
+      btn.removeAttribute('aria-invalid');
+    }
+  }
+}
+
+function checkoutFailureUserMessage(err){
+  const code=String(err&&err.checkoutErrorCode||'');
+  const status=err&&err.httpStatus;
+  const map={
+    paypal_not_configured:'Checkout is not available on this server yet. Please use the main Heart to Heart link or contact the shop.',
+    app_url_invalid:'Checkout is not available on this server right now. Please use the main site or contact the shop.',
+    endpoint_not_found:'We could not reach the payment service. If this is a preview or draft link, open the published site and try again.',
+    checkout_request_failed:'We could not start checkout. Refresh once and try again.',
+    network_error:'The connection dropped before PayPal could open. Check your signal and try again.',
+    paypal_auth_failed:'The payment service could not be reached from the server. Please try again soon or contact the shop.',
+    paypal_validation_failed:'PayPal could not start this checkout. Try the main site link, or contact the shop.',
+    paypal_order_failed:'PayPal did not create a checkout session—often a site URL or environment mismatch. Try the main site, or contact the shop.',
+    missing_checkout_url:'Checkout did not return a PayPal link. Refresh and try again.',
+    missing_approval_url:'Checkout did not return a PayPal link. Refresh and try again.',
+    invalid_session:'Your session was incomplete. Finish your spread, then tap unlock again.'
+  };
+  if(map[code])return map[code];
+  if(status===404)return map.endpoint_not_found;
+  if(err&&err.checkoutClientOriginated&&err.message)return err.message;
+  return 'We could not open PayPal this time. Try again in a moment, or use Verify payment if you already completed checkout.';
+}
+
+async function createCheckoutSession(){
+  if(!drawn.length){
+    const e=new Error('Please draw your cards first.');
+    e.checkoutErrorCode='client_precheck';
+    e.checkoutClientOriginated=true;
+    throw e;
+  }
+  if(!activeCheckoutSessionId)activeCheckoutSessionId=makeCheckoutSessionId();
+  saveCheckoutSnapshot(activeCheckoutSessionId);
+  let r;
+  try{
+    r=await fetch(PAYMENT_CFG.createEndpoint,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(buildPaymentPayload())
+    });
+  }catch(_net){
+    const err=new Error(checkoutFailureUserMessage({checkoutErrorCode:'network_error'}));
+    err.checkoutErrorCode='network_error';
+    err.checkoutClientOriginated=true;
+    throw err;
+  }
+  const rawText=await r.text();
+  let d={};
+  try{
+    d=rawText?JSON.parse(rawText):{};
+  }catch(_parse){
+    const err=new Error(checkoutFailureUserMessage({checkoutErrorCode:'checkout_request_failed'}));
+    err.checkoutErrorCode='checkout_request_failed';
+    err.httpStatus=r.status;
+    throw err;
+  }
+  if(!r.ok){
+    const code=String(d.errorCode||'')||(r.status===404?'endpoint_not_found':'checkout_request_failed');
+    const err=new Error(checkoutFailureUserMessage({checkoutErrorCode:code,httpStatus:r.status}));
+    err.checkoutErrorCode=code;
+    err.httpStatus=r.status;
+    throw err;
+  }
+  const url=String(d.checkoutUrl||'').trim();
+  if(!url){
+    const code=String(d.errorCode||'missing_checkout_url');
+    const err=new Error(checkoutFailureUserMessage({checkoutErrorCode:code,httpStatus:r.status}));
+    err.checkoutErrorCode=code;
+    err.httpStatus=r.status;
+    throw err;
+  }
+  return {checkoutUrl:url,orderId:d.orderId||''};
+}
+
 function jumpToQuestion(){
   const section=document.getElementById('s1');
   if(!section)return;
@@ -7082,20 +7192,6 @@ function buildPaymentPayload(){
     draft:{question:q,category:cat,trinket:chosenT,spread:spN},
     preview:{cat,chosenT,spN,readingSalt,drawn}
   };
-}
-
-async function createCheckoutSession(){
-  if(!drawn.length)throw new Error('Please draw your cards first.');
-  if(!activeCheckoutSessionId)activeCheckoutSessionId=makeCheckoutSessionId();
-  saveCheckoutSnapshot(activeCheckoutSessionId);
-  const r=await fetch(PAYMENT_CFG.createEndpoint,{
-    method:'POST',
-    headers:{'Content-Type':'application/json'},
-    body:JSON.stringify(buildPaymentPayload())
-  });
-  const d=await r.json().catch(()=>({}));
-  if(!r.ok||!d.checkoutUrl)throw new Error(d.error||'Unable to create checkout.');
-  return d;
 }
 
 function buildReadingRecord(){
@@ -9223,6 +9319,7 @@ function uCnt(latestPosition){
 function showPrev(){
   if(typeof h2hFunnel==='function')h2hFunnel('preview_ready',h2hFunnelContext());
   setStep(5);
+  clearPaywallCheckoutError();
   const b=document.getElementById('prev'),s=document.getElementById('psu');
   const payBtn=document.getElementById('ppb');
   const fcnt=document.getElementById('fcnt');
@@ -9251,6 +9348,7 @@ function showPrev(){
 function pay(){
   if(typeof h2hFunnel==='function')h2hFunnel('unlock_full_reading_click',h2hFunnelContext());
   const b=document.getElementById('ppb');
+  clearPaywallCheckoutError();
   b.disabled=true;
   setPpbLabel('Connecting to PayPal…','');
   setPaymentNote('Preparing checkout…');
@@ -9264,11 +9362,19 @@ function pay(){
     const w=window.open(checkoutUrl,'_blank','noopener');
     if(!w)window.location.href=checkoutUrl;
   }).catch(err=>{
-    if(typeof h2hFunnel==='function')h2hFunnel('paypal_checkout_init_failure',h2hFunnelContext({reason:'session_create_failed',message:String(err&&err.message||'').slice(0,100)}));
+    const userMsg=checkoutFailureUserMessage(err);
+    if(typeof h2hFunnel==='function')h2hFunnel('paypal_checkout_init_failure',h2hFunnelContext({
+      reason:'session_create_failed',
+      error_code:String(err&&err.checkoutErrorCode||'').slice(0,64),
+      http_status:err&&typeof err.httpStatus==='number'?err.httpStatus:undefined,
+      message:String(err&&err.message||'').slice(0,100)
+    }));
     b.disabled=false;
     setPpbLabel('Unlock full reading — $5','PayPal · once · restore anytime');
-    alert(err.message||'Unable to start PayPal checkout right now.');
+    b.style.background='';
+    setPaywallCheckoutError(userMsg);
     setPaymentNote('Pay through PayPal · guest checkout welcome · no account here');
+    announce(userMsg,'assertive');
     requestAnimationFrame(()=>b.focus({preventScroll:true}));
   });
 }

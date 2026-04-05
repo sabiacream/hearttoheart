@@ -13,6 +13,10 @@ const PAYPAL_CLIENT_ID = process.env.PAYPAL_CLIENT_ID || '';
 const PAYPAL_CLIENT_SECRET = process.env.PAYPAL_CLIENT_SECRET || '';
 const PAYPAL_WEBHOOK_ID = process.env.PAYPAL_WEBHOOK_ID || '';
 const READING_PRICE_DOLLARS = Number(process.env.READING_PRICE_DOLLARS || 5);
+const PAYPAL_MODE =
+  String(PAYPAL_BASE_URL || '').includes('sandbox') || String(PAYPAL_BASE_URL || '').includes('sandbox.')
+    ? 'sandbox'
+    : 'live';
 
 const DATA_DIR = path.join(ROOT_DIR, 'data');
 const STORE_FILE = path.join(DATA_DIR, 'paypal-session-store.json');
@@ -36,16 +40,86 @@ app.get('/api/health', (_req, res) => {
 });
 
 app.post('/api/create-checkout', async (req, res) => {
+  const correlationId = `cc_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 9)}`;
+  let sessionId = '';
   try {
-    const sessionId = String(req.body?.sessionId || '').trim();
+    sessionId = String(req.body?.sessionId || '').trim();
     if (!sessionId) {
-      return res.status(400).json({ error: 'sessionId is required.' });
+      return res.status(400).json({ error: 'sessionId is required.', errorCode: 'invalid_session' });
     }
     if (!hasPayPalCreds()) {
-      return res.status(500).json({ error: 'PayPal credentials are missing in .env.' });
+      logCheckoutStructured({
+        event: 'create_checkout_failed',
+        correlationId,
+        errorCode: 'paypal_not_configured',
+        phase: 'precheck',
+        sessionFingerprint: sessionFingerprint(sessionId),
+        paypalMode: PAYPAL_MODE,
+        message: 'PayPal client credentials are not set on the server.'
+      });
+      return res.status(500).json({
+        error: 'Checkout is not available on this server right now.',
+        errorCode: 'paypal_not_configured'
+      });
     }
 
     const amount = sanitizeAmount(READING_PRICE_DOLLARS);
+    let appBaseParsed;
+    try {
+      appBaseParsed = new URL(APP_BASE_URL);
+    } catch (_e) {
+      logCheckoutStructured({
+        event: 'create_checkout_failed',
+        correlationId,
+        errorCode: 'app_url_invalid',
+        phase: 'precheck',
+        sessionFingerprint: sessionFingerprint(sessionId),
+        paypalMode: PAYPAL_MODE,
+        message: 'APP_BASE_URL is not a valid URL.'
+      });
+      return res.status(500).json({
+        error: 'Checkout is not available on this server right now.',
+        errorCode: 'app_url_invalid'
+      });
+    }
+
+    const requestHost = getRequestPublicHost(req);
+    const appBaseHost = appBaseParsed.hostname;
+    const deploymentHints = describeDeploymentContext(requestHost, appBaseParsed);
+    if (deploymentHints.appBaseHostMismatch) {
+      logCheckoutStructured({
+        event: 'create_checkout_config_warning',
+        correlationId,
+        sessionFingerprint: sessionFingerprint(sessionId),
+        requestHost,
+        appBaseHost,
+        paypalMode: PAYPAL_MODE,
+        message:
+          'Request Host does not match APP_BASE_URL host; PayPal return_url may not match the site the user sees.'
+      });
+    }
+    if (deploymentHints.likelyPreviewDeploy) {
+      logCheckoutStructured({
+        event: 'create_checkout_deployment_hint',
+        correlationId,
+        sessionFingerprint: sessionFingerprint(sessionId),
+        appBaseHost,
+        paypalMode: PAYPAL_MODE,
+        message:
+          'APP_BASE_URL looks like a preview-style host. PayPal may reject return_url unless that exact URL is allowed in the PayPal app settings.'
+      });
+    }
+    if (deploymentHints.insecurePublicHttp) {
+      logCheckoutStructured({
+        event: 'create_checkout_deployment_hint',
+        correlationId,
+        sessionFingerprint: sessionFingerprint(sessionId),
+        appBaseHost,
+        paypalMode: PAYPAL_MODE,
+        message: 'APP_BASE_URL uses http with a non-local host; live PayPal often requires https return URLs.'
+      });
+    }
+
     const returnUrl = new URL('/api/paypal/return', APP_BASE_URL);
     returnUrl.searchParams.set('sessionId', sessionId);
 
@@ -73,7 +147,21 @@ app.post('/api/create-checkout', async (req, res) => {
 
     const checkoutUrl = (order.links || []).find((link) => link.rel === 'approve')?.href || '';
     if (!checkoutUrl) {
-      throw new Error('PayPal response did not include an approval URL.');
+      logCheckoutStructured({
+        event: 'create_checkout_failed',
+        correlationId,
+        errorCode: 'missing_approval_url',
+        phase: 'parse_order',
+        sessionFingerprint: sessionFingerprint(sessionId),
+        requestHost,
+        appBaseHost,
+        paypalMode: PAYPAL_MODE,
+        message: 'PayPal order response had no approve link.'
+      });
+      return res.status(500).json({
+        error: 'Unable to create PayPal checkout right now.',
+        errorCode: 'missing_approval_url'
+      });
     }
 
     upsertSession(sessionId, {
@@ -87,8 +175,38 @@ app.post('/api/create-checkout', async (req, res) => {
 
     return res.json({ checkoutUrl, orderId: order.id || '' });
   } catch (error) {
-    console.error('[create-checkout] error:', error.message);
-    return res.status(500).json({ error: 'Unable to create PayPal checkout right now.' });
+    const meta = extractPayPalErrorMeta(error);
+    const urlIssue = isLikelyReturnUrlRelatedIssue(meta.issue, meta.message);
+    const errorCode = mapCheckoutFailureCode(error, meta);
+    logCheckoutStructured({
+      event: 'create_checkout_failed',
+      correlationId,
+      errorCode,
+      phase: meta.phase || 'paypal_api',
+      sessionFingerprint: sessionFingerprint(sessionId),
+      requestHost: getRequestPublicHost(req),
+      appBaseHost: safeAppBaseHost(),
+      paypalMode: PAYPAL_MODE,
+      paypalHttpStatus: meta.httpStatus,
+      paypalPath: meta.path,
+      paypalIssue: meta.issue,
+      suspectedReturnUrlProblem: urlIssue,
+      message: meta.message || error.message || 'unknown'
+    });
+    if (urlIssue) {
+      logCheckoutStructured({
+        event: 'create_checkout_deployment_hint',
+        correlationId,
+        sessionFingerprint: sessionFingerprint(sessionId),
+        paypalMode: PAYPAL_MODE,
+        message:
+          'PayPal rejected the request in a way that often indicates return_url / cancel_url or APP_BASE_URL misconfiguration (preview host, http vs https, or dashboard URL list).'
+      });
+    }
+    return res.status(500).json({
+      error: 'Unable to create PayPal checkout right now.',
+      errorCode
+    });
   }
 });
 
@@ -260,6 +378,7 @@ app.use(express.static(ROOT_DIR, { extensions: ['html'] }));
 
 app.listen(PORT, HOST, () => {
   console.log(`Heart2Heart server running at ${APP_BASE_URL}`);
+  console.log(`PayPal API mode: ${PAYPAL_MODE}`);
   if (!hasPayPalCreds()) {
     console.log('PayPal credentials missing. Add PAYPAL_CLIENT_ID and PAYPAL_CLIENT_SECRET to .env');
   }
@@ -292,6 +411,103 @@ function loadEnvFile(filePath) {
 
 function hasPayPalCreds() {
   return Boolean(PAYPAL_CLIENT_ID && PAYPAL_CLIENT_SECRET);
+}
+
+function logCheckoutStructured(payload) {
+  try {
+    console.error(JSON.stringify(payload));
+  } catch (_err) {
+    console.error('[checkout-log] serialization_failed');
+  }
+}
+
+function sessionFingerprint(sessionId) {
+  const s = String(sessionId || '').trim();
+  if (!s) return '';
+  if (s.length <= 10) return `${s.length}ch`;
+  return `${s.slice(0, 6)}…${s.slice(-4)}`;
+}
+
+function getRequestPublicHost(req) {
+  const xf = req.headers['x-forwarded-host'];
+  const raw = (Array.isArray(xf) ? xf[0] : xf) || req.headers.host || '';
+  return String(raw).split(',')[0].trim().toLowerCase();
+}
+
+function safeAppBaseHost() {
+  try {
+    return new URL(APP_BASE_URL).hostname;
+  } catch (_e) {
+    return '';
+  }
+}
+
+function isLocalOrLoopbackHost(hostname) {
+  const h = String(hostname || '').toLowerCase();
+  if (!h) return true;
+  if (h === 'localhost') return true;
+  if (h.endsWith('.localhost')) return true;
+  if (h === '127.0.0.1' || h === '[::1]' || h === '::1') return true;
+  if (/^127\.\d+\.\d+\.\d+$/.test(h)) return true;
+  return false;
+}
+
+function likelyPreviewDeploymentHost(hostname) {
+  const h = String(hostname || '').toLowerCase();
+  if (!h) return false;
+  if (h.includes('--') && h.endsWith('.netlify.app')) return true;
+  if (h.endsWith('.pages.dev')) return true;
+  if (h.includes('-git-') && h.endsWith('.vercel.app')) return true;
+  if (h.includes('deploy-preview') && h.endsWith('.netlify.app')) return true;
+  return false;
+}
+
+function describeDeploymentContext(requestHost, appBaseUrl) {
+  const appHost = appBaseUrl.hostname;
+  const appBaseHostMismatch =
+    Boolean(requestHost && appHost && requestHost !== appHost) &&
+    !isLocalOrLoopbackHost(appHost) &&
+    !isLocalOrLoopbackHost(requestHost);
+  const likelyPreviewDeploy = likelyPreviewDeploymentHost(appHost);
+  const insecurePublicHttp =
+    appBaseUrl.protocol === 'http:' && !isLocalOrLoopbackHost(appHost);
+  return { appBaseHostMismatch, likelyPreviewDeploy, insecurePublicHttp };
+}
+
+function extractPayPalErrorMeta(error) {
+  const e = error || {};
+  return {
+    phase: e.paypalPhase || 'paypal_api',
+    httpStatus: typeof e.paypalHttpStatus === 'number' ? e.paypalHttpStatus : undefined,
+    path: e.paypalPath || '',
+    issue: e.paypalIssue || '',
+    message: String(e.message || '').slice(0, 300)
+  };
+}
+
+function isLikelyReturnUrlRelatedIssue(issue, message) {
+  const blob = `${String(issue || '')} ${String(message || '')}`.toUpperCase();
+  return (
+    blob.includes('RETURN_URL') ||
+    blob.includes('CANCEL_URL') ||
+    blob.includes('REDIRECT') ||
+    blob.includes('APPLICATION_CONTEXT') ||
+    blob.includes('INVALID_URL') ||
+    (blob.includes('MALFORMED') && blob.includes('URL'))
+  );
+}
+
+function mapCheckoutFailureCode(error, meta) {
+  if (error && error.message && String(error.message).includes('PayPal auth failed')) {
+    return 'paypal_auth_failed';
+  }
+  if (meta.httpStatus === 401 || meta.httpStatus === 403) {
+    return 'paypal_auth_failed';
+  }
+  if (meta.issue && String(meta.issue).toUpperCase().includes('VALIDATION')) {
+    return 'paypal_validation_failed';
+  }
+  return 'paypal_order_failed';
 }
 
 function sanitizeAmount(value) {
@@ -327,7 +543,12 @@ async function getAccessToken() {
   const data = parseJson(text);
   if (!response.ok || !data.access_token) {
     const message = data.error_description || data.error || text || 'Unknown PayPal auth error';
-    throw new Error(`PayPal auth failed (${response.status}): ${message}`);
+    const err = new Error(`PayPal auth failed (${response.status}): ${message}`);
+    err.paypalPhase = 'oauth';
+    err.paypalHttpStatus = response.status;
+    err.paypalPath = '/v1/oauth2/token';
+    err.paypalIssue = String(data.error || '').trim() || 'oauth_error';
+    throw err;
   }
 
   tokenCache = {
@@ -353,7 +574,12 @@ async function paypalRequest(method, apiPath, body) {
   const data = parseJson(text);
   if (!response.ok) {
     const issue = data.details?.[0]?.issue || data.message || text || 'Unknown PayPal API error';
-    throw new Error(`PayPal ${method} ${apiPath} failed (${response.status}): ${issue}`);
+    const err = new Error(`PayPal ${method} ${apiPath} failed (${response.status}): ${issue}`);
+    err.paypalPhase = 'api';
+    err.paypalHttpStatus = response.status;
+    err.paypalPath = apiPath;
+    err.paypalIssue = String(issue).slice(0, 200);
+    throw err;
   }
   return data;
 }

@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
-const outputDir = path.join(rootDir, 'Tarot Images', 'Card Sized');
+const outputDir = path.join(rootDir, 'tarot-images');
 
 const missingCards = [
   { n: 'Queen of Cups', u: 'Q', suit: 'Cups', rank: 'Queen' },

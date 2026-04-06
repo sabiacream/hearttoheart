@@ -98,7 +98,7 @@ body{font-family:var(--f);background:var(--cream);color:var(--td);overflow-x:hid
   .sc{animation:none !important}
   .shuf-orbit{animation:none !important}
   .shuf-mist{animation:none !important}
-  .tc:not(.fl):hover{animation:none !important}
+  .tc:not(.fl):hover{filter:inherit !important}
   .tc-deal{animation:none !important;opacity:1 !important}
   .sr{transition:none !important}
   .qcat:active,.sp:active,.trk:active{transform:none !important}
@@ -336,12 +336,14 @@ h2{font-size:clamp(1.7rem,4vw,2.5rem)}h3{font-size:clamp(1.1rem,2.5vw,1.5rem)}
 .crow[data-count="5"] .tc{--tc-max:300px}
 .crow[data-count="7"] .tc{--tc-max:220px}
 .tc.fl{-webkit-transform:translate3d(0,0,0) rotateY(180deg);transform:translate3d(0,0,0) rotateY(180deg)}
-.tc:not(.fl):hover{animation:wig .3s ease}
-@keyframes wig{0%,100%{transform:rotate(0)}25%{transform:rotate(-1.5deg)}75%{transform:rotate(1.5deg)}}
-.cf{position:absolute;inset:0;border-radius:12px;-webkit-backface-visibility:hidden;backface-visibility:hidden}
+/* Hover feedback must NOT replace .tc-deal's tcDealIn animation (would drop opacity:forwards → invisible card). */
+.tc:not(.fl):hover{
+  filter:drop-shadow(0 12px 26px rgba(108,52,64,.14)) brightness(1.02);
+}
+.cf{position:absolute;inset:0;border-radius:12px;-webkit-backface-visibility:hidden;backface-visibility:hidden;-webkit-transform-style:preserve-3d;transform-style:preserve-3d}
 
-/* CARD BACK — custom illustrated frame */
-.cbk{background:linear-gradient(155deg,#533834 0%,#8e654d 48%,#3f2a29 100%);border:none;box-shadow:0 10px 26px rgba(47,39,50,.12);z-index:1;overflow:hidden;padding:5px;border-radius:16px}
+/* CARD BACK — custom illustrated frame (translateZ prevents 3D → 2D flattening from hiding wrong face) */
+.cbk{background:linear-gradient(155deg,#533834 0%,#8e654d 48%,#3f2a29 100%);border:none;box-shadow:0 10px 26px rgba(47,39,50,.12);z-index:1;overflow:hidden;padding:5px;border-radius:16px;-webkit-transform:translateZ(1px);transform:translateZ(1px)}
 .cbk::before{content:'';position:absolute;inset:0;border-radius:16px;background:linear-gradient(180deg,rgba(255,255,255,.2),transparent 28%,rgba(0,0,0,.18));z-index:3;pointer-events:none}
 .cbk-media{position:absolute;inset:5px;z-index:0;border-radius:11px;overflow:hidden;background:linear-gradient(180deg,#38262d,#1f1519)}
 .cbk-media img.card-back-img,.cbk-media svg{width:100%;height:100%;display:block;object-fit:cover;object-position:center;pointer-events:none;-webkit-user-drag:none;user-drag:none}
@@ -350,7 +352,7 @@ h2{font-size:clamp(1.7rem,4vw,2.5rem)}h3{font-size:clamp(1.1rem,2.5vw,1.5rem)}
 .cbk-media .card-back-fallback{width:100%;height:100%;display:block}
 
 /* CARD FRONT — custom illustrated frame */
-.cft{-webkit-transform:rotateY(180deg);transform:rotateY(180deg);background:linear-gradient(155deg,#533834 0%,#977255 46%,#3c2827 100%);border:none;box-shadow:0 12px 30px rgba(47,39,50,.16);overflow:hidden;border-radius:16px;color:#fff;text-align:center;padding:5px}
+.cft{-webkit-transform:rotateY(180deg) translateZ(1px);transform:rotateY(180deg) translateZ(1px);background:linear-gradient(155deg,#533834 0%,#977255 46%,#3c2827 100%);border:none;box-shadow:0 12px 30px rgba(47,39,50,.16);overflow:hidden;border-radius:16px;color:#fff;text-align:center;padding:5px}
 .cft::before{content:'';position:absolute;inset:0;border-radius:16px;background:linear-gradient(180deg,rgba(255,255,255,.18),transparent 28%,rgba(0,0,0,.16));z-index:4;pointer-events:none}
 .cft::after{content:'';position:absolute;inset:0;border-radius:16px;box-shadow:inset 0 1px 0 rgba(255,255,255,.24),inset 0 -1px 0 rgba(0,0,0,.08);z-index:4;pointer-events:none}
 .cft-inner{position:absolute;inset:5px;display:grid;grid-template-rows:1fr auto;overflow:hidden;border-radius:11px;background:linear-gradient(180deg,#fffdf9,#f8eee1)}
@@ -5691,7 +5693,9 @@ ul.hero-trust.hero-trust--row,
   filter:drop-shadow(0 14px 28px rgba(108,52,64,.16));
   will-change:auto;
 }
-.tc:not(.fl):hover{animation:wig .35s ease}
+.tc:not(.fl):hover{
+  filter:drop-shadow(0 12px 26px rgba(108,52,64,.14)) brightness(1.02);
+}
 .tc:focus-visible{
   outline:2px solid rgba(180,99,122,.65);
   outline-offset:4px;
@@ -6658,16 +6662,16 @@ document.addEventListener('DOMContentLoaded',()=>{
       </div>
       <div class="hero-tarot-fan">
         <figure class="hero-card-preview hero-card-back">
-          <img src="Tarot Images/Back.jpg" alt="" width="600" height="1000" loading="lazy" decoding="async" fetchpriority="low">
+          <img src="tarot-images/Back.jpg" alt="" width="600" height="1000" loading="lazy" decoding="async" fetchpriority="low">
         </figure>
         <figure class="hero-card-preview hero-card-left">
-          <img src="Tarot Images/The Lovers.jpg" alt="The Lovers" width="600" height="1000" loading="lazy" decoding="async" fetchpriority="low">
+          <img src="tarot-images/The Lovers.jpg" alt="The Lovers" width="600" height="1000" loading="lazy" decoding="async" fetchpriority="low">
         </figure>
         <figure class="hero-card-preview hero-card-center">
-          <img src="Tarot Images/The Moon.jpg" alt="The Moon" width="600" height="1000" loading="lazy" decoding="async" fetchpriority="low">
+          <img src="tarot-images/The Moon.jpg" alt="The Moon" width="600" height="1000" loading="lazy" decoding="async" fetchpriority="low">
         </figure>
         <figure class="hero-card-preview hero-card-right">
-          <img src="Tarot Images/The Sun.jpg" alt="The Sun" width="600" height="1000" loading="lazy" decoding="async" fetchpriority="low">
+          <img src="tarot-images/The Sun.jpg" alt="The Sun" width="600" height="1000" loading="lazy" decoding="async" fetchpriority="low">
         </figure>
       </div>
       <div class="hero-stage-note hero-stage-note-bottom">
@@ -7238,7 +7242,6 @@ document.addEventListener('DOMContentLoaded',()=>{
   if(!cta||!hero)return;
   let ticking=false;
   function update(){
-    ticking=false;
     if(!h2hNarrowViewport()){
       cta.classList.remove('is-visible');
       cta.setAttribute('aria-hidden','true');
@@ -7256,11 +7259,19 @@ document.addEventListener('DOMContentLoaded',()=>{
     cta.setAttribute('aria-hidden',show?'false':'true');
     cta.setAttribute('tabindex',show?'0':'-1');
   }
-  function onScroll(){if(!ticking){requestAnimationFrame(()=>{update();ticking=true});}}
+  function onScroll(){
+    if(ticking)return;
+    ticking=true;
+    requestAnimationFrame(()=>{
+      update();
+      ticking=false;
+    });
+  }
   window.addEventListener('scroll',onScroll,{passive:true});
   window.addEventListener('resize',update);
-  if(mq.addEventListener)mq.addEventListener('change',update);
-  else if(mq.addListener)mq.addListener(update);
+  if(!h2hNarrowMql)h2hNarrowMql=window.matchMedia(`(max-width:${H2H_VIEWPORT_NARROW_MAX}px)`);
+  if(h2hNarrowMql.addEventListener)h2hNarrowMql.addEventListener('change',update);
+  else if(h2hNarrowMql.addListener)h2hNarrowMql.addListener(update);
   cta.addEventListener('click',e=>{
     e.preventDefault();
     if(typeof h2hFunnel==='function')h2hFunnel('hero_cta_click',{source_page:'index',entry:'mobile_sticky'});
@@ -8025,17 +8036,14 @@ function makeMinorCard(rank,suit){
 
 const DK=[...MAJOR_ARCANA,...Object.keys(MINOR_SUIT_META).flatMap(suit=>MINOR_RANKS.map(rank=>makeMinorCard(rank,suit)))];
 
-// Card images: put your files in one of the folders listed in CARD_IMAGES_PATHS.
-// Major Arcana preferred format: "0 — The Fool.png", "I — The Magician.png", ... "XXI — The World.png"
-// Minor Arcana preferred format: "Ace of Wands.png", "Two of Cups.png", etc.
+// Tarot bitmaps live in tarot-images/ (hyphenated, no spaces in folder name — case-sensitive servers).
+// Filenames match card titles, e.g. "The Fool.jpg", "Five of Cups.jpg". Back: "Back.jpg".
+// All runtime URLs are built from H2H_TAROT_IMAGES_BASE only (no multi-folder probing).
 const USE_CARD_IMAGES=true;
-const CARD_IMAGES_PATHS=['Tarot Images/Card Sized/','Tarot Images/','tarot images/card sized/','tarot images/'];
+const H2H_TAROT_IMAGES_BASE='tarot-images/';
 const SHOW_GENERATED_FALLBACK=true;
-const CARD_IMAGE_EXTENSIONS=['png','jpg','jpeg','webp','svg'];
+const CARD_IMAGE_EXTENSIONS=['jpg','jpeg','png','webp','svg'];
 const CARD_IMAGE_NAME_ALIASES={
-  'Card Back':['Back'],
-  'card back':['Back'],
-  'Card back':['Back'],
   'The Chariot':['The Chariopt'],
   'Page of Wands':['Pages of Wands'],
   'King of Cups':['King of cups'],
@@ -8826,46 +8834,37 @@ function minorSceneArt(card){
 }
 
 function buildCardImageCandidates(card){
-  const bases=(CARD_IMAGES_PATHS&&CARD_IMAGES_PATHS.length?CARD_IMAGES_PATHS:['']).map(p=>(p||'').replace(/\/?$/,'/'));
+  const base=(typeof H2H_TAROT_IMAGES_BASE==='string'?H2H_TAROT_IMAGES_BASE:'').replace(/\/?$/,'/');
   const seen=new Set();
   const out=[];
-  const names=[];
-  const push=(name)=>{
-    bases.forEach(base=>{
-      const src=`${base}${name}`;
-      if(!seen.has(src)){
-        seen.add(src);
-        out.push(src);
-      }
+  const pushStem=(stem)=>{
+    CARD_IMAGE_EXTENSIONS.forEach(ext=>{
+      const src=`${base}${stem}.${ext}`;
+      if(!seen.has(src)){seen.add(src);out.push(src);}
     });
   };
+  const names=[];
   if(card.arcana==='Major'){
-    names.push(`${card.u} — ${card.n}`,`${card.u} - ${card.n}`,card.n);
-    if(card.n==='Wheel of Fortune') names.push(`${card.u} — Wheel of `,`${card.u} - Wheel of `);
+    names.push(card.n);
+    if(card.u)names.push(`${card.u} — ${card.n}`,`${card.u} - ${card.n}`);
+    if(card.n==='Wheel of Fortune'&&card.u)names.push(`${card.u} — Wheel of `,`${card.u} - Wheel of `);
   }else{
-    names.push(card.n,card.n.replace(/ of /g,' — '),card.n.replace(/ /g,'-'));
-    if(card.n==='Page of Cups') names.push('Page of Cup');
-    if(card.n==='Queen of Swords') names.push('Queens of Swords');
+    names.push(card.n);
+    if(card.n==='Page of Cups')names.push('Page of Cup');
+    if(card.n==='Queen of Swords')names.push('Queens of Swords');
   }
-  expandCardImageNames(names).forEach(name=>{
-    CARD_IMAGE_EXTENSIONS.forEach(ext=>push(`${name}.${ext}`));
-  });
+  expandCardImageNames(names).forEach(pushStem);
   return out;
 }
 
 function buildNamedImageCandidates(names){
-  const bases=(CARD_IMAGES_PATHS&&CARD_IMAGES_PATHS.length?CARD_IMAGES_PATHS:['']).map(p=>(p||'').replace(/\/?$/,'/'));
+  const base=(typeof H2H_TAROT_IMAGES_BASE==='string'?H2H_TAROT_IMAGES_BASE:'').replace(/\/?$/,'/');
   const seen=new Set();
   const out=[];
   expandCardImageNames(Array.isArray(names)?names:[names]).forEach(name=>{
     CARD_IMAGE_EXTENSIONS.forEach(ext=>{
-      bases.forEach(base=>{
-        const src=`${base}${name}.${ext}`;
-        if(!seen.has(src)){
-          seen.add(src);
-          out.push(src);
-        }
-      });
+      const src=`${base}${name}.${ext}`;
+      if(!seen.has(src)){seen.add(src);out.push(src);}
     });
   });
   return out;
@@ -8964,7 +8963,7 @@ function getCardArt(card){
 }
 
 function getCardBackArt(){
-  const sources=buildNamedImageCandidates(['Card Back','card back','Card back']);
+  const sources=buildNamedImageCandidates(['Back']);
   const bgId=nextCardArtId('back-bg');
   const ringId=nextCardArtId('back-ring');
   const fallback=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 80" aria-hidden="true">
@@ -9073,7 +9072,7 @@ function preloadFirstWorkingImageUrl(sources){
 
 function getSharedCardBackImageUrl(){
   if(h2hCardBackUrlPromise)return h2hCardBackUrlPromise;
-  const sources=buildNamedImageCandidates(['Card Back','card back','Card back']);
+  const sources=buildNamedImageCandidates(['Back']);
   h2hCardBackUrlPromise=preloadFirstWorkingImageUrl(sources).catch(()=>null);
   return h2hCardBackUrlPromise;
 }
@@ -10178,7 +10177,7 @@ function redo(){
   });
 }
 
-resumeCheckoutFromUrl();
+void resumeCheckoutFromUrl().catch(()=>{});
 </script>
 </body>
 </html>

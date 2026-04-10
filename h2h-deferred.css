@@ -29,7 +29,7 @@ body{font-family:var(--f);background:var(--cream);color:var(--td);overflow-x:hid
   .sc{animation:none !important}
   .shuf-orbit{animation:none !important}
   .shuf-mist{animation:none !important}
-  .tc:not(.fl):hover{filter:inherit !important}
+  .tc:not(.fl):hover{box-shadow:0 10px 20px rgba(35,22,28,.1) !important}
   .tc-deal{animation:none !important;opacity:1 !important}
   .sr{transition:none !important}
   .qcat:active,.sp:active,.trk:active{transform:none !important}
@@ -278,7 +278,7 @@ h2{font-size:clamp(1.7rem,4vw,2.5rem)}h3{font-size:clamp(1.1rem,2.5vw,1.5rem)}
 .tc.fl{-webkit-transform:rotateY(180deg);transform:rotateY(180deg)}
 /* Hover feedback must NOT replace .tc-deal's tcDealIn animation (would drop opacity:forwards → invisible card). */
 .tc:not(.fl):hover{
-  filter:drop-shadow(0 12px 26px rgba(108,52,64,.14)) brightness(1.02);
+  box-shadow:0 12px 26px rgba(108,52,64,.14);
 }
 .cf{position:absolute;inset:0;border-radius:12px;-webkit-backface-visibility:hidden;backface-visibility:hidden;-webkit-transform-style:preserve-3d;transform-style:preserve-3d}
 
@@ -5809,11 +5809,12 @@ ul.hero-trust.hero-trust--row,
 }
 
 /* ═══ Tarot cards: deal-in, flip, backs ═══ */
+/* No filter on .tc — filter flattens 3D; breaks backface-visibility between .cf.cbk / .cf.cft */
 .tc{
   -webkit-transform-style:preserve-3d;
   transform-style:preserve-3d;
-  transition:-webkit-transform .8s ease,transform .8s ease,filter .5s ease !important;
-  filter:drop-shadow(0 10px 20px rgba(35,22,28,.1));
+  transition:-webkit-transform .8s ease,transform .8s ease,box-shadow .5s ease !important;
+  box-shadow:0 10px 20px rgba(35,22,28,.1);
   will-change:transform;
 }
 .tc-deal{
@@ -5826,7 +5827,7 @@ ul.hero-trust.hero-trust--row,
   to{opacity:1;transform:translateY(0) scale(1)}
 }
 .tc.tc-pressing{
-  filter:drop-shadow(0 12px 24px rgba(108,52,64,.14));
+  box-shadow:0 12px 24px rgba(108,52,64,.14);
 }
 .tc.fl{
   -webkit-animation:none !important;
@@ -5836,7 +5837,7 @@ ul.hero-trust.hero-trust--row,
   transform:rotateY(180deg) !important;
 }
 .tc:not(.fl):hover{
-  filter:drop-shadow(0 12px 26px rgba(108,52,64,.14)) brightness(1.02);
+  box-shadow:0 12px 26px rgba(108,52,64,.14);
 }
 .tc:focus-visible{
   outline:2px solid var(--h2h-focus-ring,#e8cf7a);
@@ -5898,7 +5899,7 @@ ul.hero-trust.hero-trust--row,
   #crow .tc.fl:hover{
     -webkit-transform:rotateY(180deg) translateY(-4px) !important;
     transform:rotateY(180deg) translateY(-4px) !important;
-    filter:drop-shadow(0 16px 34px rgba(35,22,28,.14)) drop-shadow(0 0 36px rgba(212,175,95,.42)) !important;
+    box-shadow:0 16px 34px rgba(35,22,28,.14),0 0 36px rgba(212,175,95,.42) !important;
   }
   #crow .tc.fl:hover .cart-inner.cart-inner--image .cart-img-slot{
     box-shadow:
@@ -7153,7 +7154,7 @@ button.rbtn#rbtn{
     transform-style:preserve-3d;
   }
   #crow .tc:not(.fl):hover{
-    filter:drop-shadow(0 16px 32px rgba(196,163,90,.22)) drop-shadow(0 8px 20px rgba(35,22,28,.12)) brightness(1.02);
+    box-shadow:0 16px 32px rgba(196,163,90,.22),0 8px 20px rgba(35,22,28,.12);
   }
 }
 @media(prefers-reduced-motion:reduce){

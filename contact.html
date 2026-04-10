@@ -5,274 +5,58 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact — Heart to Heart 111</title>
 <meta name="description" content="Contact Heart to Heart 111 for studio bookings, gift shop questions, and reading support.">
+<meta name="theme-color" content="#0a0812">
+<meta property="og:title" content="Contact — Heart to Heart 111">
+<meta property="og:description" content="Reach the Coopersburg studio for appointments, gift shop questions, or reading support.">
+<meta property="og:image" content="https://hearttoheart111.com/tarot-images/Back.jpg">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="tarot-images/Back.jpg" as="image">
 <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="images/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="icon" href="images/favicon-16.png" type="image/png" sizes="16x16">
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png" sizes="180x180">
 <script src="analytics.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --pink:#d96d98;--rose:#ef93b8;--wine:#b84d78;--blush:#fff0f6;--paper:#fff8fb;
-  --ink:#3e2a34;--muted:#705763;--soft:#a88b98;--line:rgba(217,109,152,.16);--ss:rgba(184,77,120,.12);
-  --fb:'Cormorant Garamond',Georgia,serif;--fd:'Cormorant Garamond',Georgia,serif;--f:'Manrope',sans-serif
-}
-html{scroll-behavior:smooth}
-body{
-  font-family:var(--f);background:
-    radial-gradient(circle at 12% 8%,rgba(255,202,223,.42),transparent 24%),
-    radial-gradient(circle at 84% 12%,rgba(212,235,243,.28),transparent 24%),
-    linear-gradient(180deg,#fff9fc 0%,#fff1f7 48%,#fff8fb 100%);
-  color:var(--ink);font-size:15.5px;line-height:1.8
-}
-
-/* ── Sticky Nav ── */
-.tnav{position:sticky;top:0;z-index:20;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);background:rgba(255,248,251,.9);border-bottom:1px solid rgba(217,109,152,.15);box-shadow:0 2px 14px rgba(184,77,120,.07)}
-.tnav-in{max-width:840px;margin:0 auto;padding:.52rem 1.2rem;display:flex;align-items:center;justify-content:space-between;gap:.7rem}
-.tnav-brand{font-family:var(--fb);font-size:1.18rem;color:var(--wine);text-decoration:none;white-space:nowrap;letter-spacing:-.01em}
-.tnav-links{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:.32rem}
-.tnav-links a{color:var(--muted);text-decoration:none;font-size:.67rem;padding:.27rem .7rem;border-radius:100px;border:1px solid rgba(217,109,152,.18);background:rgba(255,255,255,.75);transition:all .2s;font-weight:500}
-.tnav-links a:hover,.tnav-links a.active,.tnav-links a[aria-current="page"]{border-color:var(--rose);color:var(--wine);background:var(--blush);font-weight:600}
-@media(max-width:560px){.tnav-in{flex-direction:column;align-items:stretch}.tnav-brand{text-align:center;font-size:1.05rem}.tnav-links{justify-content:center}}
-
-.main{max-width:840px;margin:0 auto;padding:2rem 1.3rem 2.8rem}
-.brand{font-family:var(--fb);color:var(--wine);font-size:2.4rem;line-height:1;text-align:center;display:block;text-decoration:none;letter-spacing:-.02em}
-.sub{text-align:center;font-size:.7rem;color:var(--soft);letter-spacing:.16em;text-transform:uppercase;margin:.35rem 0 1.8rem}
-h1{font-family:var(--fd);font-size:2rem;font-weight:600;text-align:center;margin-bottom:.45rem;letter-spacing:-.02em;line-height:1.08}
-.intro{text-align:center;color:var(--muted);font-size:.92rem;margin-bottom:1.8rem;line-height:1.7}
-
-/* ── Cards ── */
-.card{
-  background:linear-gradient(160deg,rgba(255,255,255,.97),rgba(255,240,247,.9));border-radius:22px;padding:1.35rem 1.25rem;
-  box-shadow:0 10px 30px var(--ss);margin-bottom:1rem;border:1px solid var(--line);transition:transform .28s ease,box-shadow .28s ease
-}
-.card:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(184,77,120,.17)}
-
-/* ── Card Header with Icon ── */
-.card-hd{display:flex;align-items:center;gap:.6rem;margin-bottom:.5rem}
-.card-hd h2{margin-bottom:0;font-family:var(--fd);font-size:1.22rem;font-weight:600;color:var(--ink)}
-.cion{width:2.1rem;height:2.1rem;background:var(--blush);border:1px solid rgba(217,109,152,.22);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
-
-.card p{color:var(--muted);font-size:.92rem;line-height:1.75;margin-bottom:.25rem}
-.card p:last-child{margin-bottom:0}
-.card a{color:var(--wine);text-decoration:none;font-weight:700}
-.card a:hover{text-decoration:underline;color:var(--pink)}
-
-footer{border-top:1px solid var(--line);padding:1.6rem 1.25rem 1rem;text-align:center;max-width:840px;margin:0 auto .8rem;width:100%}
-.ftb{font-family:var(--fb);font-size:1.45rem;color:var(--wine)}
-.ftl{margin-top:.55rem}
-.ftl a{color:var(--muted);text-decoration:none;font-size:.74rem;margin:0 .45rem;transition:color .2s}
-.ftl a:hover{color:var(--wine)}
-@media(max-width:700px){
-  .tnav-in{flex-direction:column;align-items:stretch}
-  .tnav-brand{text-align:center;font-size:1.06rem}
-  .tnav-links{justify-content:center}
-  .main{padding:1.5rem 1rem 2.3rem}
-  .card{padding:1.05rem .95rem}
-  .card-hd h2{font-size:1.1rem}
-  .intro{font-size:.88rem}
-  .ftl{display:flex;flex-wrap:wrap;justify-content:center;gap:.35rem .6rem}
-  .ftl a{margin:0}
-}
-:root{
-  --night:#09060f;--night-two:#160b22;--night-three:#093848;--panel:#f7ebdd;--panel-hi:#fff7ef;
-  --gold:#d6b46a;--gold-line:rgba(214,180,106,.3);--ink:#2c1e1b;--muted:#66514c;--soft:#a4897c;--wine:#7a4350;--f-orn:'Cinzel',Georgia,serif
-}
-body{background:radial-gradient(circle at 18% 15%,rgba(67,215,205,.2),transparent 18%),radial-gradient(circle at 84% 14%,rgba(246,124,197,.2),transparent 20%),radial-gradient(circle at 58% 42%,rgba(92,122,235,.16),transparent 22%),linear-gradient(180deg,var(--night) 0%,var(--night-two) 44%,#06050b 100%);color:var(--ink);position:relative}
-body::before{content:'';position:fixed;inset:0;pointer-events:none;background-image:radial-gradient(circle at 10% 18%,rgba(255,255,255,.95) 0 1px,transparent 2px),radial-gradient(circle at 28% 74%,rgba(255,255,255,.72) 0 1px,transparent 2px),radial-gradient(circle at 80% 14%,rgba(255,255,255,.92) 0 1px,transparent 2px),radial-gradient(circle at 88% 62%,rgba(255,255,255,.7) 0 1px,transparent 2px),radial-gradient(circle at 56% 34%,rgba(214,180,106,.36) 0 1px,transparent 2px);z-index:0}
-body::after{content:'';position:fixed;inset:18px;border:1px solid rgba(214,180,106,.56);box-shadow:inset 0 0 0 1px rgba(214,180,106,.14);pointer-events:none;z-index:0}
-.tnav{top:1rem;width:min(980px,calc(100% - 2rem));margin:1rem auto 0;border:1px solid rgba(214,180,106,.5);border-radius:26px;background:linear-gradient(180deg,rgba(255,248,239,.98),rgba(242,227,205,.96));box-shadow:0 24px 50px rgba(0,0,0,.26)}
-.tnav-in{max-width:none;padding:1rem 1.2rem .75rem;flex-direction:column}
-.tnav-brand{font-size:clamp(1.8rem,3vw,2.5rem);color:var(--wine);text-align:center}
-.tnav-links{width:100%;justify-content:center;gap:.9rem;padding-top:.7rem;border-top:1px solid rgba(214,180,106,.24)}
-.tnav-links a{background:transparent;border:none;padding:0;font-family:var(--f-orn);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
-.tnav-links a:hover,.tnav-links a.active,.tnav-links a[aria-current="page"]{background:transparent;color:var(--wine)}
-.main{max-width:980px;margin:1.1rem auto 0;padding:1.5rem 1.05rem 2rem;position:relative;z-index:1}
-.main::before{content:'';position:absolute;inset:0;border-radius:30px;background:linear-gradient(180deg,var(--panel-hi),var(--panel));border:1px solid rgba(214,180,106,.48);box-shadow:0 28px 60px rgba(0,0,0,.28);z-index:-2}
-.main::after{content:'';position:absolute;inset:12px;border-radius:20px;border:1px solid rgba(214,180,106,.2);z-index:-1}
-.brand,.ftb{color:var(--wine)}
-.sub{font-family:var(--f-orn);letter-spacing:.18em;color:#a17537}
-h1,.card-hd h2{color:var(--ink)}
-.intro,.card p{color:var(--muted)}
-.card{background:linear-gradient(180deg,rgba(255,249,242,.96),rgba(245,232,212,.92));border:1px solid var(--gold-line);box-shadow:0 18px 36px rgba(0,0,0,.08)}
-.card-hd{align-items:center}
-.cion{background:rgba(214,180,106,.12);border-color:rgba(214,180,106,.28)}
-.card a{color:var(--wine)}
-footer{max-width:980px;margin:1.1rem auto 1.8rem;border-top:1px solid rgba(214,180,106,.28);position:relative;z-index:1}
-.ftb{color:#f3e2c1}
-.ftl a{color:rgba(248,235,214,.82)}
-.ftl a:hover{color:#fff7ef}
-@media(max-width:700px){
-  body::after{inset:14px}
-  .tnav{width:calc(100% - 1.4rem);top:.7rem;margin-top:.7rem}
-  .tnav-in{padding:.9rem .9rem .7rem}
-  .tnav-links{gap:.7rem}
-  .tnav-links a{font-size:.59rem}
-  .main{padding:1rem .8rem 1.4rem}
-}
-/* FINAL INNER PAGE PASS */
-:root{
-  --final-paper:#f4eadc;
-  --final-paper-hi:#fbf5ec;
-  --final-gold:#b89452;
-  --final-gold-soft:rgba(184,148,82,.22);
-  --final-rose:#8c5d64;
-  --final-ink:#261c1b;
-  --final-muted:#6f5f5a;
-}
-body{
-  font-size:16.5px;
-  background:
-    radial-gradient(circle at 16% 14%,rgba(56,208,198,.16),transparent 18%),
-    radial-gradient(circle at 82% 10%,rgba(230,118,188,.16),transparent 20%),
-    radial-gradient(circle at 48% 38%,rgba(82,113,214,.1),transparent 24%),
-    linear-gradient(180deg,#07050d 0%,#140d22 46%,#05040a 100%) !important;
-}
-body::after{inset:16px;border-color:rgba(184,148,82,.52);box-shadow:inset 0 0 0 1px rgba(184,148,82,.14)}
-.tnav{
-  width:min(1060px,calc(100% - 2rem));
-  border-radius:28px;
-  border-color:rgba(184,148,82,.48);
-  background:linear-gradient(180deg,rgba(251,245,236,.98),rgba(241,228,209,.95));
-}
-.tnav-brand{color:var(--final-rose)}
-.tnav-links a{color:var(--final-muted)}
-.tnav-links a:hover,.tnav-links a[aria-current="page"]{color:var(--final-rose)}
-.main{
-  max-width:1060px;
-  padding:1.6rem 1.1rem 2.3rem;
-}
-.main::before{
-  border-radius:34px;
-  background:linear-gradient(180deg,var(--final-paper-hi),var(--final-paper));
-  border-color:rgba(184,148,82,.48);
-}
-.main::after{
-  inset:14px;
-  border-radius:24px;
-  border-color:rgba(184,148,82,.18);
-}
-.brand,.ftb{color:var(--final-rose)}
-.brand{font-size:clamp(2.7rem,5vw,4rem)}
-.sub{
-  color:var(--final-gold);
-  letter-spacing:.22em;
-}
-h1,.card-hd h2{color:var(--final-ink)}
-.intro,.card p{color:var(--final-muted)}
-.intro{
-  max-width:36rem;
-  margin:0 auto 2rem;
-  font-size:1rem;
-}
-.card{
-  border-radius:22px;
-  border-color:var(--final-gold-soft);
-  background:linear-gradient(180deg,rgba(255,250,245,.97),rgba(243,231,214,.94));
-  padding:1.2rem 1.15rem;
-  margin-bottom:1rem;
-}
-.cion{
-  width:2.4rem;
-  height:2.4rem;
-  background:rgba(184,148,82,.12);
-  border-color:rgba(184,148,82,.22);
-}
-footer{
-  max-width:1060px;
-  padding-top:1.9rem;
-}
-@media(max-width:700px){
-  body::after{inset:12px}
-  .tnav{width:calc(100% - 1.4rem)}
-  .main{padding:1.05rem .85rem 1.55rem}
-}
-/* a11y foundation (mirrors index.html) */
-:root{
-  --focus-strong:#6b3446;
-  --focus-glow:0 0 0 2px #fbf7f2,0 0 0 5px rgba(107,52,70,.45);
-}
-html{scroll-padding-top:calc(5.85rem + env(safe-area-inset-top, 0px));}
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto !important}
-  .card{transition:none !important}
-  .card:hover{transform:none !important}
-}
-.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-.skip-link{
-  position:absolute;left:-9999px;top:0;z-index:100001;
-  padding:.65rem 1.2rem;background:var(--final-ink,#261c1b);color:#fff;font-weight:600;font-size:.875rem;
-  border-radius:12px;text-decoration:none;box-shadow:0 8px 28px rgba(0,0,0,.25);
-}
-.skip-link:focus,.skip-link:focus-visible{
-  left:max(.75rem,env(safe-area-inset-left));
-  top:max(.75rem,env(safe-area-inset-top));
-  outline:2px solid var(--final-gold,#b89452);outline-offset:3px;
-}
-a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible,[role="button"]:focus-visible{
-  outline:2px solid var(--focus-strong);outline-offset:3px;
-}
-.tnav-links a:focus-visible,.ftl a:focus-visible{outline-offset:2px}
-.card a:focus-visible{font-weight:700}
-@media (max-width:700px){
-  .tnav-links a{
-    min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center;
-    padding:.35rem .85rem;box-sizing:border-box;
-  }
-  .ftl a{
-    min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center;
-    padding:.25rem .5rem;box-sizing:border-box;
-  }
-}
-.main h1{
-  padding-bottom:.75rem;
-  margin-bottom:.15rem;
-}
-.main h1::after{
-  content:'';
-  display:block;
-  width:4rem;
-  height:2px;
-  margin:.55rem auto 0;
-  border-radius:2px;
-  background:linear-gradient(90deg,transparent,rgba(184,148,82,.88),transparent);
-}
-.card{
-  box-shadow:0 12px 38px rgba(140,93,100,.08);
-  border-color:rgba(184,148,82,.26) !important;
-}
-.ftl{
-  display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:.35rem .5rem;
-  max-width:36rem;margin-left:auto;margin-right:auto;padding:0 .5rem;
-}
-.ftl a{padding:.2rem .12rem}
-.ftl-sep{color:rgba(111,95,90,.45);font-size:.8rem;user-select:none}
-.ftl-legal{display:inline-flex;flex-wrap:wrap;align-items:center;gap:.35rem}
-</style>
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/inner-pages.css">
 </head>
-<body>
+<body class="inner-parlor">
+<div class="h2h-ambient-layer" aria-hidden="true"></div>
 <a class="skip-link" href="#main-content">Skip to main content</a>
 <nav class="tnav" aria-label="Site">
   <div class="tnav-in">
-    <a href="index.html" class="tnav-brand">Heart to Heart 111</a>
+    <a class="tnav-brand" href="index.html">Heart to Heart 111</a>
     <div class="tnav-links">
+      <a href="index.html#home-guide">Guide</a>
+      <a href="index.html#reading-flow">Reading</a>
+      <a href="index.html#visit-studio">Studio</a>
+      <a href="restore.html">Restore a reading</a>
       <a href="about.html">About</a>
       <a href="faq.html">FAQ</a>
       <a href="contact.html" aria-current="page">Contact</a>
-      <a href="restore.html">Restore</a>
-      <a href="terms.html">Terms</a>
+      <a href="terms.html#terms">Terms</a>
     </div>
   </div>
 </nav>
-<main id="main-content" class="main" tabindex="-1">
-  <a href="index.html" class="brand">Heart to Heart 111</a>
-  <p class="sub">Main Street Studio Contact</p>
-  <h1 id="contact-page-title">Contact Us</h1>
-  <p class="intro">For appointments, gift shop questions, or help returning to a reading, reach out here.</p>
+<main id="main-content" class="parlor-panel" tabindex="-1">
+  <header class="page-head">
+    <p class="page-head__wordmark"><a href="index.html">Heart to Heart 111</a></p>
+    <nav class="page-head__crumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="index.html">Home</a></li>
+        <li aria-current="page">Contact</li>
+      </ol>
+    </nav>
+    <p class="page-head__ornament" aria-hidden="true"><span>✦</span></p>
+    <h1 class="page-head__title" id="contact-page-title">Contact us</h1>
+    <div class="page-head__rule" aria-hidden="true"></div>
+    <p class="page-head__intro">For appointments, gift shop questions, or help returning to a reading, reach out here.</p>
+  </header>
 
   <section class="card" aria-labelledby="contact-studio-heading">
-    <div class="card-hd"><span class="cion" aria-hidden="true">📞</span><h2 id="contact-studio-heading">Appointments &amp; Studio Contact</h2></div>
+    <div class="card-hd"><span class="cion" aria-hidden="true">📞</span><h2 id="contact-studio-heading">Appointments &amp; studio contact</h2></div>
     <p>Kristy: <a href="tel:6107628341">(610) 762-8341</a></p>
     <p>Mandy: <a href="tel:2676642928">(267) 664-2928</a></p>
   </section>
@@ -294,18 +78,50 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   </section>
 
   <section class="card" aria-labelledby="contact-reading-heading">
-    <div class="card-hd"><span class="cion" aria-hidden="true">🔑</span><h2 id="contact-reading-heading">Reading Support</h2></div>
+    <div class="card-hd"><span class="cion" aria-hidden="true">🔑</span><h2 id="contact-reading-heading">Reading support</h2></div>
     <p>If you already paid, restore your reading on the <a href="restore.html">Restore Reading page</a> using your PayPal Transaction ID.</p>
   </section>
+
+  <form class="contact-form" id="contact-mail-form" aria-labelledby="contact-form-title" novalidate>
+    <h2 class="contact-form__title" id="contact-form-title">Write to the studio</h2>
+    <p class="contact-form__hint">Compose a message in your email app—add our address or send through Facebook if you prefer.</p>
+    <div class="parlor-field">
+      <label for="contact-name">Name</label>
+      <input type="text" id="contact-name" name="name" autocomplete="name" required placeholder="Your name">
+    </div>
+    <div class="parlor-field">
+      <label for="contact-email">Email</label>
+      <input type="email" id="contact-email" name="email" autocomplete="email" required placeholder="you@example.com">
+    </div>
+    <div class="parlor-field">
+      <label for="contact-message">Message</label>
+      <textarea id="contact-message" name="message" required placeholder="How can we help?"></textarea>
+    </div>
+    <button type="submit" class="contact-form__submit">Open in email</button>
+    <p class="contact-form__foot">You can also call the numbers above or message us on Facebook—whichever feels right.</p>
+  </form>
 </main>
 
-<footer>
+<footer class="site-footer">
   <div class="ftb">Heart to Heart 111</div>
+  <div class="footer-ornament" aria-hidden="true"><span class="footer-ornament-star">✦</span><span class="footer-ornament-line"></span><span class="footer-ornament-star">✦</span></div>
   <nav class="ftl" aria-label="Site links and legal">
     <a href="index.html">Home</a><span class="ftl-sep" aria-hidden="true">·</span><a href="restore.html">Restore</a><span class="ftl-sep" aria-hidden="true">·</span><a href="about.html">About</a><span class="ftl-sep" aria-hidden="true">·</span><a href="faq.html">FAQ</a><span class="ftl-sep" aria-hidden="true">·</span><a href="contact.html" aria-current="page">Contact</a><span class="ftl-sep" aria-hidden="true">·</span><span class="ftl-legal" role="group" aria-label="Legal sections on the terms page"><a href="terms.html#terms">Terms</a><span class="ftl-sep" aria-hidden="true">·</span><a href="terms.html#privacy">Privacy</a><span class="ftl-sep" aria-hidden="true">·</span><a href="terms.html#disclaimer">Disclaimer</a></span>
   </nav>
 </footer>
 <div class="sr-only" id="sr-live-polite" aria-live="polite" aria-atomic="true"></div>
 <div class="sr-only" id="sr-live-assertive" aria-live="assertive" aria-atomic="true"></div>
+<script>
+document.getElementById('contact-mail-form').addEventListener('submit',function(e){
+  e.preventDefault();
+  const name=(document.getElementById('contact-name').value||'').trim();
+  const email=(document.getElementById('contact-email').value||'').trim();
+  const message=(document.getElementById('contact-message').value||'').trim();
+  if(!name||!email||!message)return;
+  const subject=encodeURIComponent('Heart to Heart 111 — message from '+name);
+  const body=encodeURIComponent('Name: '+name+'\nEmail: '+email+'\n\n'+message);
+  window.location.href='mailto:?subject='+subject+'&body='+body;
+});
+</script>
 </body>
 </html>

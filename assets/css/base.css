@@ -1,0 +1,75 @@
+/**
+ * Heart to Heart 111 — global base layer (imports design tokens)
+ */
+@import url('./design-system.css');
+@import url('./polish.css');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  line-height: var(--leading-relaxed);
+  font-weight: 400;
+  color: var(--ink);
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(ellipse 120% 80% at 10% -10%, rgba(88, 52, 102, 0.22), transparent 45%),
+    radial-gradient(ellipse 90% 60% at 90% 0%, rgba(42, 58, 112, 0.18), transparent 42%),
+    radial-gradient(ellipse 70% 50% at 50% 100%, rgba(18, 12, 32, 0.9), transparent 55%),
+    linear-gradient(165deg, var(--bg) 0%, var(--bg-warm) 48%, #06040c 100%);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Headings default to display serif; pages may override */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-tight);
+  color: var(--ink);
+}
+
+a {
+  color: var(--rose);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  transition:
+    color var(--duration-normal) var(--ease-soft),
+    text-decoration-color var(--duration-normal) var(--ease-soft);
+}
+
+a:hover {
+  color: var(--ink);
+  text-decoration-color: var(--gold-soft);
+}
+
+::selection {
+  background: var(--gold-soft);
+  color: var(--bg);
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}

@@ -6,7 +6,7 @@
 <title>Heart to Heart 111 — Private Tarot Reading | Coopersburg, PA</title>
 <meta name="description" content="A calm, private online tarot: lay your spread, use Preview first for a glimpse, then Unlock full reading — $5 for every card and position in full. Heart to Heart 111, Coopersburg, PA—Main Street studio for readings, energy work, and gifts.">
 <meta name="robots" content="index,follow,max-image-preview:large">
-<meta name="theme-color" content="#fbf7f2">
+<meta name="theme-color" content="#0a0812">
 <meta name="author" content="Heart to Heart 111">
 <!-- Replace og:url and JSON-LD url fields with your live origin when you deploy (same value everywhere). -->
 <meta property="og:url" content="https://hearttoheart111.com/">
@@ -14,16 +14,16 @@
 <meta property="og:site_name" content="Heart to Heart 111">
 <meta property="og:title" content="Heart to Heart 111 — Private Tarot Readings">
 <meta property="og:description" content="Private tarot readings and a quiet spiritual studio on Main Street in Coopersburg, Pennsylvania—gentle, unhurried, and yours alone.">
-<meta property="og:image" content="https://hearttoheart111.com/images/og-share.png">
-<meta property="og:image:type" content="image/png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Heart to Heart 111 — private tarot readings, Coopersburg, Pennsylvania">
+<meta property="og:image" content="https://hearttoheart111.com/tarot-images/Back.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="600">
+<meta property="og:image:height" content="1000">
+<meta property="og:image:alt" content="Heart to Heart 111 tarot card back — private readings, Coopersburg, Pennsylvania">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Heart to Heart 111 — Private Tarot Readings">
 <meta name="twitter:description" content="Private tarot readings and a quiet spiritual studio on Main Street in Coopersburg, Pennsylvania—gentle, unhurried, and yours alone.">
-<meta name="twitter:image" content="https://hearttoheart111.com/images/og-share.png">
+<meta name="twitter:image" content="https://hearttoheart111.com/tarot-images/Back.jpg">
 <meta name="twitter:image:alt" content="Heart to Heart 111 — private tarot readings, Coopersburg, Pennsylvania">
 <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="images/favicon-32.png" type="image/png" sizes="32x32">
@@ -46,7 +46,7 @@
       "@id": "#h2h-studio",
       "name": "Heart to Heart 111",
       "description": "Spiritual studio and gift shop on Main Street in Coopersburg—readings, energy work, and curated gifts.",
-      "image": "https://hearttoheart111.com/images/og-share.png",
+      "image": "https://hearttoheart111.com/tarot-images/Back.jpg",
       "parentOrganization": { "@id": "#h2h" },
       "telephone": "+1-610-762-8341",
       "url": "https://hearttoheart111.com/",
@@ -91,7 +91,11 @@
 <link rel="preconnect" href="https://www.paypalobjects.com" crossorigin>
 <link rel="dns-prefetch" href="https://www.paypal.com">
 <link rel="dns-prefetch" href="https://www.paypalobjects.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="tarot-images/Back.jpg" as="image" fetchpriority="high">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/base.css">
 <style id="h2h-critical-css">
 /* First-paint shell for nav + hero; full cascade in h2h-deferred.css */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -104,7 +108,8 @@
   --anchor-pad:calc(6.2rem + env(safe-area-inset-top, 0px));
 }
 @media(min-width:721px){:root{--anchor-pad:calc(5.75rem + env(safe-area-inset-top, 0px))}}
-html{overflow-x:hidden;scroll-padding-top:var(--anchor-pad)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto !important}}
+html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:var(--anchor-pad)}
 body{
   margin:0;font-family:var(--f);font-size:17px;line-height:1.72;
   background:
@@ -121,8 +126,9 @@ body::after{
 .skip-links{position:absolute;left:-9999px;top:0;z-index:100001;display:flex;flex-direction:column;gap:.35rem;align-items:flex-start}
 .skip-links:focus-within{left:max(.75rem,env(safe-area-inset-left));top:max(.75rem,env(safe-area-inset-top))}
 .skip-links .skip-link{position:static;padding:.65rem 1.2rem;background:var(--td);color:#fff;font-weight:600;font-size:.875rem;border-radius:12px;text-decoration:none;box-shadow:0 8px 28px rgba(47,39,50,.25)}
-.hbg{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
-.wrap{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:0 1rem 3.3rem}
+.h2h-ambient-layer{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.hbg{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+.wrap{position:relative;z-index:2;max-width:1180px;margin:0 auto;padding:0 1rem 3.3rem}
 .tnav{
   position:sticky;top:1rem;z-index:20;width:min(1110px,calc(100% - 2rem));margin:1rem auto 0;
   border:1px solid rgba(184,148,82,.48);border-radius:28px 28px 0 0;
@@ -142,6 +148,15 @@ body::after{
   box-shadow:0 28px 70px rgba(3,2,7,.28);
 }
 .hero-shell::before{content:'';position:absolute;inset:13px;border:1px solid rgba(184,148,82,.17);border-radius:22px;pointer-events:none}
+.hero-shell-card-watermark{position:absolute;inset:0;border-radius:inherit;overflow:hidden;pointer-events:none;z-index:0}
+.hero-shell-card-watermark::before,.hero-shell-card-watermark::after{
+  content:'';position:absolute;width:min(78vmin,560px);aspect-ratio:3/5;
+  background:url(tarot-images/Back.jpg) center/contain no-repeat;
+  opacity:.06;filter:saturate(.88) contrast(.98);
+}
+.hero-shell-card-watermark::before{right:-14%;bottom:-20%;transform:rotate(-7deg)}
+.hero-shell-card-watermark::after{left:-12%;top:-24%;transform:rotate(5deg);opacity:.038;width:min(62vmin,440px)}
+.hero-copy,.hero-stage{position:relative;z-index:1}
 .hero-copy{padding:2rem 1.2rem 1.5rem;text-align:center}
 .hero .tag{font-family:var(--f);font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;color:#b89452;font-weight:700}
 .hero .brand{font-family:var(--fb);font-size:clamp(2.9rem,6.5vw,4.9rem);line-height:.94;color:var(--final-rose);margin:.15rem 0}
@@ -167,7 +182,8 @@ ul.hero-trust.hero-trust--row,.hero-trust.hero-trust--row{list-style:none;displa
     linear-gradient(180deg,#08060f 0%,#120d1f 42%,#07131b 100%);
 }
 .hero-stage::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.05),transparent 22%,rgba(2,2,5,.18))}
-.hero-tarot-fan{position:absolute;inset:11% 7% 11%}
+.hero-tarot-visual{position:absolute;inset:0;pointer-events:none;z-index:1}
+.hero-tarot-fan{position:absolute;inset:11% 7% 11%;z-index:2}
 .hero-card-preview{position:absolute;width:min(35%,205px);aspect-ratio:3/5;border-radius:16px;overflow:hidden;box-shadow:0 26px 48px rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.18)}
 .hero-card-back{left:9%;top:18%;transform:rotate(-14deg)}
 .hero-card-left{left:28%;top:9%;transform:rotate(-5deg)}
@@ -198,25 +214,50 @@ ul.hero-trust.hero-trust--row,.hero-trust.hero-trust--row{list-style:none;displa
 <noscript><link rel="stylesheet" href="h2h-deferred.css"></noscript>
 </head>
 <body>
+<div class="h2h-ambient-layer" aria-hidden="true"></div>
 <div class="skip-links">
 <a class="skip-link" href="#main-content">Skip to main content</a>
 <a class="skip-link" href="#reading-flow">Skip to reading flow</a>
 </div>
 <div id="pw-gate" class="pw-gate" role="dialog" aria-modal="true" aria-labelledby="pw-gate-title" aria-describedby="pw-gate-desc">
   <div class="pw-gate__veil" aria-hidden="true"></div>
+  <div class="pw-gate__vignette" aria-hidden="true"></div>
+  <div class="pw-gate__grain" aria-hidden="true"></div>
   <div class="pw-gate__panel">
     <p class="pw-gate__eyebrow">Private reading room</p>
-    <p class="pw-gate__brand" id="pw-gate-title">Heart <span class="pw-gate__to">to</span> Heart <span class="pw-gate__num">111</span></p>
+    <div class="pw-gate__title-block">
+      <span class="pw-gate__ornament" aria-hidden="true">✦</span>
+      <h1 class="pw-gate__brand" id="pw-gate-title">Heart <span class="pw-gate__to">to</span> Heart <span class="pw-gate__num">111</span></h1>
+    </div>
     <p class="pw-gate__lead" id="pw-gate-desc">You are at the threshold of a quiet space meant for invited guests. What happens here is gentle and unhurried—this door stays closed so the room stays yours.</p>
-    <form class="pw-gate__form" id="pw-form" action="#" onsubmit="event.preventDefault();checkPw();">
-      <label class="pw-gate__label" for="pw-input">Shared phrase</label>
-      <div class="pw-gate__field-wrap" id="pw-field-wrap">
-        <input id="pw-input" class="pw-gate__input" type="password" name="gate_phrase" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="Whisper it here" aria-describedby="pw-hint-line pw-err" aria-invalid="false">
+    <div class="pw-gate__stack">
+      <div class="pw-gate__card-fan" aria-hidden="true">
+        <div class="pw-gate__card-back pw-gate__card-back--l">
+          <div class="pw-gate__card-float">
+            <img src="tarot-images/Back.jpg" alt="" width="600" height="1000" decoding="async">
+          </div>
+        </div>
+        <div class="pw-gate__card-back pw-gate__card-back--c">
+          <div class="pw-gate__card-float">
+            <img src="tarot-images/Back.jpg" alt="" width="600" height="1000" decoding="async">
+          </div>
+        </div>
+        <div class="pw-gate__card-back pw-gate__card-back--r">
+          <div class="pw-gate__card-float">
+            <img src="tarot-images/Back.jpg" alt="" width="600" height="1000" decoding="async">
+          </div>
+        </div>
       </div>
-      <p class="pw-gate__hint" id="pw-hint-line">This private room opens with the shared password.</p>
-      <button type="submit" class="pw-gate__submit" id="pw-btn">Step inside</button>
-      <p id="pw-err" class="pw-gate__err" role="status" aria-live="polite"></p>
-    </form>
+      <form class="pw-gate__form" id="pw-form" action="#" onsubmit="event.preventDefault();checkPw();">
+        <label class="pw-gate__label" for="pw-input">Shared phrase</label>
+        <div class="pw-gate__field-wrap" id="pw-field-wrap">
+          <input id="pw-input" class="pw-gate__input" type="password" name="gate_phrase" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="Whisper it here" aria-describedby="pw-hint-line pw-err" aria-invalid="false">
+        </div>
+        <p class="pw-gate__hint" id="pw-hint-line">This private room opens with the shared password.</p>
+        <button type="submit" class="pw-gate__submit" id="pw-btn">Step inside</button>
+        <p id="pw-err" class="pw-gate__err" role="status" aria-live="polite"></p>
+      </form>
+    </div>
     <p class="pw-gate__contact">Need access? <a href="contact.html">Contact Heart to Heart 111</a>—we will help you find your way in.</p>
   </div>
 </div>
@@ -384,9 +425,14 @@ document.addEventListener('DOMContentLoaded',()=>{
 <!-- HERO -->
 <section class="hero">
   <div class="hero-shell">
+    <div class="hero-shell-card-watermark" aria-hidden="true"></div>
     <div class="hero-copy">
       <p class="tag">Private reading room</p>
-      <h1 class="brand">Heart <span class="to">to</span> Heart <span class="num">111</span></h1>
+      <div class="hero-reading-head">
+        <p class="hero-ornament hero-ornament--star" aria-hidden="true"><span class="hero-ornament-glyph">✦</span></p>
+        <h1 class="brand">Heart <span class="to">to</span> Heart <span class="num">111</span></h1>
+        <div class="hero-ornament hero-ornament--rule" aria-hidden="true"></div>
+      </div>
       <h2 class="hero-lede">Your private tarot spread—linger with <strong>Preview first</strong>, then <strong>Unlock full reading — $5</strong> when every position is ready to speak.</h2>
       <p class="qt">Whisper a question, choose a charm, turn each card in your own time. Written for you alone—gentle, unhurried.</p>
       <p class="loc">Heart to Heart 111 · Coopersburg, Pennsylvania</p>
@@ -417,6 +463,8 @@ document.addEventListener('DOMContentLoaded',()=>{
         <strong>Where your attention rests</strong>
         <span>The cards lean in.</span>
       </div>
+      <div class="hero-tarot-visual">
+      <div class="hero-tarot-glow" aria-hidden="true"></div>
       <div class="hero-tarot-fan">
         <figure class="hero-card-preview hero-card-back">
           <picture>
@@ -442,6 +490,7 @@ document.addEventListener('DOMContentLoaded',()=>{
             <img src="tarot-images/The Sun.jpg" alt="The Sun" width="600" height="1000" loading="eager" decoding="async">
           </picture>
         </figure>
+      </div>
       </div>
       <div class="hero-stage-note hero-stage-note-bottom">
         <strong>Mystery, then meaning</strong>
@@ -527,7 +576,11 @@ document.addEventListener('DOMContentLoaded',()=>{
   </div>
 </section>
 
-<div class="flow-wrap" id="reading-flow" role="region" aria-label="Interactive tarot reading">
+<div class="flow-wrap" id="reading-flow" role="region" aria-labelledby="reading-flow-title" aria-label="Interactive tarot reading">
+<div class="reading-flow-intro">
+  <h2 class="reading-flow-title" id="reading-flow-title">Your private tarot spread</h2>
+  <div class="reading-flow-ornament" aria-hidden="true"><span>✦</span></div>
+</div>
 <div class="sr-only" id="sr-live-polite" aria-live="polite" aria-atomic="true"></div>
 <div class="sr-only" id="sr-live-assertive" aria-live="assertive" aria-atomic="true"></div>
 <nav class="flow-progress" id="flowProgress" aria-label="Reading progress">
@@ -544,7 +597,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 <section class="qsection ritual-step" id="s1" aria-labelledby="s1-title" tabindex="-1">
   <div class="ritual-panel">
     <header class="ritual-panel-head">
-      <p class="tag">Step 1</p>
+      <div class="ritual-step-mark"><span class="ritual-step-num" aria-hidden="true">I</span><p class="tag ritual-step-label">Intention</p></div>
       <h2 id="s1-title">Set your intention</h2>
       <p class="qsub">Choose a focus, then add words if you wish—they give the cards a thread to follow.</p>
     </header>
@@ -568,12 +621,13 @@ document.addEventListener('DOMContentLoaded',()=>{
     <p class="qnote" id="qnote">What you share stays with this reading—yours alone.</p>
   </div>
 </section>
+<hr class="ritual-scene-hr" aria-hidden="true">
 
 <!-- STEP 2: TREASURE CHEST -->
 <section class="chsec sr ritual-step" id="s2" aria-labelledby="s2-title">
   <div class="ritual-panel">
     <header class="ritual-panel-head">
-      <p class="tag">Step 2</p>
+      <div class="ritual-step-mark"><span class="ritual-step-num" aria-hidden="true">II</span><p class="tag ritual-step-label">Charm</p></div>
       <h2 id="s2-title">The charm chest</h2>
       <p class="chsub">Lift the lid; let one symbol step forward.</p>
     </header>
@@ -618,7 +672,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 
   <div class="charm-arena" id="charm-arena" inert>
     <p class="charm-arena-eyebrow" id="charm-arena-label">Choose your charm</p>
-    <div class="tcloud" id="tcloud" role="group" aria-labelledby="charm-arena-label">
+    <div class="tcloud tcloud--velvet" id="tcloud" role="group" aria-labelledby="charm-arena-label">
     <button type="button" class="trk" aria-pressed="false" onclick="pickT(this)" data-t="crystal" data-m="The crystal amplifies clarity and truth">
       <span class="ti"><svg viewBox="0 0 24 24"><path d="M12 2l-3 7h-2l5 13 5-13h-2z"/><path d="M7 9h10" opacity=".5"/><path d="M9 9l3-7 3 7" opacity=".4"/></svg></span><span class="tn">Crystal</span></button>
     <button type="button" class="trk" aria-pressed="false" onclick="pickT(this)" data-t="feather" data-m="The feather invites lightness and freedom">
@@ -668,20 +722,21 @@ document.addEventListener('DOMContentLoaded',()=>{
     </div>
   </div>
 </section>
+<hr class="ritual-scene-hr" aria-hidden="true">
 
 <!-- STEP 3: SPREAD -->
 <section class="spsec sr ritual-step" id="s3" aria-labelledby="s3-title">
   <div class="ritual-panel ritual-panel--spread">
     <header class="ritual-panel-head">
-      <p class="tag">Step 3</p>
+      <div class="ritual-step-mark"><span class="ritual-step-num" aria-hidden="true">III</span><p class="tag ritual-step-label">Spread</p></div>
       <h2 id="s3-title">Choose your spread</h2>
       <p class="spsub">More cards, more nuance—only the depth you want.</p>
     </header>
     <p id="flow-err-spread" class="ritual-flow-error" role="status" aria-live="polite" hidden></p>
     <div class="sps" id="spread-pick" role="radiogroup" aria-labelledby="s3-title">
-      <button type="button" class="sp on" role="radio" aria-checked="true" data-s="3" onclick="setSp(this)"><span class="sp-glyph" aria-hidden="true">☽ ☾</span><span class="sn">3 cards</span><span class="sd">Past · present · future</span></button>
-      <button type="button" class="sp" role="radio" aria-checked="false" data-s="5" onclick="setSp(this)"><span class="sp-glyph" aria-hidden="true">✦ ✦ ✦</span><span class="sn">5 cards</span><span class="sd">Crossroads · choice &amp; path</span></button>
-      <button type="button" class="sp" role="radio" aria-checked="false" data-s="7" onclick="setSp(this)"><span class="sp-glyph" aria-hidden="true">☆ ☆ ☆ ☆</span><span class="sn">7 cards</span><span class="sd">Lantern · full arc</span></button>
+      <button type="button" class="sp on" role="radio" aria-checked="true" data-s="3" onclick="setSp(this)"><span class="sp-mini-deck" aria-hidden="true"><span class="sp-mini"></span><span class="sp-mini"></span><span class="sp-mini"></span><span class="sp-mini"></span><span class="sp-mini"></span><span class="sp-mini"></span><span class="sp-mini"></span></span><span class="sp-copy"><span class="sp-glyph" aria-hidden="true">☽ ☾</span><span class="sn">3 cards</span><span class="sd">Past · present · future</span></span></button>
+      <button type="button" class="sp" role="radio" aria-checked="false" data-s="5" onclick="setSp(this)"><span class="sp-mini-deck" aria-hidden="true"><span class="sp-mini"></span><span class="sp-mini"></span><span class="sp-mini"></span><span class="sp-mini"></span><span class="sp-mini"></span><span class="sp-mini"></span><span class="sp-mini"></span></span><span class="sp-copy"><span class="sp-glyph" aria-hidden="true">✦ ✦ ✦</span><span class="sn">5 cards</span><span class="sd">Crossroads · choice &amp; path</span></span></button>
+      <button type="button" class="sp" role="radio" aria-checked="false" data-s="7" onclick="setSp(this)"><span class="sp-mini-deck" aria-hidden="true"><span class="sp-mini"></span><span class="sp-mini"></span><span class="sp-mini"></span><span class="sp-mini"></span><span class="sp-mini"></span><span class="sp-mini"></span><span class="sp-mini"></span></span><span class="sp-copy"><span class="sp-glyph" aria-hidden="true">☆ ☆ ☆ ☆</span><span class="sn">7 cards</span><span class="sd">Lantern · full arc</span></span></button>
     </div>
     <details class="ext ritual-skymap">
       <summary class="ritual-skymap-summary"><span class="ritual-skymap-title">Moon &amp; sign <em class="ritual-skymap-optional">optional</em></span><span class="ritual-skymap-hint">Borrow a tone from the sky</span><span class="ar" aria-hidden="true">▼</span></summary>
@@ -706,7 +761,9 @@ document.addEventListener('DOMContentLoaded',()=>{
     </div>
     <p class="shuf-t" id="shtxt">Shuffling the deck…</p>
   </div>
+  <div class="ritual-subscene-head ritual-subscene-head--cards" id="s4-anchor"><span class="ritual-step-num" aria-hidden="true">IV</span><p class="tag ritual-step-label">Cards</p></div>
   <div class="carea ritual-cardmat" id="carea" role="region" aria-labelledby="finf" aria-describedby="spread-sr-context"><div class="ritual-cardmat-inner"><p class="finf" id="finf">Turn each card in your own time—the spread opens at its pace.</p><p class="fcnt" id="fcnt" aria-live="polite"></p><p id="spread-sr-context" class="sr-only"></p><div class="crow" id="crow" role="group"></div></div></div>
+  <div class="ritual-subscene-head ritual-subscene-head--receive" id="s5-anchor"><span class="ritual-step-num" aria-hidden="true">V</span><p class="tag ritual-step-label">Receive</p></div>
   <div class="prev" id="prev" role="region" aria-labelledby="prev-panel-title" aria-describedby="prev-panel-desc">
     <div class="prev-glow" aria-hidden="true"></div>
     <div class="prev-card">
@@ -850,7 +907,7 @@ document.addEventListener('DOMContentLoaded',()=>{
       <div class="studio-spotlight-visual">
         <picture>
           <source type="image/webp" srcset="images/studio-wall.webp">
-          <img src="images/studio-wall.jpg" alt="Heart to Heart 111 studio wall in Coopersburg" width="1200" height="800" loading="lazy" decoding="async" fetchpriority="low" onerror="this.parentElement.innerHTML='<div style=padding:2rem;color:#fff8f2;font-family:Fraunces,Georgia,serif;font-size:2rem;line-height:1.05>Art, ritual, and a real studio presence.</div>'">
+          <img src="images/studio-wall.jpg" alt="Interior of Heart to Heart 111 on Main Street in Coopersburg, Pennsylvania: the reading studio wall with art and soft lighting" width="1200" height="800" loading="lazy" decoding="async" fetchpriority="low" onerror="this.parentElement.innerHTML='<div style=padding:2rem;color:#fff8f2;font-family:Fraunces,Georgia,serif;font-size:2rem;line-height:1.05>Art, ritual, and a real studio presence.</div>'">
         </picture>
         <div class="studio-spotlight-cap">Main Street · Coopersburg</div>
       </div>
@@ -862,7 +919,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         <div class="studio-card-media">
           <picture>
             <source type="image/webp" srcset="images/trinket-chest.webp">
-            <img src="images/trinket-chest.jpg" alt="Handcrafted trinket chest used in Heart to Heart 111 readings" width="800" height="600" loading="lazy" decoding="async" fetchpriority="low">
+            <img src="images/trinket-chest.jpg" alt="Handcrafted wooden trinket chest used for charm selection during in-person readings at Heart to Heart 111" width="800" height="600" loading="lazy" decoding="async" fetchpriority="low">
           </picture>
         </div>
         <div class="studio-card-body">
@@ -873,7 +930,7 @@ document.addEventListener('DOMContentLoaded',()=>{
       </article>
       <article class="studio-card" role="listitem">
         <div class="studio-card-media">
-          <img src="images/paint-wine-clean.svg" alt="Paint and wine party at Heart to Heart 111">
+          <img src="images/paint-wine-clean.svg" alt="Illustration of a paint-and-wine creative gathering at Heart to Heart 111 in Coopersburg" width="400" height="300" loading="lazy" decoding="async">
         </div>
         <div class="studio-card-body">
           <h3 class="studio-card-title">Reiki &amp; energy work</h3>
@@ -883,7 +940,7 @@ document.addEventListener('DOMContentLoaded',()=>{
       </article>
       <article class="studio-card" role="listitem">
         <div class="studio-card-media">
-          <img src="images/gallery-gifts-clean.svg" alt="Art gallery and gift shop at Heart to Heart 111">
+          <img src="images/gallery-gifts-clean.svg" alt="Illustration of the gallery and gift shop area with art, crystals, and handmade gifts at Heart to Heart 111" width="400" height="300" loading="lazy" decoding="async">
         </div>
         <div class="studio-card-body">
           <h3 class="studio-card-title">Gifts, art &amp; crystals</h3>
@@ -910,11 +967,11 @@ document.addEventListener('DOMContentLoaded',()=>{
         <blockquote>Kind, down to earth, beautiful—worth returning to.</blockquote>
         <p class="testimonial-note">Public reviews of the shop, not the online reading. <a href="https://www.chamberofcommerce.com/business-directory/pennsylvania/coopersburg/psychic/2015206554-heart-to-heart" target="_blank" rel="noopener">Read reviews →</a></p>
       </div>
-      <div class="revs">
-        <div class="rev"><div class="rev-s">★★★★★</div><p>Down to earth and welcoming.</p><div class="rev-n">Google</div></div>
-        <div class="rev"><div class="rev-s">★★★★★</div><p>A beautiful little shop.</p><div class="rev-n">Google</div></div>
-        <div class="rev"><div class="rev-s">★★★★★</div><p>Kind and respectful.</p><div class="rev-n">Google</div></div>
-        <div class="rev"><div class="rev-s">★★★★★</div><p>Patient and encouraging.</p><div class="rev-n">Google</div></div>
+      <div class="revs revs--studio">
+        <div class="rev"><span class="rev-ornament" aria-hidden="true">“</span><div class="rev-s"><span class="sr-only">5 out of 5 stars</span><span aria-hidden="true">★★★★★</span></div><p>Down to earth and welcoming.</p><cite class="rev-n">Google</cite></div>
+        <div class="rev"><span class="rev-ornament" aria-hidden="true">“</span><div class="rev-s"><span class="sr-only">5 out of 5 stars</span><span aria-hidden="true">★★★★★</span></div><p>A beautiful little shop.</p><cite class="rev-n">Google</cite></div>
+        <div class="rev"><span class="rev-ornament" aria-hidden="true">“</span><div class="rev-s"><span class="sr-only">5 out of 5 stars</span><span aria-hidden="true">★★★★★</span></div><p>Kind and respectful.</p><cite class="rev-n">Google</cite></div>
+        <div class="rev"><span class="rev-ornament" aria-hidden="true">“</span><div class="rev-s"><span class="sr-only">5 out of 5 stars</span><span aria-hidden="true">★★★★★</span></div><p>Patient and encouraging.</p><cite class="rev-n">Google</cite></div>
       </div>
     </div>
   </section>
@@ -922,11 +979,12 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 </main>
 
-<footer>
+<footer class="site-footer">
   <div class="ftb">Heart to Heart 111</div>
   <div class="ftt">Online readings · spiritual services · gifts</div>
   <div class="fso"><a href="https://www.facebook.com/heart.to.heart111" target="_blank" rel="noopener">Facebook →</a></div>
   <div class="fco">111 S Main St, Coopersburg, Pennsylvania · Kristy: <a href="tel:6107628341">(610) 762-8341</a></div>
+  <div class="footer-ornament" aria-hidden="true"><span class="footer-ornament-star">✦</span><span class="footer-ornament-line"></span><span class="footer-ornament-star">✦</span></div>
   <nav class="fln" aria-label="Site links and legal">
     <a href="restore.html">Restore</a><span class="fln-sep" aria-hidden="true">·</span><a href="about.html">About</a><span class="fln-sep" aria-hidden="true">·</span><a href="faq.html">FAQ</a><span class="fln-sep" aria-hidden="true">·</span><a href="contact.html">Contact</a><span class="fln-sep" aria-hidden="true">·</span><span class="fln-legal" role="group" aria-label="Legal: separate sections on the terms page"><a href="terms.html#terms">Terms</a><span class="fln-sep" aria-hidden="true">·</span><a href="terms.html#privacy">Privacy</a><span class="fln-sep" aria-hidden="true">·</span><a href="terms.html#disclaimer">Disclaimer</a></span>
   </nav>

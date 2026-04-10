@@ -7,9 +7,11 @@
   "scripts": {
     "start": "node server.js",
     "test": "node qa/reading-engine-check.mjs",
+    "launch-check": "node qa/launch-check.mjs",
     "generate:missing-art": "node qa/generate-missing-card-art.mjs"
   },
   "dependencies": {
+    "compression": "^1.8.1",
     "express": "^4.21.2"
   },
   "devDependencies": {

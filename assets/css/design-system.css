@@ -1,8 +1,8 @@
 /**
  * Heart to Heart 111 — design tokens
  * Candlelit velvet parlor: midnight plum, antique gold, warm ivory, muted rose.
+ * Google Fonts load from HTML (async `<link rel="preload" as="style" …>`) to avoid render-blocking `@import`.
  */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 
 :root {
   /* ── Color ── */
@@ -13,9 +13,20 @@
   /* Solid tones for WCAG AA (~4.5:1) on --bg / midnight stacks */
   --ink-soft: #e2dcd2;
   --ink-muted: #c4bbb1;
+  /* WCAG AA on parchment/cream (#f4eadc–#fff): body 4.5:1; use instead of --ts/--tmu on light panels only */
+  --text-muted-parchment: #5d524d;
+  --text-soft-parchment: #6b5c55;
+  /* Antique gold for uppercase tags on parchment (AA vs #f4eadc); not for large display type */
+  --gold-text-parchment: #7a5c28;
+  /* Footer / dark-room secondary text (AA vs ~#07050d); keep separate from on-parchment tokens */
+  --text-soft-footer: #877b87;
+  --text-muted-footer: #948a96;
+  /* Alias: ritual panels & cream surfaces (not site footer) */
+  --ts-on-light: var(--text-soft-parchment);
+  --tmu-on-light: var(--text-muted-parchment);
   --gold: #c4a35a;
   --gold-mid: #a88b4a;
-  --gold-soft: rgba(196, 163, 90, 0.38);
+  --gold-soft: rgba(196, 163, 90, 0.42);
   --gold-glow: rgba(212, 184, 120, 0.45);
   --rose: #c49aa8;
   --rose-deep: #9a6b7a;

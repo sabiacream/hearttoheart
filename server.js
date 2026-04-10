@@ -1,6 +1,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const express = require('express');
+const compression = require('compression');
 
 const ROOT_DIR = __dirname;
 loadEnvFile(path.join(ROOT_DIR, '.env'));
@@ -29,6 +30,7 @@ const SPREAD_POSITIONS = {
 let tokenCache = { accessToken: '', expiresAt: 0 };
 
 const app = express();
+app.use(compression());
 app.use(express.json({ limit: '1mb' }));
 
 app.get('/api/health', (_req, res) => {

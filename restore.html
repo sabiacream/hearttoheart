@@ -73,7 +73,8 @@
     <div class="restore-ritual__glow" aria-hidden="true"></div>
     <div class="restore-ritual__card input-box" role="group" aria-labelledby="txid-label">
     <label for="txid" id="txid-label">PayPal Transaction ID</label>
-    <input type="text" id="txid" class="txf" placeholder="For example: 5TY12345AB678901C" autocomplete="off" aria-labelledby="txid-label" aria-describedby="txid-help txid-inline-err" aria-invalid="false">
+    <input type="text" id="txid" class="txf" placeholder="For example: 5TY12345AB678901C" autocomplete="off" aria-labelledby="txid-label" aria-describedby="txid-device-hint txid-help txid-inline-err" aria-invalid="false">
+    <p id="txid-device-hint" class="help txid-device-hint" role="status" aria-live="polite" hidden></p>
     <p id="txid-inline-err" class="txid-inline-err" role="status" aria-live="polite" hidden></p>
     <button type="button" class="rbtn" id="rbtn" onclick="restore()">Restore my reading</button>
     <p class="help" id="txid-help">
@@ -259,12 +260,29 @@ function cpR(btn){
   });
 }
 
-// Auto-restore from URL query or hash
+// Auto-restore from URL query or hash; else same-device hint from index checkout (localStorage h2h_last_txn)
 const params=new URLSearchParams(window.location.search);
 const autoTx=(params.get('tx')||params.get('transactionId')||(window.location.hash?window.location.hash.substring(1):'')).trim();
 if(autoTx){
   document.getElementById('txid').value=autoTx;
   setTimeout(restore,400);
+}else{
+  (function h2hInitRestoreTxidFromDevice(){
+    const tx=document.getElementById('txid');
+    const hint=document.getElementById('txid-device-hint');
+    if(!tx||!hint)return;
+    try{
+      const last=localStorage.getItem('h2h_last_txn');
+      if(last&&String(last).trim()){
+        if(!tx.value.trim())tx.value=String(last).trim().toUpperCase();
+        hint.textContent='Filled from this device’s last PayPal checkout. Tap Restore my reading, or replace with another ID from your receipt.';
+        hint.hidden=false;
+        return;
+      }
+    }catch(_e){}
+    hint.textContent='No saved checkout ID on this device—paste the PayPal Transaction ID from your receipt, or complete a reading and pay on the home page first.';
+    hint.hidden=false;
+  })();
 }
 </script>
 </body>

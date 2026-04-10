@@ -92,6 +92,8 @@
 <link rel="preconnect" href="https://www.paypalobjects.com" crossorigin>
 <link rel="dns-prefetch" href="https://www.paypal.com">
 <link rel="dns-prefetch" href="https://www.paypalobjects.com">
+<!-- PayPal JS SDK: SANDBOX only here—replace YOUR_SANDBOX_CLIENT_ID with your sandbox app client ID. At launch, swap in a LIVE client ID; the SDK URL format is the same (https://www.paypal.com/sdk/js?client-id=…&currency=USD&intent=capture&components=buttons), only the id changes. -->
+<script src="https://www.paypal.com/sdk/js?client-id=YOUR_SANDBOX_CLIENT_ID&currency=USD&intent=capture&components=buttons" data-namespace="paypal_sdk"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="tarot-images/Back.jpg" as="image" fetchpriority="high">
@@ -820,10 +822,10 @@ document.addEventListener('DOMContentLoaded',()=>{
             <div class="prev-cta-block prev-cta-block--primary">
               <a class="prev-social-proof" href="#studio-reviews"><span class="sr-only">5 out of 5 stars </span><span class="prev-social-proof__stars" aria-hidden="true">★★★★★</span> from Main Street visitors</a>
               <div class="prev-unlock-payrow">
-                <button type="button" class="ppb ppb-unlock" id="ppb" onclick="pay()">
-                  <span class="ppb-line1">Unlock full reading — $5</span>
-                  <span class="ppb-line2">PayPal · once · restore anytime</span>
-                </button>
+                <div id="paypal-unlock-region" class="paypal-unlock-sdk-wrap" tabindex="-1" aria-label="Unlock full reading with PayPal">
+                  <div id="paypal-button-container"></div>
+                  <p class="prev-paypal-once-copy ppb-line2">PayPal · once · restore anytime</p>
+                </div>
                 <span class="prev-paypal-mark-wrap" aria-hidden="true">
                   <svg class="prev-paypal-mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="56" height="18" focusable="false"><path fill="currentColor" d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.445 0 5.961 0h7.537c2.546 0 4.568.701 5.961 2.088 1.395 1.387 1.893 3.368 1.482 5.886-.387 2.375-1.373 4.256-2.914 5.574-1.544 1.318-3.806 1.997-6.691 1.997zm2.646-1h1.508c2.946 0 5.293-.51 6.884-1.518 1.592-1.008 2.711-2.598 3.314-4.724.615-2.16.338-3.744-.787-4.678-1.126-.935-2.886-1.396-5.187-1.396H7.617a.658.658 0 0 0-.647.544l-1.779 11.296a.41.41 0 0 0 .404.476zm8.25-10.56h1.384c1.727 0 3.059.306 3.944.865.885.559 1.353 1.445 1.347 2.66-.017 2.482-1.83 3.75-5.343 3.75h-1.369a.658.658 0 0 1-.647-.544l-.8-5.077a.409.409 0 0 1 .404-.476z"/></svg>
                 </span>
@@ -1285,33 +1287,37 @@ function setPpbLabel(line1,line2){
 
 function clearPaywallCheckoutError(){
   const el=document.getElementById('pay-err');
-  const btn=document.getElementById('ppb');
+  const region=document.getElementById('paypal-unlock-region');
   if(el){
     el.textContent='';
     el.setAttribute('hidden','');
   }
-  if(btn){
-    btn.removeAttribute('aria-describedby');
-    btn.removeAttribute('aria-invalid');
+  if(region){
+    region.removeAttribute('aria-describedby');
+    region.removeAttribute('aria-invalid');
   }
 }
 
 function setPaywallCheckoutError(message){
   const el=document.getElementById('pay-err');
-  const btn=document.getElementById('ppb');
+  const region=document.getElementById('paypal-unlock-region');
   if(!el)return;
   el.textContent=message||'';
   if(message){
     el.removeAttribute('hidden');
-    if(btn){
-      btn.setAttribute('aria-describedby','pay-err');
-      btn.setAttribute('aria-invalid','true');
+    if(region){
+      region.setAttribute('aria-describedby','pay-err');
+      region.setAttribute('aria-invalid','true');
     }
+    requestAnimationFrame(()=>{
+      const r=document.getElementById('paypal-unlock-region');
+      if(r&&r.isConnected)r.focus({preventScroll:true});
+    });
   }else{
     el.setAttribute('hidden','');
-    if(btn){
-      btn.removeAttribute('aria-describedby');
-      btn.removeAttribute('aria-invalid');
+    if(region){
+      region.removeAttribute('aria-describedby');
+      region.removeAttribute('aria-invalid');
     }
   }
 }
@@ -3873,21 +3879,96 @@ function uCnt(latestPosition){
   else el.textContent=`${flipped} of ${drawn.length} revealed.`;
 }
 
+function h2hClearPayPalButtonMount(){
+  const mount=document.getElementById('paypal-button-container');
+  if(!mount)return;
+  mount.innerHTML='';
+  delete mount.dataset.h2hPaypalMounted;
+}
+
+function h2hMountPayPalSandboxButtons(){
+  const mount=document.getElementById('paypal-button-container');
+  const prev=document.getElementById('prev');
+  if(!mount||!prev||!prev.classList.contains('on'))return;
+  if(mount.dataset.h2hPaypalMounted==='1')return;
+  const PP=window.paypal_sdk;
+  if(!PP||typeof PP.Buttons!=='function'){
+    if(!window.h2hPaypalSdkWaitStarted)window.h2hPaypalSdkWaitStarted=Date.now();
+    if(Date.now()-window.h2hPaypalSdkWaitStarted<12000){
+      window.setTimeout(h2hMountPayPalSandboxButtons,120);
+    }else{
+      window.h2hPaypalSdkWaitStarted=0;
+      const m='PayPal could not load. Confirm YOUR_SANDBOX_CLIENT_ID is replaced in the PayPal script tag in index.html.';
+      setPaywallCheckoutError(m);
+      announce(m,'assertive');
+    }
+    return;
+  }
+  window.h2hPaypalSdkWaitStarted=0;
+  const renderResult=PP.Buttons({
+    style:{layout:'vertical',shape:'rect',label:'pay'},
+    createOrder:function(_data,actions){
+      if(typeof h2hFunnel==='function')h2hFunnel('unlock_full_reading_click',h2hFunnelContext());
+      if(!drawn.length){
+        const msg='Please draw your cards first.';
+        setPaywallCheckoutError(msg);
+        announce(msg,'assertive');
+        return Promise.reject(new Error(msg));
+      }
+      return actions.order.create({
+        purchase_units:[{
+          description:'Heart to Heart 111 — Tarot Reading',
+          amount:{value:'5.00',currency_code:'USD'}
+        }]
+      }).then(function(orderId){
+        if(typeof h2hFunnel==='function')h2hFunnel('paypal_checkout_start',h2hFunnelContext());
+        return orderId;
+      });
+    },
+    onApprove:function(data,actions){
+      clearPaywallCheckoutError();
+      return actions.order.capture().then(function(){
+        const orderId=String(data.orderID||'').trim();
+        try{if(orderId)localStorage.setItem('h2h_last_txn',orderId);}catch(_e){}
+        if(typeof h2hFunnel==='function')h2hFunnel('paypal_checkout_success',h2hFunnelContext());
+        setPaymentNote('Payment received—your full reading is loading here…');
+        unlock(orderId,'paid');
+      });
+    },
+    onError:function(err){
+      const m='Checkout hit a snag. You can try again in a moment, or use Preview first while you decide.';
+      setPaywallCheckoutError(m);
+      announce(m,'assertive');
+      if(err&&err.message)console.warn('[paypal-sdk]',err.message);
+    },
+    onCancel:function(){}
+  }).render(mount);
+  const done=function(){
+    mount.dataset.h2hPaypalMounted='1';
+  };
+  if(renderResult&&typeof renderResult.then==='function')renderResult.then(done).catch(function(e){
+    delete mount.dataset.h2hPaypalMounted;
+    const m='PayPal could not show the button. Refresh and try again.';
+    setPaywallCheckoutError(m);
+    announce(m,'assertive');
+    console.warn(e);
+  });
+  else done();
+}
+
 function showPrev(){
   if(typeof h2hFunnel==='function')h2hFunnel('preview_ready',h2hFunnelContext());
   setStep(5);
   clearPaywallCheckoutError();
   const b=document.getElementById('prev'),s=document.getElementById('psu');
-  const payBtn=document.getElementById('ppb');
   const fcnt=document.getElementById('fcnt');
   const finf=document.getElementById('finf');
-  if(!b||!s||!payBtn)return;
+  if(!b||!s)return;
   if(fcnt)fcnt.textContent='';
   if(finf)finf.textContent='Turn each card in your own time—the spread opens at its pace.';
-  payBtn.disabled=false;
-  payBtn.style.background='';
   setPpbLabel('Unlock full reading — $5','PayPal · once · restore anytime');
   setPaymentNote('Pay through PayPal · guest checkout welcome · no account here');
+  h2hClearPayPalButtonMount();
   const demo=document.getElementById('demo');
   if(demo){demo.classList.remove('on');demo.innerHTML='';}
   s.textContent=buildSummaryText(buildContext());
@@ -3901,13 +3982,18 @@ function showPrev(){
     const h=document.getElementById('prev-panel-title');
     if(h)h.focus({preventScroll:true});
   });
+  requestAnimationFrame(()=>h2hMountPayPalSandboxButtons());
 }
 
 function pay(){
   if(typeof h2hFunnel==='function')h2hFunnel('unlock_full_reading_click',h2hFunnelContext());
   const b=document.getElementById('ppb');
-  if(!b)return;
   clearPaywallCheckoutError();
+  if(!b){
+    setPaymentNote('Use the PayPal button above to unlock, or Preview first.');
+    announce('Use the PayPal button to unlock the full reading, or Preview first.','assertive');
+    return;
+  }
   b.disabled=true;
   setPpbLabel('Connecting to PayPal…','');
   setPaymentNote('Preparing checkout…');
@@ -4070,6 +4156,8 @@ function redo(){
     b.disabled=false;
     b.style.background='';
   }
+  h2hClearPayPalButtonMount();
+  window.h2hPaypalSdkWaitStarted=0;
   setPaymentNote('Pay through PayPal · guest checkout welcome · no account here');
   flipped=0;
   drawn=[];

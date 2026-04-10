@@ -4666,6 +4666,15 @@ ul.hero-trust.hero-trust--row,
   gap:.55rem .85rem;
   width:100%;
 }
+.paypal-unlock-sdk-wrap{
+  flex:1 1 auto;
+  min-width:min(100%,12.5rem);
+}
+.prev .prev-paypal-once-copy{
+  margin:0;
+  padding-top:.28rem;
+  color:rgba(252,246,240,.78);
+}
 .prev .prev-unlock-payrow .ppb-unlock{
   flex:1 1 auto;
   min-width:min(100%,12.5rem);
@@ -4687,6 +4696,10 @@ ul.hero-trust.hero-trust--row,
   .prev-unlock-payrow{
     flex-direction:column;
     align-items:stretch;
+  }
+  .paypal-unlock-sdk-wrap{
+    width:100%;
+    min-width:0;
   }
   .prev .prev-unlock-payrow .ppb-unlock{
     min-height:56px;

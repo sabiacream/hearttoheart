@@ -92,8 +92,8 @@
 <link rel="preconnect" href="https://www.paypalobjects.com" crossorigin>
 <link rel="dns-prefetch" href="https://www.paypal.com">
 <link rel="dns-prefetch" href="https://www.paypalobjects.com">
-<!-- PayPal JS SDK: SANDBOX only here—replace YOUR_SANDBOX_CLIENT_ID with your sandbox app client ID. At launch, swap in a LIVE client ID; the SDK URL format is the same (https://www.paypal.com/sdk/js?client-id=…&currency=USD&intent=capture&components=buttons), only the id changes. -->
-<script src="https://www.paypal.com/sdk/js?client-id=YOUR_SANDBOX_CLIENT_ID&currency=USD&intent=capture&components=buttons" data-namespace="paypal_sdk"></script>
+<!-- PayPal JS SDK: SANDBOX client id below. At launch, swap in a LIVE client ID; the SDK URL format is the same (https://www.paypal.com/sdk/js?client-id=…&currency=USD&intent=capture&components=buttons), only the id changes. -->
+<script src="https://www.paypal.com/sdk/js?client-id=AfM5OxGK6m2uRwDOQCJ0jP5XOexpCgvp__PulkaOR89OsD-D1S58qqgO2R1Sys3YkVmpwOyF4uj3m7II&currency=USD&intent=capture&components=buttons" data-namespace="paypal_sdk"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="tarot-images/Back.jpg" as="image" fetchpriority="high">
@@ -3898,7 +3898,7 @@ function h2hMountPayPalSandboxButtons(){
       window.setTimeout(h2hMountPayPalSandboxButtons,120);
     }else{
       window.h2hPaypalSdkWaitStarted=0;
-      const m='PayPal could not load. Confirm YOUR_SANDBOX_CLIENT_ID is replaced in the PayPal script tag in index.html.';
+      const m='PayPal could not load. Confirm the sandbox client ID in the PayPal script tag in index.html.';
       setPaywallCheckoutError(m);
       announce(m,'assertive');
     }

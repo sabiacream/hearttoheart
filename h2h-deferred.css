@@ -271,11 +271,11 @@ h2{font-size:clamp(1.7rem,4vw,2.5rem)}h3{font-size:clamp(1.1rem,2.5vw,1.5rem)}
 .fcnt{font-size:.68rem;color:var(--pink);font-weight:700;margin-bottom:.8rem}
 .crow{--cards-count:3;--card-gap:clamp(.5rem,.85vw,1rem);display:flex;justify-content:center;align-items:stretch;gap:var(--card-gap);flex-wrap:nowrap;-webkit-perspective:1200px;perspective:1200px;margin-bottom:1rem}
 
-.tc{--tc-max:220px;width:min(var(--tc-max),calc((100% - (var(--cards-count) - 1) * var(--card-gap))/var(--cards-count)));aspect-ratio:3/5;height:auto;cursor:pointer;-webkit-transform-style:preserve-3d;transform-style:preserve-3d;transition:transform .8s cubic-bezier(.4,0,.2,1);position:relative;touch-action:manipulation;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
+.tc{--tc-max:220px;width:min(var(--tc-max),calc((100% - (var(--cards-count) - 1) * var(--card-gap))/var(--cards-count)));aspect-ratio:3/5;height:auto;cursor:pointer;position:relative;-webkit-transform-style:preserve-3d;transform-style:preserve-3d;transition:transform .8s ease;touch-action:manipulation;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
 .crow[data-count="3"] .tc{--tc-max:400px}
 .crow[data-count="5"] .tc{--tc-max:300px}
 .crow[data-count="7"] .tc{--tc-max:220px}
-.tc.fl{-webkit-transform:translate3d(0,0,0) rotateY(180deg);transform:translate3d(0,0,0) rotateY(180deg)}
+.tc.fl{-webkit-transform:rotateY(180deg);transform:rotateY(180deg)}
 /* Hover feedback must NOT replace .tc-deal's tcDealIn animation (would drop opacity:forwards → invisible card). */
 .tc:not(.fl):hover{
   filter:drop-shadow(0 12px 26px rgba(108,52,64,.14)) brightness(1.02);
@@ -283,19 +283,19 @@ h2{font-size:clamp(1.7rem,4vw,2.5rem)}h3{font-size:clamp(1.1rem,2.5vw,1.5rem)}
 .cf{position:absolute;inset:0;border-radius:12px;-webkit-backface-visibility:hidden;backface-visibility:hidden;-webkit-transform-style:preserve-3d;transform-style:preserve-3d}
 
 /* CARD BACK — custom illustrated frame (translateZ prevents 3D → 2D flattening from hiding wrong face) */
-.cbk{background:linear-gradient(155deg,#533834 0%,#8e654d 48%,#3f2a29 100%);border:none;box-shadow:0 10px 26px rgba(47,39,50,.12);z-index:1;overflow:hidden;padding:5px;border-radius:16px;-webkit-transform:translateZ(1px);transform:translateZ(1px)}
+.cbk{background:linear-gradient(155deg,#533834 0%,#8e654d 48%,#3f2a29 100%);border:none;box-shadow:0 10px 26px rgba(47,39,50,.12);z-index:1;overflow:hidden;padding:5px;border-radius:16px;-webkit-transform-style:preserve-3d;transform-style:preserve-3d;-webkit-transform:translateZ(1px);transform:translateZ(1px)}
 .cbk::before{content:'';position:absolute;inset:0;border-radius:16px;background:linear-gradient(180deg,rgba(255,255,255,.2),transparent 28%,rgba(0,0,0,.18));z-index:3;pointer-events:none}
-.cbk-media{position:absolute;inset:5px;z-index:0;border-radius:11px;overflow:hidden;background:linear-gradient(180deg,#38262d,#1f1519)}
+.cbk-media{position:absolute;inset:0;z-index:0;border-radius:11px;overflow:hidden;background:linear-gradient(180deg,#38262d,#1f1519);-webkit-transform-style:preserve-3d;transform-style:preserve-3d;-webkit-transform:rotateY(0) translateZ(0);transform:rotateY(0) translateZ(0);-webkit-backface-visibility:hidden;backface-visibility:hidden}
 .cbk-media img.card-back-img,.cbk-media svg{width:100%;height:100%;display:block;object-fit:cover;object-position:center;pointer-events:none;-webkit-user-drag:none;user-drag:none;-webkit-backface-visibility:hidden;backface-visibility:hidden;-webkit-transform:translateZ(0);transform:translateZ(0);image-rendering:auto}
 .cbk-media img.card-back-img{opacity:0;transition:opacity .45s ease}
 .cbk-media.is-ready img.card-back-img{opacity:1}
 .cbk-media .card-back-fallback{width:100%;height:100%;display:block}
 
 /* CARD FRONT — custom illustrated frame */
-.cft{-webkit-transform:rotateY(180deg) translateZ(1px);transform:rotateY(180deg) translateZ(1px);background:linear-gradient(155deg,#533834 0%,#977255 46%,#3c2827 100%);border:none;box-shadow:0 12px 30px rgba(47,39,50,.16);overflow:hidden;border-radius:16px;color:#fff;text-align:center;padding:5px}
+.cft{-webkit-transform-style:preserve-3d;transform-style:preserve-3d;-webkit-transform:rotateY(180deg) translateZ(1px);transform:rotateY(180deg) translateZ(1px);background:linear-gradient(155deg,#533834 0%,#977255 46%,#3c2827 100%);border:none;box-shadow:0 12px 30px rgba(47,39,50,.16);overflow:hidden;border-radius:16px;color:#fff;text-align:center;padding:5px}
 .cft::before{content:'';position:absolute;inset:0;border-radius:16px;background:linear-gradient(180deg,rgba(255,255,255,.18),transparent 28%,rgba(0,0,0,.16));z-index:4;pointer-events:none}
 .cft::after{content:'';position:absolute;inset:0;border-radius:16px;box-shadow:inset 0 1px 0 rgba(255,255,255,.24),inset 0 -1px 0 rgba(0,0,0,.08);z-index:4;pointer-events:none}
-.cft-inner{position:absolute;inset:5px;display:grid;grid-template-rows:1fr auto;overflow:hidden;border-radius:11px;background:linear-gradient(180deg,#fffdf9,#f8eee1)}
+.cft-inner{position:absolute;inset:5px;display:grid;grid-template-rows:1fr auto;overflow:hidden;border-radius:11px;background:linear-gradient(180deg,#fffdf9,#f8eee1);-webkit-transform-style:preserve-3d;transform-style:preserve-3d}
 .cft.rev-face .cft-inner{-webkit-transform:rotate(180deg);transform:rotate(180deg)}
 .ctop{z-index:2;pointer-events:none}
 .cnm{font-family:var(--fd);font-size:clamp(.82rem,1vw,1.02rem);font-weight:600;line-height:1.12;letter-spacing:-.01em;color:#fff6f0;padding:.52rem .65rem;background:linear-gradient(180deg,rgba(72,42,40,.98),rgba(108,52,64,.95));border-radius:0 0 11px 11px;text-align:center;display:flex;align-items:center;justify-content:center;min-height:2.2em;white-space:normal;overflow-wrap:anywhere;border:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
@@ -315,7 +315,7 @@ h2{font-size:clamp(1.7rem,4vw,2.5rem)}h3{font-size:clamp(1.1rem,2.5vw,1.5rem)}
 .cart-inner.cart-inner--image{position:absolute;inset:0;display:block;border-radius:11px 11px 0 0;overflow:hidden}
 .cart-inner.cart-inner--image .cart-loading{position:absolute;inset:0;z-index:3;display:block;pointer-events:none;background:linear-gradient(105deg,rgba(255,253,248,.55) 0%,rgba(247,238,223,.92) 42%,rgba(255,250,244,.6) 100%);background-size:220% 100%;animation:cartFaceShimmer 1.15s ease-in-out infinite}
 .cart-inner.cart-inner--image.is-ready .cart-loading{display:none}
-.cart-inner.cart-inner--image .cart-img-slot{position:absolute;inset:0;z-index:2}
+.cart-inner.cart-inner--image .cart-img-slot{position:absolute;inset:0;z-index:2;-webkit-transform-style:preserve-3d;transform-style:preserve-3d;-webkit-backface-visibility:hidden;backface-visibility:hidden}
 .cart-inner.cart-inner--image .cart-img-slot .card-img{position:absolute;inset:0;width:100%;height:100%}
 @keyframes cartFaceShimmer{0%{background-position:0% 50%}100%{background-position:100% 50%}}
 @media (prefers-reduced-motion:reduce){
@@ -373,6 +373,10 @@ h2{font-size:clamp(1.7rem,4vw,2.5rem)}h3{font-size:clamp(1.1rem,2.5vw,1.5rem)}
   min-width:0;
   height:auto !important;
   aspect-ratio:3/5;
+  position:relative;
+  -webkit-transform-style:preserve-3d;
+  transform-style:preserve-3d;
+  transition:transform .8s ease;
 }
 @media(max-width:400px){
   .ritual-cardmat.on .crow{--card-gap:clamp(.32rem,1.2vw,.55rem) !important}
@@ -5798,7 +5802,7 @@ ul.hero-trust.hero-trust--row,
 .tc{
   -webkit-transform-style:preserve-3d;
   transform-style:preserve-3d;
-  transition:-webkit-transform .8s cubic-bezier(0.25,0.46,0.2,0.94),transform .8s cubic-bezier(0.25,0.46,0.2,0.94),filter .5s ease !important;
+  transition:-webkit-transform .8s ease,transform .8s ease,filter .5s ease !important;
   filter:drop-shadow(0 10px 20px rgba(35,22,28,.1));
   will-change:transform;
 }
@@ -5818,8 +5822,8 @@ ul.hero-trust.hero-trust--row,
   -webkit-animation:none !important;
   animation:none !important;
   opacity:1 !important;
-  -webkit-transform:translate3d(0,0,0) rotateY(180deg) !important;
-  transform:translate3d(0,0,0) rotateY(180deg) !important;
+  -webkit-transform:rotateY(180deg) !important;
+  transform:rotateY(180deg) !important;
   filter:drop-shadow(0 14px 28px rgba(108,52,64,.16));
   will-change:auto;
 }
@@ -5845,6 +5849,8 @@ ul.hero-trust.hero-trust--row,
   border-radius:11px;
   pointer-events:none;
   opacity:.4;
+  -webkit-backface-visibility:hidden;
+  backface-visibility:hidden;
   background-image:
     radial-gradient(1.5px 1.5px at 15% 25%,rgba(255,248,240,.7),transparent),
     radial-gradient(1px 1px at 45% 15%,rgba(255,255,255,.35),transparent),
@@ -5882,8 +5888,8 @@ ul.hero-trust.hero-trust--row,
 }
 @media (hover:hover) and (pointer:fine){
   #crow .tc.fl:hover{
-    -webkit-transform:translate3d(0,-4px,0) rotateY(180deg) !important;
-    transform:translate3d(0,-4px,0) rotateY(180deg) !important;
+    -webkit-transform:rotateY(180deg) translateY(-4px) !important;
+    transform:rotateY(180deg) translateY(-4px) !important;
     filter:drop-shadow(0 16px 34px rgba(35,22,28,.14)) drop-shadow(0 0 36px rgba(212,175,95,.42)) !important;
   }
   #crow .tc.fl:hover .cart-inner.cart-inner--image .cart-img-slot{
@@ -5900,8 +5906,8 @@ ul.hero-trust.hero-trust--row,
 }
 @media (prefers-reduced-motion:reduce){
   #crow .tc.fl:hover{
-    -webkit-transform:translate3d(0,0,0) rotateY(180deg) !important;
-    transform:translate3d(0,0,0) rotateY(180deg) !important;
+    -webkit-transform:rotateY(180deg) !important;
+    transform:rotateY(180deg) !important;
   }
 }
 .cnm{
